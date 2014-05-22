@@ -18,3 +18,16 @@ aerei.put("Boeing 777-300ER", 472);
 RYANAIR
 
 aerei.put("Boeing 737-800 Next Generation", 189);
+--------------------------------------------
+FLY EMIRATES
+
+aerei.put("Airbus A330-200", 278);
+aerei.put("Airbus A340-300", 267);
+aerei.put("Airbus A340-500", 258);
+aerei.put("Airbus A380-800", 517);
+aerei.put("Boeing 777-200", 346);
+aerei.put("Boeing 777-200ER", 274);
+aerei.put("Boeing 777-200LR", 266);
+aerei.put("Boeing 777-300", 364);
+aerei.put("Boeing 777-300ER", 442);
+aerei.put("Airbus A319-100CJ", 19);
