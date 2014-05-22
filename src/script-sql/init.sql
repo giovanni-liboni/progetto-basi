@@ -25,10 +25,17 @@ CREATE TABLE passeggero(
 	login		VARCHAR(100) NOT NULL,
 	password	VARCHAR(100) NOT NULL,
 	nazionalita	VARCHAR(100) NOT  NULL,
-	tessera		BOOLEAN DEFAULT FALSE,
+--	tessera		VARCHAR(50)
+--			REFERENCES tessera( documento )
+--			ON UPDATE CASCADE
+--			ON DELETE CASCADE,
 	nome		VARCHAR(100) NOT NULL,
 	cognome		VARCHAR(100) NOT NULL,
 	documento	VARCHAR(50) NOT NULL,
+
+	numvoli		INTEGER DEFAULT 0,
+	miglia		INTEGER DEFAULT 0,
+	tesserato	BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY( documento ),
 	UNIQUE ( login, documento )
 );
@@ -64,16 +71,17 @@ CREATE TABLE prenotazione(
 	PRIMARY KEY( id ),
 	UNIQUE ( id )
 );
-CREATE TABLE tessera(
-	documento	VARCHAR(50) NOT NULL
-			REFERENCES passeggero( documento )
-				ON UPDATE CASCADE
-				ON DELETE CASCADE,
-	numvoli		INTEGER DEFAULT 0,
-	miglia		INTEGER DEFAULT 0,
-	PRIMARY KEY ( documento ),
-	UNIQUE ( documento )
-);
+-- CREATE TABLE tessera(
+--	documento	VARCHAR(50) NOT NULL
+--			REFERENCES passeggero( documento )
+--				ON UPDATE CASCADE
+--				ON DELETE CASCADE,
+--	numvoli		INTEGER DEFAULT 0,
+--	miglia		INTEGER DEFAULT 0,
+--	-- IDENTIFICATA DAL PASSEGGERO
+--	PRIMARY KEY ( documento ),
+--	UNIQUE ( documento )
+-- );
 CREATE TABLE posto(
 	lettera		CHAR NOT NULL,
 	numero		INTEGER DEFAULT 0,
@@ -84,8 +92,18 @@ CREATE TABLE imbarco(
 	lettera		CHAR NOT NULL,
 	numero		INTEGER DEFAULT 0,
 	imbarcato	BOOLEAN DEFAULT FALSE,
+	-- PRIMARY KEY DEL BIGLIETTO
+	codicevolo	VARCHAR(10) NOT NULL,
+	documento	VARCHAR(50) NOT NULL,
+	-- IDENTIFICATO DAL BIGLIETTO E DAL POSTO
+	PRIMARY KEY ( codicevolo, documento, lettera, numero),
+
 	FOREIGN KEY( lettera, numero )
 			REFERENCES posto( lettera,numero )
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+	FOREIGN KEY( codicevolo, documento )
+			REFERENCES biglietto( codicevolo,documento )
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 );
