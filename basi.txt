@@ -1,0 +1,20 @@
+aerei.put("ATR 72-200", 66);
+
+----------------------------------------------
+AIRFRANCE
+
+aerei.put("Airbus A318-100", 131);
+aerei.put("Airbus A319-100", 142);
+aerei.put("Airbus A320-200", 178);
+aerei.put("Airbus A321-200", 212);
+aerei.put("Airbus A330-200", 208);
+aerei.put("Airbus A340-300", 275);
+aerei.put("Airbus A380-800", 516);
+aerei.put("Boeing 747-400", 432);
+aerei.put("Boeing 777-200ER", 309);
+aerei.put("Boeing 777-300ER", 472);
+
+--------------------------------------------
+RYANAIR
+
+aerei.put("Boeing 737-800 Next Generation", 189);
