@@ -93,10 +93,10 @@ public class JGet
 //	map.put("Valenza", "-0.3768049,39.4702393");
 //	map.put("Varsavia", "21.0122287,52.2296756");
 //	map.put("Vienne", "16.3738189,48.2081743");
+//	map.put("Amsterdam", "4.8922222,52.3730556");
 	
 	map.put("Verona", "10.9917623,45.4383278");
-	map.put("Roma", "12.4942486,41.8905198");
-//	map.put("Amsterdam", "4.8922222,52.3730556");
+//	map.put("Roma", "12.4942486,41.8905198");
 	map.put("Monaco", "11.5801863,48.1391265");
 	map.put("Londra", "-0.1262362,51.5001524");
 	map.put("Ibiza", "1.4323778,38.9088566");
@@ -108,15 +108,14 @@ public class JGet
     InputStream is = null;
     DataInputStream dis;
     String s,url=null;
-    String par = null, arr = null, dist = null;
+    String dist = null;
     int o = 0;
     boolean legal = true;
     
 	WriteToFile wtf = new WriteToFile();
 	
 	ArrayList<String> partenza = new ArrayList<String>();
-	partenza.add("Roma");
-//	partenza.add("Amsterdam");
+//	partenza.add("Roma");
 	partenza.add("Ibiza");
 	partenza.add("Verona");
 	partenza.add("Palma di Maiorca");
@@ -147,25 +146,7 @@ public class JGet
 		      dis = new DataInputStream(new BufferedInputStream(is));
 		      while ((s = dis.readLine()) != null)
 		      {
-		    	  if ( s.contains("</title>") )
-		    		  {
-		    		  	
-		    		  	s = s.replaceAll("<title>Durata Volo ", "");
-		    		  	s = s.replaceAll("</title>", "");
-		    		  	String cit[] = s.split("-");
-		    		  	if( cit[1].charAt(0) == ' ' )
-		    		  			cit[1]=cit[1].replaceFirst(" ", "");
-		    		  	if(cit[1].contains("err")) 
-		    		  		break;
-		    		  	if( cit[1].contains(","))
-		    		  		{
-		    		  			String m[] = cit[1].split(",");
-		    		  			cit[1] = m[0];
-		    		  		}
-		    		  	par = cit[0];
-		    		  	arr = cit[1];
-		    		  }
-		    	  else if ( s.contains("var contentString"))
+		    	  if ( s.contains("var contentString"))
 		    	  {
 		    		  String a[] = s.split(" ");
 		    		  for ( int i = 0; i< a.length; i++)
@@ -192,7 +173,7 @@ public class JGet
 		    		  }
 		    		  if( legal )
 		    		  {
-		    			  String toWrite = "INSERT INTO tratta ( partenza, arrivo, distanza, durata ) VALUES ('" + par + "','" + arr + "','" + dist + "'," + o + ");\n";
+		    			  String toWrite = "INSERT INTO tratta ( partenza, arrivo, distanza, durata ) VALUES ('" + part + "','" + dest + "','" + dist + "'," + o + ");";
 			    		  wtf.writeToFile(toWrite);
 			    		  System.out.println(toWrite);
 		    		  }

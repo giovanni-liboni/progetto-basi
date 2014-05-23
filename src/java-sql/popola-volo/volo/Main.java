@@ -26,11 +26,12 @@ public class Main {
 	public static void main(String[] args){
 		
 		
-		int MIN_ENTRY_PER_VOLO = 31;
-		int MAX_ENTRY_PER_VOLO = 31;
+		int MIN_ENTRY_PER_VOLO = 30;
+		int MAX_ENTRY_PER_VOLO = 30;
 		int MAX_ENTRY_TOTALI   = 5000;
 		int MAX_VOLI_GIORNALIERI = 2;
 		int MIN_VOLI_GIORNALIERI = 1;
+		int MESE = 11;
 		
 		Map<String, Integer> aerei = new LinkedHashMap<String, Integer>();
 		
@@ -73,97 +74,102 @@ public class Main {
 	        Map.Entry pairs = (Map.Entry)it_.next();
 	        nomeAereo.add((String) pairs.getKey());
 	    }
-		WriteToFile wtf = new WriteToFile();
-	    
-		String user = "giovanni";
-		String passwd = "ciaociao1992";
-		String url = "jdbc:postgresql://192.168.0.10/dbuser01";
-//		String user = "userlab01";
-//		String passwd = "uno8M";
-//		String url = "jdbc:postgresql://dbserver.scienze.univr.it/dblab01";
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		int distanza, id_tratta, cap_sel;
-		String aereo_sel,codicevolo=null;
-		int pos_aereo;
-		RandomString rdm = new RandomString(8);
-		int c=0;
-		
-		
-		try {
-			Class.forName("org.postgresql.Driver");
-		}
-		catch (ClassNotFoundException cnfe) {
-			System.out.println("Driver jdbc non trovato: " + cnfe.getMessage());
-		}
-		try{
-			con = DriverManager.getConnection(url, user, passwd);
-			stmt = con.createStatement();
-			
-		    // ottengo dal database la lista delle tratte e assegno un aereo
-		    // a seconda della distanza da percorrere
+	    for ( int m = 0; m < 12 ; m++)
+	    {
+	    	MESE = m;
+			WriteToFile wtf = new WriteToFile(MESE);
 		    
+	//		String user = "giovanni";
+	//		String passwd = "ciaociao1992";
+	//		String url = "jdbc:postgresql://192.168.0.10/dbuser01";
+			String user = "userlab01";
+			String passwd = "uno8M";
+			String url = "jdbc:postgresql://dbserver.scienze.univr.it/dblab01";
+			Connection con = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+	
+			int distanza, id_tratta, cap_sel;
+			String aereo_sel,codicevolo=null;
+			int pos_aereo;
+			RandomString rdm = new RandomString(8);
+			int c=0;
 			
-			rs = stmt.executeQuery("SELECT partenza, arrivo, distanza from tratta;");
-			while (rs.next())
-			{
-				distanza = rs.getInt("distanza");
-				String partenza = rs.getString("partenza");
-				String arrivo = rs.getString("arrivo");
+			
+			try {
+				Class.forName("org.postgresql.Driver");
+			}
+			catch (ClassNotFoundException cnfe) {
+				System.out.println("Driver jdbc non trovato: " + cnfe.getMessage());
+			}
+			try{
+				con = DriverManager.getConnection(url, user, passwd);
+				stmt = con.createStatement();
 				
-				for ( int i = 1; i <= randBetween(MIN_ENTRY_PER_VOLO, MAX_ENTRY_PER_VOLO) ; i++ )
+			    // ottengo dal database la lista delle tratte e assegno un aereo
+			    // a seconda della distanza da percorrere
+			    
+				
+				rs = stmt.executeQuery("SELECT partenza, arrivo, distanza from tratta;");
+				while (rs.next())
 				{
+					distanza = rs.getInt("distanza");
+					String partenza = rs.getString("partenza");
+					String arrivo = rs.getString("arrivo");
+					
 			        GregorianCalendar gc = new GregorianCalendar();
 			        gc.set(gc.YEAR, 2014);
-			     //   int dayOfYear = randBetween(1, 31);
-			        gc.set(gc.MONTH,7 );
-			        gc.set(gc.DAY_OF_MONTH, i);
-			        Date date = new Date(gc.getTimeInMillis());
+			        gc.set(gc.MONTH, MESE );
 			        
-					for ( int j = 0; j < randBetween(MIN_VOLI_GIORNALIERI, MAX_VOLI_GIORNALIERI) ; j++ )
+					for ( int i = 1; i <= gc.getActualMaximum(gc.DAY_OF_MONTH) ; i++ )
 					{
-						if ( distanza < 1600 )
-						{
-							pos_aereo = (int) (0 + (Math.random() * (6 - 0)));
-						}
-						else if( distanza >= 1600 && distanza < 3700)
-						{
-							pos_aereo = (int) (6 + (Math.random() * (14 - 6)));
-						}
-						else 
-						{
-							pos_aereo = (int) (14 + (Math.random() * ( ( aerei.size() - 1) - 14)));
-						}
-						cap_sel = aerei.get(nomeAereo.get(pos_aereo));
-						aereo_sel = nomeAereo.get(pos_aereo);
-						
 	
+				        gc.set(gc.DAY_OF_MONTH, i);
+				        Date date = new Date(gc.getTimeInMillis());
 				        
-				        int ora = randBetween(7, 22);
-				        int minuti = randBetween(0, 59);
-				        Time time = new Time(ora, minuti, 0);
-				        
-				        codicevolo = rdm.nextString();
-				        
-				        if ( c < MAX_ENTRY_TOTALI )					
-				        	wtf.writeToFile("INSERT INTO volo (codicevolo,datapartenza,orapartenza,tipoaereo,capienza, partenza, arrivo) VALUES ('" + codicevolo  +"','"+ date+ "','" + time+"','"+aereo_sel+"','"+cap_sel+"','" + partenza +"','"+arrivo+"');");
-				        
-				        c++;
+						for ( int j = 0; j < randBetween(MIN_VOLI_GIORNALIERI, MAX_VOLI_GIORNALIERI) ; j++ )
+						{
+							if ( distanza < 1600 )
+							{
+								pos_aereo = (int) (0 + (Math.random() * (6 - 0)));
+							}
+							else if( distanza >= 1600 && distanza < 3700)
+							{
+								pos_aereo = (int) (6 + (Math.random() * (14 - 6)));
+							}
+							else 
+							{
+								pos_aereo = (int) (14 + (Math.random() * ( ( aerei.size() - 1) - 14)));
+							}
+							cap_sel = aerei.get(nomeAereo.get(pos_aereo));
+							aereo_sel = nomeAereo.get(pos_aereo);
+							
+		
+					        
+					        int ora = randBetween(7, 22);
+					        int minuti = randBetween(0, 59);
+					        Time time = new Time(ora, minuti, 0);
+					        
+					        codicevolo = rdm.nextString();
+					        
+					        if ( c < MAX_ENTRY_TOTALI )					
+					        	wtf.writeToFile("INSERT INTO volo (codicevolo,datapartenza,orapartenza,tipoaereo,capienza, partenza, arrivo) VALUES ('" + codicevolo  +"','"+ date+ "','" + time+"','"+aereo_sel+"','"+cap_sel+"','" + partenza +"','"+arrivo+"');");
+					        
+					        c++;
+						}
 					}
 				}
+				
+				//Chiudo la connessione
+				con.close();
 			}
-			
-			//Chiudo la connessione
-			con.close();
-		}
-
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-
-	    wtf.close();
+	
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+	
+		    wtf.close();
+	    }
 	}
     public static int randBetween(int start, int end) {
         return start + (int)Math.round(Math.random() * (end - start));

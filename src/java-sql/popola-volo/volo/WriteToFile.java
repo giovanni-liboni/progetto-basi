@@ -8,10 +8,10 @@ import java.io.IOException;
 public class WriteToFile {
 	BufferedWriter writer = null;
 
-  	public WriteToFile(){
+  	public WriteToFile(int mese ){
   		String content = "This is the content to write into file";
   		 
-  		File file = new File("popola_volo.sql");
+  		File file = new File("popola_volo_" + mese +".sql");
   		try {
 			writer = new BufferedWriter( new FileWriter(file));
 		} catch (IOException e) {

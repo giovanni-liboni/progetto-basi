@@ -25,17 +25,13 @@ CREATE TABLE passeggero(
 	login		VARCHAR(100) NOT NULL,
 	password	VARCHAR(100) NOT NULL,
 	nazionalita	VARCHAR(100) NOT  NULL,
---	tessera		VARCHAR(50)
---			REFERENCES tessera( documento )
---			ON UPDATE CASCADE
---			ON DELETE CASCADE,
 	nome		VARCHAR(100) NOT NULL,
 	cognome		VARCHAR(100) NOT NULL,
 	documento	VARCHAR(50) NOT NULL,
 
 	numvoli		INTEGER DEFAULT 0,
 	miglia		INTEGER DEFAULT 0,
-	tesserato	BOOLEAN DEFAULT FALSE,
+	tessera		BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY( documento ),
 	UNIQUE ( login, documento )
 );
@@ -71,17 +67,6 @@ CREATE TABLE prenotazione(
 	PRIMARY KEY( id ),
 	UNIQUE ( id )
 );
--- CREATE TABLE tessera(
---	documento	VARCHAR(50) NOT NULL
---			REFERENCES passeggero( documento )
---				ON UPDATE CASCADE
---				ON DELETE CASCADE,
---	numvoli		INTEGER DEFAULT 0,
---	miglia		INTEGER DEFAULT 0,
---	-- IDENTIFICATA DAL PASSEGGERO
---	PRIMARY KEY ( documento ),
---	UNIQUE ( documento )
--- );
 CREATE TABLE posto(
 	lettera		CHAR NOT NULL,
 	numero		INTEGER DEFAULT 0,
