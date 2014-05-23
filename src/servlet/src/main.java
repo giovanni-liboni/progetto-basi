@@ -34,17 +34,16 @@ public class main extends HttpServlet {
 			DBMS dbms = new DBMS();
 
 			if (ps.equals("")) {
-//				// Parametro ps assente o vuoto, visualizzo la home page del sito.
-//				// FUNZIONALIT� DA IMPLEMENTARE
-//				//Preparo il Dispatcher
-//				rd = request.getRequestDispatcher("../home.jsp");
+				// Parametro ps assente o vuoto, visualizzo la home page del sito.
+				//Preparo il Dispatcher
+				rd = request.getRequestDispatcher("../home.jsp");
 			}			
 			
-			if (ps.equals("info")) { 
-//                //visualizzo le informazioni di dettaglio del dipartimento
+			// RICERCO IL VOLO A PARTIRE DALLA DATA, PARTENZA E ARRIVO
+			if (ps.equals("ricvolo")) { 
+//              //visualizzo le informazioni di dettaglio del dipartimento
 //				//Delego l'esecuzione della query alla classe di interazione con il DB
 //				//Recupero il risultato della query come bean
-//				InfoDipBean info = dbms.getDirettore();
 //				
 //				//Aggiungo il Vector come attributo della richiesta HTTP
 //				request.setAttribute("info",info);
