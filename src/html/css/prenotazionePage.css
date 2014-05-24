@@ -5,7 +5,7 @@
  /* Basic Grey */
 .basic-grey {
     margin: 0 auto;
-    padding: 20px 30px 20px 30px;
+    padding: 10px 20px 10px 20px;
     font: 10% Georgia, "Times New Roman", Times, serif;
     color: #888;
     text-shadow: 1px 1px 1px #FFF;	
@@ -13,9 +13,9 @@
 .basic-grey input[type="text"], .basic-grey input[type="date"], .basic-grey input[type="password"], .basic-grey select{
     border: 1px solid #DADADA;
     color: #888;
-    height: 10%;
-    margin-bottom: 3%;
-    margin-top: 3%;
+    height: 5%;
+    margin-bottom: 1%;
+    margin-top: 1%;
 	 margin-right:auto; 
 	 margin-left:auto;  
     font: normal 25px Georgia, "Times New Roman", Times, serif;
@@ -36,28 +36,20 @@
 }
 .basic-grey .button {
     background: #E48F8F;
-	 height: 10%;
-	 width: 15%;
+	 height: 8%;
+	 width: 14%;
     border: none;
     color: #FFF;
     font: normal 25px Georgia, "Times New Roman", Times, serif;
     text-align: center;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 6%;
     display: block;
     vertical-align: middle;
 }
-.basic-grey button {
-    background: #E48F8F;
-	 height: 10%;
-	 width: 33%;
-    border: none;
-    color: #FFF;
-    font: normal 5% Georgia, "Times New Roman", Times, serif;
-    text-align: center;
-    margin: auto;
-    display: inline;
-}
 .basic-grey .button:hover {
     background: #CF7A7A;
-	color: #371C1C;
+	 color: #371C1C;
 }

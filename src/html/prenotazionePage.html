@@ -2,8 +2,36 @@
 	<head>
 		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
 		<link href="css/voliPage.css" rel="stylesheet" type="text/css">
+		<link href="css/prenotazionePage.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>	
 		<!--  SEZIONE DOVE VENGONO MOSTRATI I DATI DEL VOLO -->
+		
+		<!-- SEZIONE DEL FORM  -->
+		
+		<div class="div_form">
+			<form method="POST" class="basic-grey" action="esitoPage.html">
+				<span>
+					<input type="text" name="nome" placeholder="Nome"/>	
+				</span>
+				<span>
+					<input type="text" name="cognome"/ placeholder="Cognome">	
+				</span>	
+				<span>
+					<input type="text" name="nazionalita"/ placeholder="Nazionalit&agrave">	
+				</span>
+				<!--	ONLY FOR NEW USERS	-->
+				<span>
+					<input type="text" name="username"/ placeholder="Username">	
+				</span>
+				<span>
+					<input type="password" name="password"/ placeholder="Password">	
+				</span>	
+				<!--	END FOR NEW USERS 	-->
+				<span>
+					<input type="submit" class="button" value="Prenota" />	
+				</span>			
+			</form>
+		</div>		
 	</body>
 </html>
