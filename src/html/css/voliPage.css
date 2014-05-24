@@ -1,6 +1,7 @@
  body{
  	background: #EEE;
    text-decoration: none; 
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 .voli table{
 	border-collapse: collapse;
@@ -16,6 +17,7 @@
 	padding-bottom: 10px;
 	padding-right: 15px;
 	padding-left: 20px;
+	font-size: 20px;
 }
 .voli tr:hover{
 	background-color: #dedede;
