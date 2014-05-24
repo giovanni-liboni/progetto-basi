@@ -1,0 +1,29 @@
+ body{
+ 	background: #EEE;
+   text-decoration: none; 
+}
+.voli table{
+	border-collapse: collapse;
+	width: 100%;
+	display: block;
+}
+.voli tbody{
+	padding-right: 12px;
+	text-align: left;
+}
+.voli tr,th{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 15px;
+	padding-left: 20px;
+}
+.voli tr:hover{
+	background-color: #dedede;
+}
+a:hover{
+	color:  #E48F8F;
+}
+a{
+	color: #371C1C;
+	text-decoration: none;
+}

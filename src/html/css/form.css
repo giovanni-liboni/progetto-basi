@@ -4,7 +4,6 @@
  }
  /* Basic Grey */
 .basic-grey {
-/*    width: 80%;*/
     margin: 0 auto;
     padding: 20px 30px 20px 30px;
     font: 10% Georgia, "Times New Roman", Times, serif;
@@ -60,17 +59,4 @@
 }
 .basic-grey .button:hover {
     background: #CF7A7A
-}
-#link{
-    background: #E48F8F;
-	 height: 10%;
-	 width: 33%;
-    border: none;
-    padding: 10px 25px 10px 25px;
-    color: #FFF;
-    font: normal 25px Georgia, "Times New Roman", Times, serif;
-    text-align: center;
-    margin: auto;
-	 text-decoration:none;
-	 background-size: 33% 10%;
 }
