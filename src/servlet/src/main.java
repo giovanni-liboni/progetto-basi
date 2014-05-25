@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import util.DBMS;
 import util.PasseggeroBean;
@@ -152,7 +153,17 @@ public class main extends HttpServlet {
 						// PASSO 
 						beanPasseggero = dbms.getPasseggero(username);
 						request.setAttribute("pass", beanPasseggero);
+						
+						// APRO UNA NUOVA SESSIONE
+						HttpSession session = request.getSession();
+						
+						session.setAttribute("pass", beanPasseggero);
+						
 						rd = request.getRequestDispatcher("../bigliettiPage.jsp");
+					}
+					else
+					{
+						rd = request.getRequestDispatcher("../errorPage.jsp");
 					}
 				}
 			}
@@ -183,6 +194,7 @@ public class main extends HttpServlet {
 				if ( request.getParameter("documento") != null )
 				{
 					documento = request.getParameter("documento");
+					documento = documento.replaceAll("\\s","");
 				}
 				if ( request.getParameter("nazionalita") != null )
 				{
@@ -195,9 +207,14 @@ public class main extends HttpServlet {
 					else if( request.getParameter("tessera").compareTo("true") == 0 )
 						tessera = true;
 				}
-				// INSERIRE CONTROLLI IN CASO DI INSUCCESSO
-				dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
-				dbms.newPrenotazione(codicevolo, documento);
+				// INSERIRE CONTROLLI IN CASO DI INSUCCESSO E SE L'UTENTE ESISTE BISOGNA RITORNARE SULLA STESSA PAGINA CON
+				// UN MESSAGGIO DI ERRORE
+				// NEL CASO SIA UN UTENTE CHE HA EFFETTUTATO L'ACCESSO ALLORA BISOGNA SOLO REGISTRARE LA NUOVA PRENOTAZIONE
+				HttpSession session = request.getSession();
+				if ( session.getAttribute("pass") == null )			
+					dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
+
+					dbms.newPrenotazione(codicevolo, documento);
 				
 				rd = request.getRequestDispatcher("../esitoPage.jsp");
 			}
@@ -207,31 +224,6 @@ public class main extends HttpServlet {
 			//Gestisco eventuali eccezioni visualizzando lo stack delle chiamate
 			e.printStackTrace();
 		}
-//		 final String CONTENT_TYPE = "text/html; charset=windows-1252";
-//	    String var0show = "";
-//	    try
-//	    {
-//	      var0show = request.getParameter("showthis");
-//	    }
-//	    catch(Exception e)
-//	    {
-//	      e.printStackTrace();
-//	    }
-//
-//	    response.setContentType(CONTENT_TYPE);
-//	    PrintWriter out = response.getWriter();
-//	    out.println("<html>");
-//	    out.println("<head><title>demolet</title></head>");
-//	    out.println("<body>");
-//	    out.println("<p>The servlet has received a POST. This is the reply.</p>");
-//	    out.println(request.getParameter("ps"));
-//	    out.println(request.getParameter("partenza"));
-//	    out.println(request.getParameter("date"));
-//	    for ( VoloBean vb : bean )
-//	    	out.println(vb.getCodicevolo());
-//	    out.println(request.getParameterNames());
-//	    out.println("</body></html>");
-//	    out.close();
     }
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -253,13 +245,7 @@ public class main extends HttpServlet {
 	
 		if (request.getParameter("ps") != null) {// Ottengo se presente il parametro 'ps'
 			ps = request.getParameter("ps");
-		}
-		if ( request.getParameter("pass") != null )
-		{
-			pass = request.getParameter("pass");
-			beanPasseggero = dbms.getPasseggero(pass);
-		}
-	
+		}	
 		try {
 			// Oggetto per l'interazione con il Database
 			
@@ -299,6 +285,10 @@ public class main extends HttpServlet {
 				//Delego l'esecuzione della query alla classe di interazione con il DB			
 				//Aggiungo il Vector come attributo della richiesta HTTP
 				request.setAttribute("volo",beanVolo);
+				
+				HttpSession session = request.getSession();
+				beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
+				
 				request.setAttribute("pass",beanPasseggero);
 				//Preparo il Dispatcher 
 				rd = request.getRequestDispatcher("../prenotazionePage.jsp");	

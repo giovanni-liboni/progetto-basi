@@ -7,12 +7,13 @@
 	</head>
 	<body>
 		<div>
-			<form method="POST" class="basic-grey">
+			<form method="POST" class="basic-grey" action="servlet/main?">
+					<input type="hidden" name="ps" value="login">
 					<span>
-						<input type="text" name="Username" placeholder="Username"/>
+						<input type="text" name="username" placeholder="Username"/>
 					</span>
 					<span>
-						<input type="password" name="Password" placeholder="Password"/>	
+						<input type="password" name="password" placeholder="Password"/>	
 					</span>
 					<span>
 						<input type="submit" class="button" value="Login" />	
