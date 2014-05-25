@@ -11,13 +11,13 @@ import java.util.*;
 public class DBMS {
 	
 	//Dati di identificazione dell'utente (da personalizzare)
-    private String user = "userlab01";
-    private String passwd = "uno8M";
+    private String user = "giovanni";
+    private String passwd = "ciaociao1992";
 	
     /** URL per la connessione alla base di dati e' formato dai seguenti componenti:
      * <protocollo>://<host del server>/<nome base di dati>.
      */
-    private String url = "jdbc:postgresql://dbserver.sci.univr.it/did2014";
+    private String url = "jdbc:postgresql://192.168.0.10/dbuser01";
     
 	/** Driver da utilizzare per la connessione e l'esecuzione delle query. */
     private String driver = "org.postgresql.Driver";
@@ -25,13 +25,16 @@ public class DBMS {
     /** DEFINIZIONE DELLE QUERY */
     String ricercaVoli = " SELECT datapartenza, codicevolo, volo.partenza, volo.arrivo, durata, orapartenza, tipoaereo " +
     					 " FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo )" +
-    					 " WHERE datapartenza=? AND tratta.partenza=? AND tratta.arrivo=? ORDER BY orapartenza;";
+    					 " WHERE datapartenza=? AND tratta.partenza ilike ? AND tratta.arrivo ilike ? ORDER BY orapartenza;";
     String datiVolo = " SELECT v.*, tr.durata, tr.distanza" + 
     				  " FROM tratta tr JOIN volo v ON ( v.partenza = tr.partenza AND v.arrivo = tr.arrivo) " +
     				  " WHERE v.codicevolo=?";
-    String datiPasseggeroLogin = " SELECT nome,cognome,nazionalita,documento " +
+    String datiPasseggeroLogin = " SELECT nome,cognome,nazionalita,documento,tessera,numvoli,miglia,login " +
     				  			 " FROM passeggero " +
     				  			 " WHERE passeggero.login=?";
+    String partenze = " SELECT DISTINCT partenza FROM tratta;";
+    String arrivi = " SELECT DISTINCT arrivo FROM tratta;";
+    String controllaPassword = "SELECT login FROM passeggero WHERE login=? AND password=?;";
     
     /**
      * Costruttore della classe. Carica i driver da utilizzare per la
@@ -44,7 +47,7 @@ public class DBMS {
 		Class.forName(driver);
     }
 	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
-	public Vector<VoloBean> getRicercaVolo( Date datapartenza, String partenza, String arrivo ) 
+	public Vector<VoloBean> getRicercaVolo( Date date, String partenza, String arrivo ) 
 	{
 		
 		// Dichiarazione delle variabili
@@ -63,7 +66,7 @@ public class DBMS {
 			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
 			pstmt = con.prepareStatement(ricercaVoli);
 			pstmt.clearParameters();
-			pstmt.setDate(1, datapartenza);
+			pstmt.setDate(1, date);
 			pstmt.setString(2, partenza);
 			pstmt.setString(3, arrivo);
 			
@@ -105,8 +108,8 @@ public class DBMS {
 		
 		return bean;
 	}
-	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
-	public Vector<VoloBean> getVolo( String codicevolo ) 
+	//Metodo per ricercare un singolo volo
+	public VoloBean getVolo( String codicevolo ) 
 	{
 		
 		// Dichiarazione delle variabili
@@ -115,7 +118,7 @@ public class DBMS {
 		ResultSet rs = null;
 		
 		// Ci possono essere dei voli corrispondenti e non solo uno solo
-		Vector<VoloBean> result = new Vector<VoloBean>();
+		VoloBean result = null;
 		
 		try 
 		{
@@ -131,8 +134,8 @@ public class DBMS {
 			rs = pstmt.executeQuery();
 			
 			// Memorizzo il risultato dell'interrogazione nel Vector
-			while(rs.next())
-				result.add( makeVoloBean(rs) );
+			if( rs.next() )
+				result = makeVoloBean(rs);
 			
 		} 
 		catch(SQLException sqle) 
@@ -167,4 +170,204 @@ public class DBMS {
 		
 		return bean;
 	}
+	//Metodo per ricercare un singolo volo
+	public PasseggeroBean getPasseggero( String username ) 
+	{
+		
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		// Ci possono essere dei voli corrispondenti e non solo uno solo
+		PasseggeroBean result = null;
+		
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(datiPasseggeroLogin);
+			pstmt.clearParameters();
+			pstmt.setString(1, username);
+			
+			// Eseguo l'interrogazione desiderata
+			rs = pstmt.executeQuery();
+			
+			// Memorizzo il risultato dell'interrogazione nel Vector
+			if( rs.next() )
+				result = makePasseggeroBean(rs);
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+    }
+	private PasseggeroBean makePasseggeroBean( ResultSet rs ) throws SQLException
+	{
+		PasseggeroBean bean = new PasseggeroBean();
+		bean.setNome(rs.getString("nome"));
+		bean.setCognome(rs.getString("cognome"));
+		bean.setDocumento(rs.getString("documento"));
+		bean.setNazionalita(rs.getString("nazionalita"));
+		bean.setTessera(rs.getBoolean("tessera"));
+		bean.setNumvoli(rs.getInt("numvoli"));
+		bean.setMiglia(rs.getInt("miglia"));
+		bean.setLogin(rs.getString("login"));
+		
+		return bean;
+	}
+	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
+	public Vector<String> getPartenze() 
+	{
+		
+		// Dichiarazione delle variabili
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		// Ci possono essere dei voli corrispondenti e non solo uno solo
+		Vector<String> result = new Vector<String>();
+		
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			stmt = con.createStatement();
+			
+			// Eseguo l'interrogazione desiderata
+			rs = stmt.executeQuery(partenze);
+			
+			// Memorizzo il risultato dell'interrogazione nel Vector
+			while(rs.next())
+				result.add( rs.getString("partenza") );
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+    }
+	public Vector<String> getArrivi() 
+	{
+		
+		// Dichiarazione delle variabili
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		// Ci possono essere dei voli corrispondenti e non solo uno solo
+		Vector<String> result = new Vector<String>();
+		
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			stmt = con.createStatement();
+			
+			// Eseguo l'interrogazione desiderata
+			rs = stmt.executeQuery(arrivi);
+			
+			// Memorizzo il risultato dell'interrogazione nel Vector
+			while(rs.next())
+				result.add( rs.getString("arrivo") );
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+    }
+	public boolean isLogin( String username, String password ) 
+	{
+		
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		// Ci possono essere dei voli corrispondenti e non solo uno solo
+		boolean login = false;
+		
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(controllaPassword);
+			pstmt.clearParameters();
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			
+			// Eseguo l'interrogazione desiderata
+			rs = pstmt.executeQuery();
+			
+			// Memorizzo il risultato dell'interrogazione nel Vector
+			if( rs.next() )
+			{
+				if( rs.getString("login").compareTo(username) == 0)
+					login = true;
+			}
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+		return login;
+    }
 }
