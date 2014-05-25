@@ -21,9 +21,9 @@
 		
 		<!-- DIV PER LOGIN -->
 			<ul class="menu">
-				<li> <a href="main?ps=ricercavolo"     target="iframe_centrale" > RICERCA VOLO   </a> </li>
+				<li> <a href="main?ps=ricercavolo" target="iframe_centrale" > RICERCA VOLO   </a> </li>
 				<li> <a href="../contatti.html"    target="iframe_centrale" > CONTATTI       </a> </li>			
-				<li> <a href="../login.html"       target="iframe_centrale" > LOGIN          </a> </li>
+				<li> <a href="main?ps=areapersonale"       target="iframe_centrale" > AREA PERSONALE </a> </li>
 			</ul>							
 		<!-- IFRAME CENTRALE -->
 		<iframe frameborder=0 class="central_iframe" name="iframe_centrale" src="main?ps=ricercavolo"></iframe>

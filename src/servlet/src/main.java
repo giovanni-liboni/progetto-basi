@@ -1,6 +1,4 @@
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 
@@ -13,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import util.DBMS;
+import util.InfoPrenotazioneBean;
 import util.PasseggeroBean;
 import util.VoloBean;
 /**
@@ -22,6 +21,10 @@ import util.VoloBean;
 @WebServlet("/main")
 public class main extends HttpServlet {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1523222844878429701L;
+	/**
      * Questo metodo risponde alle richieste HTTP di tipo GET. Elabora le richieste, impostando
      * gli eventuali attributi necessari, e ridirige la visualizzazione alle pagine jsp relative.
      *
@@ -157,7 +160,12 @@ public class main extends HttpServlet {
 						// APRO UNA NUOVA SESSIONE
 						HttpSession session = request.getSession();
 						
+						Vector<InfoPrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+						if ( vipb == null || vipb.size() == 0)
+							rd = request.getRequestDispatcher("../errorPage.jsp");
+						
 						session.setAttribute("pass", beanPasseggero);
+						session.setAttribute("prenotazioni", vipb);
 						
 						rd = request.getRequestDispatcher("../bigliettiPage.jsp");
 					}
@@ -231,7 +239,6 @@ public class main extends HttpServlet {
 
 		//Definizione e recupero dell'eventuale parametro della servlet
 		String ps = "";
-		String pass = null;
 		
 		//Dichiaro l'oggetto Dispatcher necessario per passare il controllo ad una JSP o una pagina HTML
 		RequestDispatcher rd = null;
@@ -247,8 +254,8 @@ public class main extends HttpServlet {
 			ps = request.getParameter("ps");
 		}	
 		try {
-			// Oggetto per l'interazione con il Database
-			
+
+
 
 			if (ps.equals("")) {
 				// Parametro ps assente o vuoto, visualizzo la home page del sito.
@@ -256,6 +263,25 @@ public class main extends HttpServlet {
 							
 				rd = request.getRequestDispatcher("../index.jsp");
 			}
+			else if( ps.equals("areapersonale") )
+			{
+				HttpSession session = request.getSession();
+				if ( session.getAttribute("pass") == null )
+					rd = request.getRequestDispatcher("../login.jsp");	
+				else
+				{
+
+					beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
+					Vector<InfoPrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+					if ( vipb == null || vipb.size() == 0)
+						rd = request.getRequestDispatcher("../errorPage.jsp");
+					
+					session.setAttribute("pass", beanPasseggero);
+					session.setAttribute("prenotazioni", vipb);
+					
+					rd = request.getRequestDispatcher("../bigliettiPage.jsp");
+				}
+			}	
 			else if ( ps.equals("ricercavolo"))
 			{
 				Vector< String > partenze = dbms.getPartenze();

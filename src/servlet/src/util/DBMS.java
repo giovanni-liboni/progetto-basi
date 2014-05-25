@@ -40,8 +40,8 @@ public class DBMS {
     String newPasseggero = " INSERT INTO Passeggero (nome,cognome,documento,nazionalita,login,password,tessera) VALUES(?,?,?,?,?,?,?)";
     String newBiglietto = " INSERT INTO Biglietto (documento, codicevolo, prezzo, dataemissione ,id_prenotazione ) VALUES ( ?,?,?, current_date,? )" ;
     String newPrenotazione = " INSERT INTO Prenotazione ( documento, codicevolo, datarichiesta,orarichiesta) VALUES (?,?, current_date, current_time )";    
-    
-    
+    String prenotazioni = "SELECT partenza,arrivo,documento,volo.codicevolo,datarichiesta,orarichiesta,datapartenza,orapartenza FROM prenotazione p JOIN volo ON volo.codicevolo=p.codicevolo WHERE p.documento=?";
+    String biglietti = "SELECT volo.codicevolo,dataemissione,prezzo,partenza,arrivo,orapartenza,datapartenza FROM biglietto b JOIN volo ON volo.codicevolo = b.codicevolo WHERE b.documento=?";
     
     /**
      * Costruttore della classe. Carica i driver da utilizzare per la
@@ -493,5 +493,77 @@ public class DBMS {
 				sqle1.printStackTrace();
 			}
 		}
+	}
+	//Metodo per ricercare un singolo volo
+	public Vector<InfoPrenotazioneBean> getPrenotazioni( String documento ) 
+	{
+		
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		// Ci possono essere dei voli corrispondenti e non solo uno solo
+		Vector<InfoPrenotazioneBean> result = new Vector<InfoPrenotazioneBean>();
+		
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(prenotazioni);
+			pstmt.clearParameters();
+			pstmt.setString(1, documento);
+			
+			// Eseguo l'interrogazione desiderata
+			rs = pstmt.executeQuery();
+			
+			// Memorizzo il risultato dell'interrogazione nel Vector
+			while( rs.next() )
+				result.add(makeInfoPrenotazioneBean(rs));
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+    }
+	private InfoPrenotazioneBean makeInfoPrenotazioneBean( ResultSet rs ) throws SQLException
+	{
+		InfoPrenotazioneBean bean = new InfoPrenotazioneBean();
+		bean.setArrivo(rs.getString("arrivo"));
+		bean.setPartenza(rs.getString("partenza"));
+		bean.setDatapartenza(rs.getDate("datapartenza"));
+		bean.setOrapartenza(rs.getTime("orapartenza"));
+		bean.setCodicevolo(rs.getString("codicevolo"));
+		bean.setDatarichiesta(rs.getDate("datarichiesta"));
+		bean.setOrarichiesta(rs.getTime("orarichiesta"));
+		bean.setDocumento(rs.getString("documento"));
+		return bean;
+	}
+	private InfoBigliettoBean makeInfoBigliettoBean( ResultSet rs ) throws SQLException
+	{
+		InfoBigliettoBean bean = new InfoBigliettoBean();
+		bean.setArrivo(rs.getString("arrivo"));
+		bean.setPartenza(rs.getString("partenza"));
+		bean.setCodicevolo(rs.getString("codicevolo"));
+		bean.setDatapartenza(rs.getDate("datapartenza"));
+		bean.setOrapartenza(rs.getTime("orapartenza"));
+		bean.setDataemissione(rs.getDate("dataemissione"));
+		bean.setPrezzo(rs.getFloat("prezzo"));
+		return bean;
 	}
 }
