@@ -49,7 +49,9 @@
 		%>
 		
 		<div class="div_form">
-			<form method="POST" class="basic-grey" action="esitoPage.html">
+			<form method="POST" class="basic-grey" action="main?">
+				<input type="hidden" name="ps" value="nuovaprenotazione" >
+				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">
 				<span>
 					<input type="text" name="nome" <%if ( beanPass == null ){ %>placeholder="Nome" <%}else{ %> value="<%=beanPass.getNome() %> <%}%>">	
 				</span>
@@ -58,6 +60,9 @@
 				</span>	
 				<span>
 					<input type="text" name="nazionalita"/ <%if ( beanPass == null ){ %>placeholder="Nazione" <%}else{ %> value="<%=beanPass.getNazionalita() %> <%}%>">
+				</span>
+				<span>
+					<input type="text" name="documento"/ <%if ( beanPass == null ){ %>placeholder="Documento" <%}else{ %> value="<%=beanPass.getDocumento() %> <%}%>">
 				</span>
 				<%  if ( beanPass == null ) {%>
 				<!--	ONLY FOR NEW USERS	-->

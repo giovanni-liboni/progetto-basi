@@ -104,7 +104,7 @@ public class main extends HttpServlet {
 								break;
 							}
 					}
-					if ( legalPartenza && legalArrivo )
+					if ( legalPartenza && legalArrivo && date != null && date != "" )
 					{
 						// Oggetto per l'interazione con il Database				
 						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -130,33 +130,76 @@ public class main extends HttpServlet {
 						rd = request.getRequestDispatcher("../ricercavolo.jsp");
 					}
 				}
-				else if ( ps.equals("login"))
+			}
+			else if ( ps.equals("login"))
+			{
+				String username = null;
+				String password = null;
+//				SEZIONE LOGIN
+				if ( request.getParameter("username") != null )
 				{
-					String username = null;
-					String password = null;
-//					SEZIONE LOGIN
-					if ( request.getParameter("username") != null )
+					username = request.getParameter("username");
+				}
+				if ( request.getParameter("password") != null )
+				{
+					password = request.getParameter("password");
+				}
+				if( username != null && password != null )
+				{
+					if( dbms.isLogin(username, password))
 					{
-						username = request.getParameter("username");
-					}
-					if ( request.getParameter("password") != null )
-					{
-						password = request.getParameter("password");
-					}
-					if( username != null && password != null )
-					{
-						if( dbms.isLogin(username, password))
-						{
-							beanPasseggero = dbms.getPasseggero(username);
-							request.setAttribute("pass", beanPasseggero);
-							rd = request.getRequestDispatcher("../ricercavolo.jsp");
-						}
+						
+						// PASSO 
+						beanPasseggero = dbms.getPasseggero(username);
+						request.setAttribute("pass", beanPasseggero);
+						rd = request.getRequestDispatcher("../bigliettiPage.jsp");
 					}
 				}
+			}
+			else if ( ps.equals("nuovaprenotazione"))
+			{
+				String username = "", password = "", nome = "", cognome = "", nazionalita = "",documento = "",codicevolo = "";
+				boolean tessera = false;
+				if ( request.getParameter("username") != null )
+				{
+					username = request.getParameter("username");
+				}
+				if ( request.getParameter("password") != null )
+				{
+					password = request.getParameter("password");
+				}
+				if ( request.getParameter("codicevolo") != null )
+				{
+					codicevolo = request.getParameter("codicevolo");
+				}
+				if ( request.getParameter("nome") != null )
+				{
+					nome = request.getParameter("nome");
+				}
+				if ( request.getParameter("cognome") != null )
+				{
+					cognome = request.getParameter("cognome");
+				}
+				if ( request.getParameter("documento") != null )
+				{
+					documento = request.getParameter("documento");
+				}
+				if ( request.getParameter("nazionalita") != null )
+				{
+					nazionalita = request.getParameter("nazionalita");
+				}
+				if ( request.getParameter("tessera") != null )
+				{
+					if ( request.getParameter("tessera").compareTo("false") == 0)
+						tessera = false;
+					else if( request.getParameter("tessera").compareTo("true") == 0 )
+						tessera = true;
+				}
+				// INSERIRE CONTROLLI IN CASO DI INSUCCESSO
+				dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
+				dbms.newPrenotazione(codicevolo, documento);
 				
-
-				
-				
+				rd = request.getRequestDispatcher("../esitoPage.jsp");
 			}
                 //Passo il controllo alla JSP
                 rd.forward(request,response);
@@ -260,6 +303,7 @@ public class main extends HttpServlet {
 				//Preparo il Dispatcher 
 				rd = request.getRequestDispatcher("../prenotazionePage.jsp");	
 			}
+
                 //Passo il controllo alla JSP
                 rd.forward(request,response);
 

@@ -60,7 +60,7 @@
 						  </select>
 					</span>				
 					<span>
-						<input type="date" name="date" id="Data_partenza"placeholder="Data partenza" id="data"/>
+						<input type="date" name="date" placeholder="Data partenza"/>
 					</span>
 					<span>
 						<input type="submit" class="button" value="Ricerca" />	

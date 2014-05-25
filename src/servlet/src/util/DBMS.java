@@ -35,6 +35,11 @@ public class DBMS {
     String partenze = " SELECT DISTINCT partenza FROM tratta;";
     String arrivi = " SELECT DISTINCT arrivo FROM tratta;";
     String controllaPassword = "SELECT login FROM passeggero WHERE login=? AND password=?;";
+    String newPasseggero = " INSERT INTO Passeggero (nome,cognome,documento,nazionalita,login,password,tessera) VALUES(?,?,?,?,?,?,?)";
+    String newBiglietto = " INSERT INTO Biglietto (documento, codicevolo, prezzo, dataemissione ,id_prenotazione ) VALUES ( ?,?,?, current_date,? )" ;
+    String newPrenotazione = " INSERT INTO Prenotazione ( documento, codicevolo, datarichiesta,orarichiesta) VALUES (?,?, current_date, current_time )";    
+    
+    
     
     /**
      * Costruttore della classe. Carica i driver da utilizzare per la
@@ -370,4 +375,121 @@ public class DBMS {
 		}
 		return login;
     }
+	public void newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
+	{
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+	
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(newPasseggero);
+			pstmt.clearParameters();
+			pstmt.setString(1, nome);
+			pstmt.setString(2, cognome);
+			pstmt.setString(3, documento);
+			pstmt.setString(4, nazione);
+			pstmt.setString(5, username);
+			pstmt.setString(6, password);
+			pstmt.setBoolean(7, tessera);
+			// Eseguo l'interrogazione desiderata
+			pstmt.executeUpdate();
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+	}
+	public void newBiglietto( String documento, String codicevolo, float prezzo , int id_prenotazione )
+	{
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+	
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(newBiglietto);
+			pstmt.clearParameters();
+			pstmt.setString(1, documento);
+			pstmt.setString(2, codicevolo);
+			pstmt.setFloat(3, prezzo);
+			pstmt.setInt(4, id_prenotazione);
+
+			// Eseguo l'interrogazione desiderata
+			pstmt.executeUpdate();
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+	}
+	public void newPrenotazione(String codicevolo, String documento )
+	{
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+	
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(newPrenotazione);
+			pstmt.clearParameters();
+			pstmt.setString(1, documento);
+			pstmt.setString(2, codicevolo);
+
+			// Eseguo l'interrogazione desiderata
+			pstmt.executeUpdate();
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+	}
 }

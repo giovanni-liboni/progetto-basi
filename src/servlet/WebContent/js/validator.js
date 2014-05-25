@@ -1,15 +1,19 @@
 function validate() {
-	var mystring = document.getElementsByName("date");
-    if(!mystring.match(/\S/))
+   
+    var  s = document.getElementsByName("partenza");
+    if( s==null || s=="" )
         return false;
     
-    mystring = document.getElementsByName("partenza");
-    if(!mystring.match(/\S/))
+    s = document.getElementsByName("arrivo");
+    if(s==null || s=="")
         return false;
     
-    mystring = document.getElementsByName("arrivo");
-    if(!mystring.match(/\S/))
+	s = document.getElementsByName("date");
+    if(s==null || s=="" )
         return false;
 
         return true;
+}
+function validate_prenotazione(){
+	
 }

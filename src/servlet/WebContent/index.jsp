@@ -1,7 +1,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@page import="util.*"%>
-<%@page errorPage = "error.jsp" %>
+<%@page errorPage = "../error.jsp" %>
 
 <html>
 	<head>
