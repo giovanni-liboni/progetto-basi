@@ -12,6 +12,7 @@
 	<head>
 		<title>Home Page</title>
 		<link href="../css/form.css" rel="stylesheet" type="text/css">
+		<script src="../js/validator.js"></script>
 		<!-- Load jQuery UI CSS  -->
 	   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	    
@@ -69,4 +70,3 @@
 		</div>
 	</body>
 </html>
-

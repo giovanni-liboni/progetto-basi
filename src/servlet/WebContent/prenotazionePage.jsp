@@ -1,8 +1,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@page import="util.*"%>
-<%@page errorPage = "error.jsp" %>
-
+<%@page errorPage = "../error.jsp" %>
 <html>
 	<%
 	VoloBean beanVolo = ( VoloBean ) request.getAttribute("volo");
@@ -12,6 +11,7 @@
 		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
 		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
 		<link href="../css/prenotazionePage.css" rel="stylesheet" type="text/css">
+		<script src="../js/validator.js"></script>
 
 	</head>
 	<body>	
@@ -49,7 +49,11 @@
 		%>
 		
 		<div class="div_form">
-			<form method="POST" class="basic-grey" action="main?">
+			<% if ( beanPass == null ){ %>
+			<form name="form" method="POST" class="basic-grey" action="main?" onsubmit="return validate_prenotazione_new() ">
+			<%} else { %>
+			<form name="form" method="POST" class="basic-grey" action="main?" onsubmit="return validate_prenotazione_auth() ">
+			<%} %>
 				<input type="hidden" name="ps" value="nuovaprenotazione" >
 				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">
 				<span>

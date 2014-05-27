@@ -1,7 +1,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@page import="util.*"%>
-<%@page errorPage = "error.jsp" %>
+<%@page errorPage = "../error.jsp" %>
 
 <html>
 <%
@@ -14,7 +14,7 @@
 		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>	
-		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÃ™ UNIFORME CON IL RESTO DEL SITO	-->
+		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
 		<table class="voli" align="center">
 			<thead>
 				<tr>

@@ -457,11 +457,12 @@ public class DBMS {
 			}
 		}
 	}
-	public void newPrenotazione(String codicevolo, String documento )
+	public boolean newPrenotazione(String codicevolo, String documento )
 	{
 		// Dichiarazione delle variabili
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		boolean status = true;
 	
 		try 
 		{
@@ -481,6 +482,7 @@ public class DBMS {
 		catch(SQLException sqle) 
 		{                /* Catturo le eventuali eccezioni! */
 			sqle.printStackTrace();
+			status = false;
 		} 
 		finally 
 		{                                 /* Alla fine chiudo la connessione. */
@@ -491,8 +493,10 @@ public class DBMS {
 			catch(SQLException sqle1) 
 			{
 				sqle1.printStackTrace();
+				status = false;
 			}
 		}
+		return status;
 	}
 	//Metodo per ricercare un singolo volo
 	public Vector<InfoPrenotazioneBean> getPrenotazioni( String documento ) 
@@ -554,6 +558,53 @@ public class DBMS {
 		bean.setDocumento(rs.getString("documento"));
 		return bean;
 	}
+	//Metodo per ricercare un singolo volo
+	public Vector<InfoBigliettoBean> getBiglietti( String documento ) 
+	{
+		
+		// Dichiarazione delle variabili
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		// Ci possono essere dei voli corrispondenti e non solo uno solo
+		Vector<InfoBigliettoBean> result = new Vector<InfoBigliettoBean>();
+		
+		try 
+		{
+			// Tentativo di connessione al database
+			con = DriverManager.getConnection(url, user, passwd);
+			
+			// Connessione riuscita, ottengo l'oggetto per l'esecuzione dell'interrogazione.
+			pstmt = con.prepareStatement(biglietti);
+			pstmt.clearParameters();
+			pstmt.setString(1, documento);
+			
+			// Eseguo l'interrogazione desiderata
+			rs = pstmt.executeQuery();
+			
+			// Memorizzo il risultato dell'interrogazione nel Vector
+			while( rs.next() )
+				result.add(makeInfoBigliettoBean(rs));
+			
+		} 
+		catch(SQLException sqle) 
+		{                /* Catturo le eventuali eccezioni! */
+			sqle.printStackTrace();
+		} 
+		finally 
+		{                                 /* Alla fine chiudo la connessione. */
+			try 
+			{
+				con.close();
+			} 
+			catch(SQLException sqle1) 
+			{
+				sqle1.printStackTrace();
+			}
+		}
+		return result;
+    }
 	private InfoBigliettoBean makeInfoBigliettoBean( ResultSet rs ) throws SQLException
 	{
 		InfoBigliettoBean bean = new InfoBigliettoBean();
