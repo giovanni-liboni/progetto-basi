@@ -232,15 +232,16 @@ public class main extends HttpServlet {
 					
 					rd = request.getRequestDispatcher("../esitoPage.jsp");
 			}
-			else if ( ps.equals("stampaBiglietto") )
+			else if ( ps.equals("emettiBiglietto") )
 			{
 				String numPrenotazione = "";
-				if ( request.getParameter("stampaBiglietto") != null )
-					numPrenotazione = request.getParameter("stampaBiglietto");
+				if ( request.getParameter("emettiBiglietto") != null )
+					numPrenotazione = request.getParameter("emettiBiglietto");
 				
 				// inserire biglietto
 //				if ( !numPrenotazione.equals("") )
 //					dbms.newBiglietto(documento, codicevolo, prezzo, id_prenotazione);
+				// ( distanza / durata ) * 21,13 --> prezzo
 			}
 			
                 //Passo il controllo alla JSP
