@@ -226,12 +226,23 @@ public class main extends HttpServlet {
 				HttpSession session = request.getSession();
 				if ( session.getAttribute("pass") == null )			
 					dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
-
+		
 					if ( dbms.newPrenotazione(codicevolo, documento) )				
 						request.setAttribute("status", "ok");
 					
 					rd = request.getRequestDispatcher("../esitoPage.jsp");
 			}
+			else if ( ps.equals("stampaBiglietto") )
+			{
+				String numPrenotazione = "";
+				if ( request.getParameter("stampaBiglietto") != null )
+					numPrenotazione = request.getParameter("stampaBiglietto");
+				
+				// inserire biglietto
+//				if ( !numPrenotazione.equals("") )
+//					dbms.newBiglietto(documento, codicevolo, prezzo, id_prenotazione);
+			}
+			
                 //Passo il controllo alla JSP
                 rd.forward(request,response);
 		} catch(Exception e) {  

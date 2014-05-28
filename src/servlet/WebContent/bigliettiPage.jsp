@@ -56,7 +56,8 @@
 		<%} else {%>
 		Non ci sono prenotazioni !
 		<%} %>
-				<% if ( vbb != null && vbb.size() > 0){ %>
+		<br>
+		<% if ( vbb != null && vbb.size() > 0){ %>
 		<table class="voli" align="center">
 		<caption> BIGLIETTI </caption>
 			<thead>

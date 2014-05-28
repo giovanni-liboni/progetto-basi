@@ -10,8 +10,7 @@
 	{
 %>
 	<head>
-		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
-		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
+			<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>	
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
