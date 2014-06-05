@@ -6,6 +6,9 @@ import java.util.*;
 import org.hibernate.*;
 import org.hibernate.criterion.*;
 
+import bean.PasseggeroBean;
+import bean.VoloBean;
+
 /**
  * Questa classe mette a disposizione i metodi per effettuare interrogazioni
  * sulla base di dati.

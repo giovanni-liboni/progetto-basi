@@ -1,4 +1,4 @@
-package util;
+package bean;
 
 import java.sql.Date;
 import java.sql.Time;

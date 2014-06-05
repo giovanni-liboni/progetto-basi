@@ -1,7 +1,7 @@
 <%@page import="util.InfoPrenotazioneBean"%>
-<%@page import="util.PasseggeroBean"%>
-<%@page import="util.BigliettoBean"%>
-<%@page import="util.PrenotazioneBean"%>
+<%@page import="bean.PasseggeroBean"%>
+<%@page import="bean.BigliettoBean"%>
+<%@page import="bean.PrenotazioneBean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="util.InfoBigliettoBean"%>
 <%@page errorPage = "../error.jsp" %>

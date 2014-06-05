@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.PasseggeroBean;
+import bean.VoloBean;
 import util.DBMS;
 import util.InfoBigliettoBean;
 import util.InfoPrenotazioneBean;
-import util.PasseggeroBean;
-import util.VoloBean;
 /**
  * Questa classe gestisce le richieste HTTP
  * TODO: - LOGOUT 

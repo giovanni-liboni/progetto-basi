@@ -1,4 +1,4 @@
-package util;
+package bean;
 
 public class PasseggeroBean {
 

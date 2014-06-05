@@ -5,9 +5,13 @@
     <class name="util.VoloBean" table="volo">
         <!-- Identificatore. -->
         <id name="codicevolo" column="codicevolo"/>
+        
         <!-- Proprieta'. -->
-        <property name="partenza" column="partenza" not-null="true"/>    
-        <property name="arrivo" column="arrivo" not-null="true"/>
+        <set name="tratta" table="tratta" lazy="true">
+            <key column="partenza"/>
+            <key column="arrivo"/>
+            <one-to-many class="util."/>
+        </set>
         <property name="datapartenza" column="datapartenza" not-null="true"/>
         <property name="tipoaereo" column="tipoaereo" not-null="true"/>
     	<property name="orapartenza" column="orapartenza" not-null="true"/>
