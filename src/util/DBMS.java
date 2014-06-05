@@ -16,9 +16,7 @@ public class DBMS {
     String ricercaVoli = " SELECT datapartenza, codicevolo, volo.partenza, volo.arrivo, durata, orapartenza, tipoaereo " +
     					 " FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo )" +
     					 " WHERE datapartenza=? AND tratta.partenza ilike ? AND tratta.arrivo ilike ? ORDER BY orapartenza;";
-    String datiVolo = " SELECT v.*, tr.durata, tr.distanza" + 
-    				  " FROM tratta tr JOIN volo v ON ( v.partenza = tr.partenza AND v.arrivo = tr.arrivo) " +
-    				  " WHERE v.codicevolo=?";
+    
     String datiPasseggeroLogin = " SELECT nome,cognome,nazionalita,documento,tessera,numvoli,miglia,login " +
     				  			 " FROM passeggero " +
     				  			 " WHERE passeggero.login=?";
@@ -45,8 +43,16 @@ public class DBMS {
 	//Metodo per ricercare un singolo volo
 	public VoloBean getVolo( String codicevolo ) 
 	{
-		VoloBean result = null;
-		return result;
+		String datiVolo = " SELECT v.*, tr.durata, tr.distanza" + 
+				  " FROM tratta tr JOIN volo v ON ( v.partenza = tr.partenza AND v.arrivo = tr.arrivo) " +
+				  " WHERE v.codicevolo=?";
+		Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction(); 
+		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
+		
+		tx.commit();
+		session.close();
+		return res;
     }
 	//Metodo per ricercare un singolo volo
 	public PasseggeroBean getPasseggero( String username ) 
