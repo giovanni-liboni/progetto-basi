@@ -55,4 +55,26 @@ public class BigliettoBean {
 	public void setDataemissione(Date dataemissione) {
 		this.dataemissione = dataemissione;
 	}
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BigliettoBean other = (BigliettoBean) obj;
+        if ((this.id == -1) ? (other.id != -1) : 
+                 !(this.id==other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + (this.id != -1 ? Integer.toString(this.id).hashCode() : 0);
+        return hash;
+    }
 }
