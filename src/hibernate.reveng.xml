@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+<type-mapping>
+	<sql-type jdbc-type="INTEGER" hibernate-type="int"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="INTEGER" hibernate-type="int"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="DOUBLE" hibernate-type="double" precision="17"
+		scale="17" not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="DATE" hibernate-type="date" length="13"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string" length="10"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string" length="50"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="CHAR" hibernate-type="char" length="1"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="INTEGER" hibernate-type="int"
+		not-null="true">
+	</sql-type>
+	<sql-type jdbc-type="BIT" hibernate-type="java.lang.Boolean"
+		not-null="false">
+	</sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+	<sql-type jdbc-type="VARCHAR" hibernate-type="string"></sql-type>
+	<sql-type jdbc-type="DATE" hibernate-type="date" length="13"
+		not-null="true">
+	</sql-type>
+</type-mapping>
+<table-filter match-schema="public" match-name=".*" />
+<table schema="public" name="imbarco" class="imbarco">
+	<column name="codicevolo"></column>
+	<column name="documento"></column>
+	<column name="lettera"></column>
+	<column name="numero"></column>
+	<column name="codicevolo"></column>
+	<column name="documento"></column>
+	<column name="lettera"></column>
+	<column name="numero"></column>
+	<column name="imbarcato"></column>
+</table>
+<table schema="public" name="passeggero">
+		<column name="documento"></column>
+		<column name="login"></column>
+		<column name="password"></column>
+		<column name="nazionalita"></column>
+		<column name="nome"></column>
+		<column name="cognome"></column>
+		<column name="numvoli"></column>
+		<column name="miglia"></column>
+		<column name="tessera"></column>
+	</table>
+	<table schema="public" name="posto">
+		<column name="lettera"></column>
+		<column name="numero"></column>
+		<column name="lettera"></column>
+		<column name="numero"></column>
+	</table>
+	<table schema="public" name="prenotazione">
+		<column name="id"></column>
+		<column name="codicevolo"></column>
+		<column name="documento"></column>
+		<column name="datarichiesta"></column>
+		<column name="orarichiesta"></column>
+	</table>
+	<table schema="public" name="tratta">
+		<column name="partenza"></column>
+		<column name="arrivo"></column>
+		<column name="partenza"></column>
+		<column name="arrivo"></column>
+		<column name="durata"></column>
+		<column name="distanza"></column>
+	</table>
+	<table schema="public" name="volo">
+		<column name="codicevolo"></column>
+		<column name="partenza"></column>
+		<column name="arrivo"></column>
+		<column name="datapartenza"></column>
+		<column name="orapartenza"></column>
+		<column name="tipoaereo"></column>
+		<column name="capienza"></column>
+	</table>
+	<table schema="public" name="biglietto">
+		<column name="codicevolo"></column>
+		<column name="documento"></column>
+		<column name="codicevolo"></column>
+		<column name="documento"></column>
+		<column name="id"></column>
+		<column name="dataemissione"></column>
+		<column name="prezzo"></column>
+		<column name="id_prenotazione"></column>
+	</table>
+</hibernate-reverse-engineering>

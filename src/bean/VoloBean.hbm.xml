@@ -10,7 +10,7 @@
         <set name="tratta" table="tratta" lazy="true">
             <key column="partenza"/>
             <key column="arrivo"/>
-            <one-to-many class="util."/>
+            <many-to-one class="util.TrattaBean"/>
         </set>
         <property name="datapartenza" column="datapartenza" not-null="true"/>
         <property name="tipoaereo" column="tipoaereo" not-null="true"/>

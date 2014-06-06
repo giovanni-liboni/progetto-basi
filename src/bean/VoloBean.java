@@ -5,6 +5,8 @@ import java.sql.Time;
 
 public class VoloBean {
 
+
+
 	String partenza, arrivo, tipoaereo, codicevolo;
 	Date datapartenza;
 	Time orapartenza;
@@ -22,7 +24,19 @@ public class VoloBean {
 		distanza = 0;
 		durata = 0;
 	}
-
+	public VoloBean(String partenza, String arrivo, String tipoaereo,
+			String codicevolo, Date datapartenza, Time orapartenza,
+			int capienza, int durata, int distanza) {
+		this.partenza = partenza;
+		this.arrivo = arrivo;
+		this.tipoaereo = tipoaereo;
+		this.codicevolo = codicevolo;
+		this.datapartenza = datapartenza;
+		this.orapartenza = orapartenza;
+		this.capienza = capienza;
+		this.durata = durata;
+		this.distanza = distanza;
+	}
 	public String getPartenza() {
 		return partenza;
 	}

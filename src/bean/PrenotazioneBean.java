@@ -5,6 +5,8 @@ import java.sql.Time;
 
 public class PrenotazioneBean {
 
+
+
 	int id;
 	String codicevolo, documento;
 	Date datarichiesta;
@@ -17,7 +19,14 @@ public class PrenotazioneBean {
 		datarichiesta = null;
 		orarichiesta = null;
 	}
-
+	public PrenotazioneBean(int id, String codicevolo, String documento,
+			Date datarichiesta, Time orarichiesta) {
+		this.id = id;
+		this.codicevolo = codicevolo;
+		this.documento = documento;
+		this.datarichiesta = datarichiesta;
+		this.orarichiesta = orarichiesta;
+	}
 	public int getId() {
 		return id;
 	}

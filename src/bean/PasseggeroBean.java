@@ -2,6 +2,8 @@ package bean;
 
 public class PasseggeroBean {
 
+
+
 	String nome, cognome, documento, nazionalita,login;
 	int numvoli, miglia;
 	boolean tessera;
@@ -16,7 +18,18 @@ public class PasseggeroBean {
 		numvoli = 0;
 		miglia = 0;
 	}
-
+	public PasseggeroBean(String nome, String cognome, String documento,
+			String nazionalita, String login, int numvoli, int miglia,
+			boolean tessera) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.documento = documento;
+		this.nazionalita = nazionalita;
+		this.login = login;
+		this.numvoli = numvoli;
+		this.miglia = miglia;
+		this.tessera = tessera;
+	}
 	public String getNome() {
 		return nome;
 	}

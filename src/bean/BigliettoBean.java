@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class BigliettoBean {
 
-
 	int id, id_prenotazione;
 	String codicevolo, documento;
 	float prezzo;
@@ -18,7 +17,15 @@ public class BigliettoBean {
 		prezzo=0;
 		dataemissione=null;
 	}
-	
+	public BigliettoBean(int id, int id_prenotazione, String codicevolo,
+			String documento, float prezzo, Date dataemissione) {
+		this.id = id;
+		this.id_prenotazione = id_prenotazione;
+		this.codicevolo = codicevolo;
+		this.documento = documento;
+		this.prezzo = prezzo;
+		this.dataemissione = dataemissione;
+	}
 	public int getId() {
 		return id;
 	}
