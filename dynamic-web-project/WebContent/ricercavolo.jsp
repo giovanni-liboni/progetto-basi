@@ -28,7 +28,7 @@
 			  
 			  /* This is the function that will get executed after the DOM is fully loaded */
 			  function () {
-			    $( "#Data_partenza" ).datepicker({
+			    $( "#date" ).datepicker({
 			      changeMonth: true,//this option for allowing user to select month
 			      changeYear: true //this option for allowing user to select from year range
 			    });
@@ -61,7 +61,7 @@
 						  </select>
 					</span>				
 					<span>
-						<input type="date" name="date" placeholder="Data partenza"/>
+						<input type="date" name="date" id="date" placeholder="Data partenza"/>
 					</span>
 					<span>
 						<input type="submit" class="button" value="Ricerca" />	

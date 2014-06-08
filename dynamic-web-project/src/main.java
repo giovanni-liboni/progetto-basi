@@ -115,7 +115,13 @@ public class main extends HttpServlet {
 					{
 						// Oggetto per l'interazione con il Database				
 						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				        java.util.Date parsed = format.parse(date);
+				        java.util.Date parsed;
+						try {
+							parsed = format.parse(date);
+						} catch (Exception e) {
+							format = new SimpleDateFormat("MM/dd/yyyy");
+							parsed = format.parse(date);
+						}
 				        java.sql.Date data_partenza = new java.sql.Date(parsed.getTime());
 				        
 						bean = dbms.getRicercaVolo(data_partenza, partenza, arrivo);
