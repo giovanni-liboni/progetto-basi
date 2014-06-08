@@ -1,6 +1,6 @@
 Progetto Basi di Dati
 =============
-Progetto finale del corso di Basi di Dati a.a. 2013/2014 dell'[Università degli Studi di Verona](http://www.univr.it)
+Progetto finale del corso di [Basi di Dati](http://www.di.univr.it/?ent=oi&codiceCs=S24&codins=12700&cs=420&discr=&discrCd=) a.a. 2013/2014 dell'[Università degli Studi di Verona](http://www.univr.it)
 
 TO RUN:
 
