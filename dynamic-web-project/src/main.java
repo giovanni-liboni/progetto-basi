@@ -40,15 +40,12 @@ public class main extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws IOException, ServletException {
 
-		//Definizione e recupero dell'eventuale parametro della servlet
 		String date = "";
 		String partenza = "";
 		String arrivo = "";
 		String pass = "";
 		String ps = "";
-		
 		Vector< VoloBean > bean = null;
-		//Dichiaro l'oggetto Dispatcher necessario per passare il controllo ad una JSP o una pagina HTML
 		RequestDispatcher rd = null;
 	
 		try {
