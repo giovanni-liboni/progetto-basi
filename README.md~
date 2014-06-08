@@ -1,0 +1,16 @@
+progetto-basi
+=============
+Progetto finale del corso di Basi di Dati a.a. 2013/2014
+
+TO RUN:
+1. Install tomcat7
+2. Install postgresql
+3. Create on postgresql a database
+4. Launch src/script-sql scripts in this order:
+ - init.sql
+ - popola_tratta.sql
+ - popola_volo.sql
+ -popola_passeggero.sql
+TODO:
+- Hibernate
+- Pagina per creare un biglietto a partire dalla prenotazione

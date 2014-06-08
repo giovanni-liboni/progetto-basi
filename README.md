@@ -1,7 +1,23 @@
-progetto-basi
+Progetto Basi di Dati
 =============
-Progetto finale del corso di Basi di Dati a.a. 2013/2014
+Progetto finale del corso di Basi di Dati a.a. 2013/2014 dell'[Università degli Studi di Verona](http://www.univr.it)
+
+TO RUN:
+
+1. Install tomcat7
+2. Install postgresql
+3. Create on postgresql a database
+4. Launch src/script-sql scripts in this order:
+    1. init.sql
+    2. popola_tratta.sql
+    3. popola_volo.sql
+    4. popola_passeggero.sql
+5. Import dynamic-web-project in Eclipse
+6. Add to build path the library in src/java-sql/ext-lib
+7. Build all
+8. Go to localhost:8080/Name-of-eclipse-project/servlet/main
 
 TODO:
+
 - Hibernate
 - Pagina per creare un biglietto a partire dalla prenotazione
