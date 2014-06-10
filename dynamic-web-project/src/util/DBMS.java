@@ -11,15 +11,16 @@ import java.util.*;
 public class DBMS {
 	
 	//Dati di identificazione dell'utente (da personalizzare)
-    private String user = "userlab01";
+    private String user   = "userlab01";
     private String passwd = "uno8M";
     private String server = "localhost";
+    private String db     = "dblab01";
 //    private String server = "dbserver.scienze.univr.it";
 	
     /** URL per la connessione alla base di dati e' formato dai seguenti componenti:
      * <protocollo>://<host del server>/<nome base di dati>.
      */
-    private String url = "jdbc:postgresql://"+ server +"/dblab01";
+    private String url = "jdbc:postgresql://"+ server +"/" + db;
     
 	/** Driver da utilizzare per la connessione e l'esecuzione delle query. */
     private String driver = "org.postgresql.Driver";
