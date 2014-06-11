@@ -2,14 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bean.TrattaBean" table="tratta">
+    <class name="bean.PostoBean" table="posto">
         <!-- Identificatore. -->
-        <composite-id>
-        	<key-property name="partenza" />
-        	<key-property name="arrivo" />
+                <composite-id>
+        	<key-property name="lettera" />
+        	<key-property name="numero" />
         </composite-id>
-        <!-- Proprieta'. -->
-        <property name="durata" not-null="true"/>
-        <property name="distanza" not-null="true"/>
     </class>
 </hibernate-mapping>

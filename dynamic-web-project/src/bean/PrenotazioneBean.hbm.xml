@@ -2,12 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="util.PrenotazioneBean" table="prenotazione">
+    <class name="bean.PrenotazioneBean" table="prenotazione">
         <!-- Identificatore. -->
         <id name="id" column="id"/>
         <!-- Proprieta'. -->
-        <property name="codicevolo" column="codicevolo" not-null="true"/>    
-        <property name="documento" column="documento" not-null="true"/>
         <property name="datarichiesta" column="datarichiesta" not-null="true"/>
         <property name="orarichiesta" column="orarichiesta" not-null="true"/>
     </class>

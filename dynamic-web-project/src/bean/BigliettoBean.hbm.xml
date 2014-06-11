@@ -2,14 +2,17 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="util.BigliettoBean" table="biglietto">
+	<class name="bean.BigliettoBean" table="biglietto">
         <!-- Identificatore. -->
-        <id name="id" column="id"/>
-        <!-- Proprieta'. -->
+        <composite-id>
+        	<key-property name="documento"/>
+        	<key-property name="codicevolo"/>
+        </composite-id>
+        <!-- Proprieta' -->
         <property name="prezzo" column="prezzo" not-null="true"/>    
-        <property name="id_prenotazione" column="id_prenotazione" not-null="true"/>
-   		<property name="codicevolo" column="codicevolo" not-null="true"/>
    		<property name="dataemissione" column="dataemissione" not-null="true"/>
-   		<property name="document" column="documento" not-null="true"/>  
+   		<set name="id_prenotazione" table="prenotazione" lazy="true" fetch="select">
+   			<key column="id"/>
+   		</set>
     </class>
 </hibernate-mapping>

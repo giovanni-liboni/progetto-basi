@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bean.PostoBean" table="posto">
+        <!-- Identificatore. -->
+                <composite-id>
+        	<key-property name="lettera" />
+        	<key-property name="numero" />
+        	<key-property name="codicevolo"/>
+        	<key-property name="documento"/>
+        </composite-id>
+        <!-- Proprieta' -->
+        <set name="postoassegnato" table="posto" lazy="true" cascade="all">
+        
+        </set>
+    </class>
+</hibernate-mapping>
