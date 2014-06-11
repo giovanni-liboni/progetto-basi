@@ -15,8 +15,6 @@
         <property name="datapartenza" column="datapartenza" not-null="true"/>
         <property name="tipoaereo" column="tipoaereo" not-null="true"/>
     	<property name="orapartenza" column="orapartenza" not-null="true"/>
-    	<property name="durata" column="durata" not-null="true"/>
-    	<property name="distanza" column="distanza" not-null="true"/>
     	<property name="capienza" column="capienza" not-null="true"/>
     </class>
 </hibernate-mapping>

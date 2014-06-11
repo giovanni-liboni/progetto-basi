@@ -45,6 +45,10 @@ CREATE TABLE biglietto(
 			REFERENCES passeggero( documento )
 			ON UPDATE CASCADE
 			ON DELETE CASCADE,
+	id_prenotazione INTEGER NOT NULL
+				REFERENCES prenotazione( id )
+				ON UPDATE CASCADE
+				ON UPDATE CASCADE,
 	dataemissione	DATE NOT NULL,
 	prezzo		FLOAT NOT NULL,
 
@@ -61,9 +65,8 @@ CREATE TABLE prenotazione(
 			REFERENCES passeggero( documento )
 			ON UPDATE CASCADE
 			ON DELETE CASCADE,
-	datarichiesta	DATE NOT NULL,
-	orarichiesta	TIME NOT NULL,
-	id_biglietto	INTEGER,
+	datarichiesta	DATE,
+	orarichiesta	TIME,
 	PRIMARY KEY( id ),
 	UNIQUE ( id )
 );
@@ -92,3 +95,17 @@ CREATE TABLE imbarco(
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
 );
+CREATE OR REPLACE FUNCTION update_time_richiesta()
+RETURNS TRIGGER AS '
+BEGIN 
+	IF NEW.datarichiesta IS NULL THEN
+		NEW.datarichiesta := current_date;
+	END IF;
+	IF NEW.orarichiesta IS NULL THEN 
+		NEW.orarichiesta := current_time;
+    END IF;
+	RETURN NEW;
+END' LANGUAGE 'plpgsql'
+
+CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON PRENOTAZIONE
+FOR EACH ROW EXECUTE PROCEDURE update_time_richiesta();

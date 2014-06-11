@@ -8,5 +8,7 @@
         <!-- Proprieta'. -->
         <property name="datarichiesta" column="datarichiesta" not-null="true"/>
         <property name="orarichiesta" column="orarichiesta" not-null="true"/>
-    </class>
+        <many-to-one name="codicevolo" not-null="true" class="bean.CodiceVoloBean"/>
+        <many-to-one name="documento" not-null="true" class="bean.PasseggeroBean"/>
+    </class>	
 </hibernate-mapping>
