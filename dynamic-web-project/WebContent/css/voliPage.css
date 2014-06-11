@@ -1,0 +1,30 @@
+ body{
+ 	background: #EEE;
+	text-decoration: none; 
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.voli table{
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 16%;
+}
+.voli tbody{
+	padding-right: 5px;
+	text-align: left;
+}
+.voli tr,th{
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.voli tr:hover{
+	background-color: #dedede;
+}
+a:hover{
+	color:  #E48F8F;
+}
+a{
+	color: #371C1C;
+	text-decoration: none;
+}

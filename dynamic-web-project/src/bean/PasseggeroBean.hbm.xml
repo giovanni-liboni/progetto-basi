@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="util.PasseggeroBean" table="passeggero">
+        <!-- Identificatore. -->
+        <id name="documento" column="documento"/>
+        <!-- Proprieta'. -->
+        <property name="nome" column="nome" not-null="true"/>    
+        <property name="cognome" column="cognome" not-null="true"/>
+        <property name="nazionalita" column="nazionalita" not-null="true"/>
+        <property name="login" column="login" not-null="true"/>
+    	<property name="miglia" column="miglia" not-null="true"/>
+    	<property name="numvoli" column="numvoli" not-null="true"/>
+    	<property name="tessera" column="tessera" not-null="true"/>
+    </class>
+</hibernate-mapping>
