@@ -40,7 +40,7 @@ public class DBMS {
     String controllaPassword = "SELECT login FROM passeggero WHERE login=? AND password=?;";
     String newPasseggero = " INSERT INTO Passeggero (nome,cognome,documento,nazionalita,login,password,tessera) VALUES(?,?,?,?,?,?,?)";
     String newBiglietto = " INSERT INTO Biglietto (documento, codicevolo, prezzo, dataemissione ,id_prenotazione ) VALUES ( ?,?,?, current_date,? )" ;
-    String newPrenotazione = " INSERT INTO Prenotazione ( documento, codicevolo, datarichiesta,orarichiesta) VALUES (?,?, current_date, current_time )";    
+    String newPrenotazione = " INSERT INTO Prenotazione ( documento, codicevolo) VALUES (?,? )";    
    
     // ritorna le prentazioni per bigliettiPage
     String prenotazioni = "SELECT partenza,arrivo,documento,volo.codicevolo,datarichiesta,orarichiesta,datapartenza,orapartenza FROM prenotazione p JOIN volo ON volo.codicevolo=p.codicevolo WHERE p.documento=?";
