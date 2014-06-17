@@ -16,127 +16,127 @@ import bean.VoloBean;
  * sulla base di dati.
  */
 public class DBMS {
-	    
-    /** DEFINIZIONE DELLE QUERY */
-   
-    
 
-    
-    
-    // ritorna le prentazioni per bigliettiPage
-    
+	/** DEFINIZIONE DELLE QUERY */
+
+
+
+
+
+	// ritorna le prentazioni per bigliettiPage
+
 	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
 	public ArrayList<VoloBean> getRicercaVolo( Date date, String partenza, String arrivo ) 
 	{
 		ArrayList<VoloBean> result = new ArrayList<VoloBean>();
-		
-		 String ricercaVoli = " SELECT volo.* FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo ) WHERE datapartenza=(:datapartenza) AND tratta.partenza ilike (:partenza) AND tratta.arrivo ilike (:arrivo) ORDER BY orapartenza;";
-		 
+
+		String ricercaVoli = " SELECT volo.* FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo ) WHERE datapartenza=(:datapartenza) AND tratta.partenza ilike (:partenza) AND tratta.arrivo ilike (:arrivo) ORDER BY orapartenza;";
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        
-        Query query = session.createSQLQuery(ricercaVoli).addEntity(VoloBean.class);
-        query.setDate("datapartenza", date);
-        query.setString("partenza", partenza);
-        query.setString("arrivo", arrivo);
-        
-        List<VoloBean> l = query.list();
-                   
-        Iterator<VoloBean> itr = l.iterator();
+		Transaction tx = session.beginTransaction(); 
 
-        while( itr.hasNext()) {
-            VoloBean dip = itr.next();
-            dip.getTratta();
-            dip.getTratta().getDurata();
+		Query query = session.createSQLQuery(ricercaVoli).addEntity(VoloBean.class);
+		query.setDate("datapartenza", date);
+		query.setString("partenza", partenza);
+		query.setString("arrivo", arrivo);
 
-            result.add(dip);
-        }
-        
-        tx.commit();
-        session.close();
-		
+		List<VoloBean> l = query.list();
+
+		Iterator<VoloBean> itr = l.iterator();
+
+		while( itr.hasNext()) {
+			VoloBean dip = itr.next();
+			dip.getTratta();
+			dip.getTratta().getDurata();
+
+			result.add(dip);
+		}
+
+		tx.commit();
+		session.close();
+
 		return result;
-    }
+	}
 	//Metodo per ricercare un singolo volo
 	public VoloBean getVolo( String codicevolo ) 
 	{	
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
+		Transaction tx = session.beginTransaction(); 
 		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
-		
+
 		tx.commit();
 		session.close();
 		return res;
-    }
+	}
 	//Metodo per ricercare un singolo volo
 	public PasseggeroBean getPasseggero( String documento ) 
 	{
 		PasseggeroBean result = null;
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        result = ( PasseggeroBean ) session.get( PasseggeroBean.class, documento );
-		
+		Transaction tx = session.beginTransaction(); 
+		result = ( PasseggeroBean ) session.get( PasseggeroBean.class, documento );
+
 		tx.commit();
 		session.close();
-		
+
 		return result;
-    }
+	}
 	//Metodo per ricercare un singolo volo
 	public PasseggeroBean getPasseggeroFromLogin( String username ) 
 	{
-	    String datiPasseggeroLogin = " SELECT * " +
-	  			 " FROM passeggero " +
-	  			 " WHERE passeggero.login=(:login)";
+		String datiPasseggeroLogin = " SELECT * " +
+				" FROM passeggero " +
+				" WHERE passeggero.login=(:login)";
 		PasseggeroBean result = null;
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        
-        Query query = session.createSQLQuery(datiPasseggeroLogin).addEntity(PasseggeroBean.class);
-        query.setString("login", username);
-        
-        result = (PasseggeroBean) query.list().get(0);
-		
+		Transaction tx = session.beginTransaction(); 
+
+		Query query = session.createSQLQuery(datiPasseggeroLogin).addEntity(PasseggeroBean.class);
+		query.setString("login", username);
+
+		result = (PasseggeroBean) query.list().get(0);
+
 		tx.commit();
 		session.close();
-		
+
 		return result;
-    }
-	
+	}
+
 	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
 	public ArrayList<String> getPartenze() 
 	{
 		String q = " SELECT DISTINCT partenza FROM tratta;";
-		
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        ArrayList<String> result = ( ArrayList<String> ) session.createSQLQuery(q).list();
-        tx.commit();
-        session.close();
+		Transaction tx = session.beginTransaction(); 
+		ArrayList<String> result = ( ArrayList<String> ) session.createSQLQuery(q).list();
+		tx.commit();
+		session.close();
 		return result;
-    }
+	}
 	public ArrayList<String> getArrivi() 
 	{
 		String q = " SELECT DISTINCT arrivo FROM tratta;";
-		
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        ArrayList<String> result = ( ArrayList<String> ) session.createSQLQuery(q).list();
-        tx.commit();
-        session.close();
+		Transaction tx = session.beginTransaction(); 
+		ArrayList<String> result = ( ArrayList<String> ) session.createSQLQuery(q).list();
+		tx.commit();
+		session.close();
 		return result;
-    }
+	}
 	public boolean isLogin( String username, String password ) 
 	{
 		boolean login = false;	
 		PasseggeroBean res = getPasseggeroFromLogin(username);
-        
-        if( res!=null && res.getPassword().compareTo(password) == 0 )
-        	login=true;
-        
+
+		if( res!=null && res.getPassword().compareTo(password) == 0 )
+			login=true;
+
 		return login;
-    }
+	}
 	public boolean newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
 	{
 		boolean status = true;
@@ -150,7 +150,7 @@ public class DBMS {
 		p.setPassword(password);
 		p.setDocumento(documento);
 		p.setTessera(tessera);
-		
+
 		session.save(p);
 		session.getTransaction().commit();
 		return status;
@@ -160,13 +160,13 @@ public class DBMS {
 		boolean status = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		
+
 		BigliettoBean b = new BigliettoBean();
 		b.setPasseggero(passeggero);
 		b.setVolo(volo);
 		b.setPrenotazione(prenotazione);
 		b.setPrezzo(prezzo);
-		
+
 		session.save(b);
 		session.getTransaction().commit();
 		session.close();
@@ -180,7 +180,7 @@ public class DBMS {
 		PrenotazioneBean p = new PrenotazioneBean();
 		p.setPasseggero(passeggero);
 		p.setVolo(volo);
-		
+
 		session.save(p);
 		session.getTransaction().commit();
 		session.close();
@@ -189,31 +189,31 @@ public class DBMS {
 	//Metodo per ricercare un singolo volo
 	public ArrayList<PrenotazioneBean> getPrenotazioni( String documento ) 
 	{
-	    String prenotazioni = "SELECT * FROM prenotazione p WHERE p.documento=(:documento)";
+		String prenotazioni = "SELECT * FROM prenotazione p WHERE p.documento=(:documento)";
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(prenotazioni).addEntity(PrenotazioneBean.class);
-        q.setString("documento", documento);
-        
-        ArrayList<PrenotazioneBean> result = (ArrayList<PrenotazioneBean>) q.list();
-        tx.commit();
-        session.close();
-        
+		Transaction tx = session.beginTransaction(); 
+		Query q = session.createSQLQuery(prenotazioni).addEntity(PrenotazioneBean.class);
+		q.setString("documento", documento);
+
+		ArrayList<PrenotazioneBean> result = (ArrayList<PrenotazioneBean>) q.list();
+		tx.commit();
+		session.close();
+
 		return result;
-    }
+	}
 	//Metodo per ricercare un singolo volo
 	public ArrayList<BigliettoBean> getBiglietti( String documento ) 
 	{
-	    String biglietti = "SELECT * FROM biglietto b WHERE b.documento=(:documento)";
+		String biglietti = "SELECT * FROM biglietto b WHERE b.documento=(:documento)";
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(biglietti).addEntity(BigliettoBean.class);
-        q.setString("documento", documento);
-        ArrayList<BigliettoBean> result = (ArrayList<BigliettoBean>) q.list();
-        tx.commit();
-        session.close();
+		Transaction tx = session.beginTransaction(); 
+		Query q = session.createSQLQuery(biglietti).addEntity(BigliettoBean.class);
+		q.setString("documento", documento);
+		ArrayList<BigliettoBean> result = (ArrayList<BigliettoBean>) q.list();
+		tx.commit();
+		session.close();
 		return result;
-    }
+	}
 }
