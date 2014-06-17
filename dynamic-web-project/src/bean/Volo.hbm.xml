@@ -7,7 +7,7 @@
             <column name="codicevolo" length="10" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="tratta" class="bean.TrattaBean" fetch="select">
+        <many-to-one name="tratta" class="bean.TrattaBean" lazy="false" fetch="select">
             <column name="partenza" length="100" not-null="true" />
             <column name="arrivo" length="100" not-null="true" />
         </many-to-one>

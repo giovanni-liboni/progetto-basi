@@ -7,6 +7,7 @@
 <html>
 <%
 	ArrayList < VoloBean > vb = ( ArrayList < VoloBean > ) request.getAttribute("voli");
+	
 	if ( vb != null )
 	{
 %>
@@ -28,14 +29,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for ( VoloBean bean : vb ){ %>
+				<% for ( VoloBean bean : vb ){ %>
 				<tr>
 					<th> <a href="main?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
 					<th> <%=bean.getDatapartenza() %> </th>
 					<th> <%=bean.getOrapartenza() %> </th>
 					<th> <%=bean.getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getTratta().getId().getArrivo() %> </th>
-					<th> <%=bean.getTratta().getDurata() %> </th>
+					 <th> <%=bean.getTratta().getDurata() %> </th>
 					<th> <%=bean.getTipoaereo() %> </th>				
 				</tr>
 				<%} %>

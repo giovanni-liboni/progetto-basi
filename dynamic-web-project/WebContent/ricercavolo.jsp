@@ -41,7 +41,7 @@
 	<body>
 		<div class="div_form">
 					<form method="POST" class="basic-grey" action="main?" onsubmit=" return validate() ">
-					<input type="hidden" name="ps" value="ricercavolo" >
+					<input type="hidden" name="ps" value="volipage" >
 					<%  if (username != null ){ %>
 						<input type="hidden" name="pass" value="<%=username.getLogin() %>" >
 					<%} %>

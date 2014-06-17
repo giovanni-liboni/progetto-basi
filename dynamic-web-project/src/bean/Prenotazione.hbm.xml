@@ -7,10 +7,10 @@
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="volo" class="bean.VoloBean" fetch="select">
+        <many-to-one name="volo" class="bean.VoloBean" lazy="false" fetch="select">
             <column name="codicevolo" length="10" not-null="true" />
         </many-to-one>
-        <many-to-one name="passeggero" class="bean.PasseggeroBean" fetch="select">
+        <many-to-one name="passeggero" class="bean.PasseggeroBean" lazy="false" fetch="select">
             <column name="documento" length="50" not-null="true" />
         </many-to-one>
         <property name="datarichiesta" type="date">
