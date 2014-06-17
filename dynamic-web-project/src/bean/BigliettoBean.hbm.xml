@@ -14,5 +14,9 @@
    		<set name="id_prenotazione" table="prenotazione" lazy="true" fetch="select">
    			<key column="id"/>
    		</set>
+   		
+   		<many-to-one name="documento" class="bean.PasseggeroBean" not-null="true"/>
+   		<!-- Relazione tra Biglietto(1,1) e Volo(1,n) -->
+   		<many-to-one name="codicevolo" class="bean.VoloBean" not-null="true"/>
     </class>
 </hibernate-mapping>

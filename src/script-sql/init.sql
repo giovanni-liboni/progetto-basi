@@ -35,26 +35,6 @@ CREATE TABLE passeggero(
 	PRIMARY KEY( documento ),
 	UNIQUE ( login, documento )
 );
-CREATE TABLE biglietto(
-	id		SERIAL,
-	codicevolo	VARCHAR(10) NOT NULL
-			REFERENCES volo( codicevolo )
-			ON UPDATE CASCADE
-			ON DELETE CASCADE,
-	documento	VARCHAR(50) NOT NULL
-			REFERENCES passeggero( documento )
-			ON UPDATE CASCADE
-			ON DELETE CASCADE,
-	id_prenotazione INTEGER NOT NULL
-				REFERENCES prenotazione( id )
-				ON UPDATE CASCADE
-				ON UPDATE CASCADE,
-	dataemissione	DATE NOT NULL,
-	prezzo		FLOAT NOT NULL,
-
-	PRIMARY KEY( codicevolo, documento ),
-	UNIQUE ( codicevolo, documento, id )
-);
 CREATE TABLE prenotazione(
 	id		SERIAL,
 	codicevolo	VARCHAR(10) NOT NULL
@@ -70,6 +50,27 @@ CREATE TABLE prenotazione(
 	PRIMARY KEY( id ),
 	UNIQUE ( id )
 );
+CREATE TABLE biglietto(
+	id		SERIAL,
+	codicevolo	VARCHAR(10) NOT NULL
+			REFERENCES volo( codicevolo )
+			ON UPDATE CASCADE
+			ON DELETE CASCADE,
+	documento	VARCHAR(50) NOT NULL
+			REFERENCES passeggero( documento )
+			ON UPDATE CASCADE
+			ON DELETE CASCADE,
+	id_prenotazione INTEGER NOT NULL
+				REFERENCES prenotazione( id )
+				ON UPDATE CASCADE
+				ON DELETE CASCADE,
+	dataemissione	DATE NOT NULL,
+	prezzo		FLOAT NOT NULL,
+
+	PRIMARY KEY( codicevolo, documento ),
+	UNIQUE ( codicevolo, documento, id )
+);
+
 CREATE TABLE posto(
 	lettera		CHAR NOT NULL,
 	numero		INTEGER DEFAULT 0,
@@ -105,7 +106,7 @@ BEGIN
 		NEW.orarichiesta := current_time;
     END IF;
 	RETURN NEW;
-END' LANGUAGE 'plpgsql'
+END' LANGUAGE 'plpgsql';
 
 CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON PRENOTAZIONE
 FOR EACH ROW EXECUTE PROCEDURE update_time_richiesta();
