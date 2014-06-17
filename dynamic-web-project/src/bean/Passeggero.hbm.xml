@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bean.Passeggero" table="passeggero" schema="public">
+    <class name="bean.PasseggeroBean" table="passeggero" schema="public">
         <id name="documento" type="string">
             <column name="documento" length="50" />
             <generator class="assigned" />
@@ -35,13 +35,13 @@
             <key>
                 <column name="documento" length="50" not-null="true" />
             </key>
-            <one-to-many class="bean.Prenotazione" />
+            <one-to-many class="bean.PrenotazioneBean" />
         </set>
         <set name="bigliettos" table="biglietto" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="documento" length="50" not-null="true" />
             </key>
-            <one-to-many class="bean.Biglietto" />
+            <one-to-many class="bean.BigliettoBean" />
         </set>
     </class>
 </hibernate-mapping>

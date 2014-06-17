@@ -2,15 +2,15 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bean.Prenotazione" table="prenotazione" schema="public">
+    <class name="bean.PrenotazioneBean" table="prenotazione" schema="public">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="volo" class="bean.Volo" fetch="select">
+        <many-to-one name="volo" class="bean.VoloBean" fetch="select">
             <column name="codicevolo" length="10" not-null="true" />
         </many-to-one>
-        <many-to-one name="passeggero" class="bean.Passeggero" fetch="select">
+        <many-to-one name="passeggero" class="bean.PasseggeroBean" fetch="select">
             <column name="documento" length="50" not-null="true" />
         </many-to-one>
         <property name="datarichiesta" type="date">
@@ -23,7 +23,7 @@
             <key>
                 <column name="id_prenotazione" not-null="true" />
             </key>
-            <one-to-many class="bean.Biglietto" />
+            <one-to-many class="bean.BigliettoBean" />
         </set>
     </class>
 </hibernate-mapping>

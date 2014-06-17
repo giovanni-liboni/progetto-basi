@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bean.Imbarco" table="imbarco" schema="public">
+    <class name="bean.ImbarcoBean" table="imbarco" schema="public">
         <composite-id name="id" class="bean.ImbarcoId">
             <key-property name="codicevolo" type="string">
                 <column name="codicevolo" length="10" />
@@ -17,11 +17,11 @@
                 <column name="numero" />
             </key-property>
         </composite-id>
-        <many-to-one name="posto" class="bean.Posto" update="false" insert="false" fetch="select">
+        <many-to-one name="posto" class="bean.PostoBean" update="false" insert="false" fetch="select">
             <column name="lettera" length="1" not-null="true" />
             <column name="numero" not-null="true" />
         </many-to-one>
-        <many-to-one name="biglietto" class="bean.Biglietto" update="false" insert="false" fetch="select">
+        <many-to-one name="biglietto" class="bean.BigliettoBean" update="false" insert="false" fetch="select">
             <column name="codicevolo" length="10" not-null="true" />
             <column name="documento" length="50" not-null="true" />
         </many-to-one>

@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bean.Biglietto" table="biglietto" schema="public">
+    <class name="bean.BigliettoBean" table="biglietto" schema="public">
         <composite-id name="id" class="bean.BigliettoId">
             <key-property name="codicevolo" type="string">
                 <column name="codicevolo" length="10" />
@@ -11,13 +11,13 @@
                 <column name="documento" length="50" />
             </key-property>
         </composite-id>
-        <many-to-one name="prenotazione" class="bean.Prenotazione" fetch="select">
+        <many-to-one name="prenotazione" class="bean.PrenotazioneBean" fetch="select">
             <column name="id_prenotazione" not-null="true" />
         </many-to-one>
-        <many-to-one name="volo" class="bean.Volo" update="false" insert="false" fetch="select">
+        <many-to-one name="volo" class="bean.VoloBean" update="false" insert="false" fetch="select">
             <column name="codicevolo" length="10" not-null="true" />
         </many-to-one>
-        <many-to-one name="passeggero" class="bean.Passeggero" update="false" insert="false" fetch="select">
+        <many-to-one name="passeggero" class="bean.PasseggeroBean" update="false" insert="false" fetch="select">
             <column name="documento" length="50" not-null="true" />
         </many-to-one>
         <property name="id_1" type="int">
@@ -34,7 +34,7 @@
                 <column name="codicevolo" length="10" not-null="true" />
                 <column name="documento" length="50" not-null="true" />
             </key>
-            <one-to-many class="bean.Imbarco" />
+            <one-to-many class="bean.ImbarcoBean" />
         </set>
     </class>
 </hibernate-mapping>

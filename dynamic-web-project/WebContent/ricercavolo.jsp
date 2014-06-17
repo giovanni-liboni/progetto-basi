@@ -6,8 +6,8 @@
 
 <html>
 <%
-	Vector<String> partenze = (Vector<String>) request.getAttribute("partenze");
-	Vector<String> arrivi = (Vector<String>) request.getAttribute("arrivi");
+	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
+	ArrayList<String> arrivi = (ArrayList<String>) request.getAttribute("arrivi");
 	PasseggeroBean username = (PasseggeroBean) request.getAttribute("pass");
 %>
 	<head>

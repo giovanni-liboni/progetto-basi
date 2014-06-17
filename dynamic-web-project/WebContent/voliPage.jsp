@@ -6,7 +6,7 @@
 
 <html>
 <%
-	Vector < VoloBean > vb = ( Vector < VoloBean > ) request.getAttribute("voli");
+	ArrayList < VoloBean > vb = ( ArrayList < VoloBean > ) request.getAttribute("voli");
 	if ( vb != null )
 	{
 %>

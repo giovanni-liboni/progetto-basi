@@ -1,6 +1,6 @@
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,7 +47,7 @@ public class main extends HttpServlet {
 		String pass = "";
 		String ps = "";
 		
-		Vector< VoloBean > bean = null;
+		ArrayList< VoloBean > bean = null;
 		//Dichiaro l'oggetto Dispatcher necessario per passare il controllo ad una JSP o una pagina HTML
 		RequestDispatcher rd = null;
 	
@@ -92,7 +92,7 @@ public class main extends HttpServlet {
 				{
 					// DEVO CONTROLLARE CHE I VALORI SIANO GIUSTI
 					boolean legalPartenza = false;
-					Vector< String > partenze = dbms.getPartenze();
+					ArrayList< String > partenze = dbms.getPartenze();
 					for( String str : partenze )
 					{
 						if ( str.toUpperCase().compareTo(partenza.toUpperCase()) == 0)
@@ -102,7 +102,7 @@ public class main extends HttpServlet {
 							}
 					}
 					boolean legalArrivo = false;
-					Vector< String > arrivi = dbms.getArrivi();
+					ArrayList< String > arrivi = dbms.getArrivi();
 					for( String s : arrivi )
 					{
 						if ( s.toUpperCase().compareTo(arrivo.toUpperCase()) == 0)
@@ -123,7 +123,7 @@ public class main extends HttpServlet {
 						//Delego l'esecuzione della query alla classe di interazione con il DB
 						//Recupero il risultato della query come bean
 						
-						//Aggiungo il Vector come attributo della richiesta HTTP
+						//Aggiungo il ArrayList come attributo della richiesta HTTP
 						request.setAttribute("voli",bean);
 						
 						//Preparo il Dispatcher
@@ -163,8 +163,8 @@ public class main extends HttpServlet {
 						// APRO UNA NUOVA SESSIONE
 						HttpSession session = request.getSession();
 						
-						Vector<InfoPrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
-						Vector<InfoBigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
+						ArrayList<InfoPrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+						ArrayList<InfoBigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
 						if ( vipb == null || vipb.size() == 0)
 							rd = request.getRequestDispatcher("../errorPage.jsp");
 						
@@ -282,8 +282,8 @@ public class main extends HttpServlet {
 			else if( ps.equals("ricercavolo") )
 			{
 				
-				Vector< String > partenze = dbms.getPartenze();
-				Vector< String > arrivi = dbms.getArrivi();
+				ArrayList< String > partenze = dbms.getPartenze();
+				ArrayList< String > arrivi = dbms.getArrivi();
 				
 				request.setAttribute("partenze", partenze);
 				request.setAttribute("arrivi", arrivi);
@@ -299,8 +299,8 @@ public class main extends HttpServlet {
 				{
 
 					beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
-					Vector<InfoPrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
-					Vector<InfoBigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
+					ArrayList<InfoPrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+					ArrayList<InfoBigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
 					
 					if ( vipb == null || vipb.size() == 0)
 						rd = request.getRequestDispatcher("../errorPage.jsp");
@@ -328,7 +328,7 @@ public class main extends HttpServlet {
 				VoloBean beanVolo = dbms.getVolo(codiceVolo);			
 
 				//Delego l'esecuzione della query alla classe di interazione con il DB			
-				//Aggiungo il Vector come attributo della richiesta HTTP
+				//Aggiungo il ArrayList come attributo della richiesta HTTP
 				request.setAttribute("volo",beanVolo);
 				
 				HttpSession session = request.getSession();
@@ -343,8 +343,8 @@ public class main extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.invalidate();
 				
-				Vector< String > partenze = dbms.getPartenze();
-				Vector< String > arrivi = dbms.getArrivi();
+				ArrayList< String > partenze = dbms.getPartenze();
+				ArrayList< String > arrivi = dbms.getArrivi();
 				
 				request.setAttribute("partenze", partenze);
 				request.setAttribute("arrivi", arrivi);

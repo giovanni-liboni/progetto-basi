@@ -2,7 +2,7 @@
 <%@page import="bean.PasseggeroBean"%>
 <%@page import="bean.BigliettoBean"%>
 <%@page import="bean.PrenotazioneBean"%>
-<%@page import="java.util.Vector"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="database.InfoBigliettoBean"%>
 <%@page errorPage = "../error.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -10,8 +10,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<%
-		Vector<InfoPrenotazioneBean> vipb = ( Vector<InfoPrenotazioneBean>) request.getAttribute("prenotazioni");
-		Vector<InfoBigliettoBean> vbb = (Vector<InfoBigliettoBean>) request.getAttribute("biglietti");
+		ArrayList<InfoPrenotazioneBean> vipb = ( ArrayList<InfoPrenotazioneBean>) request.getAttribute("prenotazioni");
+		ArrayList<InfoBigliettoBean> vbb = (ArrayList<InfoBigliettoBean>) request.getAttribute("biglietti");
 		PasseggeroBean pass = ( PasseggeroBean) request.getAttribute("pass");
 	%>
 	<head>
