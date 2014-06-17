@@ -24,7 +24,7 @@
             <column name="id" not-null="true" />
         </property>
         <property name="dataemissione" type="date">
-            <column name="dataemissione" length="13" not-null="true" />
+            <column name="dataemissione" length="13" />
         </property>
         <property name="prezzo" type="double">
             <column name="prezzo" precision="17" scale="17" not-null="true" />

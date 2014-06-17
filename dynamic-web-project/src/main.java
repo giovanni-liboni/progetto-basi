@@ -16,6 +16,7 @@ import classiCommand.Contatti;
 import classiCommand.EmettiBiglietto;
 import classiCommand.Login;
 import classiCommand.Logout;
+import classiCommand.NewBiglietto;
 import classiCommand.NuovaPrenotazione;
 import classiCommand.Prenotazione;
 import classiCommand.RicercaVolo;
@@ -54,6 +55,7 @@ public class main extends HttpServlet {
 		commands.put("login", new Login());
 		commands.put("contatti", new Contatti());
 		commands.put("emettibiglietto", new EmettiBiglietto());
+		commands.put("newBiglietto", new NewBiglietto() );
 		
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

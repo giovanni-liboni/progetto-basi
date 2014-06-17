@@ -2,10 +2,9 @@ package database;
 /**        DBMS.java        */
 import java.sql.Date;
 import java.util.*;
-
 import org.hibernate.*;
-
 import bean.BigliettoBean;
+import bean.BigliettoId;
 import bean.HibernateUtil;
 import bean.PasseggeroBean;
 import bean.PrenotazioneBean;
@@ -53,6 +52,7 @@ public class DBMS {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
+		res.getTratta();
 
 		tx.commit();
 		session.close();
@@ -66,6 +66,22 @@ public class DBMS {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		result = ( PasseggeroBean ) session.get( PasseggeroBean.class, documento );
+
+		tx.commit();
+		session.close();
+
+		return result;
+	}
+	public PrenotazioneBean getPrenotazione( String id ) 
+	{
+		PrenotazioneBean result = null;
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction(); 
+		result = ( PrenotazioneBean ) session.get( PrenotazioneBean.class, Integer.parseInt(id) );
+		result.getPasseggero();
+		result.getPasseggero().getDocumento();
+		result.getVolo();
 
 		tx.commit();
 		session.close();
@@ -153,6 +169,7 @@ public class DBMS {
 		b.setVolo(volo);
 		b.setPrenotazione(prenotazione);
 		b.setPrezzo(prezzo);
+		b.setId(new BigliettoId(volo.getCodicevolo(), passeggero.getDocumento()));
 
 		session.save(b);
 		session.getTransaction().commit();
@@ -182,8 +199,9 @@ public class DBMS {
         Transaction tx = session.beginTransaction(); 
         Query q = session.createSQLQuery(prenotazioni).addEntity(PrenotazioneBean.class);
         q.setString("documento", documento);
-        
+                
         ArrayList<PrenotazioneBean> result = (ArrayList<PrenotazioneBean>) q.list();
+        
         tx.commit();
         session.close();
         
@@ -199,6 +217,7 @@ public class DBMS {
         Query q = session.createSQLQuery(biglietti).addEntity(BigliettoBean.class);
         q.setString("documento", documento);
         ArrayList<BigliettoBean> result = (ArrayList<BigliettoBean>) q.list();
+        
         tx.commit();
         session.close();
 		return result;

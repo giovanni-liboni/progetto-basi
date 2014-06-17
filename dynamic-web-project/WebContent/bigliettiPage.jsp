@@ -39,10 +39,10 @@
 			<tbody>
 			<% for ( PrenotazioneBean bean : vipb ){ %>
 				<tr>
-					<th> <%=bean.getVolo().getCodicevolo() %> </th>
+					<th> <a href="main?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
 					<th> <%=bean.getVolo().getDatapartenza() %> </th>
 					<th> <%=bean.getVolo().getOrapartenza() %> </th>
-					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
+	 				<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPasseggero().getDocumento() %> </th>
 					<th> <%=bean.getDatarichiesta() %> </th>	
@@ -71,15 +71,15 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for ( BigliettoBean bean : vbb ){ %>
+ 			<% for ( BigliettoBean bean : vbb ){ %>
 				<tr>
 					<th> <%=bean.getVolo().getCodicevolo() %> </th>
-					<th> <%=bean.getVolo().getDatapartenza() %> </th>
-					<th> <%=bean.getVolo().getOrapartenza() %> </th>
+<%--				<th> <%=bean.getVolo().getDatapartenza() %> </th>
+					<th> <%=bean.getVolo().getOrapartenza() %> </th>  	
 					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
-					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th> --%>
 					<th> <%=bean.getPrezzo() %> </th>
-					<th> <%=bean.getDataemissione() %> </th>			
+					<th> <%=bean.getDataemissione() %> </th>		
 				</tr>
 				<%} %>
 			</tbody>

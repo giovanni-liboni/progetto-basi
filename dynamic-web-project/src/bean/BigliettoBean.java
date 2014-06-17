@@ -28,7 +28,7 @@ public class BigliettoBean implements java.io.Serializable {
 		this.dataemissione = dataemissione;
 		this.prezzo = prezzo;
 	}
-
+	
 	public BigliettoBean(BigliettoId id, PrenotazioneBean prenotazione, VoloBean volo,
 			PasseggeroBean passeggero, int id_1, Date dataemissione, double prezzo,
 			Set imbarcos) {

@@ -14,10 +14,11 @@
 	<p style="text-align: center; "> Vuoi stampare il biglietto? </p>
 	<!-- PULSANTI PER DECIDERE COSA FARE, SE SI ALLORA SI EMETTI IL BIGLIETTO E AGGIUNGE UN BIGLIETTO AL DB -->
 		<form name="form" method="POST" class="basic-grey" action="main?">
-			<input type="hidden" name="ps" value="emettiBiglietto">
-			<input type="hidden" name="emettiBiglietto" value="<%=numPrenotazione %>">
-			<span>
-				<input type="submit" class="button" value="Prenota" />	
+			<input type="hidden" name="ps" value="newBiglietto">
+			<input type="hidden" name="numPrenotazione" value="<%=numPrenotazione %>">
+			<span style="display: inline;">
+				<input type="submit" class="button" name="indietro" value="Indietro" />
+				<input type="submit" class="button" name="prenota" value="Prenota" />	
 			</span>				
 		</form>
 </body>
