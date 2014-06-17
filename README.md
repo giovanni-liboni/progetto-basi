@@ -19,5 +19,4 @@ TO RUN:
 
 TODO:
 
-- Hibernate
 - Pagina per creare un biglietto a partire dalla prenotazione
