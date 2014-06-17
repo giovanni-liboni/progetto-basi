@@ -6,8 +6,7 @@
 <html>
 	<%
 	VoloBean beanVolo = ( VoloBean ) request.getAttribute("volo");
-	TrattaBean beanTratta = ( TrattaBean ) request.getAttribute("tratta");
-	if ( beanVolo != null && beanTratta != null ){
+	if ( beanVolo != null ){
 	%>
 	<head>
 		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
@@ -36,10 +35,10 @@
 					<th> <%=beanVolo.getCodicevolo() %> </a> </th>
 					<th> <%=beanVolo.getDatapartenza() %> </th>
 					<th> <%=beanVolo.getOrapartenza() %> </th>
-					<th> <%=beanTratta.getId().getPartenza() %> </th>
-					<th> <%=beanTratta.getId().getArrivo() %> </th>
+					<th> <%=beanVolo.getTratta().getId().getPartenza() %> </th>
+					<th> <%=beanVolo.getTratta().getId().getArrivo() %> </th>
 					<th> <%=beanVolo.getCapienza() %></th>
-					<th> <%=beanTratta.getDurata() %> </th>
+					<th> <%=beanVolo.getTratta().getDurata() %> </th>
 					<th> <%=beanVolo.getTipoaereo() %> </th>				
 				</tr>
 			</tbody>

@@ -1,17 +1,15 @@
-<%@page import="database.InfoPrenotazioneBean"%>
 <%@page import="bean.PasseggeroBean"%>
 <%@page import="bean.BigliettoBean"%>
 <%@page import="bean.PrenotazioneBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="database.InfoBigliettoBean"%>
 <%@page errorPage = "../error.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<%
-		ArrayList<InfoPrenotazioneBean> vipb = ( ArrayList<InfoPrenotazioneBean>) request.getAttribute("prenotazioni");
-		ArrayList<InfoBigliettoBean> vbb = (ArrayList<InfoBigliettoBean>) request.getAttribute("biglietti");
+		ArrayList<PrenotazioneBean> vipb = ( ArrayList<PrenotazioneBean>) request.getAttribute("prenotazioni");
+		ArrayList<BigliettoBean> vbb = (ArrayList<BigliettoBean>) request.getAttribute("biglietti");
 		PasseggeroBean pass = ( PasseggeroBean) request.getAttribute("pass");
 	%>
 	<head>
@@ -39,14 +37,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for ( InfoPrenotazioneBean bean : vipb ){ %>
+			<% for ( PrenotazioneBean bean : vipb ){ %>
 				<tr>
-					<th> <%=bean.getCodicevolo() %> </th>
-					<th> <%=bean.getDatapartenza() %> </th>
-					<th> <%=bean.getOrapartenza() %> </th>
-					<th> <%=bean.getPartenza() %> </th>
-					<th> <%=bean.getArrivo() %> </th>
-					<th> <%=bean.getDocumento() %> </th>
+					<th> <%=bean.getVolo().getCodicevolo() %> </th>
+					<th> <%=bean.getVolo().getDatapartenza() %> </th>
+					<th> <%=bean.getVolo().getOrapartenza() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
+					<th> <%=bean.getPasseggero().getDocumento() %> </th>
 					<th> <%=bean.getDatarichiesta() %> </th>	
 					<th> <%=bean.getOrarichiesta() %> </th>				
 				</tr>
@@ -73,13 +71,13 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for ( InfoBigliettoBean bean : vbb ){ %>
+			<% for ( BigliettoBean bean : vbb ){ %>
 				<tr>
-					<th> <%=bean.getCodicevolo() %> </th>
-					<th> <%=bean.getDatapartenza() %> </th>
-					<th> <%=bean.getOrapartenza() %> </th>
-					<th> <%=bean.getPartenza() %> </th>
-					<th> <%=bean.getArrivo() %> </th>
+					<th> <%=bean.getVolo().getCodicevolo() %> </th>
+					<th> <%=bean.getVolo().getDatapartenza() %> </th>
+					<th> <%=bean.getVolo().getOrapartenza() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPrezzo() %> </th>
 					<th> <%=bean.getDataemissione() %> </th>			
 				</tr>
