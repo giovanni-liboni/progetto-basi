@@ -39,7 +39,7 @@ public class NewBiglietto implements Command {
 			dbms.newBiglietto(preno.getPasseggero(), preno.getVolo(), preno, (float) (preno.getVolo().getTratta().getDurata() * 0.123) );
 			
 			request.setAttribute("biglietti", dbms.getBiglietti(preno.getPasseggero().getDocumento()));
-			request.setAttribute("prenotazione", dbms.getPrenotazioni(preno.getPasseggero().getDocumento()));
+			request.setAttribute("prenotazioni", dbms.getPrenotazioni(preno.getPasseggero().getDocumento()));
 		}
 		return request.getRequestDispatcher("../bigliettiPage.jsp");
 	}

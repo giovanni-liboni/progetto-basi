@@ -74,10 +74,10 @@
  			<% for ( BigliettoBean bean : vbb ){ %>
 				<tr>
 					<th> <%=bean.getVolo().getCodicevolo() %> </th>
-<%--				<th> <%=bean.getVolo().getDatapartenza() %> </th>
+					<th> <%=bean.getVolo().getDatapartenza() %> </th>
 					<th> <%=bean.getVolo().getOrapartenza() %> </th>  	
 					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
-					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th> --%>
+					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPrezzo() %> </th>
 					<th> <%=bean.getDataemissione() %> </th>		
 				</tr>
