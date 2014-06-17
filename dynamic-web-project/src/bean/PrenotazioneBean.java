@@ -1,69 +1,83 @@
 package bean;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-public class PrenotazioneBean {
+public class PrenotazioneBean implements java.io.Serializable {
 
+	private int id;
+	private VoloBean volo;
+	private PasseggeroBean passeggero;
+	private Date datarichiesta;
+	private Date orarichiesta;
+	private Set bigliettos = new HashSet(0);
 
-
-	int id;
-	String codicevolo, documento;
-	Date datarichiesta;
-	Time orarichiesta;
-	
-	public PrenotazioneBean(){
-		id=0;
-		codicevolo = null;
-		documento = null;
-		datarichiesta = null;
-		orarichiesta = null;
+	public PrenotazioneBean() {
 	}
-	public PrenotazioneBean(int id, String codicevolo, String documento,
-			Date datarichiesta, Time orarichiesta) {
+
+	public PrenotazioneBean(int id, VoloBean volo, PasseggeroBean passeggero) {
 		this.id = id;
-		this.codicevolo = codicevolo;
-		this.documento = documento;
+		this.volo = volo;
+		this.passeggero = passeggero;
+	}
+
+	public PrenotazioneBean(int id, VoloBean volo, PasseggeroBean passeggero,
+			Date datarichiesta, Date orarichiesta, Set bigliettos) {
+		this.id = id;
+		this.volo = volo;
+		this.passeggero = passeggero;
 		this.datarichiesta = datarichiesta;
 		this.orarichiesta = orarichiesta;
+		this.bigliettos = bigliettos;
 	}
+
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getCodicevolo() {
-		return codicevolo;
+	public VoloBean getVolo() {
+		return this.volo;
 	}
 
-	public void setCodicevolo(String codicevolo) {
-		this.codicevolo = codicevolo;
+	public void setVolo(VoloBean volo) {
+		this.volo = volo;
 	}
 
-	public String getDocumento() {
-		return documento;
+	public PasseggeroBean getPasseggero() {
+		return this.passeggero;
 	}
 
-	public void setDocumento(String documento) {
-		this.documento = documento;
+	public void setPasseggero(PasseggeroBean passeggero) {
+		this.passeggero = passeggero;
 	}
 
 	public Date getDatarichiesta() {
-		return datarichiesta;
+		return this.datarichiesta;
 	}
 
 	public void setDatarichiesta(Date datarichiesta) {
 		this.datarichiesta = datarichiesta;
 	}
 
-	public Time getOrarichiesta() {
-		return orarichiesta;
+	public Date getOrarichiesta() {
+		return this.orarichiesta;
 	}
 
-	public void setOrarichiesta(Time orarichiesta) {
+	public void setOrarichiesta(Date orarichiesta) {
 		this.orarichiesta = orarichiesta;
 	}
+
+	public Set getBigliettos() {
+		return this.bigliettos;
+	}
+
+	public void setBigliettos(Set bigliettos) {
+		this.bigliettos = bigliettos;
+	}
+
 }

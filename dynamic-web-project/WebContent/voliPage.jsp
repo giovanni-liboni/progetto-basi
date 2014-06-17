@@ -1,6 +1,7 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
-<%@page import="util.*"%>
+<%@page import="database.*"%>
+<%@page import="bean.*"%>
 <%@page errorPage = "../error.jsp" %>
 
 <html>
@@ -32,9 +33,9 @@
 					<th> <a href="main?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
 					<th> <%=bean.getDatapartenza() %> </th>
 					<th> <%=bean.getOrapartenza() %> </th>
-					<th> <%=bean.getPartenza() %> </th>
-					<th> <%=bean.getArrivo() %> </th>
-					<th> <%=bean.getDurata() %> </th>
+					<th> <%=bean.getTratta().getId().getPartenza() %> </th>
+					<th> <%=bean.getTratta().getId().getArrivo() %> </th>
+					<th> <%=bean.getTratta().getDurata() %> </th>
 					<th> <%=bean.getTipoaereo() %> </th>				
 				</tr>
 				<%} %>

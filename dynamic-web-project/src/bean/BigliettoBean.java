@@ -1,87 +1,109 @@
 package bean;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-public class BigliettoBean {
+public class BigliettoBean implements java.io.Serializable {
 
-	int id, id_prenotazione;
-	String codicevolo, documento;
-	float prezzo;
-	Date dataemissione;
-	
+	private BigliettoId id;
+	private PrenotazioneBean prenotazione;
+	private VoloBean volo;
+	private PasseggeroBean passeggero;
+	private int id_1;
+	private Date dataemissione;
+	private double prezzo;
+	private Set imbarcos = new HashSet(0);
+
 	public BigliettoBean() {
-		id = 0;
-		id_prenotazione = 0;
-		codicevolo=null;
-		documento=null;
-		prezzo=0;
-		dataemissione=null;
 	}
-	public BigliettoBean(int id, int id_prenotazione, String codicevolo,
-			String documento, float prezzo, Date dataemissione) {
+
+	public BigliettoBean(BigliettoId id, PrenotazioneBean prenotazione, VoloBean volo,
+			PasseggeroBean passeggero, int id_1, Date dataemissione, double prezzo) {
 		this.id = id;
-		this.id_prenotazione = id_prenotazione;
-		this.codicevolo = codicevolo;
-		this.documento = documento;
-		this.prezzo = prezzo;
+		this.prenotazione = prenotazione;
+		this.volo = volo;
+		this.passeggero = passeggero;
+		this.id_1 = id_1;
 		this.dataemissione = dataemissione;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getId_prenotazione() {
-		return id_prenotazione;
-	}
-	public void setId_prenotazione(int id_prenotazione) {
-		this.id_prenotazione = id_prenotazione;
-	}
-	public String getCodicevolo() {
-		return codicevolo;
-	}
-	public void setCodicevolo(String codicevolo) {
-		this.codicevolo = codicevolo;
-	}
-	public String getDocumento() {
-		return documento;
-	}
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
-	public float getPrezzo() {
-		return prezzo;
-	}
-	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
-	public Date getDataemissione() {
-		return dataemissione;
+
+	public BigliettoBean(BigliettoId id, PrenotazioneBean prenotazione, VoloBean volo,
+			PasseggeroBean passeggero, int id_1, Date dataemissione, double prezzo,
+			Set imbarcos) {
+		this.id = id;
+		this.prenotazione = prenotazione;
+		this.volo = volo;
+		this.passeggero = passeggero;
+		this.id_1 = id_1;
+		this.dataemissione = dataemissione;
+		this.prezzo = prezzo;
+		this.imbarcos = imbarcos;
 	}
+
+	public BigliettoId getId() {
+		return this.id;
+	}
+
+	public void setId(BigliettoId id) {
+		this.id = id;
+	}
+
+	public PrenotazioneBean getPrenotazione() {
+		return this.prenotazione;
+	}
+
+	public void setPrenotazione(PrenotazioneBean prenotazione) {
+		this.prenotazione = prenotazione;
+	}
+
+	public VoloBean getVolo() {
+		return this.volo;
+	}
+
+	public void setVolo(VoloBean volo) {
+		this.volo = volo;
+	}
+
+	public PasseggeroBean getPasseggero() {
+		return this.passeggero;
+	}
+
+	public void setPasseggero(PasseggeroBean passeggero) {
+		this.passeggero = passeggero;
+	}
+
+	public int getId_1() {
+		return this.id_1;
+	}
+
+	public void setId_1(int id_1) {
+		this.id_1 = id_1;
+	}
+
+	public Date getDataemissione() {
+		return this.dataemissione;
+	}
+
 	public void setDataemissione(Date dataemissione) {
 		this.dataemissione = dataemissione;
 	}
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final BigliettoBean other = (BigliettoBean) obj;
-        if ((this.id == -1) ? (other.id != -1) : 
-                 !(this.id==other.id)) {
-            return false;
-        }
-        return true;
-    }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + (this.id != -1 ? Integer.toString(this.id).hashCode() : 0);
-        return hash;
-    }
+	public double getPrezzo() {
+		return this.prezzo;
+	}
+
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public Set getImbarcos() {
+		return this.imbarcos;
+	}
+
+	public void setImbarcos(Set imbarcos) {
+		this.imbarcos = imbarcos;
+	}
+
 }

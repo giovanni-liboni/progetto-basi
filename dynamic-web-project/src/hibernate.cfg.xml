@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory name="">
-  <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-  <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-  <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dblab01</property>
-  <property name="hibernate.connection.username">userlab01</property>
-  <property name="hibernate.connection.password">uno8M</property>
-  <mapping resource="util/InfoBigliettoBean.hbm.xml"/>
-  <mapping resource="util/InfoPrenotazioneBean.hbm.xml"/>
-   <mapping resource="bean/BigliettoBean.hbm.xml"/>
-    <mapping resource="bean/PrenotazioneBean.hbm.xml"/>
-  <mapping class="bean.BigliettoBean" file="BigliettoBean.java" package="bean"/>
- </session-factory>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">uno8M</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dblab01</property>
+        <property name="hibernate.connection.username">userlab01</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <mapping resource="bean/Posto.hbm.xml"/>
+        <mapping resource="bean/Volo.hbm.xml"/>
+        <mapping resource="bean/Tratta.hbm.xml"/>
+        <mapping resource="bean/Prenotazione.hbm.xml"/>
+        <mapping resource="bean/Imbarco.hbm.xml"/>
+        <mapping resource="bean/Biglietto.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>

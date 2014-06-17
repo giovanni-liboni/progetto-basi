@@ -1,37 +1,85 @@
 package bean;
 
-public class PasseggeroBean {
+import java.util.HashSet;
+import java.util.Set;
 
+public class PasseggeroBean implements java.io.Serializable {
 
+	private String documento;
+	private String login;
+	private String password;
+	private String nazionalita;
+	private String nome;
+	private String cognome;
+	private Integer numvoli;
+	private Integer miglia;
+	private Boolean tessera;
+	private Set prenotaziones = new HashSet(0);
+	private Set bigliettos = new HashSet(0);
 
-	String nome, cognome, documento, nazionalita,login;
-	int numvoli, miglia;
-	boolean tessera;
-	
-	public PasseggeroBean()
-	{
-		nome = null;
-		cognome = null;
-		documento = null;
-		nazionalita = null;
-		login = null;
-		numvoli = 0;
-		miglia = 0;
+	public PasseggeroBean() {
 	}
-	public PasseggeroBean(String nome, String cognome, String documento,
-			String nazionalita, String login, int numvoli, int miglia,
-			boolean tessera) {
+
+	public PasseggeroBean(String documento, String login, String password,
+			String nazionalita, String nome, String cognome) {
+		this.documento = documento;
+		this.login = login;
+		this.password = password;
+		this.nazionalita = nazionalita;
 		this.nome = nome;
 		this.cognome = cognome;
+	}
+
+	public PasseggeroBean(String documento, String login, String password,
+			String nazionalita, String nome, String cognome, Integer numvoli,
+			Integer miglia, Boolean tessera, Set prenotaziones, Set bigliettos) {
 		this.documento = documento;
-		this.nazionalita = nazionalita;
 		this.login = login;
+		this.password = password;
+		this.nazionalita = nazionalita;
+		this.nome = nome;
+		this.cognome = cognome;
 		this.numvoli = numvoli;
 		this.miglia = miglia;
 		this.tessera = tessera;
+		this.prenotaziones = prenotaziones;
+		this.bigliettos = bigliettos;
 	}
+
+	public String getDocumento() {
+		return this.documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+	public String getLogin() {
+		return this.login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getNazionalita() {
+		return this.nazionalita;
+	}
+
+	public void setNazionalita(String nazionalita) {
+		this.nazionalita = nazionalita;
+	}
+
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -39,58 +87,51 @@ public class PasseggeroBean {
 	}
 
 	public String getCognome() {
-		return cognome;
+		return this.cognome;
 	}
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
 
-	public String getDocumento() {
-		return documento;
+	public Integer getNumvoli() {
+		return this.numvoli;
 	}
 
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
-
-	public String getNazionalita() {
-		return nazionalita;
-	}
-
-	public void setNazionalita(String nazionalita) {
-		this.nazionalita = nazionalita;
-	}
-
-	public int getNumvoli() {
-		return numvoli;
-	}
-
-	public void setNumvoli(int numvoli) {
+	public void setNumvoli(Integer numvoli) {
 		this.numvoli = numvoli;
 	}
 
-	public int getMiglia() {
-		return miglia;
+	public Integer getMiglia() {
+		return this.miglia;
 	}
 
-	public void setMiglia(int miglia) {
+	public void setMiglia(Integer miglia) {
 		this.miglia = miglia;
 	}
 
-	public boolean isTessera() {
-		return tessera;
+	public Boolean getTessera() {
+		return this.tessera;
 	}
 
-	public void setTessera(boolean tessera) {
+	public void setTessera(Boolean tessera) {
 		this.tessera = tessera;
 	}
 
-	public String getLogin() {
-		return login;
+	public Set getPrenotaziones() {
+		return this.prenotaziones;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setPrenotaziones(Set prenotaziones) {
+		this.prenotaziones = prenotaziones;
 	}
+
+	public Set getBigliettos() {
+		return this.bigliettos;
+	}
+
+	public void setBigliettos(Set bigliettos) {
+		this.bigliettos = bigliettos;
+	}
+
 }

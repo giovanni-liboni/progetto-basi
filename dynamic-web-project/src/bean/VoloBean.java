@@ -1,111 +1,108 @@
 package bean;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-public class VoloBean {
+public class VoloBean implements java.io.Serializable {
 
+	private String codicevolo;
+	private TrattaBean tratta;
+	private Date datapartenza;
+	private Date orapartenza;
+	private String tipoaereo;
+	private int capienza;
+	private Set prenotaziones = new HashSet(0);
+	private Set bigliettos = new HashSet(0);
 
-
-	String partenza, arrivo, tipoaereo, codicevolo;
-	Date datapartenza;
-	Time orapartenza;
-	int capienza, durata,distanza;
-	
-	public VoloBean()
-	{
-		partenza = null;
-		arrivo = null;
-		tipoaereo = null;
-		codicevolo = null;
-		capienza = 0;
-		datapartenza = null;
-		orapartenza = null;
-		distanza = 0;
-		durata = 0;
+	public VoloBean() {
 	}
-	public VoloBean(String partenza, String arrivo, String tipoaereo,
-			String codicevolo, Date datapartenza, Time orapartenza,
-			int capienza, int durata, int distanza) {
-		this.partenza = partenza;
-		this.arrivo = arrivo;
-		this.tipoaereo = tipoaereo;
+
+	public VoloBean(String codicevolo, TrattaBean tratta, Date datapartenza,
+			Date orapartenza, String tipoaereo, int capienza) {
 		this.codicevolo = codicevolo;
+		this.tratta = tratta;
 		this.datapartenza = datapartenza;
 		this.orapartenza = orapartenza;
+		this.tipoaereo = tipoaereo;
 		this.capienza = capienza;
-		this.durata = durata;
-		this.distanza = distanza;
-	}
-	public String getPartenza() {
-		return partenza;
 	}
 
-	public String getArrivo() {
-		return arrivo;
-	}
-
-	public String getTipoaereo() {
-		return tipoaereo;
+	public VoloBean(String codicevolo, TrattaBean tratta, Date datapartenza,
+			Date orapartenza, String tipoaereo, int capienza,
+			Set prenotaziones, Set bigliettos) {
+		this.codicevolo = codicevolo;
+		this.tratta = tratta;
+		this.datapartenza = datapartenza;
+		this.orapartenza = orapartenza;
+		this.tipoaereo = tipoaereo;
+		this.capienza = capienza;
+		this.prenotaziones = prenotaziones;
+		this.bigliettos = bigliettos;
 	}
 
 	public String getCodicevolo() {
-		return codicevolo;
-	}
-
-	public Date getDatapartenza() {
-		return datapartenza;
-	}
-
-	public Time getOrapartenza() {
-		return orapartenza;
-	}
-
-	public int getCapienza() {
-		return capienza;
-	}
-
-	public void setPartenza(String partenza) {
-		this.partenza = partenza;
-	}
-
-	public void setArrivo(String arrivo) {
-		this.arrivo = arrivo;
-	}
-
-	public void setTipoaereo(String tipoaereo) {
-		this.tipoaereo = tipoaereo;
+		return this.codicevolo;
 	}
 
 	public void setCodicevolo(String codicevolo) {
 		this.codicevolo = codicevolo;
 	}
 
+	public TrattaBean getTratta() {
+		return this.tratta;
+	}
+
+	public void setTratta(TrattaBean tratta) {
+		this.tratta = tratta;
+	}
+
+	public Date getDatapartenza() {
+		return this.datapartenza;
+	}
+
 	public void setDatapartenza(Date datapartenza) {
 		this.datapartenza = datapartenza;
 	}
 
-	public void setOrapartenza(Time orapartenza) {
+	public Date getOrapartenza() {
+		return this.orapartenza;
+	}
+
+	public void setOrapartenza(Date orapartenza) {
 		this.orapartenza = orapartenza;
+	}
+
+	public String getTipoaereo() {
+		return this.tipoaereo;
+	}
+
+	public void setTipoaereo(String tipoaereo) {
+		this.tipoaereo = tipoaereo;
+	}
+
+	public int getCapienza() {
+		return this.capienza;
 	}
 
 	public void setCapienza(int capienza) {
 		this.capienza = capienza;
 	}
 
-	public int getDurata() {
-		return durata;
+	public Set getPrenotaziones() {
+		return this.prenotaziones;
 	}
 
-	public void setDurata(int durata) {
-		this.durata = durata;
+	public void setPrenotaziones(Set prenotaziones) {
+		this.prenotaziones = prenotaziones;
 	}
 
-	public int getDistanza() {
-		return distanza;
+	public Set getBigliettos() {
+		return this.bigliettos;
 	}
 
-	public void setDistanza(int distanza) {
-		this.distanza = distanza;
+	public void setBigliettos(Set bigliettos) {
+		this.bigliettos = bigliettos;
 	}
+
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bean.Biglietto" table="biglietto" schema="public">
+        <composite-id name="id" class="bean.BigliettoId">
+            <key-property name="codicevolo" type="string">
+                <column name="codicevolo" length="10" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="prenotazione" class="bean.Prenotazione" fetch="select">
+            <column name="id_prenotazione" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volo" class="bean.Volo" update="false" insert="false" fetch="select">
+            <column name="codicevolo" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="passeggero" class="bean.Passeggero" update="false" insert="false" fetch="select">
+            <column name="documento" length="50" not-null="true" />
+        </many-to-one>
+        <property name="id_1" type="int">
+            <column name="id" not-null="true" />
+        </property>
+        <property name="dataemissione" type="date">
+            <column name="dataemissione" length="13" not-null="true" />
+        </property>
+        <property name="prezzo" type="double">
+            <column name="prezzo" precision="17" scale="17" not-null="true" />
+        </property>
+        <set name="imbarcos" table="imbarco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codicevolo" length="10" not-null="true" />
+                <column name="documento" length="50" not-null="true" />
+            </key>
+            <one-to-many class="bean.Imbarco" />
+        </set>
+    </class>
+</hibernate-mapping>

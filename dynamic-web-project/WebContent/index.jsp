@@ -1,6 +1,6 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
-<%@page import="util.*"%>
+<%@page import="database.*"%>
 <%@page errorPage = "../error.jsp" %>
 
 <html>
@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div class="div_title" >
-			<h1 class="text_title"> SALETTI LINE </h1>
+			<h1 class="text_title"> NOME COMPAGNIA </h1>
 		</div>
 				
 

@@ -1,11 +1,13 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
-<%@page import="util.*"%>
+<%@page import="database.*"%>
+<%@page import="bean.*"%>
 <%@page errorPage = "../error.jsp" %>
 <html>
 	<%
 	VoloBean beanVolo = ( VoloBean ) request.getAttribute("volo");
-	if ( beanVolo != null ){
+	TrattaBean beanTratta = ( TrattaBean ) request.getAttribute("tratta");
+	if ( beanVolo != null && beanTratta != null ){
 	%>
 	<head>
 		<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
@@ -34,10 +36,10 @@
 					<th> <%=beanVolo.getCodicevolo() %> </a> </th>
 					<th> <%=beanVolo.getDatapartenza() %> </th>
 					<th> <%=beanVolo.getOrapartenza() %> </th>
-					<th> <%=beanVolo.getPartenza() %> </th>
-					<th> <%=beanVolo.getArrivo() %> </th>
+					<th> <%=beanTratta.getId().getPartenza() %> </th>
+					<th> <%=beanTratta.getId().getArrivo() %> </th>
 					<th> <%=beanVolo.getCapienza() %></th>
-					<th> <%=beanVolo.getDurata() %> </th>
+					<th> <%=beanTratta.getDurata() %> </th>
 					<th> <%=beanVolo.getTipoaereo() %> </th>				
 				</tr>
 			</tbody>

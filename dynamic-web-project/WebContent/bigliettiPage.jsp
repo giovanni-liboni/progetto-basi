@@ -1,9 +1,9 @@
-<%@page import="util.InfoPrenotazioneBean"%>
+<%@page import="database.InfoPrenotazioneBean"%>
 <%@page import="bean.PasseggeroBean"%>
 <%@page import="bean.BigliettoBean"%>
 <%@page import="bean.PrenotazioneBean"%>
 <%@page import="java.util.Vector"%>
-<%@page import="util.InfoBigliettoBean"%>
+<%@page import="database.InfoBigliettoBean"%>
 <%@page errorPage = "../error.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>

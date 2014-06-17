@@ -1,41 +1,59 @@
 package bean;
 
-public class ImbarcoBean {
+public class ImbarcoBean implements java.io.Serializable {
 
-	private char lettera;
-	private int numero;
-	private String codicevolo;
-	private String documento;
-	
-	public ImbarcoBean(char lettera, int numero, String codicevolo,
-			String documento) {
-		this.lettera = lettera;
-		this.numero = numero;
-		this.codicevolo = codicevolo;
-		this.documento = documento;
+	private ImbarcoId id;
+	private PostoBean posto;
+	private BigliettoBean biglietto;
+	private Boolean imbarcato;
+
+	public ImbarcoBean() {
 	}
-	public char getLettera() {
-		return lettera;
+
+	public ImbarcoBean(ImbarcoId id, PostoBean posto, BigliettoBean biglietto) {
+		this.id = id;
+		this.posto = posto;
+		this.biglietto = biglietto;
 	}
-	public void setLettera(char lettera) {
-		this.lettera = lettera;
+
+	public ImbarcoBean(ImbarcoId id, PostoBean posto, BigliettoBean biglietto,
+			Boolean imbarcato) {
+		this.id = id;
+		this.posto = posto;
+		this.biglietto = biglietto;
+		this.imbarcato = imbarcato;
 	}
-	public int getNumero() {
-		return numero;
+
+	public ImbarcoId getId() {
+		return this.id;
 	}
-	public void setNumero(int numero) {
-		this.numero = numero;
+
+	public void setId(ImbarcoId id) {
+		this.id = id;
 	}
-	public String getCodicevolo() {
-		return codicevolo;
+
+	public PostoBean getPosto() {
+		return this.posto;
 	}
-	public void setCodicevolo(String codicevolo) {
-		this.codicevolo = codicevolo;
+
+	public void setPosto(PostoBean posto) {
+		this.posto = posto;
 	}
-	public String getDocumento() {
-		return documento;
+
+	public BigliettoBean getBiglietto() {
+		return this.biglietto;
 	}
-	public void setDocumento(String documento) {
-		this.documento = documento;
+
+	public void setBiglietto(BigliettoBean biglietto) {
+		this.biglietto = biglietto;
 	}
+
+	public Boolean getImbarcato() {
+		return this.imbarcato;
+	}
+
+	public void setImbarcato(Boolean imbarcato) {
+		this.imbarcato = imbarcato;
+	}
+
 }

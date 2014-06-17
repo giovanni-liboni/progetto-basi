@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DBMS;
+import database.InfoBigliettoBean;
+import database.InfoPrenotazioneBean;
 import bean.PasseggeroBean;
 import bean.VoloBean;
-import util.DBMS;
-import util.InfoBigliettoBean;
-import util.InfoPrenotazioneBean;
 /**
  * Questa classe gestisce le richieste HTTP
  * TODO: - LOGOUT 
@@ -227,7 +227,10 @@ public class main extends HttpServlet {
 				if ( session.getAttribute("pass") == null )			
 					dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
 		
-					if ( dbms.newPrenotazione(codicevolo, documento) )				
+				VoloBean beanVolo = dbms.getVolo(codicevolo);
+				beanPasseggero = dbms.getPasseggero(documento);
+				
+					if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
 						request.setAttribute("status", "ok");
 					
 					rd = request.getRequestDispatcher("../esitoPage.jsp");
@@ -262,11 +265,7 @@ public class main extends HttpServlet {
 		RequestDispatcher rd = null;
 		PasseggeroBean beanPasseggero = null;
 		DBMS dbms = null;
-		try {
-			dbms = new DBMS();
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		}
+		dbms = new DBMS();
 	
 		if (request.getParameter("ps") != null) {// Ottengo se presente il parametro 'ps'
 			ps = request.getParameter("ps");

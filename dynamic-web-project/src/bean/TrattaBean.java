@@ -1,43 +1,61 @@
 package bean;
 
-public class TrattaBean {
+import java.util.HashSet;
+import java.util.Set;
 
+public class TrattaBean implements java.io.Serializable {
 
-	private String partenza;
-	private String arrivo;
+	private TrattaId id;
 	private int durata;
-	private float distanza;
-	
-	public TrattaBean(){}
-	
-	public TrattaBean(String partenza, String arrivo, int durata, float distanza) {
-		this.partenza = partenza;
-		this.arrivo = arrivo;
+	private double distanza;
+	private Set volos = new HashSet(0);
+
+	public TrattaBean() {
+	}
+
+	public TrattaBean(TrattaId id, int durata, double distanza) {
+		this.id = id;
 		this.durata = durata;
 		this.distanza = distanza;
 	}
-	public String getPartenza() {
-		return partenza;
+
+	public TrattaBean(TrattaId id, int durata, double distanza, Set volos) {
+		this.id = id;
+		this.durata = durata;
+		this.distanza = distanza;
+		this.volos = volos;
 	}
-	public void setPartenza(String partenza) {
-		this.partenza = partenza;
+
+	public TrattaId getId() {
+		return this.id;
 	}
-	public String getArrivo() {
-		return arrivo;
+
+	public void setId(TrattaId id) {
+		this.id = id;
 	}
-	public void setArrivo(String arrivo) {
-		this.arrivo = arrivo;
-	}
+
 	public int getDurata() {
-		return durata;
+		return this.durata;
 	}
+
 	public void setDurata(int durata) {
 		this.durata = durata;
 	}
-	public float getDistanza() {
-		return distanza;
+
+	public double getDistanza() {
+		return this.distanza;
 	}
-	public void setDistanza(float distanza) {
+
+	public void setDistanza(double distanza) {
 		this.distanza = distanza;
 	}
+
+	public Set getVolos() {
+		return this.volos;
+	}
+
+	public void setVolos(Set volos) {
+		this.volos = volos;
+	}
+
 }
