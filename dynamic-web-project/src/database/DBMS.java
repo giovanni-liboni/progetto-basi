@@ -37,7 +37,11 @@ public class DBMS {
 		while( itr.hasNext()) {
 			VoloBean dip = itr.next();
 			dip.getTratta();
+			dip.getTratta().getId();
 			dip.getTratta().getDurata();
+			dip.getTratta().getDistanza();
+			dip.getTratta().getId().getPartenza();
+			dip.getTratta().getId().getArrivo();
 
 			result.add(dip);
 		}
@@ -102,7 +106,8 @@ public class DBMS {
 		Query query = session.createSQLQuery(datiPasseggeroLogin).addEntity(PasseggeroBean.class);
 		query.setString("login", username);
 
-		result = (PasseggeroBean) query.list().get(0);
+		
+		result = (PasseggeroBean) query.uniqueResult();
 		tx.commit();
 		session.close();
 

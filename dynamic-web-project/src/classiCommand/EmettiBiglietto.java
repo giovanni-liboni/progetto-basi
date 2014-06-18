@@ -25,7 +25,7 @@ public class EmettiBiglietto implements Command {
 		}
 		catch( final Exception e )
 		{
-			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
+			throw new ServletException("Non Ã¨ possibile avere una connessione ad database: " + e.getMessage() );
 		}
 		
 		

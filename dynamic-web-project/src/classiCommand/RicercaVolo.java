@@ -22,7 +22,7 @@ public class RicercaVolo implements Command {
 		}
 		catch( final Exception e )
 		{
-			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
+			throw new ServletException("Non Ã¨ possibile avere una connessione ad database: " + e.getMessage() );
 		}
 
 		ArrayList< String > partenze = dbms.getPartenze();

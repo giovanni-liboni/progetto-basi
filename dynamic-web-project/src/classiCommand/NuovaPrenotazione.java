@@ -63,7 +63,7 @@ public class NuovaPrenotazione implements Command {
 		}
 		catch( final Exception e )
 		{
-			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
+			throw new ServletException("Non Ã¨ possibile avere una connessione ad database: " + e.getMessage() );
 		}
 		// INSERIRE CONTROLLI IN CASO DI INSUCCESSO E SE L'UTENTE ESISTE BISOGNA RITORNARE SULLA STESSA PAGINA CON
 		// UN MESSAGGIO DI ERRORE

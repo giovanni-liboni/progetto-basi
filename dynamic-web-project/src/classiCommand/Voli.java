@@ -50,7 +50,7 @@ public class Voli implements Command {
 			}
 			catch( final Exception e )
 			{
-				throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
+				throw new ServletException("Non Ã¨ possibile avere una connessione ad database: " + e.getMessage() );
 			}
 		
 			// DEVO CONTROLLARE CHE I VALORI SIANO GIUSTI
@@ -77,10 +77,20 @@ public class Voli implements Command {
 			if ( legalPartenza && legalArrivo && date != null && date != "" )
 			{
 				// Oggetto per l'interazione con il Database				
+				// Oggetto per l'interazione con il Database
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		        java.util.Date parsed = format.parse(date);
-		        java.sql.Date data_partenza = new java.sql.Date(parsed.getTime());
-	
+				java.util.Date parsed;
+				try {
+				parsed = format.parse(date);
+				} catch (Exception e) {
+				format = new SimpleDateFormat("MM/dd/yyyy");
+				parsed = format.parse(date);
+				}
+				
+				java.sql.Date data_partenza = new java.sql.Date(parsed.getTime());
+				
+				System.out.println("Data partenza: " + data_partenza);
+
 				bean = dbms.getRicercaVolo(data_partenza, partenza, arrivo);
 				
 				//Delego l'esecuzione della query alla classe di interazione con il DB

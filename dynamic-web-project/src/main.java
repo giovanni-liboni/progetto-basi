@@ -75,7 +75,11 @@ public class main extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		 rd.forward(request,response);
+		System.out.println("Passo il controllo alla JSP");
+		if( rd != null )
+			rd.forward(request,response);
+		else
+			System.out.println("Errore nel passare il controllo alla JSP");
 	}
 	
 //	

@@ -16,7 +16,7 @@
 	</head>
 	<body>	
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
-		<table class="voli" align="center">
+		<table class="voli" align="center" >
 			<thead>
 				<tr>
 					<th> CODICE VOLO </th>
@@ -29,12 +29,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% for ( VoloBean bean : vb ){ %>
+ 				<% for ( VoloBean bean : vb ){ %>
 				<tr>
 					<th> <a href="main?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
-					<th> <%=bean.getDatapartenza() %> </th>
+ 					<th> <%=bean.getDatapartenza() %> </th>
 					<th> <%=bean.getOrapartenza() %> </th>
-					<th> <%=bean.getTratta().getId().getPartenza() %> </th>
+ 					<th> <%=bean.getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getTratta().getId().getArrivo() %> </th>
 					 <th> <%=bean.getTratta().getDurata() %> </th>
 					<th> <%=bean.getTipoaereo() %> </th>				
@@ -43,5 +43,5 @@
 			</tbody>
 		</table>
 	</body>
-	<%} %>
+ 	<%} %> 
 </html>
