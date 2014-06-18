@@ -38,7 +38,7 @@
 					<th> <%=beanVolo.getTratta().getId().getPartenza() %> </th>
 					<th> <%=beanVolo.getTratta().getId().getArrivo() %> </th>
 					<th> <%=beanVolo.getCapienza() %></th>
-					<th> <%=beanVolo.getTratta().getDurata() %> </th>
+					<th> <%=beanVolo.getTratta().getDurata() %> </th> 
 					<th> <%=beanVolo.getTipoaereo() %> </th>				
 				</tr>
 			</tbody>

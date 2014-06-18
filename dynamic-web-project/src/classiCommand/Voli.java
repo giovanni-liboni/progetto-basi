@@ -89,8 +89,6 @@ public class Voli implements Command {
 				
 				java.sql.Date data_partenza = new java.sql.Date(parsed.getTime());
 				
-				System.out.println("Data partenza: " + data_partenza);
-
 				bean = dbms.getRicercaVolo(data_partenza, partenza, arrivo);
 				
 				//Delego l'esecuzione della query alla classe di interazione con il DB

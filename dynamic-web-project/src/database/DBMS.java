@@ -57,6 +57,7 @@ public class DBMS {
 		Transaction tx = session.beginTransaction(); 
 		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
 		res.getTratta();
+		res.getTratta().getId();
 
 		tx.commit();
 		session.close();
@@ -83,9 +84,9 @@ public class DBMS {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		result = ( PrenotazioneBean ) session.get( PrenotazioneBean.class, Integer.parseInt(id) );
-		result.getPasseggero();
 		result.getPasseggero().getDocumento();
-		result.getVolo();
+		result.getVolo().getTratta().getDurata();
+		result.getVolo().getTratta().getId().getArrivo();
 
 		tx.commit();
 		session.close();
