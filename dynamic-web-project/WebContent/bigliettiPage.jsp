@@ -21,7 +21,7 @@
 			<a href="main?ps=logout" > LOGOUT </a>
 		</div>
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
-		<% if ( vipb != null ){ %>
+		<% if ( vipb != null && vipb.size() > 0 ){ %>
 		<table class="voli" align="center">
 		<caption> PRENOTAZIONI </caption>
 			<thead>
@@ -65,9 +65,8 @@
 					<th> ORA PARTENZA</th>
 					<th> AEROPORTO DI PARTENZA </th>	
 					<th> AEROPORTO DI ARRIVO </th>	
-					<th> DOCUMENTO </th>	
-					<th> DATA RICHIESTA </th>	
-					<th> ORA RICHIESTA </th>
+					<th> PREZZO </th>	
+					<th> DATA EMISSIONE </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,7 +74,7 @@
 				<tr>
 					<th> <%=bean.getVolo().getCodicevolo() %> </th>
 					<th> <%=bean.getVolo().getDatapartenza() %> </th>
-					<th> <%=bean.getVolo().getOrapartenza() %> </th>  	
+ 					<th> <%=bean.getVolo().getOrapartenza() %> </th>  	
 					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPrezzo() %> </th>

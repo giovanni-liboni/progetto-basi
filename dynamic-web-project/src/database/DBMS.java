@@ -193,14 +193,25 @@ public class DBMS {
 	//Metodo per ricercare un singolo volo
 	public ArrayList<PrenotazioneBean> getPrenotazioni( String documento ) 
 	{
-	    String prenotazioni = "SELECT * FROM prenotazione p WHERE p.documento=(:documento)";
+	    String prenotazioni = "select * from prenotazione where documento=(:documento) and not exists ( select * from biglietto where documento=(:documento) and prenotazione.codicevolo=biglietto.codicevolo)";
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
         Query q = session.createSQLQuery(prenotazioni).addEntity(PrenotazioneBean.class);
         q.setString("documento", documento);
+        
+        List l = q.list();
                 
-        ArrayList<PrenotazioneBean> result = (ArrayList<PrenotazioneBean>) q.list();
+        ArrayList<PrenotazioneBean> result = new ArrayList<PrenotazioneBean>();
+        
+		Iterator<PrenotazioneBean> itr = l.iterator();
+
+		while( itr.hasNext()) {
+			PrenotazioneBean pb = itr.next();
+			pb.getVolo();
+			pb.getPasseggero();
+			result.add(pb);
+		}
         
         tx.commit();
         session.close();
@@ -215,9 +226,21 @@ public class DBMS {
 		Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
         Query q = session.createSQLQuery(biglietti).addEntity(BigliettoBean.class);
-        q.setString("documento", documento);
-        ArrayList<BigliettoBean> result = (ArrayList<BigliettoBean>) q.list();
+        q.setString("documento", documento);        
+        List<BigliettoBean> l = q.list();
         
+        ArrayList<BigliettoBean> result = new ArrayList<BigliettoBean>();
+        
+		Iterator<BigliettoBean> itr = l.iterator();
+
+		while( itr.hasNext()) {
+			BigliettoBean pb = itr.next();
+			pb.getVolo();
+			pb.getVolo().getDatapartenza();
+			pb.getPasseggero();
+			result.add(pb);
+		}
+		
         tx.commit();
         session.close();
 		return result;
