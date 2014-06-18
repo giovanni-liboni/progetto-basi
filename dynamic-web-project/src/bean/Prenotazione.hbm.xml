@@ -5,7 +5,7 @@
     <class name="bean.PrenotazioneBean" table="prenotazione" schema="public">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="volo" class="bean.VoloBean" lazy="false" fetch="select">
             <column name="codicevolo" length="10" not-null="true" />
