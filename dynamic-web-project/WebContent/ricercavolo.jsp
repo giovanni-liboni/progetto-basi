@@ -1,12 +1,13 @@
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
-<%@page import="util.*"%>
+<%@page import="database.*"%>
+<%@page import="bean.*"%>
 <%@page errorPage = "error.jsp" %>
 
 <html>
 <%
-	Vector<String> partenze = (Vector<String>) request.getAttribute("partenze");
-	Vector<String> arrivi = (Vector<String>) request.getAttribute("arrivi");
+	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
+	ArrayList<String> arrivi = (ArrayList<String>) request.getAttribute("arrivi");
 	PasseggeroBean username = (PasseggeroBean) request.getAttribute("pass");
 %>
 	<head>
@@ -40,7 +41,7 @@
 	<body>
 		<div class="div_form">
 					<form method="POST" class="basic-grey" action="main?" onsubmit=" return validate() ">
-					<input type="hidden" name="ps" value="ricercavolo" >
+					<input type="hidden" name="ps" value="volipage" >
 					<%  if (username != null ){ %>
 						<input type="hidden" name="pass" value="<%=username.getLogin() %>" >
 					<%} %>

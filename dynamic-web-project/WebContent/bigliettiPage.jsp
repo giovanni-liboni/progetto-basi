@@ -1,17 +1,15 @@
-<%@page import="util.InfoPrenotazioneBean"%>
-<%@page import="util.PasseggeroBean"%>
-<%@page import="util.BigliettoBean"%>
-<%@page import="util.PrenotazioneBean"%>
-<%@page import="java.util.Vector"%>
-<%@page import="util.InfoBigliettoBean"%>
+<%@page import="bean.PasseggeroBean"%>
+<%@page import="bean.BigliettoBean"%>
+<%@page import="bean.PrenotazioneBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@page errorPage = "../error.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<%
-		Vector<InfoPrenotazioneBean> vipb = ( Vector<InfoPrenotazioneBean>) request.getAttribute("prenotazioni");
-		Vector<InfoBigliettoBean> vbb = (Vector<InfoBigliettoBean>) request.getAttribute("biglietti");
+		ArrayList<PrenotazioneBean> vipb = ( ArrayList<PrenotazioneBean>) request.getAttribute("prenotazioni");
+		ArrayList<BigliettoBean> vbb = (ArrayList<BigliettoBean>) request.getAttribute("biglietti");
 		PasseggeroBean pass = ( PasseggeroBean) request.getAttribute("pass");
 	%>
 	<head>
@@ -23,7 +21,7 @@
 			<a href="main?ps=logout" > LOGOUT </a>
 		</div>
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
-		<% if ( vipb != null ){ %>
+		<% if ( vipb != null && vipb.size() > 0 ){ %>
 		<table class="voli" align="center">
 		<caption> PRENOTAZIONI </caption>
 			<thead>
@@ -39,14 +37,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			<% for ( InfoPrenotazioneBean bean : vipb ){ %>
+			<% for ( PrenotazioneBean bean : vipb ){ %>
 				<tr>
-					<th> <%=bean.getCodicevolo() %> </th>
-					<th> <%=bean.getDatapartenza() %> </th>
-					<th> <%=bean.getOrapartenza() %> </th>
-					<th> <%=bean.getPartenza() %> </th>
-					<th> <%=bean.getArrivo() %> </th>
-					<th> <%=bean.getDocumento() %> </th>
+					<th> <a href="main?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
+					<th> <%=bean.getVolo().getDatapartenza() %> </th>
+					<th> <%=bean.getVolo().getOrapartenza() %> </th>
+	 				<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
+					<th> <%=bean.getPasseggero().getDocumento() %> </th>
 					<th> <%=bean.getDatarichiesta() %> </th>	
 					<th> <%=bean.getOrarichiesta() %> </th>				
 				</tr>
@@ -67,21 +65,20 @@
 					<th> ORA PARTENZA</th>
 					<th> AEROPORTO DI PARTENZA </th>	
 					<th> AEROPORTO DI ARRIVO </th>	
-					<th> DOCUMENTO </th>	
-					<th> DATA RICHIESTA </th>	
-					<th> ORA RICHIESTA </th>
+					<th> PREZZO </th>	
+					<th> DATA EMISSIONE </th>
 				</tr>
 			</thead>
 			<tbody>
-			<% for ( InfoBigliettoBean bean : vbb ){ %>
+ 			<% for ( BigliettoBean bean : vbb ){ %>
 				<tr>
-					<th> <%=bean.getCodicevolo() %> </th>
-					<th> <%=bean.getDatapartenza() %> </th>
-					<th> <%=bean.getOrapartenza() %> </th>
-					<th> <%=bean.getPartenza() %> </th>
-					<th> <%=bean.getArrivo() %> </th>
+					<th> <%=bean.getVolo().getCodicevolo() %> </th>
+					<th> <%=bean.getVolo().getDatapartenza() %> </th>
+ 					<th> <%=bean.getVolo().getOrapartenza() %> </th>  	
+					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
+					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPrezzo() %> </th>
-					<th> <%=bean.getDataemissione() %> </th>			
+					<th> <%=bean.getDataemissione() %> </th>		
 				</tr>
 				<%} %>
 			</tbody>

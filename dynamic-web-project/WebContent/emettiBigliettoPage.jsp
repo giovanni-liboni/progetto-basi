@@ -7,17 +7,19 @@
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="../css/style.css" rel="stylesheet" type="text/css">
+		<link href="../css/style.css" rel="stylesheet" type="text/css">
+		<link href="../css/form.css" rel="stylesheet" type="text/css">
 <title>Emetti biglietto</title>
 </head>
 <body>
 	<p style="text-align: center; "> Vuoi stampare il biglietto? </p>
 	<!-- PULSANTI PER DECIDERE COSA FARE, SE SI ALLORA SI EMETTI IL BIGLIETTO E AGGIUNGE UN BIGLIETTO AL DB -->
 		<form name="form" method="POST" class="basic-grey" action="main?">
-			<input type="hidden" name="ps" value="emettiBiglietto">
-			<input type="hidden" name="emettiBiglietto" value="<%=numPrenotazione %>">
+			<input type="hidden" name="ps" value="newBiglietto">
+			<input type="hidden" name="numPrenotazione" value="<%=numPrenotazione %>">
 			<span>
-				<input type="submit" class="button" value="Prenota" />	
+				<input type="submit" class="button" name="indietro" value="Indietro" />
+				<input type="submit" class="button" name="prenota" value="Prenota" />	
 			</span>				
 		</form>
 </body>

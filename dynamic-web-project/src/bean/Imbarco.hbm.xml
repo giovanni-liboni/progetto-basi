@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="bean.ImbarcoBean" table="imbarco" schema="public">
+        <composite-id name="id" class="bean.ImbarcoId">
+            <key-property name="codicevolo" type="string">
+                <column name="codicevolo" length="10" />
+            </key-property>
+            <key-property name="documento" type="string">
+                <column name="documento" length="50" />
+            </key-property>
+            <key-property name="lettera" type="char">
+                <column name="lettera" length="1" />
+            </key-property>
+            <key-property name="numero" type="int">
+                <column name="numero" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="posto" class="bean.PostoBean" update="false" insert="false" fetch="select">
+            <column name="lettera" length="1" not-null="true" />
+            <column name="numero" not-null="true" />
+        </many-to-one>
+        <many-to-one name="biglietto" class="bean.BigliettoBean" update="false" insert="false" fetch="select">
+            <column name="codicevolo" length="10" not-null="true" />
+            <column name="documento" length="50" not-null="true" />
+        </many-to-one>
+        <property name="imbarcato" type="java.lang.Boolean">
+            <column name="imbarcato" />
+        </property>
+    </class>
+</hibernate-mapping>
