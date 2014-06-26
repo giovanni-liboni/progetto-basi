@@ -44,6 +44,7 @@ public class Voli implements Command {
 		
 		if ( partenza != null && arrivo != null && date != null )
 		{
+			System.out.println("Cerco con " + partenza + " " + arrivo + " " + date);
 			try
 			{
 				dbms = new DBMS();

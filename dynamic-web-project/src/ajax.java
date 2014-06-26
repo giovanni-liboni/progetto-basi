@@ -11,20 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import classiCommand.AjaxRicercaVolo;
-import classiCommand.AreaPersonale;
 import classiCommand.Command;
-import classiCommand.Contatti;
-import classiCommand.EmettiBiglietto;
-import classiCommand.Login;
-import classiCommand.Logout;
-import classiCommand.NewBiglietto;
-import classiCommand.NuovaPrenotazione;
-import classiCommand.Prenotazione;
-import classiCommand.RicercaVolo;
-import classiCommand.Voli;
 
-@WebServlet("/main")
-public class main extends HttpServlet {
+@WebServlet("/ajax")
+public class ajax extends HttpServlet {
     /**
 	 * 
 	 */
@@ -42,35 +32,24 @@ public class main extends HttpServlet {
 	
 	public void init( final ServletConfig config ) throws ServletException
 	{
-		commands.put("areapersonale", new AreaPersonale());
-		commands.put("ricercavolo", new RicercaVolo());
-		commands.put("volipage", new Voli());
-		commands.put("prenotazione", new Prenotazione());
-		commands.put("nuovaprenotazione", new NuovaPrenotazione());
-		commands.put("logout", new Logout());
-		commands.put("login", new Login());
-		commands.put("contatti", new Contatti());
-		commands.put("emettibiglietto", new EmettiBiglietto());
-		commands.put("newBiglietto", new NewBiglietto() );
-		
+		commands.put("ricercavolo", new AjaxRicercaVolo() );
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		RequestDispatcher rd = null;
-		String actionKey = request.getParameter("ps");
-
-		if( actionKey == null || actionKey.equals(""))
-			rd = request.getRequestDispatcher("../index.jsp");
-		else
+		String ajax = request.getParameter("ps");
+		
+		if( ajax != null )
 		{
-			System.out.println("Command : " + actionKey);
 			try {
-				command = commands.get(actionKey);
-				rd = command.execute(request, response);
-			} catch (ParseException e) {
-				e.printStackTrace();
+				commands.get(ajax).execute(request, response);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
 			}
 		}
+		else if( ajax == null || ajax.equals(""))
+			rd = request.getRequestDispatcher("../index.jsp");
+
 		if( rd != null )
 			rd.forward(request,response);
 	}

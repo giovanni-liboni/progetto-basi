@@ -1,14 +1,14 @@
 function validate() {
    
-    var  s = document.getElementsByName("partenza");
+    var  s = document.getElementsById("partenza");
     if( s==null || s=="" )
         return false;
     
-    s = document.getElementsByName("arrivo");
-    if(s==null || s=="")
+    s = document.getElementsById("arrivo");
+    if(s==null || s=="" || s=="Seleziona arrivo")
         return false;
     
-	s = document.getElementsByName("date");
+	s = document.getElementsById("date");
     if(s==null || s=="" )
         return false;
 

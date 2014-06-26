@@ -252,4 +252,40 @@ public class DBMS {
         session.close();
 		return result;
 	}
+	/*
+	 * Metodo per ricercare tutte le città di arrivo data una città di partenza
+	 */
+	public ArrayList<String> getArrivi( String partenza ) 
+	{
+		String biglietti = "SELECT DISTINCT arrivo FROM tratta t WHERE t.partenza=(:partenza) AND t.arrivo <> (:partenza) ORDER BY arrivo";
+		ArrayList<String> result = new ArrayList<String>();
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction(); 
+		Query q = session.createSQLQuery(biglietti);
+		q.setString("partenza", partenza);        
+		result  = ( ArrayList<String> ) q.list();
+
+		tx.commit();
+		session.close();
+		return result;
+	}
+	/*
+	 * Metodo per ricercare tutte le città di partenza data una città di arrivo
+	 */
+	public ArrayList<String> getPartenze ( String arrivo ) 
+	{
+		String biglietti = "SELECT DISTINCT partenza FROM tratta t WHERE t.arrivo=(:arrivo) AND t.partenza <> (:arrivo) ORDER BY partenza";
+		ArrayList<String> result = new ArrayList<String>();
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction(); 
+		Query q = session.createSQLQuery(biglietti);
+		q.setString("arrivo", arrivo);        
+		result  = ( ArrayList<String> ) q.list();
+
+		tx.commit();
+		session.close();
+		return result;
+	}
 }

@@ -34,18 +34,19 @@
 			      changeYear: true //this option for allowing user to select from year range
 			    });
 			  }
-			
-			);
+			  );
 	   </script>
 		<script>
 		$(document).ready(function() {
 		        $('#partenza').change(function(event) {
 		                var p = $("select#partenza").val();
-		                $.get('main', {
-		                        ajax : p
+		                $.get('ajax', {
+			                	'ps' : 'ricercavolo' ,
+		                        'part' : p
 		                }, function(jsonResponse) {
 		                        var select = $('#arrivo');
 		                        select.find('option').remove();
+		                        $('<option> style="display:none;" ').text("Seleziona arrivo").appendTo(select);
 		                        $.each(jsonResponse, function(key, value) {
 		                                $('<option>').val(key).text(value).appendTo(select);
 		                        });
@@ -64,7 +65,7 @@
 					<%} %>
 					<span>				 
 						  <select name="partenza" id="partenza" selected=false>
-						  <option value="" style="display:none;"></option>
+						  <option value="" style="display:none;">Seleziona partenza</option>
 						  <%for( String str : partenze){ %>
 						  	 <option value="<%=str %>"> <%=str %> </option>
 						  <%} %>
@@ -72,11 +73,7 @@
 					</span>
 					<span>				 
 						  <select name="arrivo" id="arrivo" >
-						  	<option> Select arrivo</option>
-<!-- 						  <option value="" style="display:none;"></option>
- --><%-- 						  <%for( String str : arrivi){ %>
-						  	 <option value="<%=str %>"> <%=str %> </option>
-						  <%} %> --%>
+						  	<option> Seleziona arrivo</option>
 						  </select>
 					</span>				
 					<span>

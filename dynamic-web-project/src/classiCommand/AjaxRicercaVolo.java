@@ -2,6 +2,7 @@ package classiCommand;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class AjaxRicercaVolo implements Command {
 			HttpServletResponse response) throws ParseException,
 			ServletException, IOException {
 
-        String partenza = request.getParameter("ajax");
+        
                 
         Map<String, String> map = new LinkedHashMap<String, String>();
         String json = null;
@@ -33,22 +34,24 @@ public class AjaxRicercaVolo implements Command {
 		}
 		catch( final Exception e )
 		{
-			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
+			throw new ServletException("Connection to dababase not possible: " + e.getMessage() );
 		}
 		
-        if (partenza.equals("Verona")) {
-        	map.put("1", "");
-        	map.put("2", "Cristiano Ronaldo");
-        	map.put("3", "David Beckham");
-        	map.put("4", "Diego Maradona");
-        } else if (partenza.equals("Monaco")) {
-        	map.put("1", "Sourav Ganguly");
-        	map.put("2", "Sachin Tendulkar");
-        	map.put("3", "Lance Klusener");
-        	map.put("4", "Michael Bevan");
-        } else if (partenza.equals("Select arrivo")) {
-        	map.put("1", "Select Player");
-        }
+		String partenza = request.getParameter("part");
+		
+		if( partenza != null)
+		{
+			ArrayList<String> s = dbms.getArrivi(partenza);
+						
+			for( String str : s )
+			{
+				map.put( str,str);
+			}
+		}
+		else if ( partenza == null )
+		{
+			map.put("", "Seleziona partenza" );
+		}
 
         json = new Gson().toJson(map);            
         response.setContentType("application/json");

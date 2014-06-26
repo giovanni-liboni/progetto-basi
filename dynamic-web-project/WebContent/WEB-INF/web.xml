@@ -36,6 +36,16 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/servlet/main</url-pattern>
     </servlet-mapping>
+    
+        <servlet>
+        <servlet-name>ajax</servlet-name>
+        <servlet-class>ajax</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ajax</servlet-name>
+        <url-pattern>/servlet/ajax</url-pattern>
+    </servlet-mapping>
 
 <!-- JSPC servlet mappings end -->
 
