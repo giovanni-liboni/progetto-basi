@@ -37,7 +37,24 @@
 			
 			);
 	   </script>
-	</head>
+		<script>
+		$(document).ready(function() {
+		        $('#partenza').change(function(event) {
+		                var p = $("select#partenza").val();
+		                $.get('main', {
+		                        ajax : p
+		                }, function(jsonResponse) {
+		                        var select = $('#arrivo');
+		                        select.find('option').remove();
+		                        $.each(jsonResponse, function(key, value) {
+		                                $('<option>').val(key).text(value).appendTo(select);
+		                        });
+		                });
+		        });
+		});
+		</script>
+
+</head>
 	<body>
 		<div class="div_form">
 					<form method="POST" class="basic-grey" action="main?" onsubmit=" return validate() ">
@@ -46,7 +63,7 @@
 						<input type="hidden" name="pass" value="<%=username.getLogin() %>" >
 					<%} %>
 					<span>				 
-						  <select name="partenza" selected=false>
+						  <select name="partenza" id="partenza" selected=false>
 						  <option value="" style="display:none;"></option>
 						  <%for( String str : partenze){ %>
 						  	 <option value="<%=str %>"> <%=str %> </option>
@@ -54,11 +71,12 @@
 						  </select>
 					</span>
 					<span>				 
-						  <select name="arrivo" >
-						  <option value="" style="display:none;"></option>
-						  <%for( String str : arrivi){ %>
+						  <select name="arrivo" id="arrivo" >
+						  	<option> Select arrivo</option>
+<!-- 						  <option value="" style="display:none;"></option>
+ --><%-- 						  <%for( String str : arrivi){ %>
 						  	 <option value="<%=str %>"> <%=str %> </option>
-						  <%} %>
+						  <%} %> --%>
 						  </select>
 					</span>				
 					<span>

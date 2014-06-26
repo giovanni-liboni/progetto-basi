@@ -9,6 +9,7 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/dblab01</property>
         <property name="hibernate.connection.username">userlab01</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.release_mode">after_statement</property> 
         
         <mapping resource="bean/Posto.hbm.xml"/>
         <mapping resource="bean/Volo.hbm.xml"/>
@@ -17,5 +18,7 @@
         <mapping resource="bean/Imbarco.hbm.xml"/>
         <mapping resource="bean/Biglietto.hbm.xml"/>
         <mapping resource="bean/Passeggero.hbm.xml"/>
+        
+        
     </session-factory>
 </hibernate-configuration>

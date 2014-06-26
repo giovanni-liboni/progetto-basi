@@ -36,6 +36,7 @@ public class DBMS {
 
 		while( itr.hasNext()) {
 			VoloBean dip = itr.next();
+			
 			dip.getTratta();
 			dip.getTratta().getId();
 			dip.getTratta().getDurata();
