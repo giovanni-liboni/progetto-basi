@@ -18,6 +18,7 @@ TO RUN:
 8. Go to localhost:8080/Name-of-eclipse-project/servlet/main
 
 TODO:
-
-- Hibernate
-- Pagina per creare un biglietto a partire dalla prenotazione
+- Verificare javascript ( non si attiva )
+- Scrivere commenti
+- Scrivere relazione
+- Disegnare ER
