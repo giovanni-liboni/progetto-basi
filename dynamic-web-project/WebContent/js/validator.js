@@ -1,18 +1,22 @@
 function validate() {
    
-    var  s = document.getElementsById("partenza");
-    if( s==null || s=="" )
+    var  s = document.modulo.partenza.value;
+    if( s==null || s=="" || s=="Seleziona partenza")
         return false;
     
-    s = document.getElementsById("arrivo");
+    s = document.modulo.arrivo.value;
     if(s==null || s=="" || s=="Seleziona arrivo")
-        return false;
+        {
+    		document.modulo.arrivo.focus;
+    		return false;
+        }
+//    s = document.modulo.date.value;
     
-	s = document.getElementsById("date");
+	s = document.modulo.getElementsById("date");
     if(s==null || s=="" )
         return false;
-
-        return true;
+        
+    return true;
 }
 function validate_prenotazione_new(){
     var  s = document.forms["form"]["nome"].value;
