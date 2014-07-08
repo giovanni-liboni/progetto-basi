@@ -22,3 +22,15 @@ TODO:
 - Scrivere commenti
 - Scrivere relazione
 - Disegnare ER
+- Risolvere problema input data
+- Togliere "Seleziona arrivo" una vota selezionata la casella
+- Da rifare il "datepicker"
+- Database multimediale
+- Hibernate con multimedia
+- Possibilta' caricare foto profilo del passeggero
+- Impostare metodi per caricare/scaricare foto dal db
+- Possibilita' imbarco
+- Finire sezione contatti ( da leggere sulla consegna )
+
+DOPO TUTTO:
+- Aggiungere mappa
