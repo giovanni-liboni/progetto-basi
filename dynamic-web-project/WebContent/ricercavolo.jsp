@@ -39,22 +39,29 @@
 			  );
 	   </script>
 		<script>
-		$(document).ready(function() {
-		        $('#partenza').change(function(event) {
-		                var p = $("select#partenza").val();
-		                $.get('ajax', {
-			                	'ps' : 'ricercavolo' ,
-		                        'part' : p
-		                }, function(jsonResponse) {
-		                        var select = $('#arrivo');
-		                        select.find('option').remove();
-		                        $('<option> style="display:none;" ').text("Seleziona arrivo").appendTo(select);
-		                        $.each(jsonResponse, function(key, value) {
-		                                $('<option>').val(key).text(value).appendTo(select);
-		                        });
-		                });
-		        });
-		});
+			$(document).ready(
+					function() {
+						$('#partenza').change(
+								function(event) {
+									var p = $("select#partenza").val();
+										$.get('ajax', {
+											'ps' : 'ricercavolo',
+											'ispartenza' : 'true',
+											'part' : p
+										}, function(jsonResponse) {
+											var select = $('#arrivo');
+										select.empty();
+	 									select.append( $('<option>')
+	 		 										.css("display", "none")
+													.text("Seleziona arrivo") );
+											$.each(jsonResponse, function(key,
+													value) {
+												select.append( $('<option>').val(key).text(value)
+														 );
+											});
+										});
+								});
+					});
 		</script>
 
 </head>
@@ -74,8 +81,8 @@
 						  </select>
 					</span>
 					<span>				 
-						  <select name="arrivo" id="arrivo" >
-						  	<option> Seleziona arrivo</option>
+						  <select name="arrivo" id="arrivo" selected=false>
+						  <option value="" style="display:none;">Seleziona arrivo</option>
 						  </select>
 					</span>				
 					<span>

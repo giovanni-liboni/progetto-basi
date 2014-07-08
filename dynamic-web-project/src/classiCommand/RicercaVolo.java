@@ -31,7 +31,7 @@ public class RicercaVolo implements Command {
 
 		request.setAttribute("partenze", partenze);
 		request.setAttribute("arrivi", arrivi);
+		
 		return request.getRequestDispatcher("../ricercavolo.jsp");
 	}
-
 }

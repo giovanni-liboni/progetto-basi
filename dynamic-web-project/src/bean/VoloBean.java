@@ -104,5 +104,18 @@ public class VoloBean implements java.io.Serializable {
 	public void setBigliettos(Set bigliettos) {
 		this.bigliettos = bigliettos;
 	}
+	@Override
+	public int hashCode() {
+		return this.codicevolo.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if( !(obj instanceof VoloBean) ) 
+			return false;
+		if( ((VoloBean) obj).getTratta().equals(this.getTratta()) && ((VoloBean) obj).getCodicevolo().equals(this.getCodicevolo()))
+			return true;
+		
+		return false;
+	}
 
 }

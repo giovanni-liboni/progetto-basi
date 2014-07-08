@@ -18,11 +18,9 @@ TO RUN:
 8. Go to localhost:8080/Name-of-eclipse-project/servlet/main
 
 TODO:
-- Verificare javascript ( non si attiva )
 - Scrivere commenti
 - Scrivere relazione
 - Disegnare ER
-- Risolvere problema input data
 - Togliere "Seleziona arrivo" una vota selezionata la casella
 - Database multimediale
 - Hibernate con multimedia
@@ -30,6 +28,7 @@ TODO:
 - Impostare metodi per caricare/scaricare foto dal db
 - Possibilita' imbarco
 - Finire sezione contatti ( da leggere sulla consegna )
+- Creare una nuova modalità per ricercare i biglietti
 
 DOPO TUTTO:
 - Aggiungere mappa

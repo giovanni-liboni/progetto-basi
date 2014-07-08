@@ -192,7 +192,7 @@ public class DBMS {
 		p.setPasseggero(passeggero);
 		p.setVolo(volo);
 
-		session.save(p);
+		System.out.println( session.save(p) );
 		session.getTransaction().commit();
 		session.close();
 		return status;
@@ -200,7 +200,7 @@ public class DBMS {
 	//Metodo per ricercare un singolo volo
 	public ArrayList<PrenotazioneBean> getPrenotazioni( String documento ) 
 	{
-	    String prenotazioni = "select * from prenotazione where documento=(:documento) and not exists ( select * from biglietto where documento=(:documento) and prenotazione.codicevolo=biglietto.codicevolo)";
+	    String prenotazioni = "select * from prenotazione where documento=(:documento) and not exists ( select * from biglietto where prenotazione.id=biglietto.id_prenotazione)";
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
@@ -253,7 +253,7 @@ public class DBMS {
 		return result;
 	}
 	/*
-	 * Metodo per ricercare tutte le città di arrivo data una città di partenza
+	 * Metodo per ricercare tutte le cittï¿½ di arrivo data una cittï¿½ di partenza
 	 */
 	public ArrayList<String> getArrivi( String partenza ) 
 	{
@@ -271,7 +271,7 @@ public class DBMS {
 		return result;
 	}
 	/*
-	 * Metodo per ricercare tutte le città di partenza data una città di arrivo
+	 * Metodo per ricercare tutte le cittï¿½ di partenza data una cittï¿½ di arrivo
 	 */
 	public ArrayList<String> getPartenze ( String arrivo ) 
 	{

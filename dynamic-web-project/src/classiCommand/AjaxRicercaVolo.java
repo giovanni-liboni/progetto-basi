@@ -38,19 +38,19 @@ public class AjaxRicercaVolo implements Command {
 		}
 		
 		String partenza = request.getParameter("part");
+		String isPartenza = request.getParameter("ispartenza");
 		
-		if( partenza != null)
+		if( isPartenza != null && isPartenza.compareTo("true") == 0 )
 		{
-			ArrayList<String> s = dbms.getArrivi(partenza);
-						
-			for( String str : s )
+			if( partenza != null)
 			{
-				map.put( str,str);
+				ArrayList<String> s = dbms.getArrivi(partenza);
+							
+				for( String str : s )
+				{
+					map.put( str,str);
+				}
 			}
-		}
-		else if ( partenza == null )
-		{
-			map.put("", "Seleziona partenza" );
 		}
 
         json = new Gson().toJson(map);            

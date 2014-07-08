@@ -63,7 +63,6 @@ public class main extends HttpServlet {
 			rd = request.getRequestDispatcher("../index.jsp");
 		else
 		{
-			System.out.println("Command : " + actionKey);
 			try {
 				command = commands.get(actionKey);
 				rd = command.execute(request, response);

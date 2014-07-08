@@ -10,9 +10,9 @@ function validate() {
     		document.modulo.arrivo.focus;
     		return false;
         }
-//    s = document.modulo.date.value;
+    s = document.modulo.date.value;
     
-	s = document.modulo.getElementsById("date");
+//	s = document.modulo.getElementById("date");
     if(s==null || s=="" )
         return false;
         

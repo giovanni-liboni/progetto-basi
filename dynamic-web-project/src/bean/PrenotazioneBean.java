@@ -79,5 +79,18 @@ public class PrenotazioneBean implements java.io.Serializable {
 	public void setBigliettos(Set bigliettos) {
 		this.bigliettos = bigliettos;
 	}
+	@Override
+	public int hashCode() {
+		return volo.hashCode()+passeggero.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if( !(obj instanceof PrenotazioneBean) ) 
+			return false;
+		if( ((PrenotazioneBean) obj).getPasseggero().equals(this.getPasseggero()) && ((PrenotazioneBean) obj).getVolo().equals(this.getVolo()))
+			return true;
+		
+		return false;
+	}
 
 }

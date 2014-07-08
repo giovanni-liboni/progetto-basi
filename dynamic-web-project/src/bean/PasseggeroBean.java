@@ -133,5 +133,17 @@ public class PasseggeroBean implements java.io.Serializable {
 	public void setBigliettos(Set bigliettos) {
 		this.bigliettos = bigliettos;
 	}
-
+	@Override
+	public int hashCode() {
+		return nome.hashCode()+cognome.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if( !(obj instanceof PasseggeroBean) ) 
+			return false;
+		if( ((PasseggeroBean) obj).getDocumento().equals(this.getDocumento()))
+			return true;
+		
+		return false;
+	}
 }
