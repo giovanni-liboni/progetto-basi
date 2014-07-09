@@ -36,7 +36,7 @@
 					<th> <%=bean.getOrapartenza() %> </th>
  					<th> <%=bean.getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getTratta().getId().getArrivo() %> </th>
-					 <th> <%=bean.getTratta().getDurata() %> </th>
+					<th> <%=bean.getTratta().getDurata() %> </th>
 					<th> <%=bean.getTipoaereo() %> </th>				
 				</tr>
 				<%} %>

@@ -1,0 +1,6 @@
+page-schema login unique(
+	datiLogin: form(
+			Username: text;
+			Password: password;
+			Login   : submit
+			

@@ -54,6 +54,8 @@ public class DBMS {
 	//Metodo per ricercare un singolo volo
 	public VoloBean getVolo( String codicevolo ) 
 	{	
+		// select * from volo where codicevolo=(:codicevolo)
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
@@ -100,6 +102,7 @@ public class DBMS {
 		String datiPasseggeroLogin = " SELECT * " +
 				" FROM passeggero " +
 				" WHERE passeggero.login=(:login)";
+		
 		PasseggeroBean result = null;
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -123,9 +126,11 @@ public class DBMS {
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
+		
 		ArrayList<String> result = ( ArrayList<String> ) session.createSQLQuery(q).list();
 		tx.commit();
 		session.close();
+		
 		return result;
 	}
 	public ArrayList<String> getArrivi() 

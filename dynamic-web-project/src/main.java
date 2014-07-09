@@ -51,7 +51,7 @@ public class main extends HttpServlet {
 		commands.put("login", new Login());
 		commands.put("contatti", new Contatti());
 		commands.put("emettibiglietto", new EmettiBiglietto());
-		commands.put("newBiglietto", new NewBiglietto() );
+		commands.put("newbiglietto", new NewBiglietto() );
 		
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

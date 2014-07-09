@@ -18,7 +18,6 @@
         <mapping resource="bean/Imbarco.hbm.xml"/>
         <mapping resource="bean/Biglietto.hbm.xml"/>
         <mapping resource="bean/Passeggero.hbm.xml"/>
-        
-        
+             
     </session-factory>
 </hibernate-configuration>

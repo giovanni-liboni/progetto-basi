@@ -65,7 +65,7 @@ CREATE TABLE biglietto(
 				ON UPDATE CASCADE
 				ON DELETE CASCADE,
 	dataemissione	DATE NOT NULL,
-	prezzo		FLOAT NOT NULL,
+	prezzo		NUMERIC(10,2) NOT NULL,
 
 	PRIMARY KEY( codicevolo, documento ),
 	UNIQUE ( codicevolo, documento, id )
