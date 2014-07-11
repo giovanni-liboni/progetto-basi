@@ -48,7 +48,6 @@
 	position: absolute;
 	width: 100%;
 	height: 78%;
-/* 	top: 20%; */
 	overflow:hidden;
 	overflow-y: hidden;
 }
@@ -57,4 +56,9 @@
 	bottom: 0px;
 	width: 100%;
 	height: 4%;
+}
+.chisiamo div{
+    color: #888;
+    font: normal 45px Georgia, "Times New Roman", Times, serif;
+    line-height: 2em;
 }

@@ -57,16 +57,16 @@
 				<input type="hidden" name="ps" value="nuovaprenotazione" >
 				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">
 				<span>
-					<input type="text" name="nome" <%if ( beanPass == null ){ %>placeholder="Nome" <%}else{ %> value="<%=beanPass.getNome() %>"<%}%>>	
+					<input type="text" name="nome" <%if ( beanPass == null ){ %>placeholder="Nome" <%}else{ %> value="<%=beanPass.getNome() %>" readonly<%}%>>	
 				</span>
 				<span>
-					<input type="text" name="cognome" <%if ( beanPass == null ){ %>placeholder="Cognome" <%}else{ %> value="<%=beanPass.getCognome() %>"<%}%>>	
+					<input type="text" name="cognome" <%if ( beanPass == null ){ %>placeholder="Cognome" <%}else{ %> value="<%=beanPass.getCognome() %>"readonly<%}%>>	
 				</span>	
 				<span>
-					<input type="text" name="nazionalita" <%if ( beanPass == null ){ %>placeholder="Nazione" <%}else{ %> value="<%=beanPass.getNazionalita() %>"<%}%>>
+					<input type="text" name="nazionalita" <%if ( beanPass == null ){ %>placeholder="Nazione" <%}else{ %> value="<%=beanPass.getNazionalita() %>"readonly<%}%>>
 				</span>
 				<span>
-					<input type="text" name="documento" <%if ( beanPass == null ){ %>placeholder="Documento" <%}else{ %> value="<%=beanPass.getDocumento() %>"<%}%>>
+					<input type="text" name="documento" <%if ( beanPass == null ){ %>placeholder="Documento" <%}else{ %> value="<%=beanPass.getDocumento() %>"readonly<%}%>>
 				</span>
 				<%  if ( beanPass == null ) {%>
 				<!--	ONLY FOR NEW USERS	-->

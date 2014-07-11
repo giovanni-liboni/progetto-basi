@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.PasseggeroBean;
 import bean.VoloBean;
 import database.DBMS;
 
@@ -22,7 +21,6 @@ public class Voli implements Command {
 	private DBMS dbms;
 	private RequestDispatcher rd = null;
 	private ArrayList< VoloBean > bean = null;
-	private PasseggeroBean beanPasseggero = null;
 	
 	@Override
 	public RequestDispatcher execute(HttpServletRequest request,

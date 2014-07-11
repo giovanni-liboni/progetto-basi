@@ -15,7 +15,12 @@ import bean.VoloBean;
  * sulla base di dati.
  */
 public class DBMS {
-	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
+	/**
+	 * @param date Data di partenza del volo
+	 * @param partenza Aeroporto di partenza del volo
+	 * @param arrivo Aeroporto di arrivo del volo
+	 * @return Lista dei voli che soddisfano i requisiti della ricerca
+	 */
 	public ArrayList<VoloBean> getRicercaVolo( Date date, String partenza, String arrivo ) 
 	{
 		ArrayList<VoloBean> result = new ArrayList<VoloBean>();
@@ -51,7 +56,11 @@ public class DBMS {
 		session.close();
 		return result;
 	}
-	//Metodo per ricercare un singolo volo
+	/**
+	 * Ricerca un singolo volo a partire dal suo codice
+	 * @param codicevolo Codice del volo da trovare
+	 * @return Bean del volo, altrimenti ritorna null se non esiste
+	 */
 	public VoloBean getVolo( String codicevolo ) 
 	{	
 		// select * from volo where codicevolo=(:codicevolo)
@@ -66,7 +75,11 @@ public class DBMS {
 		session.close();
 		return res;
 	}
-	//Metodo per ricercare un singolo volo
+	/**
+	 * Ricerca il passeggero a partire dal suo documento 
+	 * @param documento Il documento del passeggero da ricercare
+	 * @return Bean del passeggero, null se non esiste all'interno del DB
+	 */
 	public PasseggeroBean getPasseggero( String documento ) 
 	{
 		PasseggeroBean result = null;
@@ -80,6 +93,11 @@ public class DBMS {
 
 		return result;
 	}
+	/**
+	 * Ricerca una specifica prenotazione a partire dal suo id
+	 * @param id Id da ricercare
+	 * @return Bean della prenotazione, se non esiste ritorna null
+	 */
 	public PrenotazioneBean getPrenotazione( String id ) 
 	{
 		PrenotazioneBean result = null;
@@ -96,7 +114,11 @@ public class DBMS {
 
 		return result;
 	}
-	//Metodo per ricercare un singolo volo
+	/**
+	 * Restituisce il passeggero a partire dal suo username
+	 * @param username Username da ricercare
+	 * @return Bean del passeggero trovato, se non esiste ritorna null
+	 */
 	public PasseggeroBean getPasseggeroFromLogin( String username ) 
 	{
 		String datiPasseggeroLogin = " SELECT * " +
@@ -118,8 +140,10 @@ public class DBMS {
 
 		return result;
 	}
-
-	//Metodo per ricercare i voli a partire dalla data di partenza, dal luogo di partenza e dal luogo di arrivo
+	/**
+	 * Ritorna tutte le città di partenza all'interno del database
+	 * @return Liste delle città di partenza
+	 */
 	public ArrayList<String> getPartenze() 
 	{
 		String q = " SELECT DISTINCT partenza FROM tratta;";
@@ -133,6 +157,10 @@ public class DBMS {
 		
 		return result;
 	}
+	/**
+	 * Ritorna tutti gli aeroporti di arrivo presenti nella base di dati
+	 * @return Lista degli aeroporti di arrivo
+	 */
 	public ArrayList<String> getArrivi() 
 	{
 		String q = " SELECT DISTINCT arrivo FROM tratta;";
@@ -144,6 +172,12 @@ public class DBMS {
 		session.close();
 		return result;
 	}
+	/**
+	 * Controlla se esiste un utente con l'username specificato
+	 * @param username Username del passeggero da ricercare
+	 * @param password Password
+	 * @return True se esiste una corrispondenza, false altrimenti.
+	 */
 	public boolean isLogin( String username, String password ) 
 	{
 		boolean login = false;	
@@ -152,6 +186,17 @@ public class DBMS {
 			login=true;
 		return login;
 	}
+	/**
+	 * Inserisce un nuovo passeggero nel DB
+	 * @param nome Nome 
+	 * @param cognome Cognome
+	 * @param nazione Nazione
+	 * @param documento Numero del documento
+	 * @param username Username
+	 * @param password Password
+	 * @param tessera Boolean per sapere se ha la tessera o meno
+	 * @return True se l'operazione è andata a buon fine, false altrimenti.
+	 */
 	public boolean newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
 	{
 		boolean status = true;
@@ -170,6 +215,14 @@ public class DBMS {
 		session.getTransaction().commit();
 		return status;
 	}
+	/**
+	 * Aggiunge un nuovo biglietto al DB
+	 * @param passeggero Bean del passeggero
+	 * @param volo Bean del volo
+	 * @param prenotazione Bean della prenotazione 
+	 * @param prezzo prezzo Costo del biglietto
+	 * @return True se l'operazione è andata a buon fine, false altrimenti.
+	 */
 	public boolean newBiglietto( PasseggeroBean passeggero, VoloBean volo, PrenotazioneBean prenotazione, float prezzo )
 	{
 		boolean status = true;
@@ -188,6 +241,36 @@ public class DBMS {
 		session.close();
 		return status;
 	}
+	/**
+	 * Aggiunge un nuovo biglietto al DB
+	 * @param prenotazione Bean della prenotazione
+	 * @param prezzo Costo del biglietto
+	 * @return True se l'operazione è andata a buon fine, false altrimenti.
+	 */
+	public boolean newBiglietto( PrenotazioneBean prenotazione, float prezzo )
+	{
+		boolean status = true;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+
+		BigliettoBean b = new BigliettoBean();
+		b.setPasseggero(prenotazione.getPasseggero());
+		b.setVolo(prenotazione.getVolo());
+		b.setPrenotazione(prenotazione);
+		b.setPrezzo(prezzo);
+		b.setId(new BigliettoId(prenotazione.getVolo().getCodicevolo(), prenotazione.getPasseggero().getDocumento()));
+
+		session.save(b);
+		session.getTransaction().commit();
+		session.close();
+		return status;
+	}
+	/**
+	 * Aggiunge una nuova prenotazione al DB
+	 * @param volo Bean del volo
+	 * @param passeggero Bean del passeggero
+	 * @return Ritorna true se è stata salvata correttamente
+	 */
 	public boolean newPrenotazione(VoloBean volo , PasseggeroBean passeggero )
 	{
 		boolean status = true;
@@ -202,7 +285,11 @@ public class DBMS {
 		session.close();
 		return status;
 	}
-	//Metodo per ricercare un singolo volo
+	/**
+	 * Prenotazioni di un passeggero
+	 * @param documento Documento del passeggero
+	 * @return Lista delle prenotazioni associate al passeggero
+	 */
 	public ArrayList<PrenotazioneBean> getPrenotazioni( String documento ) 
 	{
 	    String prenotazioni = "select * from prenotazione where documento=(:documento) and not exists ( select * from biglietto where prenotazione.id=biglietto.id_prenotazione)";
@@ -230,7 +317,11 @@ public class DBMS {
         
 		return result;
 	}
-	//Metodo per ricercare un singolo volo
+	/**
+	 * Ricerca i biglietti associati ad un passeggero
+	 * @param documento Identificatico del passaggero
+	 * @return Lista dei biglietti associati al passeggero
+	 */
 	public ArrayList<BigliettoBean> getBiglietti( String documento ) 
 	{
 	    String biglietti = "SELECT * FROM biglietto b WHERE b.documento=(:documento)";
@@ -257,12 +348,15 @@ public class DBMS {
         session.close();
 		return result;
 	}
-	/*
-	 * Metodo per ricercare tutte le citt� di arrivo data una citt� di partenza
+	/**
+	 * Metodo per ricercare le città di arrivo a partire da una città di partenza
+	 * @param partenza Città di partenza
+	 * @return Lista delle città di arrivo
 	 */
 	public ArrayList<String> getArrivi( String partenza ) 
 	{
-		String biglietti = "SELECT DISTINCT arrivo FROM tratta t WHERE t.partenza=(:partenza) AND t.arrivo <> (:partenza) ORDER BY arrivo";
+		String biglietti = "SELECT DISTINCT arrivo FROM tratta t WHERE t.partenza=(:partenza) ORDER BY arrivo";
+
 		ArrayList<String> result = new ArrayList<String>();
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -275,18 +369,21 @@ public class DBMS {
 		session.close();
 		return result;
 	}
-	/*
-	 * Metodo per ricercare tutte le citt� di partenza data una citt� di arrivo
+	/**
+	 * Metodo per ricercare le città di partenza a partire da una città di arrivo
+	 * @param arrivo Città di arrivo
+	 * @return Lista delle città di partenza
 	 */
 	public ArrayList<String> getPartenze ( String arrivo ) 
 	{
-		String biglietti = "SELECT DISTINCT partenza FROM tratta t WHERE t.arrivo=(:arrivo) AND t.partenza <> (:arrivo) ORDER BY partenza";
+		String biglietti = "SELECT DISTINCT partenza FROM tratta t WHERE t.arrivo=(:arrivo) ORDER BY partenza";
 		ArrayList<String> result = new ArrayList<String>();
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		Query q = session.createSQLQuery(biglietti);
-		q.setString("arrivo", arrivo);        
+		q.setString("arrivo", arrivo);    
+		
 		result  = ( ArrayList<String> ) q.list();
 
 		tx.commit();

@@ -27,10 +27,7 @@ public class RicercaVolo implements Command {
 
 		ArrayList< String > partenze = dbms.getPartenze();
 
-		ArrayList< String > arrivi = dbms.getArrivi();
-
 		request.setAttribute("partenze", partenze);
-		request.setAttribute("arrivi", arrivi);
 		
 		return request.getRequestDispatcher("../ricercavolo.jsp");
 	}

@@ -48,7 +48,7 @@ CREATE TABLE prenotazione(
 	datarichiesta	DATE,
 	orarichiesta	TIME,
 	PRIMARY KEY( id ),
-	UNIQUE ( id )
+	UNIQUE ( codicevolo, documento )
 );
 CREATE TABLE biglietto(
 	id		SERIAL,
@@ -122,3 +122,9 @@ END' LANGUAGE 'plpgsql';
 
 CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON BIGLIETTO
 FOR EACH ROW EXECUTE PROCEDURE update_time_biglietto();
+
+CREATE OR REPLACE FUNCTION update_dati_tessera()
+RETURNS TRIGGER AS '
+BEGIN
+
+END' LANGUAGE 'plpgsql';

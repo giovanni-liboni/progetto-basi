@@ -17,10 +17,12 @@
 		<form name="form" method="POST" class="basic-grey" action="main?">
 			<input type="hidden" name="ps" value="newbiglietto">
 			<input type="hidden" name="numPrenotazione" value="<%=numPrenotazione %>">
-			<span>
-				<input type="submit" class="button" name="indietro" value="Indietro" />
+			<span style="text-align: center;">
 				<input type="submit" class="button" name="prenota" value="Prenota" />	
 			</span>				
+		</form>
+		<form action="main?">
+			<input type="submit" class="button" name="indietro" value="Indietro" />
 		</form>
 </body>
 </html>

@@ -32,3 +32,9 @@ TODO:
 
 DOPO TUTTO:
 - Aggiungere mappa
+
+Giovanni:
+- Controllo prenotazioni duplicate
+- Tessera
+- Finire parte contatti ( aggiungere e centrare le informazioni )
+- Aggiungere nell'area personale le informazioni del passeggero

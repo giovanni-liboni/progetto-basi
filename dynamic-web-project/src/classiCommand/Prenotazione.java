@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import database.DBMS;
 import bean.PasseggeroBean;
-import bean.TrattaBean;
 import bean.VoloBean;
 
 public class Prenotazione implements Command {
