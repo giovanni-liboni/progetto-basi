@@ -2,10 +2,12 @@ package database;
 /**        DBMS.java        */
 import java.sql.Date;
 import java.util.*;
+
 import org.hibernate.*;
+
+import util.HibernateUtil;
 import bean.BigliettoBean;
 import bean.BigliettoId;
-import bean.HibernateUtil;
 import bean.PasseggeroBean;
 import bean.PrenotazioneBean;
 import bean.VoloBean;

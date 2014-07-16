@@ -1,0 +1,41 @@
+page schema bigliettiPage(
+
+	nome: text;
+	cognome: text;
+	nazione: text;
+	documento: text;
+	username: text;
+	password: password;
+	elenco_prenotazioni:list_of(
+		codiceVolo: link( codiceVolo: text, *emettiBigliettoPage );
+		dataPartenza: date;
+		oraPartenza: time;
+		aeroportoDiPartenza: text;
+		aeroportoDiArrivo: text;
+		documento: text;
+		dataRichiesta: date;
+		oraRichiesta: time;
+	)
+	elenco_biglietti:list_of(
+		codiceVolo: text;
+		dataPartenza: date;
+		oraPartenza: time;
+		aeroportoDiPartenza: text;
+		aeroportoDiArrivo: text;
+		prezzo: text;
+		dataEmissione: date;
+	)
+)
+DB to page schema bigliettiPage
+parameter(Username)
+(
+	bigliettiPage.elenco_prenotazioni: SELECT
+					    FROM
+					    WHERE
+	bigliettiPage.elenco_biglietti: SELECT
+					 FROM
+					 WHERE
+	nome, cognome, nazione, documento, username, password: SELECT
+								 FROM
+								 WHERE
+)

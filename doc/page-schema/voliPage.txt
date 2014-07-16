@@ -1,0 +1,18 @@
+page-schema login (
+	elencoVoli: list_of(
+		codiceVolo: link( codiceVolo: text, *prenotazionePage );
+		data: date;
+		ora: time;
+		partenza: text;
+		arrivo: text;
+		durataVolo: text;
+		aereo: text;
+	)
+)
+DB to page schema login 
+parameter( codiceVolo )
+(
+      elencoVoli: SELECT
+		   FROM
+		   WHERE ;
+)

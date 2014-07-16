@@ -3,6 +3,8 @@
 <%@page import="bean.PrenotazioneBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page errorPage = "../error.jsp" %>
+<%@page isErrorPage="false"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,8 +19,28 @@
 	</head>
 	<body>	
 		<div align=right>
-			<a href="main?ps=logout" > LOGOUT </a>
+			<a href="?ps=logout" > LOGOUT </a>
 		</div>
+			<div id="sidebar">
+				<div class="box2">
+					<div class="title">
+						<h2>dati personali</h2>
+					</div>
+					<ul>
+						<li>Nome: <strong> Pino</strong>
+						<li>Cognome: <strong> dasdasd s </strong>
+						<li>Nazionalit&agrave: <strong> dasdasdasd</strong>
+						<li>Documento: <strong> dsadas d dsa</strong>
+						<li>Username: <strong> dasd das asd </strong>
+						<li>Password: <strong> dsad asdasdas</strong>
+				</div>
+			</div>
+		
+		
+		
+		
+		
+		
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
 		<% if ( vipb != null && vipb.size() > 0 ){ %>
 		<table class="voli" align="center">
@@ -38,7 +60,7 @@
 			<tbody>
 			<% for ( PrenotazioneBean bean : vipb ){ %>
 				<tr>
-					<th> <a href="main?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
+					<th> <a href="?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
 					<th> <%=bean.getVolo().getDatapartenza() %> </th>
 					<th> <%=bean.getVolo().getOrapartenza() %> </th>
 	 				<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>

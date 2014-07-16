@@ -30,7 +30,7 @@ CREATE TABLE passeggero(
 	documento	VARCHAR(50) NOT NULL,
 
 	numvoli		INTEGER DEFAULT 0,
-	miglia		INTEGER DEFAULT 0,
+	miglia		FLOAT DEFAULT 0,
 	tessera		BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY( documento ),
 	UNIQUE ( login, documento )
@@ -122,9 +122,3 @@ END' LANGUAGE 'plpgsql';
 
 CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON BIGLIETTO
 FOR EACH ROW EXECUTE PROCEDURE update_time_biglietto();
-
-CREATE OR REPLACE FUNCTION update_dati_tessera()
-RETURNS TRIGGER AS '
-BEGIN
-
-END' LANGUAGE 'plpgsql';

@@ -3,7 +3,7 @@
 <%@page import="database.*"%>
 <%@page import="bean.*"%>
 <%@page errorPage = "../error.jsp" %>
-
+<%@page isErrorPage="false"%>
 <html>
 <%
 	ArrayList < VoloBean > vb = ( ArrayList < VoloBean > ) request.getAttribute("voli");
@@ -31,7 +31,7 @@
 			<tbody>
  				<% for ( VoloBean bean : vb ){ %>
 				<tr>
-					<th> <a href="main?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
+					<th> <a href="?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
  					<th> <%=bean.getDatapartenza() %> </th>
 					<th> <%=bean.getOrapartenza() %> </th>
  					<th> <%=bean.getTratta().getId().getPartenza() %> </th>

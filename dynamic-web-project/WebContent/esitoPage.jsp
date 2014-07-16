@@ -2,6 +2,7 @@
 <%@page import="java.util.*"%>
 <%@page import="database.*"%>
 <%@page errorPage = "../error.jsp" %>
+<%@page isErrorPage="false"%>
 <html>
 <%
 	String status = ( String ) request.getAttribute("status");

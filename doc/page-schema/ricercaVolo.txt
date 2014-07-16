@@ -1,0 +1,14 @@
+page-schema ricercaVolo (
+	ricerca: form(
+			partenza: text;
+			arrivo: text;
+			dataPartenza: date;
+			Login   : submit(*voliPage);
+		  );
+)
+DB from page schema ricercaVolo 
+(
+	form: SELECT
+	      FROM
+	      WHERE
+)

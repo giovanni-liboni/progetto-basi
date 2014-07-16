@@ -1,3 +1,5 @@
+
+// Vedere cambiare la pagina o meno
 page-schema login (
 	datiLogin: form(
 			Username: text;
@@ -19,4 +21,4 @@ DB from page schema login
 		  FROM passeggero 
 		  WHERE login=?Username? AND password=?Password?;) 
 	      then *bigliettiPage else *login end; 		
-)			
+)

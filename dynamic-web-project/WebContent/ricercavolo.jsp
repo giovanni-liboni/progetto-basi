@@ -3,7 +3,7 @@
 <%@page import="database.*"%>
 <%@page import="bean.*"%>
 <%@page errorPage = "error.jsp" %>
-
+<%@page isErrorPage="false"%>
 <html>
 <%
 	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
@@ -67,7 +67,7 @@
 </head>
 	<body>
 		<div class="div_form">
-					<form name="modulo" method="POST" action="main?" class="basic-grey" onsubmit=" return validate() ">
+					<form name="modulo" method="POST" action="?" class="basic-grey" onsubmit=" return validate() ">
 					<input type="hidden" name="ps" value="volipage" >
 					<%  if (username != null ){ %>
 						<input type="hidden" name="pass" value="<%=username.getLogin() %>" >

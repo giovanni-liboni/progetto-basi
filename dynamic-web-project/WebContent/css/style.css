@@ -1,11 +1,11 @@
 .div_title{
-	height: 9%;
+	height: 10%;
 	text-align: center;
 }
  body{
-	background: #EEE;
-	text-decoration: none; 
-}
+ 	background: #EEE;
+ 	text-decoration:none;
+ }
 .text_title{
 	margin-top: 20px;
 	font-family: Verdana, sans-serif;
@@ -40,9 +40,8 @@
 	font-family: Georgia, "Times New Roman", Times, serif;
 	padding-left: 33px;
 	padding-right: 33px;
-	line-height: 40px;
-	display: block;
-	font-size: 25px;
+ 	line-height: 180%;
+	font-size: 200%;
 }
 .central_iframe{
 	position: absolute;
