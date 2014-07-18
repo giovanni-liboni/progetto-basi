@@ -1,6 +1,8 @@
 package database;
 /**        DBMS.java        */
 import java.math.BigDecimal;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.*;
 
@@ -182,12 +184,13 @@ public class DBMS {
 	 * @param username Username del passeggero da ricercare
 	 * @param password Password
 	 * @return True se esiste una corrispondenza, false altrimenti.
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public boolean isLogin( String username, String password ) 
+	public boolean isLogin( String username, String password ) throws NoSuchAlgorithmException 
 	{
 		boolean login = false;	
 		PasseggeroBean res = getPasseggeroFromLogin(username);
-		if( res!=null && res.getPassword().compareTo(password) == 0 )
+		if( res!=null && res.getPassword().compareTo(sha1( password ) ) == 0 )
 			login=true;
 		return login;
 	}
@@ -212,7 +215,11 @@ public class DBMS {
 		p.setCognome(cognome);
 		p.setNazionalita(nazione);
 		p.setLogin(username);
-		p.setPassword(password);
+		try {
+			p.setPassword( sha1(password) );
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		p.setDocumento(documento);
 		p.setTessera(tessera);
 
@@ -277,18 +284,26 @@ public class DBMS {
 	 * @return Ritorna true se è stata salvata correttamente
 	 */
 	public boolean newPrenotazione(VoloBean volo , PasseggeroBean passeggero )
-	{
-		boolean status = true;
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		PrenotazioneBean p = new PrenotazioneBean();
-		p.setPasseggero(passeggero);
-		p.setVolo(volo);
-
-		System.out.println( session.save(p) );
-		session.getTransaction().commit();
-		session.close();
-		return status;
+	{	
+		/*
+		 * Controllo che non esista una prenotazione per lo stesso volo e lo stesso passeggero
+		 * Se ritorna true allora esiste una prenotazione per lo stesso volo e lo stesso passeggero
+		 */
+		if ( checkPrenotazione( passeggero,volo ) )
+		{
+			return false;
+		}
+		else{
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			PrenotazioneBean p = new PrenotazioneBean();
+			p.setPasseggero(passeggero);
+			p.setVolo(volo);
+			session.save(p);
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		}
 	}
 	/**
 	 * Prenotazioni di un passeggero
@@ -404,7 +419,7 @@ public class DBMS {
         Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
         q.setString("username", username);
         
-		Iterator<PrenotazioneBean> itr = q.list().iterator();
+		Iterator<PasseggeroBean> itr = q.list().iterator();
 
 		if ( itr.hasNext() )
 			result = false;
@@ -414,4 +429,54 @@ public class DBMS {
         
 		return result;
 	}
+	public boolean checkDocumento( String documento ) 
+	{
+	    String checkusername = "select * from passeggero where documento=(:documento)";
+	    boolean result = true;
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction(); 
+        Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
+        q.setString("documento", documento);
+        
+		Iterator<PasseggeroBean> itr = q.list().iterator();
+
+		if ( itr.hasNext() )
+			result = false;
+        
+        tx.commit();
+        session.close();
+        
+		return result;
+	}
+	public boolean checkPrenotazione( PasseggeroBean pass, VoloBean volo ) 
+	{
+	    String checkusername = "select * from prenotazione where documento=(:documento) AND codicevolo=(:codicevolo)";
+	    boolean result = false;
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction(); 
+        Query q = session.createSQLQuery(checkusername).addEntity(PrenotazioneBean.class);
+        q.setString("documento", pass.getDocumento() );
+        q.setString("codicevolo", volo.getCodicevolo());
+        
+	
+		if ( q.list().size() > 0 )
+			result = true;
+        
+        tx.commit();
+        session.close();
+        
+		return result;
+	}
+    static String sha1(String input) throws NoSuchAlgorithmException {
+        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+        byte[] result = mDigest.digest(input.getBytes());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < result.length; i++) {
+            sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+        }
+         
+        return sb.toString();
+    }
 }

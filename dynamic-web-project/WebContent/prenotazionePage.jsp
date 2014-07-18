@@ -25,14 +25,13 @@
 		<script>
 			$(document).ready(
 				function(){
-					$('#username').keyup(function () {
+					$('#username').bind("keyup change",function () {
 						var t = this;
 							$.get('ajax', {
 								'ps' : 'checkusername',
 								'username' : t.value
 							}, function(j) {
 								$.each(j, function(key,	value) {
-									console.log(t.value.length);
 									if( value == 'false' || t.value.length < 3 ){
 										$('#username').css('border', '2px solid #d66');
 										$('#submit').attr("disabled", true);
@@ -48,7 +47,28 @@
 								);
 							});
 					})
-				$('#nome').keyup(function() {
+					$('#documento').bind("keyup change",function () {
+						var t = this;
+							$.get('ajax', {
+								'ps' : 'checkdocumento',
+								'documento' : t.value
+							}, function(j) {
+								$.each(j, function(key,	value) {
+									if( value == 'false' || t.value.length < 6 ){
+										$('#documento').css('border', '2px solid #d66');
+										$('#submit').attr("disabled", true);
+										$('#documento').focus();
+									}
+									else {
+										$('#submit').attr("disabled", false);
+										$('#documento').removeAttr('border');
+										$('#documento').css('border', '2px solid #01DF3A');
+									}
+									}
+								);
+							});
+					})
+				$('#nome').bind("keyup change",function() {
 						var t = this;
 						var letters = /^[A-Za-z]+$/;  
 					    if(t.value.match(letters))
@@ -56,7 +76,7 @@
 					    else
 					    	$('#nome').css('border', '2px solid #d66');
 					})
-				$('#cognome').keyup(function() {
+				$('#cognome').bind("keyup change",function() {
 						var t = this;
 						var letters = /^[A-Za-z]+$/;  
 					    if(t.value.match(letters))
@@ -67,8 +87,7 @@
 				$('#nazionalita').change(function() {
 					    $('#nazionalita').css('border', '2px solid #01DF3A');
 					})
-				$('#password').keyup(function() {
-					console.log('Passowrd');
+				$('#password').bind("keyup change",function() {
 					var t = this;
 					var letters = /^[A-Za-z0-9]+$/; 
 
@@ -379,7 +398,7 @@
 					</select>
 				</span>
 				<span>
-					<input type="text" name="documento" <%if ( beanPass == null ){ %>placeholder="Documento" <%}else{ %> value="<%=beanPass.getDocumento() %>"readonly<%}%>>
+					<input type="text" name="documento" id="documento" <%if ( beanPass == null ){ %>placeholder="Documento" <%}else{ %> value="<%=beanPass.getDocumento() %>"readonly<%}%>>
 				</span>
 				<%  if ( beanPass == null ) {%>
 				<!--	ONLY FOR NEW USERS	-->

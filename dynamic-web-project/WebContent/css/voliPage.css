@@ -28,22 +28,65 @@ a{
 	color: #371C1C;
 	text-decoration: none;
 }
-/*********************************************************************************/
-/* Sidebar                                                                       */
-/*********************************************************************************/
+/* sizes */
+#main-wrap > div { min-height: 450px; }
 
-	#sidebar
-	{
-		float: left;
-		width: 345px;
-	}
+#header,
+#footer {
+    min-height: 40px;
+}
 
-	#sidebar .title h2
-	{
-		font-size: 1.6em;
-	}
+.info { min-height: 80px; }
 
-	#sidebar .box1
-	{
-		margin-bottom: 3em;
-	}
+/* layout */
+#main-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+}
+
+#sidebar {
+    float: left;
+    width: 30%;
+    margin:0 auto;
+	width:750px;
+}
+
+#content-wrap {
+    float: right;
+    width: 70%;
+}
+
+#info-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+}
+
+.info {
+    width: 50%;
+    float: left;
+}
+
+/*
+ * Sezione per la formattazione delle informazioni
+ */
+ul {
+    width:50px;
+    list-style-type:none;
+    list-style-position:outside;
+    margin:0px;
+    padding:0px;
+    font-family:Georgia, Times, "Times New Roman", serif;
+}
+li{
+    padding:12px; 
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+label {
+    width:50px;
+    margin-top: 3px;
+    display:inline-block;
+    float:left;
+    padding:3px;
+    font-weight:bold;
+}

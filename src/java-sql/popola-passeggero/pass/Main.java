@@ -22,9 +22,7 @@ public class Main {
 			String cognome = cognome_.getCognome().toUpperCase().replaceAll("'", "''");
 			String nazione = nazione_.getNazione().toUpperCase();
 			String documento= rs.nextString();
-			
-			// System.out.println(nome + " " + cognome + " " + nazione + " : " + documento);
-			
+						
 			wtf.writeToFile("INSERT INTO passeggero( nome, cognome,nazionalita,documento,login,password) VALUES ('"+nome+"','"+cognome+"','"+nazione+"','"+documento+"','"+nome+cognome+"','"+sha1(nome)+"');" );
 		}
 

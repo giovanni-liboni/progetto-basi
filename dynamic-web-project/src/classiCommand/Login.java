@@ -1,5 +1,6 @@
 package classiCommand;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,7 @@ public class Login implements Command {
 			HttpServletResponse response) throws ServletException {
 		String username = null;
 		String password = null;
-//		SEZIONE LOGIN
+
 		if ( request.getParameter("username") != null )
 		{
 			username = request.getParameter("username");
@@ -45,28 +46,32 @@ public class Login implements Command {
 		
 		if( username != null && password != null )
 		{
-			if( dbms.isLogin(username, password))
-			{
-				
-				// PASSO 
-				PasseggeroBean beanPasseggero = dbms.getPasseggeroFromLogin(username);
-				request.setAttribute("pass", beanPasseggero);
-				
-				// APRO UNA NUOVA SESSIONE
-				HttpSession session = request.getSession();
-				
-				ArrayList<PrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
-				ArrayList<BigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
-				
-				session.setAttribute("pass", beanPasseggero);
-				request.setAttribute("prenotazioni", vipb);
-				request.setAttribute("biglietti", vbb);
-				
-				rd = request.getRequestDispatcher("../bigliettiPage.jsp");
-			}
-			else
-			{
-				rd = request.getRequestDispatcher("../errorPage.jsp");
+			try {
+				if( dbms.isLogin(username, password))
+				{
+					
+					// PASSO 
+					PasseggeroBean beanPasseggero = dbms.getPasseggeroFromLogin(username);
+					request.setAttribute("pass", beanPasseggero);
+					
+					// APRO UNA NUOVA SESSIONE
+					HttpSession session = request.getSession();
+					
+					ArrayList<PrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+					ArrayList<BigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
+					
+					session.setAttribute("pass", beanPasseggero);
+					request.setAttribute("prenotazioni", vipb);
+					request.setAttribute("biglietti", vbb);
+					
+					rd = request.getRequestDispatcher("../bigliettiPage.jsp");
+				}
+				else
+				{
+					rd = request.getRequestDispatcher("../errorPage.jsp");
+				}
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
 			}
 		}
 		return rd;

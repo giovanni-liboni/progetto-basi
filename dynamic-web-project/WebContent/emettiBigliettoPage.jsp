@@ -13,16 +13,17 @@
 <title>Emetti biglietto</title>
 </head>
 <body>
-	<p style="text-align: center; "> Vuoi stampare il biglietto? </p>
+	<h2 style="text-align: center; "> Vuoi stampare il biglietto? </h2>
 	<!-- PULSANTI PER DECIDERE COSA FARE, SE SI ALLORA SI EMETTI IL BIGLIETTO E AGGIUNGE UN BIGLIETTO AL DB -->
-		<form name="form" method="POST" class="basic-grey" action="main?">
+		<form name="form" method="POST" class="basic-grey" action="?">
 			<input type="hidden" name="ps" value="newbiglietto">
 			<input type="hidden" name="numPrenotazione" value="<%=numPrenotazione %>">
 			<span style="text-align: center;">
-				<input type="submit" class="button" name="prenota" value="Prenota" />	
+				<input type="submit" class="button" name="prenota" value="Emetti biglietto" />	
 			</span>				
 		</form>
-		<form action="main?">
+		<form action="?" class="basic-grey">
+			<input type="hidden" name="ps" value="areapersonale">
 			<input type="submit" class="button" name="indietro" value="Indietro" />
 		</form>
 </body>

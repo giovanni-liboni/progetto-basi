@@ -2,6 +2,7 @@ package classiCommand;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -14,16 +15,14 @@ import com.google.gson.Gson;
 
 import database.DBMS;
 
-public class AjaxCheckUsername implements Command {
+public class AjaxCheckDocumento implements Command{
 
 	private DBMS dbms = null ;
 	@Override
 	public RequestDispatcher execute(HttpServletRequest request,
 			HttpServletResponse response) throws ParseException,
 			ServletException, IOException {
-
-        
-                
+ 
         Map<String, String> map = new LinkedHashMap<String, String>();
         String json = null;
         
@@ -36,9 +35,9 @@ public class AjaxCheckUsername implements Command {
 			throw new ServletException("Connection to dababase not possible: " + e.getMessage() );
 		}
 		
-		String username = request.getParameter("username");
+		String documento = request.getParameter("documento");
 		
-		if ( dbms.checkUsername(username) )
+		if ( dbms.checkDocumento(documento) )
 			map.put("isFree", "true");
 		else
 			map.put("isFree", "false");

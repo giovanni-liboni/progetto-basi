@@ -13,11 +13,14 @@
 		<link href="../css/prenotazionePage.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<% if ( status == null ){ %>
-		<p style="text-align: center; "> Prenotazione non effettuata! </p>
+	<div style="text-align: center; ">
+		<% if ( status.equals("fail") ){ %>
+		<h2> Prenotazione gi&agrave effettuata! </h2>
 		<% } else { %>
-		<p style="text-align: center; "> Prenotazione effettuata con successo! </p>
+		<h2> Prenotazione effettuata con successo! </h2>
 		<%} %>
+	
+	</div>
 	</body>
 	<!--	INSERIRE BUTTON PER TORNARE ALLA HOME PAGE -->
 </html>

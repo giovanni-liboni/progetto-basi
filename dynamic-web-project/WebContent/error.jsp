@@ -8,7 +8,7 @@ www.w3.org/TR/REC-html40/loose.dtd">
     <body>
         <h2>Pagina per il trattamento dell'errore:</h2>
         
-        <h3>È stata generata la seguente eccezione:</h3>
+        <h3>&Egrave stata generata la seguente eccezione:</h3>
         <pre>
         <%= exception %>
         </pre>

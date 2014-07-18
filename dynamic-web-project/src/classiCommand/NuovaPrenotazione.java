@@ -75,11 +75,13 @@ public class NuovaPrenotazione implements Command {
 		VoloBean beanVolo = dbms.getVolo(codicevolo);
 		PasseggeroBean beanPasseggero = dbms.getPasseggero(documento);
 		
-			if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
+		if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
 				request.setAttribute("status", "ok");
-			
-			
-			return request.getRequestDispatcher("../esitoPage.jsp");
+		
+		else
+			request.setAttribute("status", "fail");
+		
+		return request.getRequestDispatcher("../esitoPage.jsp");
 	}
 
 }

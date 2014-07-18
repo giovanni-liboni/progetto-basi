@@ -21,23 +21,33 @@
 		<div align=right>
 			<a href="?ps=logout" > LOGOUT </a>
 		</div>
-		
+		<div id="main-wrap" >
 		<% if( pass != null){ %>
 			<div id="sidebar">
-				<div class="box2">
-					<div class="title">
-						<h2>dati personali</h2>
-					</div>
-					<ul>
- 						<li>Nome: <strong> <%=pass.getNome() %></strong>
-						<li>Cognome: <strong> <%=pass.getCognome() %> </strong>
-						<li>Nazionalit&agrave: <strong> <%=pass.getNazionalita() %></strong>
-						<li>Documento: <strong> <%=pass.getDocumento() %></strong>
-						<li>Username: <strong> <%=pass.getLogin() %> </strong>
-				</div>
+				<h2>Dati personali</h2>
+				<ul style="list-style-type:none; list-style-position:outside; font-family:Georgia, Times, Times New Roman, serif;">
+ 						<li> 
+ 							<label > NOME </label> 	<p> <%=pass.getNome() %></p>
+ 						</li>
+						<li> 
+							<label>COGNOME</label> <p> <%=pass.getCognome() %> </p>
+							</li>
+						<li> 
+							<label>NAZIONALIT&Agrave</label> <p> <%=pass.getNazionalita() %></p>
+						</li>
+						<li> 
+							<label>DOCUMENTO</label> <p> <%=pass.getDocumento() %></p>
+						</li>
+						<li> 
+							<label>USERNAME</label> <p> <%=pass.getLogin() %> </p>
+						</li>
+				</ul>
 			</div>
 		<%} %>
 		
+		<div id="content-wrap"> 
+			<div id="info-wrap">
+				<div class="info">
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
 		<% if ( vipb != null && vipb.size() > 0 ){ %>
 		<table class="voli" align="center">
@@ -72,6 +82,9 @@
 		<%} else {%>
 		<h4>Non ci sono prenotazioni ! </h4>
 		<%} %>
+		</div>
+		</div>
+		 
 		<br>
 		<% if ( vbb != null && vbb.size() > 0){ %>
 		<table class="voli" align="center">
@@ -104,5 +117,7 @@
 		<%} else {%>
 			<h4>Non ci sono biglietti !</h4>
 		<%} %>
+		</div>
+	</div>
 	</body>
 </html>
