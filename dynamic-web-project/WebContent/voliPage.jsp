@@ -32,12 +32,12 @@
  				<% for ( VoloBean bean : vb ){ %>
 				<tr>
 					<th> <a href="?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
- 					<th> <%=bean.getDatapartenza() %> </th>
+  					<th> <%=bean.getDatapartenza() %> </th>
 					<th> <%=bean.getOrapartenza() %> </th>
  					<th> <%=bean.getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getTratta().getDurata() %> </th>
-					<th> <%=bean.getTipoaereo() %> </th>				
+					<th> <%=bean.getTipoaereo() %> </th>			
 				</tr>
 				<%} %>
 			</tbody>

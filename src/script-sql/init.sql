@@ -33,7 +33,7 @@ CREATE TABLE passeggero(
 	miglia		FLOAT DEFAULT 0,
 	tessera		BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY( documento ),
-	UNIQUE ( login, documento )
+	UNIQUE ( login )
 );
 CREATE TABLE prenotazione(
 	id		SERIAL,
@@ -122,3 +122,12 @@ END' LANGUAGE 'plpgsql';
 
 CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON BIGLIETTO
 FOR EACH ROW EXECUTE PROCEDURE update_time_biglietto();
+
+CREATE OR REPLACE FUNCTION update_numvoli()
+RETURNS TRIGGER AS '
+BEGIN 
+	IF NEW.dataemissione IS NULL THEN
+		NEW.dataemissione := current_date;
+	END IF;
+	RETURN NEW;
+END' LANGUAGE 'plpgsql';

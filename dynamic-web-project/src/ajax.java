@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classiCommand.AjaxCheckUsername;
 import classiCommand.AjaxRicercaVolo;
 import classiCommand.Command;
 
@@ -33,6 +34,7 @@ public class ajax extends HttpServlet {
 	public void init( final ServletConfig config ) throws ServletException
 	{
 		commands.put("ricercavolo", new AjaxRicercaVolo() );
+		commands.put("checkusername", new AjaxCheckUsername() );
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{

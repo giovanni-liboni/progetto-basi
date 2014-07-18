@@ -36,7 +36,7 @@ public class Prenotazione implements Command {
 			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
 		}
 		
-		VoloBean beanVolo = dbms.getVolo(codiceVolo);			
+		VoloBean beanVolo = dbms.getVolo(codiceVolo);
 
 		//Delego l'esecuzione della query alla classe di interazione con il DB			
 		//Aggiungo il ArrayList come attributo della richiesta HTTP
@@ -46,6 +46,7 @@ public class Prenotazione implements Command {
 		PasseggeroBean beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
 		
 		request.setAttribute("pass",beanPasseggero);
+
 		//Preparo il Dispatcher 
 		RequestDispatcher rd = request.getRequestDispatcher("../prenotazionePage.jsp");
 		

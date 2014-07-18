@@ -69,9 +69,10 @@
 		<div class="div_form">
 					<form name="modulo" method="POST" action="?" class="basic-grey" onsubmit=" return validate() ">
 					<input type="hidden" name="ps" value="volipage" >
-					<%  if (username != null ){ %>
+					<!-- Non serve più...da cancellare ? -->
+<%-- 					<%  if (username != null ){ %>
 						<input type="hidden" name="pass" value="<%=username.getLogin() %>" >
-					<%} %>
+					<%} %> --%>
 					<span>				 
 						  <select name="partenza" id="partenza" selected=false>
 						  <option value="" style="display:none;">Seleziona partenza</option>

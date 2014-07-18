@@ -1,17 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-lug-2014 18.50.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="bean.PrenotazioneBean" table="prenotazione" schema="public">
         <id name="id" type="int">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="volo" class="bean.VoloBean" fetch="select">
+        <many-to-one name="volo" class="bean.VoloBean" lazy="false" fetch="select">
             <column name="codicevolo" length="10" not-null="true" />
         </many-to-one>
-        <many-to-one name="passeggero" class="bean.PasseggeroBean" fetch="select">
+        <many-to-one name="passeggero" class="bean.PasseggeroBean" lazy="false" fetch="select">
             <column name="documento" length="50" not-null="true" />
         </many-to-one>
         <property name="datarichiesta" type="date">

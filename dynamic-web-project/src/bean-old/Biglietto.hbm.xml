@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-lug-2014 18.50.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="bean.BigliettoBean" table="biglietto" schema="public">
         <composite-id name="id" class="bean.BigliettoId">
@@ -25,10 +24,10 @@
             <column name="id" not-null="true" />
         </property>
         <property name="dataemissione" type="date">
-            <column name="dataemissione" />
+            <column name="dataemissione" length="13" />
         </property>
-        <property name="prezzo" type="big_decimal">
-            <column name="prezzo" precision="10" not-null="true" />
+        <property name="prezzo" type="double">
+            <column name="prezzo" precision="17" scale="17" not-null="true" />
         </property>
         <set name="imbarcos" table="imbarco" inverse="true" lazy="true" fetch="select">
             <key>

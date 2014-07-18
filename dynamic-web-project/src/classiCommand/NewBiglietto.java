@@ -1,6 +1,7 @@
 package classiCommand;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
@@ -36,10 +37,11 @@ public class NewBiglietto implements Command {
 		if ( !numPrenotazione.equals("") )
 		{
 			preno = dbms.getPrenotazione(numPrenotazione);		
-			dbms.newBiglietto( preno, (float) (preno.getVolo().getTratta().getDurata() * 0.123) );
+			dbms.newBiglietto( preno, new BigDecimal (preno.getVolo().getTratta().getDurata() * 0.123) );
 			
 			request.setAttribute("biglietti", dbms.getBiglietti(preno.getPasseggero().getDocumento()));
 			request.setAttribute("prenotazioni", dbms.getPrenotazioni(preno.getPasseggero().getDocumento()));
+			request.setAttribute("pass", dbms.getPasseggero( preno.getPasseggero().getDocumento() ));
 		}
 		return request.getRequestDispatcher("../bigliettiPage.jsp");
 	}

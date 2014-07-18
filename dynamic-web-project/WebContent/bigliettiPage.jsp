@@ -21,25 +21,22 @@
 		<div align=right>
 			<a href="?ps=logout" > LOGOUT </a>
 		</div>
+		
+		<% if( pass != null){ %>
 			<div id="sidebar">
 				<div class="box2">
 					<div class="title">
 						<h2>dati personali</h2>
 					</div>
 					<ul>
-						<li>Nome: <strong> Pino</strong>
-						<li>Cognome: <strong> dasdasd s </strong>
-						<li>Nazionalit&agrave: <strong> dasdasdasd</strong>
-						<li>Documento: <strong> dsadas d dsa</strong>
-						<li>Username: <strong> dasd das asd </strong>
-						<li>Password: <strong> dsad asdasdas</strong>
+ 						<li>Nome: <strong> <%=pass.getNome() %></strong>
+						<li>Cognome: <strong> <%=pass.getCognome() %> </strong>
+						<li>Nazionalit&agrave: <strong> <%=pass.getNazionalita() %></strong>
+						<li>Documento: <strong> <%=pass.getDocumento() %></strong>
+						<li>Username: <strong> <%=pass.getLogin() %> </strong>
 				</div>
 			</div>
-		
-		
-		
-		
-		
+		<%} %>
 		
 		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
 		<% if ( vipb != null && vipb.size() > 0 ){ %>
@@ -61,19 +58,19 @@
 			<% for ( PrenotazioneBean bean : vipb ){ %>
 				<tr>
 					<th> <a href="?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
-					<th> <%=bean.getVolo().getDatapartenza() %> </th>
+  					<th> <%=bean.getVolo().getDatapartenza() %> </th>
 					<th> <%=bean.getVolo().getOrapartenza() %> </th>
 	 				<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPasseggero().getDocumento() %> </th>
 					<th> <%=bean.getDatarichiesta() %> </th>	
-					<th> <%=bean.getOrarichiesta() %> </th>				
+					<th> <%=bean.getOrarichiesta() %> </th>			
 				</tr>
 				<%} %>
 			</tbody>
 		</table>
 		<%} else {%>
-		Non ci sono prenotazioni !
+		<h4>Non ci sono prenotazioni ! </h4>
 		<%} %>
 		<br>
 		<% if ( vbb != null && vbb.size() > 0){ %>
@@ -93,19 +90,19 @@
 			<tbody>
  			<% for ( BigliettoBean bean : vbb ){ %>
 				<tr>
-					<th> <%=bean.getVolo().getCodicevolo() %> </th>
+  					<th> <%=bean.getVolo().getCodicevolo() %> </th>
 					<th> <%=bean.getVolo().getDatapartenza() %> </th>
  					<th> <%=bean.getVolo().getOrapartenza() %> </th>  	
 					<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
 					<th> <%=bean.getVolo().getTratta().getId().getArrivo() %> </th>
 					<th> <%=bean.getPrezzo() %> </th>
-					<th> <%=bean.getDataemissione() %> </th>		
+					<th> <%=bean.getDataemissione() %> </th>
 				</tr>
 				<%} %>
 			</tbody>
 		</table>
 		<%} else {%>
-			Non ci sono biglietti !
+			<h4>Non ci sono biglietti !</h4>
 		<%} %>
 	</body>
 </html>

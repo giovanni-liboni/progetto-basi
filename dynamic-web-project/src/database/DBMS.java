@@ -1,5 +1,6 @@
 package database;
 /**        DBMS.java        */
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.*;
 
@@ -70,8 +71,8 @@ public class DBMS {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
-		res.getTratta();
-		res.getTratta().getId();
+		res.getTratta().getDurata();
+		res.getTratta().getId().getArrivo();
 
 		tx.commit();
 		session.close();
@@ -89,6 +90,7 @@ public class DBMS {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		result = ( PasseggeroBean ) session.get( PasseggeroBean.class, documento );
+		result.getCognome();
 
 		tx.commit();
 		session.close();
@@ -110,6 +112,7 @@ public class DBMS {
 		result.getPasseggero().getDocumento();
 		result.getVolo().getTratta().getDurata();
 		result.getVolo().getTratta().getId().getArrivo();
+		result.getVolo().getOrapartenza();
 
 		tx.commit();
 		session.close();
@@ -225,7 +228,7 @@ public class DBMS {
 	 * @param prezzo prezzo Costo del biglietto
 	 * @return True se l'operazione è andata a buon fine, false altrimenti.
 	 */
-	public boolean newBiglietto( PasseggeroBean passeggero, VoloBean volo, PrenotazioneBean prenotazione, float prezzo )
+	public boolean newBiglietto( PasseggeroBean passeggero, VoloBean volo, PrenotazioneBean prenotazione, BigDecimal prezzo )
 	{
 		boolean status = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -249,7 +252,7 @@ public class DBMS {
 	 * @param prezzo Costo del biglietto
 	 * @return True se l'operazione è andata a buon fine, false altrimenti.
 	 */
-	public boolean newBiglietto( PrenotazioneBean prenotazione, float prezzo )
+	public boolean newBiglietto( PrenotazioneBean prenotazione, BigDecimal prezzo )
 	{
 		boolean status = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -309,8 +312,7 @@ public class DBMS {
 
 		while( itr.hasNext()) {
 			PrenotazioneBean pb = itr.next();
-			pb.getVolo();
-			pb.getPasseggero();
+			pb.getVolo().getTratta().getId().getPartenza();
 			result.add(pb);
 		}
         
@@ -340,9 +342,8 @@ public class DBMS {
 
 		while( itr.hasNext()) {
 			BigliettoBean pb = itr.next();
-			pb.getVolo();
 			pb.getVolo().getDatapartenza();
-			pb.getPasseggero();
+			pb.getVolo().getTratta().getId().getPartenza();
 			result.add(pb);
 		}
 		
@@ -390,6 +391,27 @@ public class DBMS {
 
 		tx.commit();
 		session.close();
+		return result;
+	}
+	
+	public boolean checkUsername( String username ) 
+	{
+	    String checkusername = "select * from passeggero where login=(:username)";
+	    boolean result = true;
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction(); 
+        Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
+        q.setString("username", username);
+        
+		Iterator<PrenotazioneBean> itr = q.list().iterator();
+
+		if ( itr.hasNext() )
+			result = false;
+        
+        tx.commit();
+        session.close();
+        
 		return result;
 	}
 }
