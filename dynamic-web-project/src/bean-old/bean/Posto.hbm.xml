@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-lug-2014 1.15.13 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 17-lug-2014 18.50.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="bean.Posto" table="posto" schema="public">
+    <class name="bean.PostoBean" table="posto" schema="public">
         <composite-id name="id" class="bean.PostoId">
             <key-property name="lettera" type="char">
                 <column name="lettera" length="1" />
@@ -17,7 +17,7 @@
                 <column name="lettera" length="1" not-null="true" />
                 <column name="numero" not-null="true" />
             </key>
-            <one-to-many class="bean.Imbarco" />
+            <one-to-many class="bean.ImbarcoBean" />
         </set>
     </class>
 </hibernate-mapping>

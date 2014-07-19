@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 20-lug-2014 1.15.13 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 17-lug-2014 18.50.19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="bean.Tratta" table="tratta" schema="public">
+    <class name="bean.TrattaBean" table="tratta" schema="public">
         <composite-id name="id" class="bean.TrattaId">
             <key-property name="partenza" type="string">
                 <column name="partenza" length="100" />
@@ -23,7 +23,7 @@
                 <column name="partenza" length="100" not-null="true" />
                 <column name="arrivo" length="100" not-null="true" />
             </key>
-            <one-to-many class="bean.Volo" />
+            <one-to-many class="bean.VoloBean" />
         </set>
     </class>
 </hibernate-mapping>
