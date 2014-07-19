@@ -74,17 +74,22 @@ public class Main {
 	        Map.Entry pairs = (Map.Entry)it_.next();
 	        nomeAereo.add((String) pairs.getKey());
 	    }
-	    for ( int m = 0; m < 12 ; m++)
-	    {
-	    	MESE = m;
-			WriteToFile wtf = new WriteToFile(MESE);
+			WriteToFile wtf = null ;
 		    
+	    for( int w = 2010; w <= 2014; w++ )
+	        {
+	        	
+	        	
+	        	for( int k = 0; k < 12 ; k++ )
+	        	{
+	        	
+			
 	//		String user = "giovanni";
 	//		String passwd = "ciaociao1992";
 	//		String url = "jdbc:postgresql://192.168.0.10/dbuser01";
 			String user = "userlab01";
 			String passwd = "uno8M";
-			String url = "jdbc:postgresql://dbserver.scienze.univr.it/dblab01";
+			String url = "jdbc:postgresql://localhost/dblab01";
 			Connection con = null;
 			Statement stmt = null;
 			ResultSet rs = null;
@@ -118,58 +123,59 @@ public class Main {
 					String arrivo = rs.getString("arrivo");
 					
 			        GregorianCalendar gc = new GregorianCalendar();
-			        gc.set(gc.YEAR, 2014);
-			        gc.set(gc.MONTH, MESE );
-			        
-					for ( int i = 1; i <= gc.getActualMaximum(gc.DAY_OF_MONTH) ; i++ )
-					{
-	
-				        gc.set(gc.DAY_OF_MONTH, i);
-				        Date date = new Date(gc.getTimeInMillis());
-				        
-						for ( int j = 0; j < randBetween(MIN_VOLI_GIORNALIERI, MAX_VOLI_GIORNALIERI) ; j++ )
-						{
-							if ( distanza < 1600 )
+			        gc.set(gc.YEAR, w);
+			    	gc.set(gc.MONTH, k );
+
+							for ( int i = 1; i <= gc.getActualMaximum(gc.DAY_OF_MONTH) ; i++ )
 							{
-								pos_aereo = (int) (0 + (Math.random() * (6 - 0)));
+			
+						        gc.set(gc.DAY_OF_MONTH, i);
+						        Date date = new Date(gc.getTimeInMillis());
+						        wtf = new WriteToFile(w+i);
+						        
+								for ( int j = 0; j < randBetween(MIN_VOLI_GIORNALIERI, MAX_VOLI_GIORNALIERI) ; j++ )
+								{
+									if ( distanza < 1600 )
+									{
+										pos_aereo = (int) (0 + (Math.random() * (6 - 0)));
+									}
+									else if( distanza >= 1600 && distanza < 3700)
+									{
+										pos_aereo = (int) (6 + (Math.random() * (14 - 6)));
+									}
+									else 
+									{
+										pos_aereo = (int) (14 + (Math.random() * ( ( aerei.size() - 1) - 14)));
+									}
+									cap_sel = aerei.get(nomeAereo.get(pos_aereo));
+									aereo_sel = nomeAereo.get(pos_aereo);
+									
+							        int ora = randBetween(7, 22);
+							        int minuti = randBetween(0, 59);
+							        Time time = new Time(ora, minuti, 0);
+							        
+							        codicevolo = rdm.nextString();
+							        
+							        if ( c < MAX_ENTRY_TOTALI )					
+							        	wtf.writeToFile("INSERT INTO volo (codicevolo,datapartenza,orapartenza,tipoaereo,capienza, partenza, arrivo) VALUES ('" + codicevolo  +"','"+ date+ "','" + time+"','"+aereo_sel+"','"+cap_sel+"','" + partenza +"','"+arrivo+"');");
+							        
+							        c++;
+								}
+								wtf.close();
 							}
-							else if( distanza >= 1600 && distanza < 3700)
-							{
-								pos_aereo = (int) (6 + (Math.random() * (14 - 6)));
-							}
-							else 
-							{
-								pos_aereo = (int) (14 + (Math.random() * ( ( aerei.size() - 1) - 14)));
-							}
-							cap_sel = aerei.get(nomeAereo.get(pos_aereo));
-							aereo_sel = nomeAereo.get(pos_aereo);
-							
-		
-					        
-					        int ora = randBetween(7, 22);
-					        int minuti = randBetween(0, 59);
-					        Time time = new Time(ora, minuti, 0);
-					        
-					        codicevolo = rdm.nextString();
-					        
-					        if ( c < MAX_ENTRY_TOTALI )					
-					        	wtf.writeToFile("INSERT INTO volo (codicevolo,datapartenza,orapartenza,tipoaereo,capienza, partenza, arrivo) VALUES ('" + codicevolo  +"','"+ date+ "','" + time+"','"+aereo_sel+"','"+cap_sel+"','" + partenza +"','"+arrivo+"');");
-					        
-					        c++;
-						}
-					}
+							 
+			        	}
+			        }
 				}
 				
 				//Chiudo la connessione
 				con.close();
 			}
-	
+			
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-	
-		    wtf.close();
-	    }
+			
 	}
     public static int randBetween(int start, int end) {
         return start + (int)Math.round(Math.random() * (end - start));

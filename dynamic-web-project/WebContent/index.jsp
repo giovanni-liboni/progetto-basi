@@ -22,7 +22,6 @@
 				<li> <a href="../contatti.jsp"    target="iframe_centrale" > CONTATTI       </a> </li>	
 				<li> <a href="../chisiamo.jsp"     target="iframe_centrale" > CHI SIAMO </a> </li>		
 				<li> <a href="?ps=areapersonale"       target="iframe_centrale" > AREA PERSONALE </a> </li>
-				
 			</ul>							
 		<!-- IFRAME CENTRALE -->
 		<iframe frameborder=0 class="central_iframe" name="iframe_centrale" src="main?ps=ricercavolo"></iframe>
