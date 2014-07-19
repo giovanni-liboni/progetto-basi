@@ -28,6 +28,7 @@ CREATE TABLE passeggero(
 	nome		VARCHAR(100) NOT NULL,
 	cognome		VARCHAR(100) NOT NULL,
 	documento	VARCHAR(50) NOT NULL,
+	picture		BYTEA,
 
 	numvoli		INTEGER DEFAULT 0,
 	miglia		FLOAT DEFAULT 0,

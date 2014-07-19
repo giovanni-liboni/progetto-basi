@@ -51,7 +51,7 @@
 								<label> CARICA UNA FOTO PROFILO</label>
 								<p>
 									<form action="?" enctype="multipart/form-data" >
-										<input type="hidden" name="ps" value="loadimage">
+										<input type="hidden" name="ps" value="uploadimage">
 										<input type="file" name="image" size="35">
 										<input type="submit" > 
 									</form>

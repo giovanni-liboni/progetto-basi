@@ -14,6 +14,7 @@ import classiCommand.AjaxRicercaVolo;
 import classiCommand.AreaPersonale;
 import classiCommand.Command;
 import classiCommand.Contatti;
+import classiCommand.DownloadImage;
 import classiCommand.EmettiBiglietto;
 import classiCommand.Login;
 import classiCommand.Logout;
@@ -21,6 +22,7 @@ import classiCommand.NewBiglietto;
 import classiCommand.NuovaPrenotazione;
 import classiCommand.Prenotazione;
 import classiCommand.RicercaVolo;
+import classiCommand.UploadImage;
 import classiCommand.Voli;
 
 @WebServlet("/main")
@@ -52,6 +54,8 @@ public class main extends HttpServlet {
 		commands.put("contatti", new Contatti());
 		commands.put("emettibiglietto", new EmettiBiglietto());
 		commands.put("newbiglietto", new NewBiglietto() );
+		commands.put("uploadimage", new UploadImage() );
+		commands.put("downloadimage", new DownloadImage() );
 		
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
