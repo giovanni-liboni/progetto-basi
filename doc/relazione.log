@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  20 JUL 2014 04:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  20 JUL 2014 15:35
 entering extended mode
  %&-line parsing enabled.
 **relazione.tex
@@ -335,9 +335,9 @@ File: relazione-frn.pdf Graphic file (type pdf)
  <./relazione-frn.pdf{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}>]
 (./relazione.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 1.
+(Font)              <7> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
+(Font)              <5> on input line 2.
 )
 \tf@toc=\write4
 \openout4 = `relazione.toc'.
@@ -348,13 +348,15 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] [3] [4
 
-] [5] (./relazione.aux) ) 
+] [5] [6
+
+] [7] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 1392 strings out of 495061
- 17254 string characters out of 1182621
+ 1394 strings out of 495061
+ 17283 string characters out of 1182621
  68847 words of memory out of 3000000
- 4579 multiletter control sequences out of 15000+50000
- 5457 words of font info for 20 fonts, out of 3000000 for 9000
+ 4581 multiletter control sequences out of 15000+50000
+ 6062 words of font info for 22 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  32i,8n,21p,211b,192s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/
@@ -362,9 +364,9 @@ cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on relazione.pdf (6 pages, 72885 bytes).
+Output written on relazione.pdf (8 pages, 75599 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

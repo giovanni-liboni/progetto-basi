@@ -43,13 +43,7 @@ Si riportano di seguiti gli schemi di pagina seguiti durante la creazione del si
 
 \section{Struttura dell'applicazione web}
 
-Il progetto \`e segue le regole del modello servlet-centric 2.
-
-I moduli in cui \`e suddiviso l'applicativo sono:
-\begin{itemize}
- \item 
-\end{itemize}
-
+Il progetto \`e segue le regole del modello servlet-centric. Ci sono tre servlet che gestiscono l'applicazione web, una per la gestione 
 
 \part{Scelte progettuali}
 
