@@ -16,30 +16,27 @@
 		
 	<section id="page-contact" class="page-contact">
 		
-			<div class="row">
+			<div>
+					<b>Sede Legale:</b>
+					<a>Via a caso, 24, 34100, caso, Italia</a></br>
+					<b>Call Center dall'Italia</b>: 80 123 321 | <b>dall'estero</b>: +39 80 123 321</a></br>
+					<b><ahref="mailto:emailacaso@caso.it"> assistenza@alitalia1.it</a></b>
 				
-						<b>Sede Legale:</b>
-						<a>Via a caso, 24, 34100, caso, Italia</a></br>
-						
-				
-							<b>Call Center dall'Italia</b>: 80 123 321 | <b>dall'estero</b>: +39 80 123 321</a></br>
-							<b><ahref="mailto:emailacaso@caso.it"> assistenza@alitalia1.it</a></b>
-				
-				</div>
+			</div>
 
 				<div>
-					<h3>Contattaci</h3>
+				<h3>Contattacci per assistenza</h3>
 					<form class="form">
 						<div>
 							<label for="name">Nome</label>
-							<div class="controls">
+							<div>
 								<input type="text" name="name" id="name"
 									placeholder="Il tuo nome">
-							</div>
+						    </div>
 						</div>
 						<div>
 							<label for="email">Indirizzo e-mail</label>
-							<div class="controls">
+							<div>
 								<input type="text" name="email" id="email"
 									placeholder="La tua e-mail">
 							</div>
@@ -52,16 +49,13 @@
 								
 							</div>
 						</div>
-						<div class="form-actions">
+						<div>
 							<button type="button" id="invia">Invia</button>
 						</div>
 					</form>
-					<!-- End contact-form -->
+			
 				</div>
-			</div>
-			<!-- End row -->
-
-		</div>
+		
 	</section>
 
 </body>
