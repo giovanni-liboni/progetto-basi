@@ -7,7 +7,12 @@ function checkFile() {
 	var fileExtension =	(filename.substring(filename.lastIndexOf(".")+1)).toLowerCase();
 
 	if (fileExtension == "jpg" || fileExtension == "jpeg" || fileExtension == "png" ) { 
-		return true;
+		{
+			document.getElementById("image").onchange = function() {
+			    document.getElementById("uploadPicture").submit();
+			};
+			return true;
+		}
 	} else { 
 		alert ("Attenzione sono ammessi solo file jpg e jpeg.");
 		return false;

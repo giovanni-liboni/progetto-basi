@@ -11,8 +11,7 @@
 	if ( beanVolo != null ){
 	%>
 	<head>
-		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
-		<link href="../css/form.css" rel="stylesheet" type="text/css">
+		<link href="../css/style.css" rel="stylesheet" type="text/css">
 		<script src="../js/validator.js"> </script>
 		<!-- Load jQuery UI CSS  -->
 	   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -151,9 +150,9 @@
 		
 		<div class="div_form">
 			<% if ( beanPass == null ){ %>
-			<form name="form" method="POST" class="basic-grey" action="main?" onsubmit="return validate_prenotazione_new() ">
+			<form name="form" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_new() ">
 			<%} else { %>
-			<form name="form" method="POST" class="basic-grey" action="main?" onsubmit="return validate_prenotazione_auth() ">
+			<form name="form" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_auth() ">
 			<%} %>
 				<input type="hidden" name="ps" value="nuovaprenotazione" >
 				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">

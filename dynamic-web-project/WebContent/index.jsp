@@ -7,11 +7,10 @@
 	<head>
 		<title>Home Page</title>
 		<link href="../css/style.css" rel="stylesheet" type="text/css">
-		<link href="../css/form.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 
 	</head>
-	<body >
+	<body class="index">
 		<div class="div_title">
 			<h1 class="text_title"> ALITALIA 1 </h1>
 		</div>

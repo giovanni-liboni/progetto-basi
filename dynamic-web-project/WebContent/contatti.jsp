@@ -4,9 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="../css/form.css" rel="stylesheet" type="text/css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Contatti</title>
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Contatti</title>
 </head>
 <body style=" color: #888;
     		  line-height: 2em;
@@ -24,7 +24,7 @@
 		</div>
 
 				<h3>Contattacci per assistenza</h3>
-					<form class="basic-grey">
+					<form class="form">
 
 								<input class="inputName" type="text" name="name" id="name" placeholder="Nome">
 								<input class="inputEmail" type="text"name="email" id="email" placeholder="E-mail">

@@ -7,22 +7,21 @@
 	String numPrenotazione = (String) request.getParameter("numPrenotazione");
 %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="../css/style.css" rel="stylesheet" type="text/css">
-		<link href="../css/form.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
 <title>Emetti biglietto</title>
 </head>
 <body>
 	<h2 style="text-align: center; "> Vuoi stampare il biglietto? </h2>
 	<!-- PULSANTI PER DECIDERE COSA FARE, SE SI ALLORA SI EMETTI IL BIGLIETTO E AGGIUNGE UN BIGLIETTO AL DB -->
-		<form name="form" method="POST" class="basic-grey" action="?">
+		<form name="form" method="POST" class="form" action="?">
 			<input type="hidden" name="ps" value="newbiglietto">
 			<input type="hidden" name="numPrenotazione" value="<%=numPrenotazione %>">
 			<span style="text-align: center;">
 				<input type="submit" class="button" name="prenota" value="Emetti biglietto" />	
 			</span>				
 		</form>
-		<form action="main?" class="basic-grey">
+		<form action="main?" class="form">
 			<input type="hidden" name="ps" value="areapersonale">
 			<input type="submit" class="button" name="indietro" value="Indietro" />
 		</form>

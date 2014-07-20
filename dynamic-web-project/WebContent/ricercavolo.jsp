@@ -13,8 +13,9 @@
 %>
 	<head>
 		<title>Home Page</title>
-		<link href="../css/form.css" rel="stylesheet" type="text/css">
+		<link href="../css/style.css" rel="stylesheet" type="text/css">
 		<script src="../js/validator.js"></script>
+		
 		<!-- Load jQuery UI CSS  -->
 	   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	    
@@ -70,7 +71,7 @@
 				<% if( status != null && status.equals("novoli") ){ %>
 					<h2 style="text-align: center; color: #E80000;"> Nessun volo trovato! </h2>
 				<%} %>
-				<form name="modulo" method="POST" action="main?" class="basic-grey">
+				<form name="modulo" method="POST" action="main?" class="form">
 					<input type="hidden" name="ps" value="volipage" >
 					<span>				 
 						  <select name="partenza" id="partenza" selected=false>

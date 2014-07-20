@@ -15,8 +15,7 @@
 		Passeggero pass = ( Passeggero) request.getAttribute("pass");
 	%>
 	<head>
-		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
-		<link href="../css/form.css" rel="stylesheet" type="text/css">
+		<link href="../css/style.css" rel="stylesheet" type="text/css">
 		<script src="../js/util.js"> </script>
 	</head>
 	<body>	
@@ -25,7 +24,7 @@
 		</div>
 		<div id="main-wrap" >
 			<% if( pass != null){ %>
-				<div id="sidebar">
+				<div id="sidebar" class="sidebar">
 					
 					<ul>
 							<li>
@@ -61,9 +60,9 @@
 								<label> AGGIORNA LA FOTO PROFILO</label>
 								<%} %>
 								<p>
-									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST" class="basic-grey">
+									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST">
 										<input type="hidden" name="ps" value="uploadimage" >
-										<input type="file" name="image" size="35" id="image">
+										<input type="file" name="image" id="image">
 										<input type="submit" value="Carica" onclick="return checkFile()"> 
 									</form>
 								</p>

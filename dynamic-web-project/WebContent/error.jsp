@@ -3,6 +3,7 @@
 www.w3.org/TR/REC-html40/loose.dtd">
 <html>
 <head>
+	<link href="../css/style.css" rel="stylesheet" type="text/css">
     <title>Errore!</title>
     	<%
 		String msg = ( String) request.getAttribute("msg");

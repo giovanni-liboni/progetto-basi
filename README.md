@@ -23,6 +23,6 @@ TODO:
 - Scrivere commenti
 - Scrivere relazione
 - Disegnare ER
-- Finire sezione contatti ( da leggere sulla consegna )
-- Formattare il nome e il cognome prima di inserirli nel DB, tutti in maiuscolo
+- Finire sezione contatti ( da leggere sulla consegna)
 - Rivedere downloadimage e uploadimage
+- Rivedere area privata
