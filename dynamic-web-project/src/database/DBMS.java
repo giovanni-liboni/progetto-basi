@@ -106,7 +106,6 @@ public class DBMS {
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 		result = ( Passeggero ) session.get( Passeggero.class, documento );
-		result.getCognome();
 
 		tx.commit();
 		session.close();

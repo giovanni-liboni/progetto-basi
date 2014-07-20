@@ -24,4 +24,5 @@ TODO:
 - Scrivere relazione
 - Disegnare ER
 - Finire sezione contatti ( da leggere sulla consegna )
-- Formattare il nome e ilo cognome prima di inserirli nel DB, tutti in maiuscolo
+- Formattare il nome e il cognome prima di inserirli nel DB, tutti in maiuscolo
+- Rivedere downloadimage e uploadimage

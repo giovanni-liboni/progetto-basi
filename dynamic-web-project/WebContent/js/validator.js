@@ -42,7 +42,7 @@ function validate_prenotazione_new(){
 	s = document.forms["form"]["nazionalita"].value;
     if(s==null || s=="" )
         {
-    		alert("Inserire la nazionalità !");
+    		alert("Inserire la nazione !");
     		return false;
         }
     
@@ -87,7 +87,7 @@ function validate_prenotazione_auth(){
 	s = document.forms["form"]["nazionalita"].value;
     if(s==null || s=="" )
         {
-    		alert("Inserire la nazionalità !");
+    		alert("Inserire la nazione !");
     		return false;
         }
     

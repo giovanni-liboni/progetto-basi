@@ -25,6 +25,7 @@
 	mentre nel 2013 è stata premiata da Global Traveler, per la quarta volta consecutiva, 
 	per la "Miglior cucina di bordo".
 	</div>
-	 <img src = "images/chisiamo.jpg" width="800" height="600"  alt="Foto aereo in volo"></br>
+	<br/>
+	 <img src = "../images/chisiamo.jpg" width="800" height="600"  alt="Foto aereo in volo"></br>
 </body>
 </html>

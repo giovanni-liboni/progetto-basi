@@ -19,8 +19,8 @@
 		<!-- DIV PER LOGIN -->
 			<ul class="menu">
 				<li> <a href="main?ps=ricercavolo" target="iframe_centrale" > RICERCA VOLO   </a> </li>
-				<li> <a href="../contatti.jsp"    target="iframe_centrale" > CONTATTI       </a> </li>	
-				<li> <a href="../chisiamo.jsp"     target="iframe_centrale" > CHI SIAMO </a> </li>		
+				<li> <a href="main?ps=contatti"    target="iframe_centrale" > CONTATTI       </a> </li>	
+				<li> <a href="main?ps=chisiamo"     target="iframe_centrale" > CHI SIAMO </a> </li>		
 				<li> <a href="main?ps=areapersonale"       target="iframe_centrale" > AREA PERSONALE </a> </li>
 			</ul>							
 		<!-- IFRAME CENTRALE -->

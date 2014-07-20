@@ -7,15 +7,12 @@
 <html>
 <%
 	ArrayList <Volo> vb = ( ArrayList < Volo > ) request.getAttribute("voli");
-	
-	if ( vb != null )
-	{
 %>
 	<head>
 			<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>	
-		<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
+	<% 	if ( vb != null ) { %>
 		<table class="voli" align="center" >
 			<thead>
 				<tr>
@@ -42,6 +39,7 @@
 				<%} %>
 			</tbody>
 		</table>
+	<%}%>
 	</body>
- 	<%} %> 
+ 	 
 </html>

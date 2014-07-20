@@ -9,6 +9,7 @@
 	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
 	ArrayList<String> arrivi = (ArrayList<String>) request.getAttribute("arrivi");
 	Passeggero username = (Passeggero) request.getAttribute("pass");
+	String status = (String) request.getAttribute("status");
 %>
 	<head>
 		<title>Home Page</title>
@@ -66,8 +67,10 @@
 
 </head>
 	<body>
-		<div class="div_form">
-					<form name="modulo" method="POST" action="main?" class="basic-grey" onsubmit=" return validate() ">
+				<% if( status != null && status.equals("novoli") ){ %>
+					<h2 style="text-align: center; color: #E80000;"> Nessun volo trovato! </h2>
+				<%} %>
+				<form name="modulo" method="POST" action="main?" class="basic-grey">
 					<input type="hidden" name="ps" value="volipage" >
 					<span>				 
 						  <select name="partenza" id="partenza" selected=false>
@@ -86,9 +89,8 @@
 						<input type="date" name="date" id="date" placeholder="Data partenza"/>
 					</span>
 					<span>
-						<input type="submit" class="button" value="Ricerca" />	
+						<input type="submit" class="button" value="Ricerca" onclick="return validate()"/>	
 					</span>			
 				</form>
-		</div>
 	</body>
 </html>

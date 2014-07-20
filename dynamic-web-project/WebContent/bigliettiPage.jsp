@@ -16,6 +16,7 @@
 	%>
 	<head>
 		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
+		<link href="../css/form.css" rel="stylesheet" type="text/css">
 		<script src="../js/util.js"> </script>
 	</head>
 	<body>	
@@ -60,7 +61,7 @@
 								<label> AGGIORNA LA FOTO PROFILO</label>
 								<%} %>
 								<p>
-									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST" >
+									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST" class="basic-grey">
 										<input type="hidden" name="ps" value="uploadimage" >
 										<input type="file" name="image" size="35" id="image">
 										<input type="submit" value="Carica" onclick="return checkFile()"> 

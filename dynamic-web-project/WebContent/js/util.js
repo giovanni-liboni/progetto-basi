@@ -12,5 +12,4 @@ function checkFile() {
 		alert ("Attenzione sono ammessi solo file jpg e jpeg.");
 		return false;
 	}
-	
 }

@@ -68,7 +68,8 @@ public class Login implements Command {
 				}
 				else
 				{
-					rd = request.getRequestDispatcher("../errorPage.jsp");
+					request.setAttribute("auth", "fail");
+					rd = request.getRequestDispatcher("../login.jsp");
 				}
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();

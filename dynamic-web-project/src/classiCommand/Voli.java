@@ -74,29 +74,40 @@ public class Voli implements Command {
 			}
 			if ( legalPartenza && legalArrivo && date != null && date != "" )
 			{
-				// Oggetto per l'interazione con il Database				
-				// Oggetto per l'interazione con il Database
+
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				java.util.Date parsed;
 				try {
-				parsed = format.parse(date);
+					parsed = format.parse(date);
 				} catch (Exception e) {
-				format = new SimpleDateFormat("MM/dd/yyyy");
-				parsed = format.parse(date);
+					format = new SimpleDateFormat("MM/dd/yyyy");
+					parsed = format.parse(date);
 				}
 				
 				java.sql.Date data_partenza = new java.sql.Date(parsed.getTime());
 				
 				bean = dbms.getRicercaVolo(data_partenza, partenza, arrivo);
 				
-				//Delego l'esecuzione della query alla classe di interazione con il DB
-				//Recupero il risultato della query come bean
-				
-				//Aggiungo il ArrayList come attributo della richiesta HTTP
-				request.setAttribute("voli",bean);
-				
-				//Preparo il Dispatcher
-				rd = request.getRequestDispatcher("../voliPage.jsp");
+				// Controllo se ci sono dei voli
+				if( bean == null || bean.isEmpty() )
+				{
+					// Passo tutti gli aeroporti di partenza alla JSP
+					request.setAttribute("partenze", partenze);
+					
+					// Passo lo stato alla JSP
+					request.setAttribute("status", "novoli");
+					
+					// Passo il controllo
+					rd = request.getRequestDispatcher("../ricercavolo.jsp");
+				}
+				else
+				{
+					//Aggiungo il ArrayList come attributo della richiesta HTTP
+					request.setAttribute("voli",bean);
+					
+					//Preparo il Dispatcher
+					rd = request.getRequestDispatcher("../voliPage.jsp");
+				}
 			}
 		}
 		return rd;

@@ -70,19 +70,31 @@
 					})
 				$('#nome').bind("keyup change",function() {
 						var t = this;
-						var letters = /^[A-Za-z]+$/;  
+						var letters = /^[A-Za-z'עאטיש]+$/;  
 					    if(t.value.match(letters))
-					    	$('#nome').css('border', '2px solid #01DF3A');
+					    {
+						    $('#nome').css('border', '2px solid #01DF3A');
+						    $('#submit').attr("disabled", false);
+					    }
 					    else
+					    {
 					    	$('#nome').css('border', '2px solid #d66');
+					    	$('#submit').attr("disabled", true);
+					    }
 					})
 				$('#cognome').bind("keyup change",function() {
-						var t = this;
-						var letters = /^[A-Za-z]+$/;  
-					    if(t.value.match(letters))
-					    	$('#cognome').css('border', '2px solid #01DF3A');
-					    else
-					    	$('#cognome').css('border', '2px solid #d66');
+					var t = this;
+					var letters = /^[A-Za-z'עאטיש]+$/;  
+				    if(t.value.match(letters))
+				    {
+				    	$('#cognome').css('border', '2px solid #01DF3A');
+				    	$('#submit').attr("disabled", false);
+				    }
+				    else
+				    {
+					    $('#cognome').css('border', '2px solid #d66');
+					    $('#submit').attr("disabled", true);
+				    }
 					})
 				$('#nazionalita').change(function() {
 					    $('#nazionalita').css('border', '2px solid #01DF3A');
@@ -91,15 +103,21 @@
 					var t = this;
 					var letters = /^[A-Za-z0-9]+$/; 
 
-				    if(t.value.match(letters) && t.value.length > 6 )
+				    if(t.value.match(letters) && t.value.length >= 6 )
+				    {
 				    	$('#password').css('border', '2px solid #01DF3A');
+				    	$('#submit').attr("disabled", false);
+				    }
 				    else
-				    	$('#password').css('border', '2px solid #d66');
+				    {
+						$('#password').css('border', '2px solid #d66');
+					   	$('#submit').attr("disabled", true);
+				    }
 				})
 				});
 		</script>
 	</head>
-	<body>	
+	<body class="prenotazione-page">	
 		<!--  SEZIONE DOVE VENGONO MOSTRATI I DATI DEL VOLO -->
 		<table class="voli" align="center">
 			<thead>
