@@ -4,18 +4,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Contatti</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css">
 </head>
-<body>		
-	<table>
-		<tr>
-			<th> Contatti </th>
-		</tr>
-		<tr>
-			<td>  Piazza Almerico da Schio </td>
-		</tr>
-	</table>
+<body style=" color: #888;
+    		  line-height: 2em;
+    		  font-size: 25px;
+    		  text-align: center;
+    		  padding: 3%;">
+		
+	<section id="page-contact" class="page-contact">
+		
+			<div class="row">
+				
+						<b>Sede Legale:</b>
+						<a>Via a caso, 24, 34100, caso, Italia</a></br>
+						
+				
+							<b>Call Center dall'Italia</b>: 80 123 321 | <b>dall'estero</b>: +39 80 123 321</a></br>
+							<b><ahref="mailto:emailacaso@caso.it"> assistenza@alitalia1.it</a></b>
+				
+				</div>
+
+				<div>
+					<h3>Contattaci</h3>
+					<form class="form">
+						<div>
+							<label for="name">Nome</label>
+							<div class="controls">
+								<input type="text" name="name" id="name"
+									placeholder="Il tuo nome">
+							</div>
+						</div>
+						<div>
+							<label for="email">Indirizzo e-mail</label>
+							<div class="controls">
+								<input type="text" name="email" id="email"
+									placeholder="La tua e-mail">
+							</div>
+						</div>
+						<div>
+							<labelfor="message">Messaggio</label>
+							<div>
+								<textarea name="message" id="message" rows="8"
+								placeholder="Scrivi qui.."></textarea>
+								
+							</div>
+						</div>
+						<div class="form-actions">
+							<button type="button" id="invia">Invia</button>
+						</div>
+					</form>
+					<!-- End contact-form -->
+				</div>
+			</div>
+			<!-- End row -->
+
+		</div>
+	</section>
+
 </body>
 </html>
