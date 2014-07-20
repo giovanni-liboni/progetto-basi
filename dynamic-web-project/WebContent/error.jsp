@@ -4,8 +4,12 @@ www.w3.org/TR/REC-html40/loose.dtd">
 <html>
 <head>
     <title>Errore!</title>
+    	<%
+		String msg = ( String) request.getAttribute("msg");
+	%>
 </head>
     <body>
+    	<%if( msg == null ){ %>
         <h2>Pagina per il trattamento dell'errore:</h2>
         
         <h3>&Egrave stata generata la seguente eccezione:</h3>
@@ -19,5 +23,9 @@ www.w3.org/TR/REC-html40/loose.dtd">
         <pre>
         <% exception.printStackTrace(new java.io.PrintWriter(out)); %>
         </pre>
+        <%} else { %>
+        <h2> ATTENZIONE! </h2>
+        <h1> <%=msg %></h1>
+        <%} %>
     </body>
 </html> 
