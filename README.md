@@ -26,4 +26,4 @@ TODO:
 - Finire sezione contatti ( da leggere sulla consegna )
 - Funzione SQL per aggiornare i conteggi richiesti 
 - Formattare il nome e ilo cognome prima di inserirli nel DB, tutti in maiuscolo
-- Inserire il parametro msg in error.jsp
+

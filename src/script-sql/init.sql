@@ -109,8 +109,7 @@ BEGIN
 	RETURN NEW;
 END' LANGUAGE 'plpgsql';
 
-CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON PRENOTAZIONE
-FOR EACH ROW EXECUTE PROCEDURE update_time_richiesta();
+
 
 CREATE OR REPLACE FUNCTION update_time_biglietto()
 RETURNS TRIGGER AS '
@@ -121,8 +120,7 @@ BEGIN
 	RETURN NEW;
 END' LANGUAGE 'plpgsql';
 
-CREATE TRIGGER TIME_RICHIESTA BEFORE INSERT ON BIGLIETTO
-FOR EACH ROW EXECUTE PROCEDURE update_time_biglietto();
+
 
 CREATE OR REPLACE FUNCTION update_numvoli()
 RETURNS TRIGGER AS '
@@ -132,3 +130,33 @@ BEGIN
 	END IF;
 	RETURN NEW;
 END' LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION update_tessera() RETURNS trigger AS $$
+BEGIN 
+	UPDATE passeggero
+	SET numvoli = (SELECT count(*) FROM volo JOIN biglietto ON biglietto.codicevolo = volo.codicevolo 
+							   JOIN tratta ON (volo.partenza = tratta.partenza AND volo.arrivo = tratta.arrivo )
+				WHERE passeggero.tessera=true AND passeggero.documento = biglietto.documento
+				GROUP BY passeggero.documento ),
+	miglia = (SELECT sum(distanza) FROM volo JOIN biglietto ON biglietto.codicevolo = volo.codicevolo 
+							   JOIN tratta ON (volo.partenza = tratta.partenza AND volo.arrivo = tratta.arrivo )
+				WHERE passeggero.tessera=true AND passeggero.documento = biglietto.documento
+				GROUP BY passeggero.documento )
+	FROM biglietto
+	WHERE biglietto.dataemissione >= (SELECT date('now') - interval '3 year') AND NEW.documento = passeggero.documento;
+	RETURN NEW;
+
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER update_time_richiesta
+BEFORE INSERT ON prenotazione
+	FOR EACH ROW EXECUTE PROCEDURE update_time_richiesta();
+
+CREATE TRIGGER update_tessera
+AFTER INSERT OR DELETE ON biglietto
+    FOR EACH ROW EXECUTE PROCEDURE update_tessera();
+
+CREATE TRIGGER update_time_biglietto 
+BEFORE INSERT ON biglietto
+	FOR EACH ROW EXECUTE PROCEDURE update_time_biglietto();
