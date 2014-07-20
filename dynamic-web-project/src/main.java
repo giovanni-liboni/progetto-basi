@@ -62,7 +62,7 @@ public class main extends HttpServlet {
 	{
 		RequestDispatcher rd = null;
 		String actionKey = request.getParameter("ps");
-
+		System.out.println(actionKey);
 		if( actionKey == null || actionKey.equals(""))
 			rd = request.getRequestDispatcher("../index.jsp");
 		else

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class VoloBean implements java.io.Serializable {
+public class Volo implements java.io.Serializable {
 
 	private String codicevolo;
 	private TrattaBean tratta;
@@ -15,10 +15,10 @@ public class VoloBean implements java.io.Serializable {
 	private Set prenotaziones = new HashSet(0);
 	private Set bigliettos = new HashSet(0);
 
-	public VoloBean() {
+	public Volo() {
 	}
 
-	public VoloBean(String codicevolo, TrattaBean tratta, Date datapartenza,
+	public Volo(String codicevolo, TrattaBean tratta, Date datapartenza,
 			Date orapartenza, String tipoaereo, int capienza) {
 		this.codicevolo = codicevolo;
 		this.tratta = tratta;
@@ -28,7 +28,7 @@ public class VoloBean implements java.io.Serializable {
 		this.capienza = capienza;
 	}
 
-	public VoloBean(String codicevolo, TrattaBean tratta, Date datapartenza,
+	public Volo(String codicevolo, TrattaBean tratta, Date datapartenza,
 			Date orapartenza, String tipoaereo, int capienza,
 			Set prenotaziones, Set bigliettos) {
 		this.codicevolo = codicevolo;
@@ -110,9 +110,9 @@ public class VoloBean implements java.io.Serializable {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if( !(obj instanceof VoloBean) ) 
+		if( !(obj instanceof Volo) ) 
 			return false;
-		if( ((VoloBean) obj).getTratta().equals(this.getTratta()) && ((VoloBean) obj).getCodicevolo().equals(this.getCodicevolo()))
+		if( ((Volo) obj).getTratta().equals(this.getTratta()) && ((Volo) obj).getCodicevolo().equals(this.getCodicevolo()))
 			return true;
 		
 		return false;

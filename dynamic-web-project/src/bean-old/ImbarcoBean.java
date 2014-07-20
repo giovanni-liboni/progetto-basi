@@ -4,19 +4,19 @@ public class ImbarcoBean implements java.io.Serializable {
 
 	private ImbarcoId id;
 	private PostoBean posto;
-	private BigliettoBean biglietto;
+	private Biglietto biglietto;
 	private Boolean imbarcato;
 
 	public ImbarcoBean() {
 	}
 
-	public ImbarcoBean(ImbarcoId id, PostoBean posto, BigliettoBean biglietto) {
+	public ImbarcoBean(ImbarcoId id, PostoBean posto, Biglietto biglietto) {
 		this.id = id;
 		this.posto = posto;
 		this.biglietto = biglietto;
 	}
 
-	public ImbarcoBean(ImbarcoId id, PostoBean posto, BigliettoBean biglietto,
+	public ImbarcoBean(ImbarcoId id, PostoBean posto, Biglietto biglietto,
 			Boolean imbarcato) {
 		this.id = id;
 		this.posto = posto;
@@ -40,11 +40,11 @@ public class ImbarcoBean implements java.io.Serializable {
 		this.posto = posto;
 	}
 
-	public BigliettoBean getBiglietto() {
+	public Biglietto getBiglietto() {
 		return this.biglietto;
 	}
 
-	public void setBiglietto(BigliettoBean biglietto) {
+	public void setBiglietto(Biglietto biglietto) {
 		this.biglietto = biglietto;
 	}
 

@@ -3,7 +3,7 @@ package bean;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PasseggeroBean implements java.io.Serializable {
+public class Passeggero implements java.io.Serializable {
 
 	private String documento;
 	private String login;
@@ -17,10 +17,10 @@ public class PasseggeroBean implements java.io.Serializable {
 	private Set prenotaziones = new HashSet(0);
 	private Set bigliettos = new HashSet(0);
 
-	public PasseggeroBean() {
+	public Passeggero() {
 	}
 
-	public PasseggeroBean(String documento, String login, String password,
+	public Passeggero(String documento, String login, String password,
 			String nazionalita, String nome, String cognome) {
 		this.documento = documento;
 		this.login = login;
@@ -30,7 +30,7 @@ public class PasseggeroBean implements java.io.Serializable {
 		this.cognome = cognome;
 	}
 
-	public PasseggeroBean(String documento, String login, String password,
+	public Passeggero(String documento, String login, String password,
 			String nazionalita, String nome, String cognome, Integer numvoli,
 			Integer miglia, Boolean tessera, Set prenotaziones, Set bigliettos) {
 		this.documento = documento;
@@ -139,9 +139,9 @@ public class PasseggeroBean implements java.io.Serializable {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if( !(obj instanceof PasseggeroBean) ) 
+		if( !(obj instanceof Passeggero) ) 
 			return false;
-		if( ((PasseggeroBean) obj).getDocumento().equals(this.getDocumento()))
+		if( ((Passeggero) obj).getDocumento().equals(this.getDocumento()))
 			return true;
 		
 		return false;

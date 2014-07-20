@@ -8,7 +8,7 @@
 <%
 	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
 	ArrayList<String> arrivi = (ArrayList<String>) request.getAttribute("arrivi");
-	PasseggeroBean username = (PasseggeroBean) request.getAttribute("pass");
+	Passeggero username = (Passeggero) request.getAttribute("pass");
 %>
 	<head>
 		<title>Home Page</title>
@@ -67,12 +67,8 @@
 </head>
 	<body>
 		<div class="div_form">
-					<form name="modulo" method="POST" action="?" class="basic-grey" onsubmit=" return validate() ">
+					<form name="modulo" method="POST" action="main?" class="basic-grey" onsubmit=" return validate() ">
 					<input type="hidden" name="ps" value="volipage" >
-					<!-- Non serve più...da cancellare ? -->
-<%-- 					<%  if (username != null ){ %>
-						<input type="hidden" name="pass" value="<%=username.getLogin() %>" >
-					<%} %> --%>
 					<span>				 
 						  <select name="partenza" id="partenza" selected=false>
 						  <option value="" style="display:none;">Seleziona partenza</option>

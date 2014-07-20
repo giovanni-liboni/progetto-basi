@@ -4,22 +4,22 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BigliettoBean implements java.io.Serializable {
+public class Biglietto implements java.io.Serializable {
 
 	private BigliettoId id;
-	private PrenotazioneBean prenotazione;
-	private VoloBean volo;
-	private PasseggeroBean passeggero;
+	private Prenotazione prenotazione;
+	private Volo volo;
+	private Passeggero passeggero;
 	private int id_1;
 	private Date dataemissione;
 	private double prezzo;
 	private Set imbarcos = new HashSet(0);
 
-	public BigliettoBean() {
+	public Biglietto() {
 	}
 
-	public BigliettoBean(BigliettoId id, PrenotazioneBean prenotazione, VoloBean volo,
-			PasseggeroBean passeggero, int id_1, Date dataemissione, double prezzo) {
+	public Biglietto(BigliettoId id, Prenotazione prenotazione, Volo volo,
+			Passeggero passeggero, int id_1, Date dataemissione, double prezzo) {
 		this.id = id;
 		this.prenotazione = prenotazione;
 		this.volo = volo;
@@ -29,8 +29,8 @@ public class BigliettoBean implements java.io.Serializable {
 		this.prezzo = prezzo;
 	}
 	
-	public BigliettoBean(BigliettoId id, PrenotazioneBean prenotazione, VoloBean volo,
-			PasseggeroBean passeggero, int id_1, Date dataemissione, double prezzo,
+	public Biglietto(BigliettoId id, Prenotazione prenotazione, Volo volo,
+			Passeggero passeggero, int id_1, Date dataemissione, double prezzo,
 			Set imbarcos) {
 		this.id = id;
 		this.prenotazione = prenotazione;
@@ -50,27 +50,27 @@ public class BigliettoBean implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public PrenotazioneBean getPrenotazione() {
+	public Prenotazione getPrenotazione() {
 		return this.prenotazione;
 	}
 
-	public void setPrenotazione(PrenotazioneBean prenotazione) {
+	public void setPrenotazione(Prenotazione prenotazione) {
 		this.prenotazione = prenotazione;
 	}
 
-	public VoloBean getVolo() {
+	public Volo getVolo() {
 		return this.volo;
 	}
 
-	public void setVolo(VoloBean volo) {
+	public void setVolo(Volo volo) {
 		this.volo = volo;
 	}
 
-	public PasseggeroBean getPasseggero() {
+	public Passeggero getPasseggero() {
 		return this.passeggero;
 	}
 
-	public void setPasseggero(PasseggeroBean passeggero) {
+	public void setPasseggero(Passeggero passeggero) {
 		this.passeggero = passeggero;
 	}
 

@@ -1,6 +1,6 @@
-<%@page import="bean.PasseggeroBean"%>
-<%@page import="bean.BigliettoBean"%>
-<%@page import="bean.PrenotazioneBean"%>
+<%@page import="bean.Passeggero"%>
+<%@page import="bean.Biglietto"%>
+<%@page import="bean.Prenotazione"%>
 <%@page import="java.util.ArrayList"%>
 <%@page errorPage = "../error.jsp" %>
 <%@page isErrorPage="false"%>
@@ -10,16 +10,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<%
-		ArrayList<PrenotazioneBean> vipb = ( ArrayList<PrenotazioneBean>) request.getAttribute("prenotazioni");
-		ArrayList<BigliettoBean> vbb = (ArrayList<BigliettoBean>) request.getAttribute("biglietti");
-		PasseggeroBean pass = ( PasseggeroBean) request.getAttribute("pass");
+		ArrayList<Prenotazione> vipb = ( ArrayList<Prenotazione>) request.getAttribute("prenotazioni");
+		ArrayList<Biglietto> vbb = (ArrayList<Biglietto>) request.getAttribute("biglietti");
+		Passeggero pass = ( Passeggero) request.getAttribute("pass");
 	%>
 	<head>
 		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>	
 		<div align=right>
-			<a href="?ps=logout" > LOGOUT </a>
+			<a href="main?ps=logout" > LOGOUT </a>
 		</div>
 		<div id="main-wrap" >
 			<% if( pass != null){ %>
@@ -27,7 +27,11 @@
 					
 					<ul>
 							<li>
-								<p> <img src="../img/no-photo.png" alt="Foto di <%=pass.getNome() %> <%=pass.getCognome() %>" height="60" width="60"> </p>
+								<% if ( pass.getPicture() == null ){ %>
+									<p> <img src="../img/no-photo.png" alt="No photo" height="60" width="60"> </p>
+								<%} else{ %>
+									<p> <img src="picture?ps=downloadimage&documento=<%=pass.getDocumento()%>" alt="Foto di <%=pass.getNome() %> <%=pass.getCognome() %>" height="60" width="60"> </p>
+								<%} %>
 							</li>
  	 						<li> 
 	 							<label> Passeggero </label> 	<p> <%=pass.getNome() %> <%=pass.getCognome() %></p>
@@ -46,19 +50,22 @@
 							</li>
 							<li> 
 								<label>VOLI EFFETTUATI</label> <p> <%=pass.getNumvoli() %> </p>
-							</li>
+							</li>						
+							<%}%>
 							<li>
+								<% if( pass.getPicture() == null ){ %>
 								<label> CARICA UNA FOTO PROFILO</label>
+								<%} else { %>
+								<label> AGGIORNA LA FOTO PROFILO</label>
+								<%} %>
 								<p>
-									<form action="?" enctype="multipart/form-data" >
-										<input type="hidden" name="ps" value="uploadimage">
+									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST" >
+										<input type="hidden" name="ps" value="uploadimage" >
 										<input type="file" name="image" size="35">
 										<input type="submit" > 
 									</form>
 								</p>
 							</li>
-							
-							<%}%>
 					</ul>
 				</div>
 			<%} %>
@@ -82,9 +89,9 @@
 						</tr>
 					</thead>
 					<tbody>
-					<% for ( PrenotazioneBean bean : vipb ){ %>
+					<% for ( Prenotazione bean : vipb ){ %>
 						<tr>
-							<th> <a href="?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
+							<th> <a href="main?ps=emettibiglietto&numPrenotazione=<%=bean.getId() %>"> <%=bean.getVolo().getCodicevolo() %> </a> </th>
 		  					<th> <%=bean.getVolo().getDatapartenza() %> </th>
 							<th> <%=bean.getVolo().getOrapartenza() %> </th>
 			 				<th> <%=bean.getVolo().getTratta().getId().getPartenza() %> </th>
@@ -115,7 +122,7 @@
 						</tr>
 					</thead>
 					<tbody>
-		 			<% for ( BigliettoBean bean : vbb ){ %>
+		 			<% for ( Biglietto bean : vbb ){ %>
 						<tr>
 		  					<th> <%=bean.getVolo().getCodicevolo() %> </th>
 							<th> <%=bean.getVolo().getDatapartenza() %> </th>

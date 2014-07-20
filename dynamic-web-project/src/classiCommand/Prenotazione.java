@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import database.DBMS;
-import bean.PasseggeroBean;
-import bean.VoloBean;
+import bean.Passeggero;
+import bean.Volo;
 
 public class Prenotazione implements Command {
 
@@ -36,14 +36,14 @@ public class Prenotazione implements Command {
 			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
 		}
 		
-		VoloBean beanVolo = dbms.getVolo(codiceVolo);
+		Volo beanVolo = dbms.getVolo(codiceVolo);
 
 		//Delego l'esecuzione della query alla classe di interazione con il DB			
 		//Aggiungo il ArrayList come attributo della richiesta HTTP
 		request.setAttribute("volo",beanVolo);	
 		
 		HttpSession session = request.getSession();
-		PasseggeroBean beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
+		Passeggero beanPasseggero = (Passeggero) session.getAttribute("pass");
 		
 		request.setAttribute("pass",beanPasseggero);
 

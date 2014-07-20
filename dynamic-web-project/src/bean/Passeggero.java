@@ -1,6 +1,6 @@
 package bean;
 
-// Generated 20-lug-2014 1.15.12 by Hibernate Tools 3.4.0.CR1
+// Generated 20-lug-2014 1.26.43 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +16,7 @@ public class Passeggero implements java.io.Serializable {
 	private String nazionalita;
 	private String nome;
 	private String cognome;
+	private byte[] picture;
 	private Integer numvoli;
 	private Double miglia;
 	private Boolean tessera;
@@ -36,14 +37,16 @@ public class Passeggero implements java.io.Serializable {
 	}
 
 	public Passeggero(String documento, String login, String password,
-			String nazionalita, String nome, String cognome, Integer numvoli,
-			Double miglia, Boolean tessera, Set prenotaziones, Set bigliettos) {
+			String nazionalita, String nome, String cognome, byte[] picture,
+			Integer numvoli, Double miglia, Boolean tessera, Set prenotaziones,
+			Set bigliettos) {
 		this.documento = documento;
 		this.login = login;
 		this.password = password;
 		this.nazionalita = nazionalita;
 		this.nome = nome;
 		this.cognome = cognome;
+		this.picture = picture;
 		this.numvoli = numvoli;
 		this.miglia = miglia;
 		this.tessera = tessera;
@@ -97,6 +100,14 @@ public class Passeggero implements java.io.Serializable {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
+	}
+
+	public byte[] getPicture() {
+		return this.picture;
+	}
+
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
 	}
 
 	public Integer getNumvoli() {

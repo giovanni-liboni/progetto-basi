@@ -4,25 +4,25 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PrenotazioneBean implements java.io.Serializable {
+public class Prenotazione implements java.io.Serializable {
 
 	private int id;
-	private VoloBean volo;
-	private PasseggeroBean passeggero;
+	private Volo volo;
+	private Passeggero passeggero;
 	private Date datarichiesta;
 	private Date orarichiesta;
 	private Set bigliettos = new HashSet(0);
 
-	public PrenotazioneBean() {
+	public Prenotazione() {
 	}
 
-	public PrenotazioneBean(int id, VoloBean volo, PasseggeroBean passeggero) {
+	public Prenotazione(int id, Volo volo, Passeggero passeggero) {
 		this.id = id;
 		this.volo = volo;
 		this.passeggero = passeggero;
 	}
 
-	public PrenotazioneBean(int id, VoloBean volo, PasseggeroBean passeggero,
+	public Prenotazione(int id, Volo volo, Passeggero passeggero,
 			Date datarichiesta, Date orarichiesta, Set bigliettos) {
 		this.id = id;
 		this.volo = volo;
@@ -40,19 +40,19 @@ public class PrenotazioneBean implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public VoloBean getVolo() {
+	public Volo getVolo() {
 		return this.volo;
 	}
 
-	public void setVolo(VoloBean volo) {
+	public void setVolo(Volo volo) {
 		this.volo = volo;
 	}
 
-	public PasseggeroBean getPasseggero() {
+	public Passeggero getPasseggero() {
 		return this.passeggero;
 	}
 
-	public void setPasseggero(PasseggeroBean passeggero) {
+	public void setPasseggero(Passeggero passeggero) {
 		this.passeggero = passeggero;
 	}
 
@@ -85,9 +85,9 @@ public class PrenotazioneBean implements java.io.Serializable {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if( !(obj instanceof PrenotazioneBean) ) 
+		if( !(obj instanceof Prenotazione) ) 
 			return false;
-		if( ((PrenotazioneBean) obj).getPasseggero().equals(this.getPasseggero()) && ((PrenotazioneBean) obj).getVolo().equals(this.getVolo()))
+		if( ((Prenotazione) obj).getPasseggero().equals(this.getPasseggero()) && ((Prenotazione) obj).getVolo().equals(this.getVolo()))
 			return true;
 		
 		return false;

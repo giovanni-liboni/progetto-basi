@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import database.DBMS;
-import bean.PasseggeroBean;
-import bean.VoloBean;
+import bean.Passeggero;
+import bean.Volo;
 
 public class NuovaPrenotazione implements Command {
 
@@ -72,8 +72,8 @@ public class NuovaPrenotazione implements Command {
 		if ( session.getAttribute("pass") == null )			
 			dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
 
-		VoloBean beanVolo = dbms.getVolo(codicevolo);
-		PasseggeroBean beanPasseggero = dbms.getPasseggero(documento);
+		Volo beanVolo = dbms.getVolo(codicevolo);
+		Passeggero beanPasseggero = dbms.getPasseggero(documento);
 		
 		if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
 				request.setAttribute("status", "ok");

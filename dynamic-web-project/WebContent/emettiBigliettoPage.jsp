@@ -22,7 +22,7 @@
 				<input type="submit" class="button" name="prenota" value="Emetti biglietto" />	
 			</span>				
 		</form>
-		<form action="?" class="basic-grey">
+		<form action="main?" class="basic-grey">
 			<input type="hidden" name="ps" value="areapersonale">
 			<input type="submit" class="button" name="indietro" value="Indietro" />
 		</form>
