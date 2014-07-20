@@ -17,24 +17,14 @@ TO RUN:
 7. Build all
 8. Go to localhost:8080/Name-of-eclipse-project/servlet/main
 
+Ora il progetto punta al database dblab01p
+
 TODO:
 - Scrivere commenti
 - Scrivere relazione
 - Disegnare ER
-- Togliere "Seleziona arrivo" una vota selezionata la casella
-- Database multimediale
-- Hibernate con multimedia
-- Possibilta' caricare foto profilo del passeggero
-- Impostare metodi per caricare/scaricare foto dal db
-- Possibilita' imbarco
 - Finire sezione contatti ( da leggere sulla consegna )
-- Creare una nuova modalità per ricercare i biglietti
-
-DOPO TUTTO:
-- Aggiungere mappa
-
-Giovanni:
-- Controllo prenotazioni duplicate
-- Tessera
-- Finire parte contatti ( aggiungere e centrare le informazioni )
-- Aggiungere nell'area personale le informazioni del passeggero
+- Javascript per controllare l'estensione del file che si vuole caricare
+- Funzione SQL per aggiornare i conteggi richiesti 
+- Formattare il nome e ilo cognome prima di inserirli nel DB, tutti in maiuscolo
+- Inserire il parametro msg in error.jsp

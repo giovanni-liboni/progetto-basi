@@ -140,7 +140,7 @@
 				<input type="hidden" name="ps" value="nuovaprenotazione" >
 				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">
 				<span>
-					<input type="text" name="nome" id="nome" <%if ( beanPass == null ){ %>placeholder="Nome" <%}else{ %> value="<%=beanPass.getNome() %>" readonly<%}%>>	
+					<input type="text" name="nome" id="nome" <%if ( beanPass == null ){ %>placeholder="Nome" autofocus <%}else{ %> value="<%=beanPass.getNome() %>" readonly<%}%>>	
 				</span>
 				<span>
 					<input type="text" name="cognome" id="cognome" <%if ( beanPass == null ){ %>placeholder="Cognome" <%}else{ %> value="<%=beanPass.getCognome() %>"readonly<%}%>>	

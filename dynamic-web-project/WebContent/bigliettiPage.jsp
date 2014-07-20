@@ -62,7 +62,7 @@
 									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST" >
 										<input type="hidden" name="ps" value="uploadimage" >
 										<input type="file" name="image" size="35">
-										<input type="submit" > 
+										<input type="submit" value="Carica"> 
 									</form>
 								</p>
 							</li>
