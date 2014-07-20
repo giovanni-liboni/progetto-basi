@@ -26,3 +26,7 @@ TODO:
 - Finire sezione contatti ( da leggere sulla consegna)
 - Rivedere downloadimage e uploadimage
 - Rivedere area privata
+- Eliminazione file css superflui
+- Creare css per l'input( se rimane tempo )
+- Test di tutto
+- Creazione degli esempi
