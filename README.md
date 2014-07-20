@@ -24,7 +24,6 @@ TODO:
 - Scrivere relazione
 - Disegnare ER
 - Finire sezione contatti ( da leggere sulla consegna )
-- Javascript per controllare l'estensione del file che si vuole caricare
 - Funzione SQL per aggiornare i conteggi richiesti 
 - Formattare il nome e ilo cognome prima di inserirli nel DB, tutti in maiuscolo
 - Inserire il parametro msg in error.jsp

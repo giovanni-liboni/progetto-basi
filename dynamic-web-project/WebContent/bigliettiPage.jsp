@@ -16,6 +16,7 @@
 	%>
 	<head>
 		<link href="../css/voliPage.css" rel="stylesheet" type="text/css">
+		<script src="../js/util.js"> </script>
 	</head>
 	<body>	
 		<div align=right>
@@ -61,8 +62,8 @@
 								<p>
 									<form name="uploadPicture" action="picture?" enctype="multipart/form-data" method="POST" >
 										<input type="hidden" name="ps" value="uploadimage" >
-										<input type="file" name="image" size="35">
-										<input type="submit" value="Carica"> 
+										<input type="file" name="image" size="35" id="image">
+										<input type="submit" value="Carica" onclick="return checkFile()"> 
 									</form>
 								</p>
 							</li>
