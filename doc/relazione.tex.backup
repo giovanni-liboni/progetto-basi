@@ -3,6 +3,17 @@
 \usepackage{frontespizio}
 \usepackage{listings}
 \usepackage{pdfpages}
+\usepackage{color}
+
+\definecolor{light-gray}{gray}{0.95}
+
+\lstset{numbers=right, 
+                numberstyle=\tiny, 
+                breaklines=true,
+                backgroundcolor=\color{light-gray},
+                numbersep=5pt,
+                xleftmargin=.25in,
+                xrightmargin=.25in} 
 
 % Title Page
 \title{Relazione progetto di Basi di Dati}
@@ -33,14 +44,19 @@
 Qui di seguito si riporta il diagramma Entit\`a - Relazione e lo schema concettuale ricavati dalle specifiche del progetto.
 A partire da questo schema si sono scritte le tabelle per la Base di Dati.
 
-\includegraphics{er.jpg}
+\includegraphics[scale=0.5]{er.pdf}
+
+\includegraphics[scale=0.5]{schemalogico.pdf}
+
+Descrivere il diagramma e lo schema logico.
 
 \section{Progetto logico}
-Per la creazione delle tabelle abbiamo 
+
+Abbiamo usato un singolo script per la creazione delle tabelle sul database. Il codice viene riportato qui di seguito.
+
+\lstinputlisting[language=SQL]{create_table.sql}
 
 \section{Popolamento della base di dati}
-
-
 
 \part{Progetto del sito web}
 
@@ -51,7 +67,7 @@ Si riportano di seguiti gli schemi di pagina seguiti durante la creazione del si
 \section{Struttura dell'applicazione web}
 
 \part{Architettura MVC2}
-L'elaborato \`e stato sviluppato seguendo il design pattern MVC2. Questo pattern \`e composto da tre moduli:
+L'elaborato \`e stato sviluppato seguendo il design pattern MVC2 e seguendo l'approccio servlet-centric. Questo pattern \`e composto da tre moduli:
 
 \begin{itemize}
  \item Model - Comprende la classe DBMS.java e i Java Data Beans. I beans sono contenuti nel package \textit{bean}, mentre la classe DBMS.java \`e contenuta nel package \textit{database};
@@ -60,13 +76,37 @@ L'elaborato \`e stato sviluppato seguendo il design pattern MVC2. Questo pattern
 \end{itemize}
 
 \part{Model}
-Fanno parte del modulo Model il DBMS e i javabeans.
+Fanno parte del modulo Model il DBMS e i javabeans. 
 \part{View}
 Fanno parte del modulo View tutte la JSPs, i javascript e i css.
 \part{Controller}
-Fanno parte del modulo Controller le due servlet.
+Fanno parte del modulo Controller le due servlet. Le due servlet che controllano il flusso sono \textit{main.java} e \textit{picture.java}. 
 
+La servlet \textit{picture.java} gestisce la parte multimediale dell'applicazione, caricando e scaricando dalla base di dati le foto profilo dei passeggeri.
+Per ogni richiesta viene passato il parametro \textit{ps} con un determinato valore e pu\`o assumere questi valori:
+\begin{itemize}
+ \item uploadimage
+ \item downloadimage
+\end{itemize}
 
+La servlet \textit{main.java} controlla le richieste da parte delle JSPs.
+
+\begin{itemize}
+ \item areapersonale - Vengono caricati dalla base di dati i voli e le prenotazioni dell'utente specificato nel parametro \textit{pass}.
+ \item ricercavolo 
+ \item volipage
+ \item prenotazione
+ \item nuovaprenotazione
+ \item logout
+ \item login
+ \item contatti
+ \item emettibiglietto
+ \item newbiglietto
+ \item chisiamo
+ \item ajaxricercavolo
+ \item checkusername
+ \item checkdocumento
+\end{itemize}
 
 \part{Scelte progettuali}
 
