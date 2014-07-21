@@ -344,7 +344,20 @@ reindirizzato alla \textit{index.jsp}.
 \part{Scelte progettuali}
 
 \section{Hibernate}
+Hibernate \`e una piattaforma middleware open source per lo sviluppo di applicazioni Java, 
+attraverso l'appoggio al relativo framework, che fornisce un servizio di Object-relational mapping (ORM) ovvero gestisce la persistenza dei dati 
+sul database attraverso la rappresentazione e il mantenimento su database relazionale di un sistema di oggetti Java.
 
 \section{AJAX}
+AJAX è una tecnica di sviluppo software per la realizzazione di applicazioni web interattive. Consiste nel creare una servlet Java che riceve parametri da parte 
+di una pagina web (nel nostro caso una JSP); questa servlet elabora i dati e li invia alla pagina chiamante, 
+in modo che possa ricevere dinamicamente dati e quindi modificare il suo aspetto o comportamento.
+
+Si è voluta utilizzare questa tecnologia per rendere dinamica la selezione in un campo del form di tipo select; 
+poiché però questi campi devono essere ``popolati'' con dati provenienti dal database, è stato necessario introdurre la tecnologia JQuery e JSON.
+
+JQuery consiste in un insieme di librerie per semplificare la programmazione web, nel nostro caso è stato utilizzato internamente ad 
+AJAX per eseguire una query sul database e mappare in un LinkedHashMap la risposta. Per inviare poi questa risposta alla pagina web, è stato utilizzato JSON, 
+una teconogia che consente lo scambio di dati tra architetture client-server;
 
 \end{document}          
