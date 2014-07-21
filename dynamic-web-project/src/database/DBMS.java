@@ -1,5 +1,7 @@
 package database;
 /**        DBMS.java        */
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -17,6 +19,9 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.*;
 
+import javax.imageio.ImageIO;
+
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.hibernate.*;
 import org.hibernate.engine.jdbc.BinaryStream;
@@ -219,11 +224,10 @@ public class DBMS {
 	 * @param username Username
 	 * @param password Password
 	 * @param tessera Boolean per sapere se ha la tessera o meno
-	 * @return True se l'operazione è andata a buon fine, false altrimenti.
+	 * @return Passeggero Ritorna il passeggero creato
 	 */
-	public boolean newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
+	public Passeggero newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
 	{
-		boolean status = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Passeggero p = new Passeggero();
@@ -241,7 +245,7 @@ public class DBMS {
 
 		session.save(p);
 		session.getTransaction().commit();
-		return status;
+		return p;
 	}
 	/**
 	 * Aggiunge un nuovo biglietto al DB
@@ -497,16 +501,41 @@ public class DBMS {
 	}
 	public void addPictureToPasseggero ( Passeggero passeggero, File f)
 	{
+		final int IMG_WIDTH = 70;
+		final int IMG_HEIGHT = 70;
+		byte[] imageInByte = null;
+		
+		// Riduco la grandezza dell'immagine per favorire le performance del database
+		try {
+			// Leggo il file e lo salvo in un oggetto di tipo BufferedImage
+			BufferedImage image = ImageIO.read(f);
+			
+			// Recupero il tipo dell'immagine
+			int type = image.getType() == 0? BufferedImage.TYPE_INT_ARGB : image.getType();
+			
+			// Trasformo l'immmagine con dimensioni 70x70
+			BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
+			Graphics2D g = resizedImage.createGraphics();
+			g.drawImage(image, 0, 0, IMG_WIDTH, IMG_HEIGHT, null);
+			g.dispose();
+			
+			// Trasformo l'immagine in un array di byte
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write( resizedImage, "png", baos );
+			baos.flush();
+			imageInByte = baos.toByteArray();
+			baos.close();
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		try {
-			passeggero.setPicture( Files.readAllBytes(f.toPath()));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		passeggero.setPicture( imageInByte );
 
 		session.update(passeggero);
 		session.getTransaction().commit();

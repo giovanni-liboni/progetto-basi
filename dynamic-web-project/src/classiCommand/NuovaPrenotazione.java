@@ -69,37 +69,35 @@ public class NuovaPrenotazione implements Command {
 		{
 			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
 		}
+		// Recupero la sessione corrente
+		HttpSession session = request.getSession();
 		
-		// Controllo che non esista un passeggero con lo stesso documento
-		Passeggero p = dbms.getPasseggero(documento);
+		// Controllo che non esista un passeggero con lo stesso documento e recupero il passeggero se esiste
+		Passeggero beanPasseggero = dbms.getPasseggero(documento);
 		
 		// Se esiste un passeggero con lo stesso documento allora deve eseguire l'accesso prima di poter prenotare
-		if( p == null )
+		if( beanPasseggero == null )
 		{
-			
-			// NEL CASO SIA UN UTENTE CHE HA EFFETTUTATO L'ACCESSO ALLORA BISOGNA SOLO REGISTRARE LA NUOVA PRENOTAZIONE
-			HttpSession session = request.getSession();
-			if ( session.getAttribute("pass") == null )			
-			{
-				nome = WordUtils.capitalizeFully(nome);
-				cognome = WordUtils.capitalizeFully(cognome);
-				dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
-			}
-	
-			// Recupero il volo
-			Volo beanVolo = dbms.getVolo(codicevolo);
-			
-			// recupero il passeggero
-			Passeggero beanPasseggero = dbms.getPasseggero(documento);
-			
-			if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
-					request.setAttribute("status", "ok");
-			
-			else
-				request.setAttribute("status", "fail");
+			nome = WordUtils.capitalizeFully(nome);
+			cognome = WordUtils.capitalizeFully(cognome);
+			beanPasseggero = dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
 		}
-		else
+		// Se esiste il passeggero ma non è loggato
+		else if( beanPasseggero != null && session.getAttribute("pass") == null)
+		{
 			request.setAttribute("status", "loginfirst");
+			return request.getRequestDispatcher("../esitoPage.jsp");
+		}
+		
+		// Procedo con la nuova prenotazione
+		
+		// Recupero il volo
+		Volo beanVolo = dbms.getVolo(codicevolo);
+		
+		if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
+				request.setAttribute("status", "ok");
+		else
+			request.setAttribute("status", "fail");	
 		
 		return request.getRequestDispatcher("../esitoPage.jsp");
 	}

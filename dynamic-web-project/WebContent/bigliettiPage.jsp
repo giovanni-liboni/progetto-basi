@@ -29,13 +29,13 @@
 					<ul>
 							<li>
 								<% if ( pass.getPicture() == null ){ %>
-									<p> <img src="../img/no-photo.png" alt="No photo" height="60" width="60"> </p>
+									<p> <img src="../img/no-photo.png" alt="No photo" height="70" width="70"> </p>
 								<%} else{ %>
-									<p> <img src="picture?ps=downloadimage&documento=<%=pass.getDocumento()%>" alt="Foto di <%=pass.getNome() %> <%=pass.getCognome() %>" height="60" width="60"> </p>
+									<p> <img src="picture?ps=downloadimage&documento=<%=pass.getDocumento()%>" alt="Foto di <%=pass.getNome() %> <%=pass.getCognome() %>" height="70" width="70"> </p>
 								<%} %>
 							</li>
  	 						<li> 
-	 							<label> Passeggero </label> 	<p> <%=pass.getNome() %> <%=pass.getCognome() %></p>
+	 							<label> PASSEGGERO </label> 	<p> <%=pass.getNome() %> <%=pass.getCognome() %></p>
 	 						</li>
 								<label>NAZIONALIT&Agrave</label> <p> <%=pass.getNazionalita() %></p>
 							</li>
@@ -72,8 +72,6 @@
 			<%} %>
 			
 			<div id="content-wrap"> 
-			
-				<!--	DA CAMBIARE IL FONT, BISOGNA RENDERLO PIÙ UNIFORME CON IL RESTO DEL SITO	-->
 				<% if ( vipb != null && vipb.size() > 0 ){ %>
 				<table class="voli" align="center">
 				<caption> PRENOTAZIONI </caption>

@@ -25,8 +25,8 @@ www.w3.org/TR/REC-html40/loose.dtd">
         <% exception.printStackTrace(new java.io.PrintWriter(out)); %>
         </pre>
         <%} else { %>
-        <h2 text-align: center; color: #E80000; > ATTENZIONE! </h2>
-        <h3 text-align: center; > <%=msg %></h3>
+        <h2 style="text-align: center; color: #E80000;" > ATTENZIONE! </h2>
+        <h3 style="text-align: center;" > <%=msg %></h3>
         <%} %>
     </body>
 </html> 
