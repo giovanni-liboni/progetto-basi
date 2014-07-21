@@ -36,18 +36,22 @@ public class Prenotazione implements Command {
 			throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
 		}
 		
+		// Richiedo al DBMS il volo con il codice specificato
 		Volo beanVolo = dbms.getVolo(codiceVolo);
 
-		//Delego l'esecuzione della query alla classe di interazione con il DB			
-		//Aggiungo il ArrayList come attributo della richiesta HTTP
+		// Aggiungo l'attributo volo
 		request.setAttribute("volo",beanVolo);	
 		
+		// Recupero la sessione
 		HttpSession session = request.getSession();
+		
+		// Recupero l'attributo "pass" dalla sessione e lo salvo in un oggeto di tipo Passeggero
 		Passeggero beanPasseggero = (Passeggero) session.getAttribute("pass");
 		
+		// Aggiungo l'attributo pass 
 		request.setAttribute("pass",beanPasseggero);
 
-		//Preparo il Dispatcher 
+		//Preparo il Dispatcher per passare il controllo alla jsp
 		RequestDispatcher rd = request.getRequestDispatcher("../prenotazionePage.jsp");
 		
 		return rd;

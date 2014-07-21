@@ -152,9 +152,9 @@
 		
 		<div class="div_form">
 			<% if ( beanPass == null ){ %>
-			<form name="form" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_new();" >
+			<form name="prenotazione" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_new();" >
 			<%} else { %>
-			<form name="form" method="POST" class="form" action="main?" >
+			<form name="prenotazione" method="POST" class="form" action="main?" >
 			<%} %>
 				<input type="hidden" name="ps" value="nuovaprenotazione" >
 				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">

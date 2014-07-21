@@ -18,7 +18,10 @@ public class Logout implements Command {
 	public RequestDispatcher execute(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException {
 		
+		// recupera la sessione
 		HttpSession session = request.getSession();
+		
+		// Rimuove la sessione
 		session.invalidate();
 		
 		try
