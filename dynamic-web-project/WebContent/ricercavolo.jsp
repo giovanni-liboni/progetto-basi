@@ -46,8 +46,8 @@
 						$('#partenza').change(
 								function(event) {
 									var p = $("select#partenza").val();
-										$.get('ajax', {
-											'ps' : 'ricercavolo',
+										$.get('main', {
+											'ps' : 'ajaxricercavolo',
 											'ispartenza' : 'true',
 											'part' : p
 										}, function(jsonResponse) {

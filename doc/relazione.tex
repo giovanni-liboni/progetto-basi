@@ -1,6 +1,8 @@
 \documentclass[a4paper,10pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{frontespizio}
+\usepackage{listings}
+
 
 % Title Page
 \title{Relazione progetto di Basi di Dati}
@@ -47,13 +49,17 @@ Il progetto \`e segue le regole del modello servlet-centric 2.
 
 I moduli in cui \`e suddiviso l'applicativo sono:
 \begin{itemize}
- \item 
+ \item Model - Comprende la classe DBMS.java e i Java Data Beans. I beans sono contenuti nel package \textit{bean}, mentre la classe DBMS.java \`e contenuta nel package \textit{database};
+ \item Control - Comprende le servlet main.java, picture.java.  Ogni servlet ha un compito specifico: ... ;
+ \item View - Comprende tutte le JSPs, i javascript e i css;
 \end{itemize}
+
 
 
 \part{Scelte progettuali}
 
 \section{Hibernate}
 \section{AJAX}
+\section{Session}
 
 \end{document}          

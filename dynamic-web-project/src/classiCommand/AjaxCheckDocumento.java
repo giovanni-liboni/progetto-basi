@@ -2,7 +2,6 @@ package classiCommand;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,8 +18,8 @@ public class AjaxCheckDocumento implements Command{
 
 	private DBMS dbms = null ;
 	@Override
-	public RequestDispatcher execute(HttpServletRequest request,
-			HttpServletResponse response) throws ParseException,
+	public RequestDispatcher execute( HttpServletRequest request,
+			HttpServletResponse response ) throws ParseException,
 			ServletException, IOException {
  
         Map<String, String> map = new LinkedHashMap<String, String>();

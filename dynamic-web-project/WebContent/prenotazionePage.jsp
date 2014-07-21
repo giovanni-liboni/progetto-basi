@@ -26,7 +26,7 @@
 				function(){
 					$('#username').bind("keyup change",function () {
 						var t = this;
-							$.get('ajax', {
+							$.get('main', {
 								'ps' : 'checkusername',
 								'username' : t.value
 							}, function(j) {
@@ -45,10 +45,10 @@
 									}
 								);
 							});
-					})
+					});
 					$('#documento').bind("keyup change",function () {
 						var t = this;
-							$.get('ajax', {
+							$.get('main', {
 								'ps' : 'checkdocumento',
 								'documento' : t.value
 							}, function(j) {
@@ -66,7 +66,7 @@
 									}
 								);
 							});
-					})
+					});
 				$('#nome').bind("keyup change",function() {
 						var t = this;
 						var letters = /^[A-Za-z'עאטיש]+$/;  
@@ -80,7 +80,7 @@
 					    	$('#nome').css('border', '2px solid #d66');
 					    	$('#submit').attr("disabled", true);
 					    }
-					})
+					});
 				$('#cognome').bind("keyup change",function() {
 					var t = this;
 					var letters = /^[A-Za-z'עאטיש]+$/;  
@@ -94,10 +94,10 @@
 					    $('#cognome').css('border', '2px solid #d66');
 					    $('#submit').attr("disabled", true);
 				    }
-					})
+					});
 				$('#nazionalita').change(function() {
 					    $('#nazionalita').css('border', '2px solid #01DF3A');
-					})
+					});
 				$('#password').bind("keyup change",function() {
 					var t = this;
 					var letters = /^[A-Za-z0-9]+$/; 
@@ -112,7 +112,7 @@
 						$('#password').css('border', '2px solid #d66');
 					   	$('#submit').attr("disabled", true);
 				    }
-				})
+				});
 				});
 		</script>
 	</head>

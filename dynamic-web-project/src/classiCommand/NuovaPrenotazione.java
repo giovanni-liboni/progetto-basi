@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.text.WordUtils;
 
-import com.sun.xml.internal.fastinfoset.algorithm.BuiltInEncodingAlgorithm.WordListener;
-
 import database.DBMS;
 import bean.Passeggero;
 import bean.Volo;

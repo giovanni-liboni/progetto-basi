@@ -2,9 +2,10 @@
 \contentsline {section}{\numberline {0.1}Progetto concettuale}{3}
 \contentsline {section}{\numberline {0.2}Progetto logico}{3}
 \contentsline {section}{\numberline {0.3}Popolamento della base di dati}{3}
-\contentsline {part}{II\hspace {1em}Progetto del sito web}{4}
-\contentsline {section}{\numberline {0.4}Progettazione logica}{5}
-\contentsline {section}{\numberline {0.5}Struttura dell'applicazione web}{5}
-\contentsline {part}{III\hspace {1em}Scelte progettuali}{6}
-\contentsline {section}{\numberline {0.6}Hibernate}{7}
-\contentsline {section}{\numberline {0.7}AJAX}{7}
+\contentsline {part}{II\hspace {1em}Progetto del sito web}{7}
+\contentsline {section}{\numberline {0.4}Progettazione logica}{8}
+\contentsline {section}{\numberline {0.5}Struttura dell'applicazione web}{8}
+\contentsline {part}{III\hspace {1em}Scelte progettuali}{9}
+\contentsline {section}{\numberline {0.6}Hibernate}{10}
+\contentsline {section}{\numberline {0.7}AJAX}{10}
+\contentsline {section}{\numberline {0.8}Session}{10}

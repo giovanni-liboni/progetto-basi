@@ -1,6 +1,3 @@
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -115,20 +112,14 @@ public class picture extends HttpServlet {
 				{
 					throw new ServletException("Non è possibile avere una connessione ad database: " + e.getMessage() );
 				}
-				//ottengo lo stream di output verso la JSP
-				BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
 				
 				try{
-					int i;
 
 					// recupero il documento del passeggero
 					String documento = request.getParameter("documento");
 					
 					// recupero il passeggero
 					Passeggero passeggero = dbms.getPasseggero(documento);
-					
-					// Stream di input per il file da inviare
-					BufferedInputStream bis = null;
 								
 					byte[] photo = passeggero.getPicture();
 					

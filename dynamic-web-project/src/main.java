@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import classiCommand.AjaxCheckDocumento;
+import classiCommand.AjaxCheckUsername;
+import classiCommand.AjaxRicercaVolo;
 import classiCommand.AreaPersonale;
 import classiCommand.ChiSiamo;
 import classiCommand.Command;
@@ -53,6 +56,11 @@ public class main extends HttpServlet {
 		commands.put("emettibiglietto", new EmettiBiglietto());
 		commands.put("newbiglietto", new NewBiglietto() );
 		commands.put("chisiamo", new ChiSiamo() );
+		
+		// Command per la gestione delle richieste AJAX
+		commands.put("ajaxricercavolo", new AjaxRicercaVolo() );
+		commands.put("checkusername", new AjaxCheckUsername() );
+		commands.put("checkdocumento", new AjaxCheckDocumento() );
 		
 	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

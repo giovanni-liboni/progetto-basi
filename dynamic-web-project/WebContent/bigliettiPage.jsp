@@ -74,7 +74,7 @@
 			<div id="content-wrap"> 
 				<% if ( vipb != null && vipb.size() > 0 ){ %>
 				<table class="voli" align="center">
-				<caption> PRENOTAZIONI </caption>
+				<caption style="color: #8B0000;"> PRENOTAZIONI </caption>
 					<thead>
 						<tr>
 							<th> CODICE VOLO </th>
@@ -108,7 +108,7 @@
 			 
 				<% if ( vbb != null && vbb.size() > 0){ %>
 				<table class="voli" align="center">
-				<caption> BIGLIETTI </caption>
+				<caption style="color: #8B0000;" > BIGLIETTI </caption>
 					<thead>
 						<tr>
 							<th> CODICE VOLO </th>
