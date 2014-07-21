@@ -82,9 +82,11 @@ Per automatizzare l'esecuzione delle funzioni si sono scritti dei trigger, azion
 \lstinputlisting[language=SQL, firstline=152, lastline=162]{../src/script-sql/init.sql}
 
 \section{Popolamento della base di dati}
-Per il popolamento della base di dati abbiamo creato dei programmi per la generazione automatica di query.
-In particolare sono stati creati dei programmi in Java per popolare le tabelle \textit{Passeggero}, \textit{Tratta}, \textit{Volo}. I files .sql prodotti sono pronti 
-per essere eseguiti senza alcuna necessit\`a di modificare il file. Le chiavi esportate vengono gestite direttamente dai programmi.
+Per il popolamento della base di dati sono stati scritti dei programmi per la generazione automatica di query.
+In particolare sono stati creati dei programmi in Java per popolare le tabelle \textit{Passeggero}, \textit{Tratta} e \textit{Volo} , in grado di gestire 
+le chiavi esportate per ciascuna delle precendenti tabelle. I files .sql prodotti sono pronti 
+per essere eseguiti senza alcuna necessit\`a di modificare i files. I files per il popolamento si trovato nella cartella \textit{script-sql} e sono \textit{popola_tratta.sql},
+\textit{popola_volo.sql}, \textit{popola_passeggero}, \textit{popola_prenotazione.sql} e \textit{popola_biglietto.sql}.
 
 
 \part{Progetto del sito web}
@@ -104,17 +106,10 @@ L'elaborato \`e stato sviluppato seguendo il design pattern MVC2 e seguendo l'ap
 		La comunicazione con main.java e picture.java  avviene tramite i 
 		Java Data Beans in ambo le direzioni ;
  \item VIEW - Comprende tutte le JSPs, i javascript, i css e le foto profilo salvate all'interno della base di dati;
- \item CONTROLLER - Comprende le classi main.java, picture.java. Entrambe sono servlet con compiti differenti: picture.java gestisce le richieste di upload e download delle
-		    immagini, main.java gestisce il resto delle rihieste GET e POST. Utilizza DBMS.java per l'iterazione con la base di dati ed inoltre 
+ \item CONTROLLER - Comprende le classi \textit{main.java}, \textit{picture.java}. Entrambe sono servlet con compiti differenti: \textit{picture.java} gestisce le richieste di upload e download delle
+		    immagini, \textit{main.java} controlla il flusso e gestisce il resto delle rihieste \textbf{GET} e \textbf{POST}. Utilizza \textit{DBMS}.java per l'iterazione con la base di dati ed inoltre 
 		    gli eventuali dati alla JSP appropriata ;
 \end{itemize}
-
-\section{Model}
-Fanno parte del modulo Model il DBMS e i Java Data Beans. 
-\section{View}
-Fanno parte del modulo View tutte la JSPs, i javascript e i css.
-\section{Controller}
-Fanno parte del modulo Controller le due servlet. Le due servlet che controllano il flusso sono \textit{main.java} e \textit{picture.java}. 
 
 La servlet \textit{picture.java} gestisce la parte multimediale dell'applicazione, caricando e scaricando dalla base di dati le foto profilo dei passeggeri.
 La servlet identifica e gestisce le richieste HTTP sulla base che esse siano \textbf{GET} o \textbf{POST} e dal valore del parametro \textbf{ps} passato nella richiesta.
@@ -260,6 +255,7 @@ Vengono descritte ora le JSPs utilizzate con i relativi parametri.
 \begin{itemize}
  \item \textit{index.jsp} - Home page del sito. Viene mostrato un men\`u con il quale \`e possibile muoversi. La pagina \`e composta da un iframe a cui interno vengono
 			    caricate le singole JSPs. 
+			    
  \item \textit{error.jsp} - Se si verifica un errore su una qualunque pagina JSP, allora viene caricata, automaticamente dal 
 			    sistema, la pagina \textit{error.jsp}. La pagina riporta la natura dell'errore. Se viene passato il parametro \textbf{msg} allora 
 			    stamper\`a il messaggio di errore specificato. 
@@ -267,45 +263,65 @@ Vengono descritte ora le JSPs utilizzate con i relativi parametri.
 			\begin{itemize}
 			 \item \textbf{msg} Messaggio di errore da stampare
 			\end{itemize}
- \item \textit{bigliettiPage.jsp} - 
+			
+ \item \textit{bigliettiPage.jsp} - Pagina personale del passeggero dove vengono mostrati i dati personali, i biglietti e le prenotazioni. \`E possibile emettere un biglietto cliccando sul link del codice 
+				    del volo nella tabella inerente alle prenotazioni. Il codice \`e un link per la pagina \textit{emettiBigliettoPage.jsp}. \`E presente una form per caricare
+				    un'immagine personale come immagine profilo. Se non \`e specificata un'immagine all'interno della base di dati allora la JSP caricher\`a un'immagine di default.
  			Parametri passati alla pagina:
 			\begin{itemize}
-			 \item \textbf{prenotazioni}
-			 \item \textbf{biglietti}
-			 \item \textbf{pass}
+			 \item \textbf{prenotazioni} Tutte le prenotazioni del passeggero che si \`e logggato
+			 \item \textbf{biglietti} Tutti i biglietti emessi del passeggero loggato
+			 \item \textbf{pass} Oggetto di tipo PasseggeroBean con le informazioni del passeggero
 			\end{itemize}
- \item \textit{chisiamo.jsp} - Pagina riportante una breve descrizione della societ\`a e del loro operato
+			
+ \item \textit{chisiamo.jsp} - Pagina riportante una breve descrizione della societ\`a e del loro operato;
+ 
  \item \textit{contatti.jsp} - Pagina dove si possono trovare i contatti dell'azienda, con un form per inviare una mail;
- \item \textit{emettiBigliettoPage.jsp} - 
+ 
+ \item \textit{emettiBigliettoPage.jsp} - Pagina dove si emette il biglietto a partire da una prenotazione. 
  			Parametri passati alla pagina:
 			\begin{itemize}
-			 \item \textbf{numPrenotazione} 
+			 \item \textbf{numPrenotazione} Numero della prenotazione per la quale si vuole immettere il biglietto.
 			\end{itemize}
+			
  \item \textit{esitoPage.jsp} - Pagina di esito per la prenotazione. Se la prenotazione \`e andata a buon fine verr\`a visualizzato un messaggio di conferma,
 				altrimenti di errore.
  			Parametri passati alla pagina:
 			\begin{itemize}
 			 \item \textbf{status} Esito della prenotazione.
 			\end{itemize}
+			
  \item \textit{login.jsp} - Pagina per il login del passeggero. Prima di effettuare il login il passeggero deve aver prenotato almeno un volo.
 			Parametri passati alla pagina:
 			\begin{itemize}
 			 \item \textbf{auth} Messaggio di errore se l'autenticazione precedente non \`e andata a buon fine
 			\end{itemize}
- \item \textit{prenotazionePage.jsp} - 
+			
+ \item \textit{prenotazionePage.jsp} - Pagina dove vengono mostrati i dettagli del volo scelto ed una form per la prenotazione del volo.
+				      I dati inseriti nella form vengono controllati da una funzione JQUERY. Ogni campo ha collegato una funzione per la verifica della correttezza
+				      dei dati inseriti. I campi \textbf{documento} e \textbf{username} vengono validati real-time tramite due funzioni AJAX, una per validare il documento e l'altra per l'username.
+				      Entrambe le funzioni richiedono una conferma alla servlet sulla disponibilit\`a del nome utente e del documento. Per entrambi si controlla che non esistano gi\`a all'interno
+				      della base di dati. Per gli altri campi viene eseguito un controllo sulla lunghezza e sul contenuto.
  			Parametri passati alla pagina:
 			\begin{itemize}
-			 \item \textbf{volo}
-			 \item \textbf{pass}
+			 \item \textbf{volo} Oggetto di tipo VoloBean con all'interno tutte le informazioni sul volo scelto
+			 \item \textbf{pass} Oggetto di tipo PasseggeroBean con le informazioni del passeggero. Questo parametro \`e diverso da \textit{null} 
+				solo se il passeggero ha effettuato il login in precedenza.
 			\end{itemize}
+			
  \item \textit{ricercavolo.jsp} - Pagina per la ricerca di un volo. Mediante la form si devono scegliere un aeroporto di partenza, un aeroporto di arrivo e la data 
 				 di partenza. 
+				 Gli aeroporti di arrivo vengono caricati in un secondo momento, appena l'utente sceglie l'aeroporto di partenza, una funzione AJAX richiede alla servlet tutti gli
+				 aeroporti collegati all'aeroporto di partenza scelto.
+				 Il campo per la scelta della data di partenza presenta un ``datepicker'' di default che si disabilita quando riconosce come browser ``Chrome''. Questo perch\'e 
+				 ``Chrome'' ha gi\`a incorporato un datepicker quando rileva, all'interno di una form, un campo di type \textit{date}.
  			Parametri passati alla pagina:
 			\begin{itemize}
 			 \item \textbf{partenze} Sono tutti gli aeroporti dai quali \`e possibile partire
 			 \item \textbf{status} Messaggio usato se non vengono trovati dei voli a partire dai criteri scelti.
 			\end{itemize}
- \item \textit{voliPage.jsp} - 
+			
+ \item \textit{voliPage.jsp} - Pagina dove vengono mostrati i voli trovati dopo la selezione attraverso la form di \textit{ricercavolo.jsp}. Il codice \`e un link per la pagina \textit{prenotazionePage.jsp}.
  			Parametri passati alla pagina:
 			\begin{itemize}
 			\item \textbf{voli} ArrayList dei voli richiesti 

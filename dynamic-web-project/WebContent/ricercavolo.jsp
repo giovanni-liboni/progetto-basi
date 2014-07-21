@@ -24,16 +24,14 @@
 	   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	    
 	   <script type="text/javascript" >
-		   /*  jQuery ready function. Specify a function to execute when the DOM is fully loaded.  */
+		   /*  jQuery ready function.  */
 			$(document).ready(
-			  
-			  /* This is the function that will get executed after the DOM is fully loaded */
 			  function () {
 				  if (!navigator.userAgent.toLowerCase().match('chrome'))
 				    $( "#date" ).datepicker({
 				      changeMonth: true,//this option for allowing user to select month
 				      changeYear: true, //this option for allowing user to select from year range
-				      changeDay: true
+				      changeDay: true //this option for allowing user to select from day range
 				    });
 			  }
 			  );

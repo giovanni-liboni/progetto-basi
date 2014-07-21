@@ -3,6 +3,8 @@ package pass;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 public class Main {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
@@ -19,7 +21,10 @@ public class Main {
 		for ( int pers = 0; pers < MAX_PERSONE; pers++)
 		{
 			String nome = nome_.getNome().toUpperCase().replaceAll("'", "''");
+			// Rendo le prime lettere maiuscole ed il resto minuscolo
+			nome = WordUtils.capitalizeFully(nome);
 			String cognome = cognome_.getCognome().toUpperCase().replaceAll("'", "''");
+			cognome = WordUtils.capitalizeFully(cognome);
 			String nazione = nazione_.getNazione().toUpperCase();
 			String documento= rs.nextString();
 						
