@@ -488,37 +488,8 @@ public class DBMS {
         
 		return result;
 	}
-	public void addPictureToPasseggero ( Passeggero passeggero, File f)
+	public void addPictureToPasseggero ( Passeggero passeggero, byte[] imageInByte )
 	{
-		final int IMG_WIDTH = 70;
-		final int IMG_HEIGHT = 70;
-		byte[] imageInByte = null;
-		
-		// Riduco la grandezza dell'immagine per favorire le performance del database
-		try {
-			// Leggo il file e lo salvo in un oggetto di tipo BufferedImage
-			BufferedImage image = ImageIO.read(f);
-			
-			// Recupero il tipo dell'immagine
-			int type = image.getType() == 0? BufferedImage.TYPE_INT_ARGB : image.getType();
-			
-			// Trasformo l'immmagine con dimensioni 70x70
-			BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
-			Graphics2D g = resizedImage.createGraphics();
-			g.drawImage(image, 0, 0, IMG_WIDTH, IMG_HEIGHT, null);
-			g.dispose();
-			
-			// Trasformo l'immagine in un array di byte
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ImageIO.write( resizedImage, "png", baos );
-			baos.flush();
-			imageInByte = baos.toByteArray();
-			baos.close();
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
 		
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
