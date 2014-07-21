@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  21 JUL 2014 14:23
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  21 JUL 2014 15:19
 entering extended mode
  %&-line parsing enabled.
 **relazione.tex
@@ -315,7 +315,34 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
- (./relazione.aux)
+
+(/usr/share/texmf-texlive/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2009/02/07 v0.4g Insert pages of external PDF documents (AM)
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count97
+\calc@Bcount=\count98
+\calc@Adimen=\dimen109
+\calc@Bdimen=\dimen110
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count99
+\calc@Cskip=\skip45
+)
+(/usr/share/texmf-texlive/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2009/02/07 v0.4g Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box30
+\AM@toc@title=\toks19
+\c@AM@survey=\count100
+\AM@templatesizebox=\box31
+) (./relazione.aux)
 \openout1 = `relazione.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -333,16 +360,16 @@ LaTeX Font Info:    ... okay on input line 12.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
-\scratchdimen=\dimen109
-\scratchbox=\box30
-\nofMPsegments=\count98
-\nofMParguments=\count99
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count100
-\MPscratchDim=\dimen110
-\MPnumerator=\count101
-\everyMPtoPDFconversion=\toks20
+\scratchcounter=\count101
+\scratchdimen=\dimen111
+\scratchbox=\box32
+\nofMPsegments=\count102
+\nofMParguments=\count103
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen112
+\MPnumerator=\count105
+\everyMPtoPDFconversion=\toks21
 ) ABD: EveryShipout initializing macros
 (/usr/share/texmf-texlive/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -352,7 +379,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-\c@lstlisting=\count102
+\c@lstlisting=\count106
 
 <relazione-frn.pdf, id=1, 597.50829pt x 845.0471pt>
 File: relazione-frn.pdf Graphic file (type pdf)
@@ -373,172 +400,87 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] [2
 
-] (./init.sql
+]
 
-! Package inputenc Error: Unicode char \u8:ï\lst@FillFixed@\lst@EC» not set up 
-for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1 ï»¿CREATE 
-              TABLE tratta(
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+pdfTeX warning: /usr/bin/pdflatex (file ./er.pdf): PDF inclusion: found PDF ver
+sion <1.5>, but at most version <1.4> allowed
 
 
-! Package inputenc Error: Keyboard character used is undefined
-(inputenc)                in inputencoding `utf8'.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1 ï»¿CREATE 
-              TABLE tratta(
-You need to provide a definition with \DeclareInputText 
-or \DeclareInputMath before using this key.
-
-
-Overfull \hbox (21.00371pt too wide) in paragraph at lines 5--6
-[][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (21.00372pt too wide) in paragraph at lines 20--21
-[][][][][][][][][][][][][][] 
- []
-
+pdfTeX warning: /usr/bin/pdflatex (file ./er.pdf): PDF inclusion: found PDF ver
+sion <1.5>, but at most version <1.4> allowed
 [3]
-Overfull \hbox (3.00354pt too wide) in paragraph at lines 46--47
-[][][][][][][][][][][] 
- []
+
+pdfTeX warning: /usr/bin/pdflatex (file ./er.pdf): PDF inclusion: found PDF ver
+sion <1.5>, but at most version <1.4> allowed
+<er.pdf, id=47, page=1, 722.7pt x 542.025pt>
+File: er.pdf Graphic file (type pdf)
+ <use er.pdf, page 1>
+File: er.pdf Graphic file (type pdf)
+
+<use er.pdf, page 1>
+File: er.pdf Graphic file (type pdf)
+ <use er.pdf, page 1>
+File: er.pdf Graphic file (type pdf)
+ <use er.pdf, page 1>
+File: er.pdf Graphic file (type pdf)
+
+<use er.pdf, page 1> [4 <./er.pdf>]
+
+pdfTeX warning: /usr/bin/pdflatex (file ./schemalogico.pdf): PDF inclusion: fou
+nd PDF version <1.5>, but at most version <1.4> allowed
 
 
-Overfull \hbox (3.00354pt too wide) in paragraph at lines 61--62
-[][][][][][][][][][][] 
- []
+pdfTeX warning: /usr/bin/pdflatex (file ./schemalogico.pdf): PDF inclusion: fou
+nd PDF version <1.5>, but at most version <1.4> allowed
 
 
-Overfull \hbox (21.00372pt too wide) in paragraph at lines 65--66
-[][][][][][][][][][][] 
- []
+pdfTeX warning: /usr/bin/pdflatex (file ./schemalogico.pdf): PDF inclusion: fou
+nd PDF version <1.5>, but at most version <1.4> allowed
+<schemalogico.pdf, id=140, page=1, 722.7pt x 542.025pt>
+File: schemalogico.pdf Graphic file (type pdf)
 
+<use schemalogico.pdf, page 1>
+File: schemalogico.pdf Graphic file (type pdf)
+ <use schemalogico.pdf, page 1>
+File: schemalogico.pdf Graphic file (type pdf)
 
-Overfull \hbox (27.00378pt too wide) in paragraph at lines 89--91
-[][][][][][][][][][][][][][][][][][][][] 
- []
+<use schemalogico.pdf, page 1>
+File: schemalogico.pdf Graphic file (type pdf)
+ <use schemalogico.pdf, page 1>
+File: schemalogico.pdf Graphic file (type pdf)
 
+<use schemalogico.pdf, page 1> [5 <./schemalogico.pdf>] [6] [7
 
-Overfull \hbox (3.00354pt too wide) in paragraph at lines 92--93
-[][][][][][][][][][][][][] 
- []
-
-[4]
-Overfull \hbox (63.00415pt too wide) in paragraph at lines 96--97
-[][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (45.00397pt too wide) in paragraph at lines 134--135
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 137.
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 57.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 57.
+ [8] [9
 
-Overfull \hbox (159.00513pt too wide) in paragraph at lines 138--139
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (105.00458pt too wide) in paragraph at lines 139--140
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (117.0047pt too wide) in paragraph at lines 140--141
-[][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (63.00415pt too wide) in paragraph at lines 142--143
-[][][][][][][][][][][][][][] 
- []
-
-[5]
-Overfull \hbox (147.005pt too wide) in paragraph at lines 145--146
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (297.00653pt too wide) in paragraph at lines 146--147
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (207.00562pt too wide) in paragraph at lines 147--148
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 150.
-
-(/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 150.
-
-Overfull \hbox (111.00464pt too wide) in paragraph at lines 150--151
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (129.00482pt too wide) in paragraph at lines 151--152
-[][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (33.00385pt too wide) in paragraph at lines 159--161
-[][][][][][][][][][][][][][][] 
- []
-
-)
-Overfull \hbox (33.00385pt too wide) in paragraph at lines 167--39
-[][][][][][][][][][][][][][][] 
- []
-
-[6] [7
-
-] [8] [9
-
-] [10] (./relazione.aux) ) 
+] [10]
+(./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 3031 strings out of 495061
- 38814 string characters out of 1182621
- 117186 words of memory out of 3000000
- 6195 multiletter control sequences out of 15000+50000
+ 3357 strings out of 495061
+ 45872 string characters out of 1182621
+ 102005 words of memory out of 3000000
+ 6510 multiletter control sequences out of 15000+50000
  6408 words of font info for 23 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 32i,8n,32p,232b,1513s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
-/cm/cmti10.pfb>
-Output written on relazione.pdf (11 pages, 119076 bytes).
+ 32i,16n,36p,291b,389s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmti10.pfb>
+Output written on relazione.pdf (11 pages, 205632 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
+ 186 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

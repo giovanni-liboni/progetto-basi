@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@page import="java.io.*"%>
 <%@page import="java.util.*"%>
 <%@page import="database.*"%>
@@ -133,7 +135,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th> <%=beanVolo.getCodicevolo() %> </a> </th>
+					<th> <%=beanVolo.getCodicevolo() %> </th>
 					<th> <%=beanVolo.getDatapartenza() %> </th>
 					<th> <%=beanVolo.getOrapartenza() %> </th>
  					<th> <%=beanVolo.getTratta().getId().getPartenza() %> </th>
@@ -150,9 +152,9 @@
 		
 		<div class="div_form">
 			<% if ( beanPass == null ){ %>
-			<form name="form" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_new() ">
+			<form name="form" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_new();" >
 			<%} else { %>
-			<form name="form" method="POST" class="form" action="main?" onsubmit="return validate_prenotazione_auth() ">
+			<form name="form" method="POST" class="form" action="main?" >
 			<%} %>
 				<input type="hidden" name="ps" value="nuovaprenotazione" >
 				<input type="hidden" name="codicevolo" value="<%=beanVolo.getCodicevolo() %>">
@@ -163,9 +165,7 @@
 					<input type="text" name="cognome" id="cognome" <%if ( beanPass == null ){ %>placeholder="Cognome" <%}else{ %> value="<%=beanPass.getCognome() %>"readonly<%}%>>	
 				</span>	
 				<span>
-					<%-- <input type="text" name="nazionalita" <%if ( beanPass == null ){ %>placeholder="Nazione" <%}else{ %> value="<%=beanPass.getNazionalita() %>"readonly<%}%>> --%>
 					<select name="nazionalita" id="nazionalita"> 
-						
 						<% if ( beanPass != null){ %>
 						<option value="<%=beanPass.getNazionalita()%>" selected="selected"><%=beanPass.getNazionalita()%></option> 
 						<% } else { %>

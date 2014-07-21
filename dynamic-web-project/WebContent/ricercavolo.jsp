@@ -8,7 +8,6 @@
 <%
 	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
 	ArrayList<String> arrivi = (ArrayList<String>) request.getAttribute("arrivi");
-	Passeggero username = (Passeggero) request.getAttribute("pass");
 	String status = (String) request.getAttribute("status");
 %>
 	<head>

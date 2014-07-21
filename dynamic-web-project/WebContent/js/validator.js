@@ -69,35 +69,3 @@ function validate_prenotazione_new(){
 
         return true;
 }
-function validate_prenotazione_auth(){
-    var  s = document.forms["form"]["nome"].value;
-    if( s==null || s=="" )
-        {
-    		alert("Nome obbligatorio!");
-    		return false;
-        }
-    
-    s = document.forms["form"]["cognome"].value;
-    if(s==null || s=="")
-        {
-    		alert("Cognome obbligatorio!");
-    		return false;
-        }
-    
-	s = document.forms["form"]["nazionalita"].value;
-    if(s==null || s=="" )
-        {
-    		alert("Inserire la nazione !");
-    		return false;
-        }
-    
-    s = document.forms["form"]["documento"].value;
-    if(s==null || s=="")
-    {
-    	alert("Inserire un documento valido!");
-    	return false;
-    }
-    
-
-        return true;
-}

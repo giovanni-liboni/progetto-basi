@@ -30,3 +30,5 @@ TODO:
 - Creare css per l'input( se rimane tempo )
 - Test di tutto
 - Creazione degli esempi
+- Controllare pageencoding
+

@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{frontespizio}
 \usepackage{listings}
-
+\usepackage{pdfpages}
 
 % Title Page
 \title{Relazione progetto di Basi di Dati}
@@ -30,12 +30,17 @@
 \part{Progetto della basi di dati}
 
 \section{Progetto concettuale}
+Qui di seguito si riporta il diagramma Entit\`a - Relazione e lo schema concettuale ricavati dalle specifiche del progetto.
+A partire da questo schema si sono scritte le tabelle per la Base di Dati.
+
+\includegraphics{er.jpg}
 
 \section{Progetto logico}
+Per la creazione delle tabelle abbiamo 
 
 \section{Popolamento della base di dati}
 
-Il popolamento della base di dati avviene tramite alcuni script per creare le tabelle, caricare le funzioni e i trigger e per inserire alcune tuple di esempio.
+
 
 \part{Progetto del sito web}
 
@@ -50,7 +55,7 @@ Il progetto \`e segue le regole del modello servlet-centric 2.
 I moduli in cui \`e suddiviso l'applicativo sono:
 \begin{itemize}
  \item Model - Comprende la classe DBMS.java e i Java Data Beans. I beans sono contenuti nel package \textit{bean}, mentre la classe DBMS.java \`e contenuta nel package \textit{database};
- \item Control - Comprende le servlet main.java, picture.java e ajax.java. Ogni servlet ha un compito specifico: ... ;
+ \item Control - Comprende le servlet main.java, picture.java.  Ogni servlet ha un compito specifico: ... ;
  \item View - Comprende tutte le JSPs, i javascript e i css;
 \end{itemize}
 

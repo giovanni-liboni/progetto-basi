@@ -1,7 +1,7 @@
 \contentsline {part}{I\hspace {1em}Progetto della basi di dati}{2}
 \contentsline {section}{\numberline {0.1}Progetto concettuale}{3}
-\contentsline {section}{\numberline {0.2}Progetto logico}{3}
-\contentsline {section}{\numberline {0.3}Popolamento della base di dati}{3}
+\contentsline {section}{\numberline {0.2}Progetto logico}{6}
+\contentsline {section}{\numberline {0.3}Popolamento della base di dati}{6}
 \contentsline {part}{II\hspace {1em}Progetto del sito web}{7}
 \contentsline {section}{\numberline {0.4}Progettazione logica}{8}
 \contentsline {section}{\numberline {0.5}Struttura dell'applicazione web}{8}
