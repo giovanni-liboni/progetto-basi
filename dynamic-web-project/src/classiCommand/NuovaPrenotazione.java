@@ -78,6 +78,7 @@ public class NuovaPrenotazione implements Command {
 		// Se esiste un passeggero con lo stesso documento allora deve eseguire l'accesso prima di poter prenotare
 		if( beanPasseggero == null )
 		{
+			// Rendo le prime lettere maiuscole ed il resto minuscolo
 			nome = WordUtils.capitalizeFully(nome);
 			cognome = WordUtils.capitalizeFully(cognome);
 			beanPasseggero = dbms.newPasseggero(nome, cognome, nazionalita, documento, username, password, tessera);
@@ -85,15 +86,15 @@ public class NuovaPrenotazione implements Command {
 		// Se esiste il passeggero ma non è loggato
 		else if( beanPasseggero != null && session.getAttribute("pass") == null)
 		{
+			// Prima di procedere si deve loggare
 			request.setAttribute("status", "loginfirst");
 			return request.getRequestDispatcher("../esitoPage.jsp");
 		}
 		
-		// Procedo con la nuova prenotazione
-		
 		// Recupero il volo
 		Volo beanVolo = dbms.getVolo(codicevolo);
 		
+		// Aggiungo la prenotazione al database
 		if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				
 				request.setAttribute("status", "ok");
 		else

@@ -38,6 +38,8 @@ public class AreaPersonale implements Command {
 		{
 
 			Passeggero beanPasseggero = (Passeggero) session.getAttribute("pass");
+			beanPasseggero = dbms.getPasseggero( beanPasseggero.getDocumento() );
+			session.setAttribute("pass", beanPasseggero);
 			
 			ArrayList<Prenotazione> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
 			ArrayList<Biglietto> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());

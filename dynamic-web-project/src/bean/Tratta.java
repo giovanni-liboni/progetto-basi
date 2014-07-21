@@ -2,6 +2,7 @@ package bean;
 
 // Generated 20-lug-2014 1.26.43 by Hibernate Tools 3.4.0.CR1
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,19 +13,19 @@ public class Tratta implements java.io.Serializable {
 
 	private TrattaId id;
 	private int durata;
-	private double distanza;
+	private BigDecimal distanza;
 	private Set volos = new HashSet(0);
 
 	public Tratta() {
 	}
 
-	public Tratta(TrattaId id, int durata, double distanza) {
+	public Tratta(TrattaId id, int durata, BigDecimal distanza) {
 		this.id = id;
 		this.durata = durata;
 		this.distanza = distanza;
 	}
 
-	public Tratta(TrattaId id, int durata, double distanza, Set volos) {
+	public Tratta(TrattaId id, int durata, BigDecimal distanza, Set volos) {
 		this.id = id;
 		this.durata = durata;
 		this.distanza = distanza;
@@ -47,11 +48,11 @@ public class Tratta implements java.io.Serializable {
 		this.durata = durata;
 	}
 
-	public double getDistanza() {
+	public BigDecimal getDistanza() {
 		return this.distanza;
 	}
 
-	public void setDistanza(double distanza) {
+	public void setDistanza(BigDecimal distanza) {
 		this.distanza = distanza;
 	}
 

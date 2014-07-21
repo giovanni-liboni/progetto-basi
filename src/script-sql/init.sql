@@ -2,7 +2,7 @@
 	partenza	VARCHAR(100) NOT NULL,
 	arrivo		VARCHAR(100) NOT NULL,
 	durata		INTEGER NOT NULL,
-	distanza	FLOAT NOT NULL DEFAULT '0.0',
+	distanza	NUMERIC(10,1) NOT NULL DEFAULT '0.0',
 	PRIMARY KEY ( partenza, arrivo ),
 	UNIQUE ( partenza, arrivo )
 );
