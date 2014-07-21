@@ -23,40 +23,35 @@ public class AjaxRicercaVolo implements Command {
 			HttpServletResponse response) throws ParseException,
 			ServletException, IOException {
 
-        
-                
-        Map<String, String> map = new LinkedHashMap<String, String>();
-        String json = null;
-        
+
+
+		Map<String, String> map = new LinkedHashMap<String, String>();
+		String json = null;
+
 		try
 		{
-			 dbms = new DBMS();
+			dbms = new DBMS();
 		}
 		catch( final Exception e )
 		{
 			throw new ServletException("Connection to dababase not possible: " + e.getMessage() );
 		}
-		
+
 		String partenza = request.getParameter("part");
-		String isPartenza = request.getParameter("ispartenza");
-		
-		if( isPartenza != null && isPartenza.compareTo("true") == 0 )
+		if( partenza != null)
 		{
-			if( partenza != null)
+			ArrayList<String> s = dbms.getArrivi(partenza);
+
+			for( String str : s )
 			{
-				ArrayList<String> s = dbms.getArrivi(partenza);
-							
-				for( String str : s )
-				{
-					map.put( str,str);
-				}
+				map.put( str,str);
 			}
 		}
 
-        json = new Gson().toJson(map);            
-        response.setContentType("application/json");
-        response.getWriter().write(json);
-		
+		json = new Gson().toJson(map);            
+		response.setContentType("application/json");
+		response.getWriter().write(json);
+
 		return null;
 	}
 

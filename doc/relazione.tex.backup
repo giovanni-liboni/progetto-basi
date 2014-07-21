@@ -110,20 +110,41 @@ L'elaborato \`e stato sviluppato seguendo il design pattern MVC2 e seguendo l'ap
 \end{itemize}
 
 \section{Model}
-Fanno parte del modulo Model il DBMS e i javabeans. 
+Fanno parte del modulo Model il DBMS e i Java Data Beans. 
 \section{View}
 Fanno parte del modulo View tutte la JSPs, i javascript e i css.
 \section{Controller}
 Fanno parte del modulo Controller le due servlet. Le due servlet che controllano il flusso sono \textit{main.java} e \textit{picture.java}. 
 
 La servlet \textit{picture.java} gestisce la parte multimediale dell'applicazione, caricando e scaricando dalla base di dati le foto profilo dei passeggeri.
-Per ogni richiesta viene passato il parametro \textit{ps} con un determinato valore e pu\`o assumere questi valori:
+La servlet identifica e gestisce le richieste HTTP sulla base che esse siano \textbf{GET} o \textbf{POST} e dal valore del parametro \textbf{ps} passato nella richiesta.
+
+Per le richieste di tipo \textbf{GET}, \textbf{ps} pu\`o assumere questi valori:
 \begin{itemize}
- \item uploadimage
- \item downloadimage
+ \item \textbf{downloadimage} - Scrive direttamente sullo stream output l'immagine relativa al passeggero specificato.
+ 			     I parametri richiesti sono:
+			     \begin{itemize}
+			      \item \textbf{documento} Il documento del passeggero per il quale bisogna caricare l'immagine
+			     \end{itemize}
+ \item \textbf{Parametro assente o stringa vuota} - Viene passato il controllo a \textit{index.jsp}
+\end{itemize}
+Per le richieste di tipo \textbf{POST}, \textbf{ps} pu\`o assumere questi valori:
+\begin{itemize}
+ \item \textbf{uploadimage} - Recupera i dati del passeggero loggato e carica l'immagine passata nella base di dati. In caso di errore passa il controllo a \textit{error.jsp} specificando un messagio
+			     di errore, altrimenti passa il controllo a \textit{bigliettiPage.jsp} dopo aver caricato i relativi dati.
+			     I parametri richiesti sono:
+			     \begin{itemize}
+			      \item \textbf{image} L'immagine da caricare come foto profilo
+			     \end{itemize}
+
+ \item \textbf{Parametro assente o stringa vuota} - Viene passato il controllo a \textit{index.jsp}
 \end{itemize}
 
+
 La servlet \textit{main.java} controlla le richieste da parte delle JSPs.
+La servlet identifica e gestisce le richieste HTTP sulla base che esse siano \textbf{GET} o \textbf{POST} e dal valore del parametro \textbf{ps} passato nella richiesta.
+
+Per le richieste di tipo \textbf{GET}, \textbf{ps} pu\`o assumere questi valori:
 
 \begin{itemize}
  \item \textbf{areapersonale} - Vengono caricati dalla base di dati i voli e le prenotazioni dell'utente specificato nel parametro \textit{pass}. Viene passato il controllo 
@@ -131,14 +152,7 @@ La servlet \textit{main.java} controlla le richieste da parte delle JSPs.
 			\textit{pass}.
 
  \item \textbf{ricercavolo} - Vengono caricati gli aeroporti di partenza e viene passato il controllo a \textit{ricercavolo.jsp}.
- \item \textbf{volipage} - Ricerca un volo a partire dai valori specificati nei parametri passati e passa il controllo a \textit{voliPage.jsp} se esiste almeno una corrispondeza, altrimenti
-		  viene passato il controllo a \textit{ricercavolo.jsp}.
-		  I parametri richiesti sono:
-		  \begin{itemize}
-		   \item \textbf{partenza} Aeroporto di partenza
-		   \item \textbf{arrivo} Aeroporto di arrivo
-		   \item \textbf{date} Data di partenza del volo
-		  \end{itemize}
+
 
  \item \textbf{prenotazione} - Recupera le informazioni del volo e del passeggero. Infine passa il controllo a \textit{prenotazionePage.jsp}. 
 				I parametri richiesti sono:
@@ -148,6 +162,40 @@ La servlet \textit{main.java} controlla le richieste da parte delle JSPs.
 				
 				Non serve specificare un parametro per il passeggero in quanto le informazioni vengo recuperate dall'attributo della sessione.
 
+
+
+ \item \textbf{logout} - Viene rimosso il passeggero loggato e passa il controllo a \textit{ricercavolo.jsp} insieme agli aeroporti di partenza.
+
+
+ \item \textbf{contatti} - Viene passato il controllo a \textit{contatti.jsp}
+ \item \textbf{emettibiglietto} - Passa il numero della prenotazionen a \textit{emettiBigliettoPage.jsp} e gli passa il controllo. 
+				  I parametri richiesti sono:
+				   \begin{itemize}
+				    \item \textbf{numPrenotazione} Numero della prenotazione per la quale emettere il biglietto
+				   \end{itemize}
+
+
+ \item \textbf{chisiamo} - Passa il controllo a \textit{chisiamo.jsp}
+ \item \textbf{Parametro assente o stringa vuota} - Viene passato il controllo a \textit{index.jsp}
+ \end{itemize}
+ 
+ Per le richieste di tipo \textbf{POST}, \textbf{ps} pu\`o assumere questi valori:
+ 
+ \begin{itemize}
+ \item \textbf{newbiglietto} - Viene richiesto di emettere un biglietto a partire dal numero della prenotazione. Una volta inserito il biglietto passa il controllo a \textit{bigliettiPage.jsp} con
+				i dati relativi al passeggero loggato, alle sue prenotazioni e ai suoi biglietti.
+ 				  I parametri richiesti sono:
+				   \begin{itemize}
+				    \item \textbf{numPrenotazione} Numero della prenotazione per la quale emettere il biglietto
+				   \end{itemize}
+ \item \textbf{login} - Vengono ricevuti la coppia login e password dalla form \textit{authentication} di \textit{login.jsp}. Se la coppia \`e valida allora passa il controllo
+			 a \textit{bigliettiPage.jsp} insieme ai dati del passeggero, delle prenotazioni e dei voli. Altrimenti imposta un messaggio di errore e passa il controllo
+			 a \textit{login.jsp}
+			 I parametri richiesti sono:
+			 \begin{itemize}
+			  \item \textbf{username} Username del passeggero
+			  \item \textbf{password} Password del passeggero
+			 \end{itemize}
  \item \textbf{nuovaprenotazione} - Vengono inviati i dati dalla form \textit{prenotazione} di \textit{prenotazionePage.jsp}, se i dati sono validi allora si procede 
 				     ad aggiungere una nuova prenotazione del database. Se il passeggero non esiste ed \`e la prima volta che effettua una prenotazione
 				     allora sar\`a creato un nuovo passeggero a partire dai dati passati alla servlet. Il controllo poi passa a \textit{esitoPage.jsp} con 
@@ -163,40 +211,123 @@ La servlet \textit{main.java} controlla le richieste da parte delle JSPs.
 				      \item \textbf{codicevolo} Codice del volo da prenotare
 				      \item \textbf{tessera} Richiesta della tessera
 				     \end{itemize}
+ \item \textbf{volipage} - Ricerca un volo a partire dai valori specificati nei parametri passati e passa il controllo a \textit{voliPage.jsp} se esiste almeno una corrispondeza, altrimenti
+		  viene passato il controllo a \textit{ricercavolo.jsp}.
+		  I parametri richiesti sono:
+		  \begin{itemize}
+		   \item \textbf{partenza} Aeroporto di partenza
+		   \item \textbf{arrivo} Aeroporto di arrivo
+		   \item \textbf{date} Data di partenza del volo
+		  \end{itemize}
+\item \textbf{Parametro assente o stringa vuota} - Viene passato il controllo a \textit{index.jsp}
+ \end{itemize}
 
- \item \textbf{logout} - Viene rimosso il passeggero loggato e passa il controllo a \textit{ricercavolo.jsp} insieme agli aeroporti di partenza.
- \item \textbf{login} - Vengono ricevuti la coppia login e password dalla form \textit{authentication} di \textit{login.jsp}. Se la coppia \`e valida allora passa il controllo
-			 a \textit{bigliettiPage.jsp} insieme ai dati del passeggero, delle prenotazioni e dei voli. Altrimenti imposta un messaggio di errore e passa il controllo
-			 a \textit{login.jsp}
-			 I parametri richiesti sono:
-			 \begin{itemize}
-			  \item \textbf{username} Username del passeggero
-			  \item \textbf{password} Password del passeggero
-			 \end{itemize}
 
- \item \textbf{contatti} - Viene passato il controllo a \textit{contatti.jsp}
- \item \textbf{emettibiglietto} - Passa il numero della prenotazionen a \textit{emettiBigliettoPage.jsp} e gli passa il controllo. 
-				  I parametri richiesti sono:
-				   \begin{itemize}
-				    \item \textbf{numPrenotazione} Numero della prenotazione per la quale emettere il biglietto
-				   \end{itemize}
+ 
+ 
+ La servlet \textit{main.java} \`e in grado di gestire anche richieste AJAX sempre con lo stesso parametro \textbf{ps}. Il parametro pu\`o assumere i seguenti valori:
+ \begin{itemize}
+ \item \textbf{ajaxricercavolo} - Data un aeroporto di partenza passato come parametro, ricava tutti i possibili aeroporti di arrivo. Dopo aver recuperato le informazioni invia un messaggio JSON alla JSP
+				  chiamante.
+				  I parametri da passare sono:
+				  \begin{itemize}
+				   \item \textbf{part} Indica l'aeroporto di partenza
+				  \end{itemize}
 
- \item \textbf{newbiglietto} - Viene richiesto di emettere un biglietto a partire dal numero della prenotazione. Una volta inserito il biglietto passa il controllo
- \item \textbf{chisiamo}
- \item \textbf{ajaxricercavolo}
- \item \textbf{checkusername}
- \item \textbf{checkdocumento}
+ \item \textbf{checkusername} - Dato il nome utente di un passeggero interroga la classe \textit{DBMS.java} se l'username esiste all'interno della base di dati. Se esiste setta il campo \textbf{isFree} all'interno 
+				del messaggio JSON di risposta a \textbf{false}, altrimenti a \textbf{true}.
+				  I parametri da passare sono:
+				  \begin{itemize}
+				   \item \textbf{username} Indica il nome utente da controllare
+				  \end{itemize}
+ \item \textbf{checkdocumento} - Dato il numero di documento interroga la classe \textit{DBMS.java} se il numero di documento esiste all'interno della base di dati.Se esiste setta il campo \textbf{isFree} all'interno 
+				del messaggio JSON di risposta a \textbf{false}, altrimenti a \textbf{true}.
+ 				  I parametri da passare sono:
+				  \begin{itemize}
+				   \item \textbf{documento} Indica il documento da controllare
+				  \end{itemize}
+\end{itemize}
+
+\section{Gestione di errori}
+Se si verifica un errore su una qualunque pagina JSP, allora viene caricata, automaticamente dal 
+sistema, la pagina \textit{error.jsp}. La pagina riporta la natura dell'errore. Se viene passato il parametro \textbf{msg} allora 
+stamper\`a il messaggio di errore specificato.
+
+\section{Pagine JSPs e parametri passati}
+
+Vengono descritte ora le JSPs utilizzate con i relativi parametri.
+
+\begin{itemize}
+ \item \textit{index.jsp} - Home page del sito. Viene mostrato un men\`u con il quale \`e possibile muoversi. La pagina \`e composta da un iframe a cui interno vengono
+			    caricate le singole JSPs. 
+ \item \textit{error.jsp} - Se si verifica un errore su una qualunque pagina JSP, allora viene caricata, automaticamente dal 
+			    sistema, la pagina \textit{error.jsp}. La pagina riporta la natura dell'errore. Se viene passato il parametro \textbf{msg} allora 
+			    stamper\`a il messaggio di errore specificato. 
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{msg} Messaggio di errore da stampare
+			\end{itemize}
+ \item \textit{bigliettiPage.jsp} - 
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{prenotazioni}
+			 \item \textbf{biglietti}
+			 \item \textbf{pass}
+			\end{itemize}
+ \item \textit{chisiamo.jsp} - Pagina riportante una breve descrizione della societ\`a e del loro operato
+ \item \textit{contatti.jsp} - Pagina dove si possono trovare i contatti dell'azienda, con un form per inviare una mail;
+ \item \textit{emettiBigliettoPage.jsp} - 
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{numPrenotazione} 
+			\end{itemize}
+ \item \textit{esitoPage.jsp} - Pagina di esito per la prenotazione. Se la prenotazione \`e andata a buon fine verr\`a visualizzato un messaggio di conferma,
+				altrimenti di errore.
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{status} Esito della prenotazione.
+			\end{itemize}
+ \item \textit{login.jsp} - Pagina per il login del passeggero. Prima di effettuare il login il passeggero deve aver prenotato almeno un volo.
+			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{auth} Messaggio di errore se l'autenticazione precedente non \`e andata a buon fine
+			\end{itemize}
+ \item \textit{prenotazionePage.jsp} - 
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{volo}
+			 \item \textbf{pass}
+			\end{itemize}
+ \item \textit{ricercavolo.jsp} - Pagina per la ricerca di un volo. Mediante la form si devono scegliere un aeroporto di partenza, un aeroporto di arrivo e la data 
+				 di partenza. 
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			 \item \textbf{partenze} Sono tutti gli aeroporti dai quali \`e possibile partire
+			 \item \textbf{status} Messaggio usato se non vengono trovati dei voli a partire dai criteri scelti.
+			\end{itemize}
+ \item \textit{voliPage.jsp} - 
+ 			Parametri passati alla pagina:
+			\begin{itemize}
+			\item \textbf{voli} ArrayList dei voli richiesti 
+			\end{itemize}
 \end{itemize}
 
 \section{Path e Context}
 Il context del sito web \`e \textit{basi}, mentre il path relativo per raggiungere la servlet \`e \textit{servlet/main}. La porta del server \`e la \textit{8080}.
 Quindi l'url per accedere al sito web \`e: \url{http://localhost:8080/basi/servlet/main}
 
+\section{Login e sessioni}
+Quando un passeggero esegue il login viene associata una sessione al client relativo, nella quale viene mantenuto
+l'attributo \textbf{pass}. L'attributo contiene l'oggetto relativo al passeggero loggato.
+L'utilizzo di sessioni implica che il browser del client debba avere l'accettazione 
+di COOKIE attiva per poter navigare sul sito.
+Ogni sessione dura 600 secondi(10 minuti), dopo di che  essa verr\`a ``eliminata'' e se 
+avviene   un   altra   richiesta   da   parte   di   un   host   a   cui   \`e   scaduta   la   sessione,   allora   esso   verr\`a 
+reindirizzato alla \textit{index.jsp}.
 
 \part{Scelte progettuali}
 
 \section{Hibernate}
 \section{AJAX}
-\section{Session}
 
 \end{document}          

@@ -7,7 +7,6 @@
 <html>
 <%
 	ArrayList<String> partenze = (ArrayList<String>) request.getAttribute("partenze");
-	ArrayList<String> arrivi = (ArrayList<String>) request.getAttribute("arrivi");
 	String status = (String) request.getAttribute("status");
 %>
 	<head>
@@ -47,7 +46,6 @@
 									var p = $("select#partenza").val();
 										$.get('main', {
 											'ps' : 'ajaxricercavolo',
-											'ispartenza' : 'true',
 											'part' : p
 										}, function(jsonResponse) {
 											var select = $('#arrivo');
