@@ -5,7 +5,7 @@
     <class name="bean.PostoBean" table="posto" schema="public">
         <composite-id name="id" class="bean.PostoBeanId">
             <key-property name="lettera" type="char">
-                <column name="lettera" length="1" />
+                <column name="lettera" />
             </key-property>
             <key-property name="numero" type="int">
                 <column name="numero" />
@@ -13,7 +13,7 @@
         </composite-id>
         <set name="imbarcos" table="imbarco" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="lettera" length="1" not-null="true" />
+                <column name="lettera" not-null="true" />
                 <column name="numero" not-null="true" />
             </key>
             <one-to-many class="bean.Imbarco" />

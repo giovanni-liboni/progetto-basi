@@ -5,34 +5,34 @@
     <class name="bean.BigliettoBeanBean" table="biglietto" schema="public">
         <composite-id name="id" class="bean.BigliettoBeanId">
             <key-property name="codicevolo" type="string">
-                <column name="codicevolo" length="10" />
+                <column name="codicevolo"  />
             </key-property>
             <key-property name="documento" type="string">
-                <column name="documento" length="50" />
+                <column name="documento" />
             </key-property>
         </composite-id>
         <many-to-one name="prenotazione" class="bean.PrenotazioneBean" fetch="select">
             <column name="id_prenotazione" not-null="true" />
         </many-to-one>
-        <many-to-one name="volo" class="bean.VoloBean" update="false" insert="false" fetch="select">
-            <column name="codicevolo" length="10" not-null="true" />
+        <many-to-one name="volo" class="bean.VoloBean" fetch="select">
+            <column name="codicevolo" not-null="true" />
         </many-to-one>
-        <many-to-one name="passeggero" class="bean.PasseggeroBean" update="false" insert="false" fetch="select">
-            <column name="documento" length="50" not-null="true" />
+        <many-to-one name="passeggero" class="bean.PasseggeroBean" fetch="select">
+            <column name="documento" not-null="true" />
         </many-to-one>
         <property name="id_1" type="int">
             <column name="id" not-null="true" />
         </property>
         <property name="dataemissione" type="date">
-            <column name="dataemissione" length="13" />
+            <column name="dataemissione" />
         </property>
         <property name="prezzo" type="big_decimal">
-            <column name="prezzo" precision="10" not-null="true" />
+            <column name="prezzo" not-null="true" />
         </property>
         <set name="imbarcos" table="imbarco" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="codicevolo" length="10" not-null="true" />
-                <column name="documento" length="50" not-null="true" />
+                <column name="codicevolo" not-null="true" />
+                <column name="documento" not-null="true" />
             </key>
             <one-to-many class="bean.Imbarco" />
         </set>

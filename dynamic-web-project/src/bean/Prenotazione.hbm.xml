@@ -8,16 +8,16 @@
             <generator class="identity" />
         </id>
         <many-to-one name="volo" class="bean.VoloBean" fetch="select">
-            <column name="codicevolo" length="10" not-null="true" />
+            <column name="codicevolo" not-null="true" />
         </many-to-one>
         <many-to-one name="passeggero" class="bean.PasseggeroBean" fetch="select">
-            <column name="documento" length="50" not-null="true" />
+            <column name="documento"  not-null="true" />
         </many-to-one>
         <property name="datarichiesta" type="date">
-            <column name="datarichiesta" length="13" />
+            <column name="datarichiesta" />
         </property>
         <property name="orarichiesta" type="time">
-            <column name="orarichiesta" length="15" />
+            <column name="orarichiesta" />
         </property>
         <set name="bigliettos" table="biglietto" inverse="true" lazy="true" fetch="select">
             <key>
