@@ -9,13 +9,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Prenotazione;
+import bean.PrenotazioneBean;
 import database.DBMS;
 
 public class NewBiglietto implements Command {
 
 	DBMS dbms;
-	Prenotazione preno = null;
+	PrenotazioneBean preno = null;
 	@Override
 	public RequestDispatcher execute(HttpServletRequest request,
 			HttpServletResponse response) throws ParseException,

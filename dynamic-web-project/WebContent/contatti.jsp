@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page errorPage = "../error.jsp" %>
     <%@page isErrorPage="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,7 +24,7 @@
 				
 		</div>
 
-				<h3>Contattacci per assistenza</h3>
+<!-- 				<h3>Contattacci per assistenza</h3>
 					<form class="form">
 
 								<input class="inputName" type="text" name="name" id="name" placeholder="Nome">
@@ -32,7 +33,7 @@
 								<textarea name="message" id="message" rows="15" cols="35" placeholder="Scrivi qui il messaggio..."></textarea>
 								<input class="button1" type="submit" value="Invia">
 											
-					</form>		
+					</form>		 -->
 	</section>
 
 </body>

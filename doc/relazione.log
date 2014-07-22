@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  21 JUL 2014 22:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  22 JUL 2014 05:50
 entering extended mode
  %&-line parsing enabled.
 **relazione.tex
@@ -509,7 +509,7 @@ LaTeX Info: Redefining \pageref on input line 39.
 \openout4 = `relazione.out'.
 
 \AtBeginShipoutBox=\box33
- <relazione-frn.pdf, id=75, 597.50829pt x 845.0471pt>
+ <relazione-frn.pdf, id=63, 597.50829pt x 845.0471pt>
 File: relazione-frn.pdf Graphic file (type pdf)
 
 <use relazione-frn.pdf> [1
@@ -528,7 +528,7 @@ l.55 \newpage
 
 pdfTeX warning: /usr/bin/pdflatex (file ./er.pdf): PDF inclusion: found PDF ver
 sion <1.5>, but at most version <1.4> allowed
-<er.pdf, id=131, 722.7pt x 542.025pt>
+<er.pdf, id=116, 722.7pt x 542.025pt>
 File: er.pdf Graphic file (type pdf)
  <use er.pdf>
 Overfull \hbox (31.3491pt too wide) in paragraph at lines 63--64
@@ -539,7 +539,7 @@ Overfull \hbox (31.3491pt too wide) in paragraph at lines 63--64
 
 pdfTeX warning: /usr/bin/pdflatex (file ./schemalogico.pdf): PDF inclusion: fou
 nd PDF version <1.5>, but at most version <1.4> allowed
-<schemalogico.pdf, id=133, 722.7pt x 542.025pt>
+<schemalogico.pdf, id=118, 722.7pt x 542.025pt>
 File: schemalogico.pdf Graphic file (type pdf)
  <use schemalogico.pdf>
 Overfull \hbox (103.62334pt too wide) in paragraph at lines 65--66
@@ -603,51 +603,113 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 146.
 )
-(../src/script-sql/init.sql) [6]
+(../src/script-sql/init.sql) [6] (./page-schema/index.txt
+
+! Package inputenc Error: Unicode char \u8:�\lst@FillFixed@ not set up for use 
+with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 	-- Se il passeggero è 
+                            loggato allora mostro
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 	-- Se il passeggero è 
+                            loggato allora mostro
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+) (./page-schema/bigliettiPage.txt [7]) (./page-schema/voliPage.txt)
+(./page-schema/prenotazioniPage.txt [8]
+
+! Package inputenc Error: Unicode char \u8:�\lst@FillFixed@ not set up for use 
+with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ...a queste informazioni solo se l'utente è 
+                                                  loggato
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! Package inputenc Error: Keyboard character used is undefined
+(inputenc)                in inputencoding `utf8'.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 ...a queste informazioni solo se l'utente è 
+                                                  loggato
+You need to provide a definition with \DeclareInputText 
+or \DeclareInputMath before using this key.
+
+) (./page-schema/emettiBigliettoPage.txt) (./page-schema/ricercaVolo.txt
+[9]) (./page-schema/login.txt)
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 102.
- [7] [8]
-Overfull \hbox (1.77782pt too wide) in paragraph at lines 223--226
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+ [10] [11] [12]
+Overfull \hbox (1.77782pt too wide) in paragraph at lines 233--236
 []\OT1/cmr/bx/n/10 ajaxricercavolo \OT1/cmr/m/n/10 - Data un aero-porto di part
 enza pas-sato come parametro,
  []
 
-[9] [10]
+[13] [14]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 331.
- [11] [12] (./relazione.aux) ) 
+(Font)              <7> on input line 342.
+ [15]
+Overfull \hbox (3.33463pt too wide) in paragraph at lines 361--363
+[]\OT1/cmr/m/n/10 Gli at-tributi \OT1/cmr/bx/n/10 data[]richiesta \OT1/cmr/m/n/
+10 e \OT1/cmr/bx/n/10 ora[]richiesta \OT1/cmr/m/n/10 nell'entit^^Ra \OT1/cmr/m/
+it/10 preno-tazione \OT1/cmr/m/n/10 viene
+ []
+
+
+Overfull \hbox (2.8618pt too wide) in paragraph at lines 361--363
+\OT1/cmr/m/n/10 ag-giunto au-to-mati-ca-mente da una fun-zione trig-ger, sp-ie-
+gata nella re-lazione. 
+ []
+
+[16] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 7554 strings out of 495061
- 106501 string characters out of 1182621
- 456276 words of memory out of 3000000
- 10419 multiletter control sequences out of 15000+50000
+ 7839 strings out of 495061
+ 110743 string characters out of 1182621
+ 464276 words of memory out of 3000000
+ 10477 multiletter control sequences out of 15000+50000
  7802 words of font info for 28 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,8n,43p,308b,2040s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{section.14} has been 
-referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.13} has been referenced but does not exist,
- replaced by a fixed one
-
-pdfTeX warning (dest): name{section.12} has been referenced but does not exist,
- replaced by a fixed one
-
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt
-10.pfb>
-Output written on relazione.pdf (13 pages, 348360 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmtt10.pfb>
+Output written on relazione.pdf (17 pages, 391372 bytes).
 PDF statistics:
- 523 PDF objects out of 1000 (max. 8388607)
- 196 named destinations out of 1000 (max. 500000)
- 160 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 770 PDF objects out of 1000 (max. 8388607)
+ 401 named destinations out of 1000 (max. 500000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

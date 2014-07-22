@@ -8,9 +8,9 @@
 <%@page isErrorPage="false"%>
 <html>
 	<%
-	Volo beanVolo = ( Volo ) request.getAttribute("volo");
-	Passeggero beanPass = ( Passeggero ) request.getAttribute("pass");
-	if ( beanVolo != null ){
+		VoloBean beanVolo = ( VoloBean ) request.getAttribute("volo");
+			PasseggeroBean beanPass = ( PasseggeroBean ) request.getAttribute("pass");
+			if ( beanVolo != null ){
 	%>
 	<head>
 		<link href="../css/style.css" rel="stylesheet" type="text/css">

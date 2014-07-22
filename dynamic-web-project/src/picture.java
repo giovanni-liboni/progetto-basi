@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 
-import bean.Biglietto;
-import bean.Passeggero;
-import bean.Prenotazione;
+import bean.BigliettoBean;
+import bean.PasseggeroBean;
+import bean.PrenotazioneBean;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -64,7 +64,7 @@ public class picture extends HttpServlet {
 				}
 								
 				HttpSession session = request.getSession();
-				Passeggero beanPasseggero = (Passeggero) session.getAttribute("pass");
+				PasseggeroBean beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
 				
 				if ( beanPasseggero != null )
 				{
@@ -109,8 +109,8 @@ public class picture extends HttpServlet {
 						
 						request.setAttribute("pass", beanPasseggero);
 						
-						ArrayList<Prenotazione> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
-						ArrayList<Biglietto> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
+						ArrayList<PrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+						ArrayList<BigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
 						
 						session.setAttribute("pass", beanPasseggero);
 						request.setAttribute("prenotazioni", vipb);
@@ -153,7 +153,7 @@ public class picture extends HttpServlet {
 					String documento = request.getParameter("documento");
 					
 					// recupero il passeggero
-					Passeggero passeggero = dbms.getPasseggero(documento);
+					PasseggeroBean passeggero = dbms.getPasseggero(documento);
 								
 					byte[] photo = passeggero.getPicture();
 					

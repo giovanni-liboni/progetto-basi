@@ -1,0 +1,39 @@
+page-schema PrenotazionePage (
+	dettagliovolo: list_of(
+		codicevolo: link( codiceVolo, *PrenotazionePage );
+		data: date;
+		ora: time;
+		partenza: text;
+		arrivo: text;
+		durataVolo: text;
+		aereo: text;
+	)
+	prenotazione: form(
+			nome: text;
+			cognome: text;
+			nazionalita: text;
+			documento: text;
+			username: text;
+			password: text;
+			Login   : submit();
+		  );
+)
+DB from page schema PrenotazionePage 
+(
+	if( SELECT * FROM passeggero WHERE documento=?documento? )
+	then
+		INSERT INTO passeggero( nome, cognome,nazionalita,documento,login,password) VALUES
+			(?nome?,?cognome?,?nazionalita?,?documento?,?username?,?password?);
+	end;
+	INSERT INTO prenotazione(codicevolo,documento) VALUES 
+			(?codicevolo?, ?documento?);
+)
+DB to page schema PrenotazionePage 
+parameter(codicevolo,documento)
+(
+	-- Recupera queste informazioni solo se l'utente è loggato
+	form: SELECT * FROM passeggero
+	      WHERE documento=?documento?;
+	dettagliovolo: SELECT * FROM volo
+			WHERE codicevolo=?codicevolo?;
+)

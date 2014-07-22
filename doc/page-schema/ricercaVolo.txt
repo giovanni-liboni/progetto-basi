@@ -1,14 +1,27 @@
-page-schema ricercaVolo (
+page-schema RicercaVolo unique(
 	ricerca: form(
 			partenza: text;
 			arrivo: text;
 			dataPartenza: date;
-			Login   : submit(*voliPage);
+			Login   : submit();
 		  );
 )
-DB from page schema ricercaVolo 
+DB from page schema RicercaVolo 
 (
-	form: SELECT * 
-	      FROM
-	      WHERE
+	ricerca: if(SELECT volo.* 
+		 FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo ) 
+		 WHERE datapartenza=?datapartenza? 
+		   AND tratta.partenza ilike ?partenza? 
+                   AND tratta.arrivo ilike ?arrivo?
+		 ORDER BY orapartenza )
+		then *VoliPage else *RicercaVolo end;
+)
+DB to page schema RicercaVolo 
+parameter(partenza)
+(
+	partenza: SELECT DISTINCT partenza
+	      	  FROM tratta;
+	arrivo: SELECT DISTINCT arrivo 
+		FROM tratta t 
+		WHERE t.partenza=?partenza? ORDER BY arrivo 
 )

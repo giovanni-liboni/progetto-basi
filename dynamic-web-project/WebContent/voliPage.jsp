@@ -8,13 +8,15 @@
 <%@page isErrorPage="false"%>
 <html>
 <%
-	ArrayList <Volo> vb = ( ArrayList < Volo > ) request.getAttribute("voli");
+	ArrayList <VoloBean> vb = ( ArrayList < VoloBean > ) request.getAttribute("voli");
 %>
 	<head>
 			<link href="../css/style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>	
-	<% 	if ( vb != null ) { %>
+	<%
+			if ( vb != null ) {
+		%>
 		<table class="voli" align="center" >
 			<thead>
 				<tr>
@@ -28,7 +30,9 @@
 				</tr>
 			</thead>
 			<tbody>
- 				<% for ( Volo bean : vb ){ %>
+ 				<%
+ 					for ( VoloBean bean : vb ){
+ 				%>
 				<tr>
 					<th> <a href="main?ps=prenotazione&codiceVolo=<%=bean.getCodicevolo() %>"> <%=bean.getCodicevolo() %> </a> </th>
   					<th> <%=bean.getDatapartenza() %> </th>

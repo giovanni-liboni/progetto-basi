@@ -1,0 +1,9 @@
+page-schema index unique (
+	ricerca_volo:link(ricercavolo, *RicercaVolo)
+	contatti_:link(contatti, *Contatti)
+	chisiamo_:link(chisiamo, *ChiSiamo)
+	-- Se il passeggero è loggato allora mostro 
+	area_personale:link(areapersonale, *BigliettiPage)
+	-- Altrimenti
+	area_personale:link(areapersonale, *Login)
+)

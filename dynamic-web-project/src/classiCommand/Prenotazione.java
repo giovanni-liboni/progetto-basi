@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import database.DBMS;
-import bean.Passeggero;
-import bean.Volo;
+import bean.PasseggeroBean;
+import bean.VoloBean;
 
 public class Prenotazione implements Command {
 
@@ -37,7 +37,7 @@ public class Prenotazione implements Command {
 		}
 		
 		// Richiedo al DBMS il volo con il codice specificato
-		Volo beanVolo = dbms.getVolo(codiceVolo);
+		VoloBean beanVolo = dbms.getVolo(codiceVolo);
 
 		// Aggiungo l'attributo volo
 		request.setAttribute("volo",beanVolo);	
@@ -46,7 +46,7 @@ public class Prenotazione implements Command {
 		HttpSession session = request.getSession();
 		
 		// Recupero l'attributo "pass" dalla sessione e lo salvo in un oggeto di tipo Passeggero
-		Passeggero beanPasseggero = (Passeggero) session.getAttribute("pass");
+		PasseggeroBean beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
 		
 		// Aggiungo l'attributo pass 
 		request.setAttribute("pass",beanPasseggero);

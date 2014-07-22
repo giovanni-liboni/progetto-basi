@@ -1,13 +1,18 @@
-page schema bigliettiPage(
+page schema BigliettiPage(
 
-	nome: text;
-	cognome: text;
-	nazione: text;
-	documento: text;
-	username: text;
-	password: password;
+	info_passeggero:list_of(
+		nome: text;
+		cognome: text;
+		nazione: text;
+		documento: text;
+		username: text;
+		password: password;
+		// solo se il passeggero ha la tessera
+		miglia : integer;
+		num_voli : integer;
+	);
 	elenco_prenotazioni:list_of(
-		codiceVolo: link( codiceVolo: text, *emettiBigliettoPage );
+		codiceVolo: link( codiceVolo: text, *EmettiBigliettoPage );
 		dataPartenza: date;
 		oraPartenza: time;
 		aeroportoDiPartenza: text;
@@ -15,7 +20,7 @@ page schema bigliettiPage(
 		documento: text;
 		dataRichiesta: date;
 		oraRichiesta: time;
-	)
+	);
 	elenco_biglietti:list_of(
 		codiceVolo: text;
 		dataPartenza: date;
@@ -24,18 +29,32 @@ page schema bigliettiPage(
 		aeroportoDiArrivo: text;
 		prezzo: text;
 		dataEmissione: date;
-	)
+	);
+	picture:form(
+		image:file;
+		submit(*BigliettiPage);
+	);
 )
-DB to page schema bigliettiPage
-parameter(Username)
+DB to page schema BigliettiPage
+parameter(documento)
 (
-	bigliettiPage.elenco_prenotazioni: SELECT
-					    FROM
-					    WHERE
-	bigliettiPage.elenco_biglietti: SELECT
-					 FROM
-					 WHERE
-	nome, cognome, nazione, documento, username, password: SELECT
-								 FROM
-								 WHERE
+	bigliettiPage.elenco_prenotazioni: SELECT * 
+					   FROM prenotazione 
+					   WHERE documento=?documento? 
+						AND NOT EXISTS ( SELECT * 
+								FROM biglietto 
+								WHERE prenotazione.id=biglietto.id_prenotazione);
+	bigliettiPage.elenco_biglietti: SELECT * 
+					FROM biglietto b 
+					WHERE b.documento=?documento?;
+	info_passggero: SELECT *
+			FROM passeggero
+			WHERE documento = ?documento?
+)
+DB from page schema BigliettiPage(
+	-- recupero il documento dalla sessione
+	picture: UPDATE passeggero
+		 SET picture=?image?
+		 WHERE documento=?documento?
+
 )

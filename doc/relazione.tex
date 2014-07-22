@@ -81,20 +81,28 @@ Per automatizzare l'esecuzione delle funzioni si sono scritti dei trigger, azion
 
 \lstinputlisting[language=SQL, firstline=152, lastline=162]{../src/script-sql/init.sql}
 
-\section{Popolamento della base di dati}
-Per il popolamento della base di dati sono stati scritti dei programmi per la generazione automatica di query.
-In particolare sono stati creati dei programmi in Java per popolare le tabelle \textit{Passeggero}, \textit{Tratta} e \textit{Volo} , in grado di gestire 
-le chiavi esportate per ciascuna delle precendenti tabelle. I files .sql prodotti sono pronti 
-per essere eseguiti senza alcuna necessit\`a di modificare i files. I files per il popolamento si trovato nella cartella \textit{script-sql} e sono \textit{popola_tratta.sql},
-\textit{popola_volo.sql}, \textit{popola_passeggero}, \textit{popola_prenotazione.sql} e \textit{popola_biglietto.sql}.
+ \section{Popolamento della base di dati}
+ Per il popolamento della base di dati sono stati scritti dei programmi per la generazione automatica di query.
+ In particolare sono stati creati dei programmi in Java per popolare le tabelle \textit{Passeggero}, \textit{Tratta} e \textit{Volo} , in grado di gestire 
+ le chiavi esportate per ciascuna delle precendenti tabelle. I files .sql prodotti sono pronti 
+ per essere eseguiti senza alcuna necessit\`a di modificare i files. I files per il popolamento si trovato nella cartella \textit{script\-sql} e sono \textit{popola\_tratta.sql},
+ \textit{popola\_volo.sql}, \textit{popola\_passeggero}, \textit{popola\_prenotazione.sql} e \textit{popola\_biglietto.sql}.
 
 
+ \newpage
 \part{Progetto del sito web}
 
 \section{Progettazione logica}
 
 Si riportano di seguiti gli schemi di pagina seguiti durante la creazione del sito.
-
+ \lstinputlisting[language=SQL]{page-schema/index.txt}
+ \lstinputlisting[language=SQL]{page-schema/bigliettiPage.txt}
+ \lstinputlisting[language=SQL]{page-schema/voliPage.txt}
+ \lstinputlisting[language=SQL]{page-schema/prenotazioniPage.txt}
+ \lstinputlisting[language=SQL]{page-schema/emettiBigliettoPage.txt}
+ \lstinputlisting[language=SQL]{page-schema/ricercaVolo.txt}
+ \lstinputlisting[language=SQL]{page-schema/login.txt}
+ 
 \section{Struttura dell'applicazione web}
 
 \part{Architettura MVC2}
@@ -235,7 +243,8 @@ Per le richieste di tipo \textbf{GET}, \textbf{ps} pu\`o assumere questi valori:
 				  \begin{itemize}
 				   \item \textbf{username} Indica il nome utente da controllare
 				  \end{itemize}
- \item \textbf{checkdocumento} - Dato il numero di documento interroga la classe \textit{DBMS.java} se il numero di documento esiste all'interno della base di dati.Se esiste setta il campo \textbf{isFree} all'interno 
+ \item \textbf{checkdocumento} - Dato il numero di documento interroga la classe \textit{DBMS.java} se il numero di documento esiste all'interno della base di dati.
+				Se esiste setta il campo \textbf{isFree} all'interno 
 				del messaggio JSON di risposta a \textbf{false}, altrimenti a \textbf{true}.
  				  I parametri da passare sono:
 				  \begin{itemize}
@@ -342,22 +351,36 @@ avviene   un   altra   richiesta   da   parte   di   un   host   a   cui   \`e  
 reindirizzato alla \textit{index.jsp}.
 
 \part{Scelte progettuali}
+  
+ \section{Ipotesi e strategie adotattate}
+  \begin{itemize}
+   \item La relazione \textit{passeggero} ha \textbf{documento} e\textbf{login} come possibili identificatori. \`E stato scelto di usare il documento come chiave primaria, mantenendo comuqnue
+   l'attributo login univoco sulla tabella.
+   \item Per la relazione \textit{biglietto} non \`e stato utilizzato l'identificatore univoco come chiave primaria per poter avere una consistenza nella base di dati.
+   \item L'attributo \textbf{data\_emissione} nell'entit\`a \textit{biglietto} viene aggiunto automaticamente da una funzione trigger, spiegata nella relazione.
+   \item Gli attributi \textbf{data\_richiesta} e \textbf{ora\_richiesta} nell'entit\`a \textit{prenotazione} viene aggiunto automaticamente da una funzione trigger, spiegata nella relazione.
+   \item Si \`e aggiunto l'attributo \textbf{imbarcato} nella relazione \textit{imbarco} in quanto il biglietto viene sempre assegnato ad un posto, per\`o il passeggero pu\`o non imbarcarsi sull'aereo.
+   \item All'interno delle servlet sono state utilizzate le classi Command per la gestione delle azioni da intraprendere quando si riceve una richiesta. Tutte le classe estendo un'interfaccia comune di nome \textit{Command.java}.
+  \end{itemize} 
 
-\section{Hibernate}
-Hibernate \`e una piattaforma middleware open source per lo sviluppo di applicazioni Java, 
-attraverso l'appoggio al relativo framework, che fornisce un servizio di Object-relational mapping (ORM) ovvero gestisce la persistenza dei dati 
-sul database attraverso la rappresentazione e il mantenimento su database relazionale di un sistema di oggetti Java.
 
-\section{AJAX}
-AJAX è una tecnica di sviluppo software per la realizzazione di applicazioni web interattive. Consiste nel creare una servlet Java che riceve parametri da parte 
-di una pagina web (nel nostro caso una JSP); questa servlet elabora i dati e li invia alla pagina chiamante, 
-in modo che possa ricevere dinamicamente dati e quindi modificare il suo aspetto o comportamento.
-
-Si è voluta utilizzare questa tecnologia per rendere dinamica la selezione in un campo del form di tipo select; 
-poiché però questi campi devono essere ``popolati'' con dati provenienti dal database, è stato necessario introdurre la tecnologia JQuery e JSON.
-
-JQuery consiste in un insieme di librerie per semplificare la programmazione web, nel nostro caso è stato utilizzato internamente ad 
-AJAX per eseguire una query sul database e mappare in un LinkedHashMap la risposta. Per inviare poi questa risposta alla pagina web, è stato utilizzato JSON, 
-una teconogia che consente lo scambio di dati tra architetture client-server;
+ \section{Hibernate}
+ Hibernate \`e una piattaforma middleware open source per lo sviluppo di applicazioni Java, 
+ attraverso l'appoggio al relativo framework, che fornisce un servizio di Object-relational mapping (ORM) ovvero gestisce la persistenza dei dati 
+ sul database attraverso la rappresentazione e il mantenimento su database relazionale di un sistema di oggetti Java.
+ 
+ Per la creazione dei Java Data Beans si \`e utilizzato un plugin di Eclipse di nome JBoss Tools. Questo pacchetto permette di creare i Java Data Beans relativi alle tabelle all'interno di un database.
+ 
+ \section{AJAX}
+ AJAX è una tecnica di sviluppo software per la realizzazione di applicazioni web interattive. Consiste nel creare una servlet Java che riceve parametri da parte 
+ di una pagina web (nel nostro caso una JSP); questa servlet elabora i dati e li invia alla pagina chiamante, 
+ in modo che possa ricevere dinamicamente dati e quindi modificare il suo aspetto o comportamento.
+ 
+ Si è voluta utilizzare questa tecnologia per rendere dinamica la selezione in un campo del form di tipo select; 
+ poiché però questi campi devono essere ``popolati'' con dati provenienti dal database, è stato necessario introdurre la tecnologia JQuery e JSON.
+ 
+ JQuery consiste in un insieme di librerie per semplificare la programmazione web, nel nostro caso è stato utilizzato internamente ad 
+ AJAX per eseguire una query sul database e mappare in un LinkedHashMap la risposta. Per inviare poi questa risposta alla pagina web, è stato utilizzato JSON, 
+ una teconogia che consente lo scambio di dati tra architetture client-server;
 
 \end{document}          

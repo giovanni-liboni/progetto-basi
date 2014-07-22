@@ -1,24 +1,18 @@
 
 // Vedere cambiare la pagina o meno
-page-schema login (
-	datiLogin: form(
-			Username: text;
-			Password: password;
-			Login   : submit();
-		  );
+page-schema EmettiBigliettoPage (
+	numeroprenotazione: text;
+	emissione: form(
+			emetti:submit(*BigliettiPage);
+		);
+	annulla: form(
+			annullaazione:submit(*BigliettiPage);		
+		);
 )
-DB to page schema login 
-parameter(Username)
+DB from page schema EmettiBigliettoPage 
 (
-	if( SELECT login 
-	    FROM passeggero 
-	    WHERE login=?Username?;) 
-	then *bigliettiPage else *login end;
-)
-DB from page schema login 
-(
-	form: if( SELECT login 
-		  FROM passeggero 
-		  WHERE login=?Username? AND password=?Password?;) 
-	      then *bigliettiPage else *login end; 		
+	-- codicevolo e documento vengono recuperati dalla prenotazione
+	-- il prezzo viene calcolato al momento dell'inserimento attraverso un algoritmo
+	emissione: INSERT INTO biglietto(codicevolo, documento, id_prenotazione, prezzo )
+			VALUES (?codicevolo?,?documento?,?id_prenotazione?,?prezzo?);		
 )

@@ -2,7 +2,7 @@
 <%@page import="java.util.*"%>
 <%@page import="database.*"%>
 <%@page import="bean.*"%>
-<%@page errorPage = "error.jsp" %>
+<%@page errorPage = "../error.jsp" %>
 <%@page isErrorPage="false"%>
 <html>
 <%

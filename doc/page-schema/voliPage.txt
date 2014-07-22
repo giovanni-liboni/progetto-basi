@@ -1,6 +1,6 @@
-page-schema login (
+page-schema VoliPage (
 	elencoVoli: list_of(
-		codiceVolo: link( codiceVolo: text, *prenotazionePage );
+		codicevolo: link( codiceVolo, *PrenotazionePage );
 		data: date;
 		ora: time;
 		partenza: text;
@@ -9,10 +9,13 @@ page-schema login (
 		aereo: text;
 	)
 )
-DB to page schema login 
-parameter( codiceVolo )
+DB to page schema VoliPage 
+parameter( dataPartenza, partenza, arrivo )
 (
-      elencoVoli: SELECT
-		   FROM
-		   WHERE ;
+      elencoVoli: SELECT volo.* 
+		 FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo ) 
+		 WHERE datapartenza=?datapartenza? 
+		   AND tratta.partenza ilike ?partenza? 
+                   AND tratta.arrivo ilike ?arrivo?
+		 ORDER BY orapartenza;
 )

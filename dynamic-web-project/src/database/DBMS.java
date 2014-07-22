@@ -9,11 +9,11 @@ import java.util.*;
 import org.hibernate.*;
 
 import util.HibernateUtil;
-import bean.Biglietto;
+import bean.BigliettoBean;
 import bean.BigliettoId;
-import bean.Passeggero;
-import bean.Prenotazione;
-import bean.Volo;
+import bean.PasseggeroBean;
+import bean.PrenotazioneBean;
+import bean.VoloBean;
 
 /**
  * Questa classe mette a disposizione i metodi per effettuare interrogazioni
@@ -26,26 +26,26 @@ public class DBMS {
 	 * @param arrivo Aeroporto di arrivo del volo
 	 * @return Lista dei voli che soddisfano i requisiti della ricerca
 	 */
-	public ArrayList<Volo> getRicercaVolo( Date date, String partenza, String arrivo ) 
+	public ArrayList<VoloBean> getRicercaVolo( Date date, String partenza, String arrivo ) 
 	{
-		ArrayList<Volo> result = new ArrayList<Volo>();
+		ArrayList<VoloBean> result = new ArrayList<VoloBean>();
 
 		String ricercaVoli = " SELECT volo.* FROM tratta JOIN volo on ( tratta.partenza = volo.partenza AND tratta.arrivo = volo.arrivo ) WHERE datapartenza=(:datapartenza) AND tratta.partenza ilike (:partenza) AND tratta.arrivo ilike (:arrivo) ORDER BY orapartenza;";
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 
-		Query query = session.createSQLQuery(ricercaVoli).addEntity(Volo.class);
+		Query query = session.createSQLQuery(ricercaVoli).addEntity(VoloBean.class);
 		query.setDate("datapartenza", date);
 		query.setString("partenza", partenza);
 		query.setString("arrivo", arrivo);
 
-		List<Volo> l = query.list();
+		List<VoloBean> l = query.list();
 
-		Iterator<Volo> itr = l.iterator();
+		Iterator<VoloBean> itr = l.iterator();
 
 		while( itr.hasNext()) {
-			Volo dip = itr.next();
+			VoloBean dip = itr.next();
 			
 			dip.getTratta();
 			dip.getTratta().getId();
@@ -66,13 +66,13 @@ public class DBMS {
 	 * @param codicevolo Codice del volo da trovare
 	 * @return Bean del volo, altrimenti ritorna null se non esiste
 	 */
-	public Volo getVolo( String codicevolo ) 
+	public VoloBean getVolo( String codicevolo ) 
 	{			
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		
 		Transaction tx = session.beginTransaction(); 
-		Volo res = ( Volo ) session.get( Volo.class, codicevolo );
+		VoloBean res = ( VoloBean ) session.get( VoloBean.class, codicevolo );
 		res.getTratta().getDurata();
 		res.getTratta().getId().getArrivo();
 
@@ -85,14 +85,14 @@ public class DBMS {
 	 * @param documento Il documento del passeggero da ricercare
 	 * @return Bean del passeggero, null se non esiste all'interno del DB
 	 */
-	public Passeggero getPasseggero( String documento ) 
+	public PasseggeroBean getPasseggero( String documento ) 
 	{
-		Passeggero result = null;
+		PasseggeroBean result = null;
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
-		result = ( Passeggero ) session.get( Passeggero.class, documento );
+		result = ( PasseggeroBean ) session.get( PasseggeroBean.class, documento );
 
 		tx.commit();
 		session.close();
@@ -104,14 +104,14 @@ public class DBMS {
 	 * @param id Id da ricercare
 	 * @return Bean della prenotazione, se non esiste ritorna null
 	 */
-	public Prenotazione getPrenotazione( String id ) 
+	public PrenotazioneBean getPrenotazione( String id ) 
 	{
-		Prenotazione result = null;
+		PrenotazioneBean result = null;
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
-		result = ( Prenotazione ) session.get( Prenotazione.class, Integer.parseInt(id) );
+		result = ( PrenotazioneBean ) session.get( PrenotazioneBean.class, Integer.parseInt(id) );
 		result.getPasseggero().getDocumento();
 		result.getVolo().getTratta().getDurata();
 		result.getVolo().getTratta().getId().getArrivo();
@@ -127,23 +127,23 @@ public class DBMS {
 	 * @param username Username da ricercare
 	 * @return Bean del passeggero trovato, se non esiste ritorna null
 	 */
-	public Passeggero getPasseggeroFromLogin( String username ) 
+	public PasseggeroBean getPasseggeroFromLogin( String username ) 
 	{
 		String datiPasseggeroLogin = " SELECT * " +
 				" FROM passeggero " +
 				" WHERE passeggero.login=(:login)";
 		
-		Passeggero result = null;
+		PasseggeroBean result = null;
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
 
-		Query query = session.createSQLQuery(datiPasseggeroLogin).addEntity(Passeggero.class);
+		Query query = session.createSQLQuery(datiPasseggeroLogin).addEntity(PasseggeroBean.class);
 		query.setString("login", username);
 
 		
-		result = (Passeggero) query.uniqueResult();
+		result = (PasseggeroBean) query.uniqueResult();
 		tx.commit();
 		session.close();
 
@@ -192,7 +192,7 @@ public class DBMS {
 	public boolean isLogin( String username, String password ) throws NoSuchAlgorithmException 
 	{
 		boolean login = false;	
-		Passeggero res = getPasseggeroFromLogin(username);
+		PasseggeroBean res = getPasseggeroFromLogin(username);
 		if( res!=null && res.getPassword().compareTo(sha1( password ) ) == 0 )
 			login=true;
 		return login;
@@ -208,11 +208,11 @@ public class DBMS {
 	 * @param tessera Boolean per sapere se ha la tessera o meno
 	 * @return Passeggero Ritorna il passeggero creato
 	 */
-	public Passeggero newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
+	public PasseggeroBean newPasseggero(String nome, String cognome, String nazione, String documento, String username, String password, boolean tessera)
 	{
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		Passeggero p = new Passeggero();
+		PasseggeroBean p = new PasseggeroBean();
 		p.setNome(nome);
 		p.setCognome(cognome);
 		p.setNazionalita(nazione);
@@ -237,14 +237,14 @@ public class DBMS {
 	 * @param prezzo prezzo Costo del biglietto
 	 * @return True se l'operazione è andata a buon fine, false altrimenti.
 	 */
-	public boolean newBiglietto( Passeggero passeggero, Volo volo, Prenotazione prenotazione, BigDecimal prezzo )
+	public boolean newBiglietto( PasseggeroBean passeggero, VoloBean volo, PrenotazioneBean prenotazione, BigDecimal prezzo )
 	{
 		boolean status = true;
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		Biglietto b = new Biglietto();
+		BigliettoBean b = new BigliettoBean();
 		b.setPasseggero(passeggero);
 		b.setVolo(volo);
 		b.setPrenotazione(prenotazione);
@@ -262,14 +262,14 @@ public class DBMS {
 	 * @param prezzo Costo del biglietto
 	 * @return True se l'operazione è andata a buon fine, false altrimenti.
 	 */
-	public boolean newBiglietto( Prenotazione prenotazione, BigDecimal prezzo )
+	public boolean newBiglietto( PrenotazioneBean prenotazione, BigDecimal prezzo )
 	{
 		boolean status = true;
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		Biglietto b = new Biglietto();
+		BigliettoBean b = new BigliettoBean();
 		b.setPasseggero(prenotazione.getPasseggero());
 		b.setVolo(prenotazione.getVolo());
 		b.setPrenotazione(prenotazione);
@@ -287,7 +287,7 @@ public class DBMS {
 	 * @param passeggero Bean del passeggero
 	 * @return Ritorna true se è stata salvata correttamente
 	 */
-	public boolean newPrenotazione(Volo volo , Passeggero passeggero )
+	public boolean newPrenotazione(VoloBean volo , PasseggeroBean passeggero )
 	{	
 		/*
 		 * Controllo che non esista una prenotazione per lo stesso volo e lo stesso passeggero
@@ -301,7 +301,7 @@ public class DBMS {
 			Session session = null;
 			session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			Prenotazione p = new Prenotazione();
+			PrenotazioneBean p = new PrenotazioneBean();
 			p.setPasseggero(passeggero);
 			p.setVolo(volo);
 			session.save(p);
@@ -315,24 +315,24 @@ public class DBMS {
 	 * @param documento Documento del passeggero
 	 * @return Lista delle prenotazioni associate al passeggero
 	 */
-	public ArrayList<Prenotazione> getPrenotazioni( String documento ) 
+	public ArrayList<PrenotazioneBean> getPrenotazioni( String documento ) 
 	{
-	    String prenotazioni = "select * from prenotazione where documento=(:documento) and not exists ( select * from biglietto where prenotazione.id=biglietto.id_prenotazione)";
+	    String prenotazioni = "SELECT * FROM prenotazione WHERE documento=(:documento) AND NOT EXISTS ( SELECT * FROM biglietto WHERE prenotazione.id=biglietto.id_prenotazione)";
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(prenotazioni).addEntity(Prenotazione.class);
+        Query q = session.createSQLQuery(prenotazioni).addEntity(PrenotazioneBean.class);
         q.setString("documento", documento);
         
         List l = q.list();
                 
-        ArrayList<Prenotazione> result = new ArrayList<Prenotazione>();
+        ArrayList<PrenotazioneBean> result = new ArrayList<PrenotazioneBean>();
         
-		Iterator<Prenotazione> itr = l.iterator();
+		Iterator<PrenotazioneBean> itr = l.iterator();
 
 		while( itr.hasNext()) {
-			Prenotazione pb = itr.next();
+			PrenotazioneBean pb = itr.next();
 			pb.getVolo().getTratta().getId().getPartenza();
 			result.add(pb);
 		}
@@ -347,23 +347,23 @@ public class DBMS {
 	 * @param documento Identificatico del passaggero
 	 * @return Lista dei biglietti associati al passeggero
 	 */
-	public ArrayList<Biglietto> getBiglietti( String documento ) 
+	public ArrayList<BigliettoBean> getBiglietti( String documento ) 
 	{
 	    String biglietti = "SELECT * FROM biglietto b WHERE b.documento=(:documento)";
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(biglietti).addEntity(Biglietto.class);
+        Query q = session.createSQLQuery(biglietti).addEntity(BigliettoBean.class);
         q.setString("documento", documento);        
-        List<Biglietto> l = q.list();
+        List<BigliettoBean> l = q.list();
         
-        ArrayList<Biglietto> result = new ArrayList<Biglietto>();
+        ArrayList<BigliettoBean> result = new ArrayList<BigliettoBean>();
         
-		Iterator<Biglietto> itr = l.iterator();
+		Iterator<BigliettoBean> itr = l.iterator();
 
 		while( itr.hasNext()) {
-			Biglietto pb = itr.next();
+			BigliettoBean pb = itr.next();
 			pb.getVolo().getDatapartenza();
 			pb.getVolo().getTratta().getId().getPartenza();
 			result.add(pb);
@@ -426,10 +426,10 @@ public class DBMS {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(checkusername).addEntity(Passeggero.class);
+        Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
         q.setString("username", username);
         
-		Iterator<Passeggero> itr = q.list().iterator();
+		Iterator<PasseggeroBean> itr = q.list().iterator();
 
 		if ( itr.hasNext() )
 			result = false;
@@ -447,10 +447,10 @@ public class DBMS {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(checkusername).addEntity(Passeggero.class);
+        Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
         q.setString("documento", documento);
         
-		Iterator<Passeggero> itr = q.list().iterator();
+		Iterator<PasseggeroBean> itr = q.list().iterator();
 
 		if ( itr.hasNext() )
 			result = false;
@@ -460,7 +460,7 @@ public class DBMS {
         
 		return result;
 	}
-	public boolean checkPrenotazione( Passeggero pass, Volo volo ) 
+	public boolean checkPrenotazione( PasseggeroBean pass, VoloBean volo ) 
 	{
 	    String checkusername = "select * from prenotazione where documento=(:documento) AND codicevolo=(:codicevolo)";
 	    boolean result = false;
@@ -468,7 +468,7 @@ public class DBMS {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(checkusername).addEntity(Prenotazione.class);
+        Query q = session.createSQLQuery(checkusername).addEntity(PrenotazioneBean.class);
         q.setString("documento", pass.getDocumento() );
         q.setString("codicevolo", volo.getCodicevolo());
         
@@ -481,7 +481,7 @@ public class DBMS {
         
 		return result;
 	}
-	public void addPictureToPasseggero ( Passeggero passeggero, byte[] imageInByte )
+	public void addPictureToPasseggero ( PasseggeroBean passeggero, byte[] imageInByte )
 	{
 		
 		Session session = null;

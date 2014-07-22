@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Biglietto;
-import bean.Passeggero;
-import bean.Prenotazione;
+import bean.BigliettoBean;
+import bean.PasseggeroBean;
+import bean.PrenotazioneBean;
 import database.DBMS;
 
 public class AreaPersonale implements Command {
@@ -37,12 +37,12 @@ public class AreaPersonale implements Command {
 		else
 		{
 
-			Passeggero beanPasseggero = (Passeggero) session.getAttribute("pass");
+			PasseggeroBean beanPasseggero = (PasseggeroBean) session.getAttribute("pass");
 			beanPasseggero = dbms.getPasseggero( beanPasseggero.getDocumento() );
 			session.setAttribute("pass", beanPasseggero);
 			
-			ArrayList<Prenotazione> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
-			ArrayList<Biglietto> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
+			ArrayList<PrenotazioneBean> vipb = dbms.getPrenotazioni(beanPasseggero.getDocumento().replaceAll("\\s",""));
+			ArrayList<BigliettoBean> vbb = dbms.getBiglietti(beanPasseggero.getDocumento());
 						
 			request.setAttribute("pass", beanPasseggero);
 			request.setAttribute("prenotazioni", vipb);

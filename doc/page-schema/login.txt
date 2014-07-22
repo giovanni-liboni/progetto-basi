@@ -1,22 +1,22 @@
-page-schema login (
+page-schema Login (
 	datiLogin: form(
 			Username: text;
 			Password: password;
 			Login   : submit();
 		  );
 )
-DB to page schema login 
+DB to page schema Login 
 parameter(Username)
 (
 	if( SELECT login 
 	    FROM passeggero 
 	    WHERE login=?Username?;) 
-	then *bigliettiPage else *login end;
+	then *BigliettiPage else *Login end;
 )
-DB from page schema login 
+DB from page schema Login 
 (
 	form: if( SELECT login 
 		  FROM passeggero 
 		  WHERE login=?Username? AND password=?Password?;) 
-	      then *bigliettiPage else *login end; 		
+	      then *BigliettiPage else *Login end; 		
 )			

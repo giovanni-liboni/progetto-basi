@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.text.WordUtils;
 
 import database.DBMS;
-import bean.Passeggero;
-import bean.Volo;
+import bean.PasseggeroBean;
+import bean.VoloBean;
 
 public class NuovaPrenotazione implements Command {
 
@@ -71,7 +71,7 @@ public class NuovaPrenotazione implements Command {
 		HttpSession session = request.getSession();
 		
 		// Controllo che non esista un passeggero con lo stesso documento e recupero il passeggero se esiste
-		Passeggero beanPasseggero = dbms.getPasseggero(documento);
+		PasseggeroBean beanPasseggero = dbms.getPasseggero(documento);
 		
 		// Se esiste un passeggero con lo stesso documento allora deve eseguire l'accesso prima di poter prenotare
 		if( beanPasseggero == null )
@@ -90,7 +90,7 @@ public class NuovaPrenotazione implements Command {
 		}
 		
 		// Recupero il volo
-		Volo beanVolo = dbms.getVolo(codicevolo);
+		VoloBean beanVolo = dbms.getVolo(codicevolo);
 		
 		// Aggiungo la prenotazione al database
 		if ( dbms.newPrenotazione(beanVolo, beanPasseggero) )				

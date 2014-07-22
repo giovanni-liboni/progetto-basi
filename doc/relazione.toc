@@ -2,14 +2,15 @@
 \contentsline {section}{\numberline {1}Progetto concettuale}{2}{section.1}
 \contentsline {section}{\numberline {2}Progetto logico}{3}{section.2}
 \contentsline {section}{\numberline {3}Popolamento della base di dati}{6}{section.3}
-\contentsline {part}{II\hspace {1em}Progetto del sito web}{6}{part.2}
-\contentsline {section}{\numberline {4}Progettazione logica}{6}{section.4}
-\contentsline {section}{\numberline {5}Struttura dell'applicazione web}{7}{section.5}
-\contentsline {part}{III\hspace {1em}Architettura MVC2}{7}{part.3}
-\contentsline {section}{\numberline {6}Gestione di errori}{10}{section.6}
-\contentsline {section}{\numberline {7}Pagine JSPs e parametri passati}{10}{section.7}
-\contentsline {section}{\numberline {8}Path e Context}{11}{section.8}
-\contentsline {section}{\numberline {9}Login e sessioni}{12}{section.9}
-\contentsline {part}{IV\hspace {1em}Scelte progettuali}{12}{part.4}
-\contentsline {section}{\numberline {10}Hibernate}{12}{section.10}
-\contentsline {section}{\numberline {11}AJAX}{12}{section.11}
+\contentsline {part}{II\hspace {1em}Progetto del sito web}{7}{part.2}
+\contentsline {section}{\numberline {4}Progettazione logica}{7}{section.4}
+\contentsline {section}{\numberline {5}Struttura dell'applicazione web}{10}{section.5}
+\contentsline {part}{III\hspace {1em}Architettura MVC2}{10}{part.3}
+\contentsline {section}{\numberline {6}Gestione di errori}{13}{section.6}
+\contentsline {section}{\numberline {7}Pagine JSPs e parametri passati}{13}{section.7}
+\contentsline {section}{\numberline {8}Path e Context}{15}{section.8}
+\contentsline {section}{\numberline {9}Login e sessioni}{15}{section.9}
+\contentsline {part}{IV\hspace {1em}Scelte progettuali}{15}{part.4}
+\contentsline {section}{\numberline {10}Ipotesi e strategie adotattate}{15}{section.10}
+\contentsline {section}{\numberline {11}Hibernate}{16}{section.11}
+\contentsline {section}{\numberline {12}AJAX}{16}{section.12}

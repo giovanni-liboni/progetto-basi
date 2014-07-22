@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Volo implements java.io.Serializable {
+public class VoloBean implements java.io.Serializable {
 
 	private String codicevolo;
-	private Tratta tratta;
+	private TrattaBean tratta;
 	private Date datapartenza;
 	private Date orapartenza;
 	private String tipoaereo;
@@ -15,10 +15,10 @@ public class Volo implements java.io.Serializable {
 	private Set prenotaziones = new HashSet(0);
 	private Set bigliettos = new HashSet(0);
 
-	public Volo() {
+	public VoloBean() {
 	}
 
-	public Volo(String codicevolo, Tratta tratta, Date datapartenza,
+	public VoloBean(String codicevolo, TrattaBean tratta, Date datapartenza,
 			Date orapartenza, String tipoaereo, int capienza) {
 		this.codicevolo = codicevolo;
 		this.tratta = tratta;
@@ -28,7 +28,7 @@ public class Volo implements java.io.Serializable {
 		this.capienza = capienza;
 	}
 
-	public Volo(String codicevolo, Tratta tratta, Date datapartenza,
+	public VoloBean(String codicevolo, TrattaBean tratta, Date datapartenza,
 			Date orapartenza, String tipoaereo, int capienza,
 			Set prenotaziones, Set bigliettos) {
 		this.codicevolo = codicevolo;
@@ -49,11 +49,11 @@ public class Volo implements java.io.Serializable {
 		this.codicevolo = codicevolo;
 	}
 
-	public Tratta getTratta() {
+	public TrattaBean getTratta() {
 		return this.tratta;
 	}
 
-	public void setTratta(Tratta tratta) {
+	public void setTratta(TrattaBean tratta) {
 		this.tratta = tratta;
 	}
 
