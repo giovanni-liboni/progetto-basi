@@ -11,13 +11,13 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.release_mode">after_statement</property> 
         
-        <mapping resource="bean.PostoBean.hbm.xml"/>
-        <mapping resource="bean.VoloBean.hbm.xml"/>
-        <mapping resource="bean.TrattaBean.hbm.xml"/>
-        <mapping resource="bean.PrenotazioneBean.hbm.xml"/>
-        <mapping resource="bean/Imbarco.hbm.xml"/>
-        <mapping resource="bean.BigliettoBean.hbm.xml"/>
-        <mapping resource="bean.PasseggeroBean.hbm.xml"/>
+        <mapping resource="bean/PostoBean.hbm.xml"/>
+        <mapping resource="bean/VoloBean.hbm.xml"/>
+        <mapping resource="bean/TrattaBean.hbm.xml"/>
+        <mapping resource="bean/PrenotazioneBean.hbm.xml"/>
+        <mapping resource="bean/ImbarcoBean.hbm.xml"/>
+        <mapping resource="bean/BigliettoBean.hbm.xml"/>
+        <mapping resource="bean/PasseggeroBean.hbm.xml"/>
              
     </session-factory>
 </hibernate-configuration>

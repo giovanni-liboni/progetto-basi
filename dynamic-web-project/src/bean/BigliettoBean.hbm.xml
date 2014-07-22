@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="bean.BigliettoBeanBean" table="biglietto" schema="public">
-        <composite-id name="id" class="bean.BigliettoBeanId">
+    <class name="bean.BigliettoBean" table="biglietto" schema="public">
+        <composite-id name="id" class="bean.BigliettoId">
             <key-property name="codicevolo" type="string">
                 <column name="codicevolo"  />
             </key-property>
@@ -14,10 +14,10 @@
         <many-to-one name="prenotazione" class="bean.PrenotazioneBean" fetch="select">
             <column name="id_prenotazione" not-null="true" />
         </many-to-one>
-        <many-to-one name="volo" class="bean.VoloBean" fetch="select">
+        <many-to-one name="volo" class="bean.VoloBean" insert="false" update="false" fetch="select">
             <column name="codicevolo" not-null="true" />
         </many-to-one>
-        <many-to-one name="passeggero" class="bean.PasseggeroBean" fetch="select">
+        <many-to-one name="passeggero" class="bean.PasseggeroBean" insert="false" update="false" fetch="select">
             <column name="documento" not-null="true" />
         </many-to-one>
         <property name="id_1" type="int">
@@ -34,7 +34,7 @@
                 <column name="codicevolo" not-null="true" />
                 <column name="documento" not-null="true" />
             </key>
-            <one-to-many class="bean.Imbarco" />
+            <one-to-many class="bean.ImbarcoBean" />
         </set>
     </class>
 </hibernate-mapping>

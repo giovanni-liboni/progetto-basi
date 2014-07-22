@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="bean.PostoBean" table="posto" schema="public">
-        <composite-id name="id" class="bean.PostoBeanId">
+        <composite-id name="id" class="bean.PostoId">
             <key-property name="lettera" type="char">
                 <column name="lettera" />
             </key-property>
@@ -16,7 +16,7 @@
                 <column name="lettera" not-null="true" />
                 <column name="numero" not-null="true" />
             </key>
-            <one-to-many class="bean.Imbarco" />
+            <one-to-many class="bean.ImbarcoBean" />
         </set>
     </class>
 </hibernate-mapping>

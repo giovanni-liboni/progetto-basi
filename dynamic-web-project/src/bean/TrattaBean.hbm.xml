@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="bean.TrattaBean" table="tratta">
-        <composite-id name="id" class="bean.TrattaBeanId">
+        <composite-id name="id" class="bean.TrattaId">
             <key-property name="partenza" type="string">
                 <column name="partenza" />
             </key-property>

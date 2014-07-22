@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.*;
 
 import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 
 import util.HibernateUtil;
 import bean.BigliettoBean;
@@ -129,21 +130,12 @@ public class DBMS {
 	 */
 	public PasseggeroBean getPasseggeroFromLogin( String username ) 
 	{
-		String datiPasseggeroLogin = " SELECT * " +
-				" FROM passeggero " +
-				" WHERE passeggero.login=(:login)";
-		
-		PasseggeroBean result = null;
-
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction(); 
-
-		Query query = session.createSQLQuery(datiPasseggeroLogin).addEntity(PasseggeroBean.class);
-		query.setString("login", username);
-
 		
-		result = (PasseggeroBean) query.uniqueResult();
+		PasseggeroBean result = (PasseggeroBean) session.createCriteria(PasseggeroBean.class).add(Restrictions.eq("login", username)).uniqueResult();
+
 		tx.commit();
 		session.close();
 
