@@ -105,7 +105,7 @@ Si riportano di seguiti gli schemi di pagina seguiti durante la creazione del si
  
 \section{Struttura dell'applicazione web}
 
-\part{Architettura MVC2}
+\paragraph{Architettura MVC2}
 L'elaborato \`e stato sviluppato seguendo il design pattern MVC2 e seguendo l'approccio servlet-centric. Questo pattern \`e composto da tre moduli:
 
 \begin{itemize}
@@ -252,12 +252,12 @@ Per le richieste di tipo \textbf{GET}, \textbf{ps} pu\`o assumere questi valori:
 				  \end{itemize}
 \end{itemize}
 
-\section{Gestione di errori}
+\paragraph{Gestione di errori}
 Se si verifica un errore su una qualunque pagina JSP, allora viene caricata, automaticamente dal 
 sistema, la pagina \textit{error.jsp}. La pagina riporta la natura dell'errore. Se viene passato il parametro \textbf{msg} allora 
 stamper\`a il messaggio di errore specificato.
 
-\section{Pagine JSPs e parametri passati}
+\paragraph{Pagine JSPs e parametri passati}
 
 Vengono descritte ora le JSPs utilizzate con i relativi parametri.
 
@@ -337,11 +337,11 @@ Vengono descritte ora le JSPs utilizzate con i relativi parametri.
 			\end{itemize}
 \end{itemize}
 
-\section{Path e Context}
+\paragraph{Path e Context}
 Il context del sito web \`e \textit{basi}, mentre il path relativo per raggiungere la servlet \`e \textit{servlet/main}. La porta del server \`e la \textit{8080}.
 Quindi l'url per accedere al sito web \`e: \url{http://localhost:8080/basi/servlet/main}
 
-\section{Login e sessioni}
+\paragraph{Login e sessioni}
 Quando un passeggero esegue il login viene associata una sessione al client relativo, nella quale viene mantenuto
 l'attributo \textbf{pass}. L'attributo contiene l'oggetto relativo al passeggero loggato.
 L'utilizzo di sessioni implica che il browser del client debba avere l'accettazione 

@@ -484,6 +484,8 @@ public class DBMS {
 
 		session.update(passeggero);
 		session.getTransaction().commit();
+		
+		session.close();
 	}
 	
     static String sha1(String input) throws NoSuchAlgorithmException {

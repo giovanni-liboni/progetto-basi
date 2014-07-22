@@ -23,17 +23,6 @@
 				<b><ahref="mailto:emailacaso@caso.it"> assistenza@alitalia1.it</a></b>
 				
 		</div>
-
-<!-- 				<h3>Contattacci per assistenza</h3>
-					<form class="form">
-
-								<input class="inputName" type="text" name="name" id="name" placeholder="Nome">
-								<input class="inputEmail" type="text"name="email" id="email" placeholder="E-mail">
-
-								<textarea name="message" id="message" rows="15" cols="35" placeholder="Scrivi qui il messaggio..."></textarea>
-								<input class="button1" type="submit" value="Invia">
-											
-					</form>		 -->
 	</section>
 
 </body>
