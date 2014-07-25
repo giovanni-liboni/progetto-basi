@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  22 JUL 2014 08:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.6.18)  22 JUL 2014 09:19
 entering extended mode
  %&-line parsing enabled.
 **relazione.tex
@@ -462,20 +462,20 @@ File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 ) (./relazione.aux)
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -491,7 +491,7 @@ LaTeX Font Info:    ... okay on input line 39.
 \everyMPtoPDFconversion=\toks22
 ) ABD: EveryShipout initializing macros
 \c@lstlisting=\count112
-Package hyperref Info: Link coloring OFF on input line 39.
+Package hyperref Info: Link coloring OFF on input line 34.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -501,15 +501,15 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count113
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \ref on input line 34.
+LaTeX Info: Redefining \pageref on input line 34.
  (./relazione.out)
 (./relazione.out)
 \@outlinefile=\write4
 \openout4 = `relazione.out'.
 
 \AtBeginShipoutBox=\box33
- <relazione-frn.pdf, id=63, 597.50829pt x 845.0471pt>
+ <relazione-frn.pdf, id=47, 597.50829pt x 845.0471pt>
 File: relazione-frn.pdf Graphic file (type pdf)
 
 <use relazione-frn.pdf> [1
@@ -523,15 +523,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.55 \newpage
+l.51 \newpage
               [1]
 
 pdfTeX warning: /usr/bin/pdflatex (file ./er.pdf): PDF inclusion: found PDF ver
 sion <1.5>, but at most version <1.4> allowed
-<er.pdf, id=116, 722.7pt x 542.025pt>
+<er.pdf, id=96, 722.7pt x 542.025pt>
 File: er.pdf Graphic file (type pdf)
  <use er.pdf>
-Overfull \hbox (31.3491pt too wide) in paragraph at lines 63--64
+Overfull \hbox (31.3491pt too wide) in paragraph at lines 59--60
 [][] 
  []
 
@@ -539,10 +539,10 @@ Overfull \hbox (31.3491pt too wide) in paragraph at lines 63--64
 
 pdfTeX warning: /usr/bin/pdflatex (file ./schemalogico.pdf): PDF inclusion: fou
 nd PDF version <1.5>, but at most version <1.4> allowed
-<schemalogico.pdf, id=118, 722.7pt x 542.025pt>
+<schemalogico.pdf, id=98, 722.7pt x 542.025pt>
 File: schemalogico.pdf Graphic file (type pdf)
  <use schemalogico.pdf>
-Overfull \hbox (103.62334pt too wide) in paragraph at lines 65--66
+Overfull \hbox (103.62334pt too wide) in paragraph at lines 61--62
 [][] 
  []
 
@@ -663,71 +663,59 @@ or \DeclareInputMath before using this key.
 ) (./page-schema/emettiBigliettoPage.txt) (./page-schema/ricercaVolo.txt
 [9]) (./page-schema/login.txt)
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
  [10] [11] [12]
-Overfull \hbox (1.77782pt too wide) in paragraph at lines 233--236
+Overfull \hbox (1.77782pt too wide) in paragraph at lines 229--232
 []\OT1/cmr/bx/n/10 ajaxricercavolo \OT1/cmr/m/n/10 - Data un aero-porto di part
 enza pas-sato come parametro,
  []
 
 [13] [14]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 342.
+(Font)              <7> on input line 338.
 
-Overfull \hbox (10.45927pt too wide) in paragraph at lines 345--352
+Overfull \hbox (10.45927pt too wide) in paragraph at lines 341--348
 \OT1/cmr/m/n/10 ses-sione al client rel-a-tivo, nella quale viene man-tenuto l'
 attributo \OT1/cmr/bx/n/10 pass\OT1/cmr/m/n/10 . L'attributo
  []
 
 
-Overfull \hbox (3.33463pt too wide) in paragraph at lines 361--362
+Overfull \hbox (3.33463pt too wide) in paragraph at lines 357--358
 []\OT1/cmr/m/n/10 Gli at-tributi \OT1/cmr/bx/n/10 data[]richiesta \OT1/cmr/m/n/
 10 e \OT1/cmr/bx/n/10 ora[]richiesta \OT1/cmr/m/n/10 nell'entit^^Ra \OT1/cmr/m/
 it/10 preno-tazione \OT1/cmr/m/n/10 viene
  []
 
 
-Overfull \hbox (2.8618pt too wide) in paragraph at lines 361--362
+Overfull \hbox (2.8618pt too wide) in paragraph at lines 357--358
 \OT1/cmr/m/n/10 ag-giunto au-to-mati-ca-mente da una fun-zione trig-ger, sp-ie-
 gata nella re-lazione. 
  []
 
 [15] [16] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 7843 strings out of 495061
- 110791 string characters out of 1182621
- 464273 words of memory out of 3000000
- 10477 multiletter control sequences out of 15000+50000
+ 7835 strings out of 495061
+ 110705 string characters out of 1182621
+ 464249 words of memory out of 3000000
+ 10473 multiletter control sequences out of 15000+50000
  7802 words of font info for 28 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,8n,43p,308b,2040s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{section.12} has been r
-eferenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.11} has been referenced but does not exist,
- replaced by a fixed one
-
-pdfTeX warning (dest): name{section.10} has been referenced but does not exist,
- replaced by a fixed one
-
-pdfTeX warning (dest): name{section.9} has been referenced but does not exist, 
-replaced by a fixed one
-
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt
-10.pfb>
-Output written on relazione.pdf (17 pages, 392651 bytes).
+</usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx
+12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on relazione.pdf (17 pages, 391023 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
- 405 named destinations out of 1000 (max. 500000)
- 136 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 756 PDF objects out of 1000 (max. 8388607)
+ 401 named destinations out of 1000 (max. 500000)
+ 104 words of extra memory for PDF output out of 10000 (max. 10000000)
 

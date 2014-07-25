@@ -27,6 +27,6 @@
 	per la "Miglior cucina di bordo".
 	</div>
 	<br/>
-	 <img src = "../images/chisiamo.jpg" width="800" height="600"  alt="Foto aereo in volo"></br>
+	 <img src = "../img/chisiamo.jpg" width="800" height="600"  alt="Foto aereo in volo"></br>
 </body>
 </html>

@@ -20,7 +20,7 @@
         <many-to-one name="passeggero" class="bean.PasseggeroBean" insert="false" update="false" fetch="select">
             <column name="documento" not-null="true" />
         </many-to-one>
-        <property name="id_1" type="int">
+        <property name="id_1" type="int" unique="true">
             <column name="id" not-null="true" />
         </property>
         <property name="dataemissione" type="date">

@@ -38,16 +38,6 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>ajax</servlet-name>
-        <servlet-class>ajax</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ajax</servlet-name>
-        <url-pattern>/servlet/ajax</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
         <servlet-name>picture</servlet-name>
         <servlet-class>picture</servlet-class>
     </servlet>

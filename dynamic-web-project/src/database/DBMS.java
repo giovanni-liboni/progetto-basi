@@ -412,18 +412,15 @@ public class DBMS {
 	
 	public boolean checkUsername( String username ) 
 	{
-	    String checkusername = "select * from passeggero where login=(:username)";
 	    boolean result = true;
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
-        q.setString("username", username);
         
-		Iterator<PasseggeroBean> itr = q.list().iterator();
-
-		if ( itr.hasNext() )
+        PasseggeroBean pass = (PasseggeroBean) session.createCriteria(PasseggeroBean.class).add(Restrictions.eq("login", username)).uniqueResult();
+                
+		if ( pass != null  )
 			result = false;
         
         tx.commit();
@@ -433,19 +430,16 @@ public class DBMS {
 	}
 	public boolean checkDocumento( String documento ) 
 	{
-	    String checkusername = "select * from passeggero where documento=(:documento)";
 	    boolean result = true;
 
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
-        Query q = session.createSQLQuery(checkusername).addEntity(PasseggeroBean.class);
-        q.setString("documento", documento);
         
-		Iterator<PasseggeroBean> itr = q.list().iterator();
-
-		if ( itr.hasNext() )
-			result = false;
+        PasseggeroBean pass = (PasseggeroBean) session.get(PasseggeroBean.class, documento);
+        
+        if ( pass != null )
+        	result = false;
         
         tx.commit();
         session.close();
@@ -460,7 +454,9 @@ public class DBMS {
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction(); 
+                
         Query q = session.createSQLQuery(checkusername).addEntity(PrenotazioneBean.class);
+        
         q.setString("documento", pass.getDocumento() );
         q.setString("codicevolo", volo.getCodicevolo());
         
